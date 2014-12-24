@@ -83,11 +83,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQ9-h5-pge">
-                                <rect key="frame" x="16" y="170" width="568" height="21"/>
+                                <rect key="frame" x="16" y="170" width="568" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXT-DO-2tB">
+                                <rect key="frame" x="23" y="369" width="228" height="30"/>
+                                <state key="normal" title="Change status of Daily Challenge">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleDailyChallenge:" destination="R2q-bP-afG" eventType="touchUpInside" id="2ha-Gg-ejS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -95,10 +104,12 @@
                             <constraint firstItem="eew-Oy-2Fz" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leadingMargin" id="2sI-Cf-lRJ"/>
                             <constraint firstItem="nQ9-h5-pge" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leadingMargin" id="5Dy-on-cLw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nQ9-h5-pge" secondAttribute="trailing" id="5ih-Tu-qhq"/>
+                            <constraint firstItem="HXT-DO-2tB" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leadingMargin" constant="7" id="ZRJ-um-DNg"/>
                             <constraint firstItem="ZX0-bI-Fdq" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leadingMargin" id="Zi3-Kl-uhG"/>
                             <constraint firstItem="eew-Oy-2Fz" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="162" id="Zw9-9U-W72"/>
                             <constraint firstItem="ZX0-bI-Fdq" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="32" id="bP9-Cf-nBL"/>
                             <constraint firstItem="eew-Oy-2Fz" firstAttribute="trailing" secondItem="A0k-Ut-mPi" secondAttribute="trailingMargin" id="iz9-zV-11f"/>
+                            <constraint firstItem="HXT-DO-2tB" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="305" id="nfn-SD-Hdh"/>
                             <constraint firstItem="nQ9-h5-pge" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="106" id="rwe-9U-hTT"/>
                         </constraints>
                     </view>

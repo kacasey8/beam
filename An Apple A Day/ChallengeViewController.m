@@ -17,6 +17,8 @@
 
 BuiltObject *challenge;
 BuiltUser *user; // This should really be a global variable
+NSString *userChallengeUID;
+bool dailyCompleted;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -147,11 +149,12 @@ BuiltUser *user; // This should really be a global variable
             // the query has executed successfully.
             // [result getResult] will contain a list of objects that satisfy the conditions
             
-            NSArray *results = [result getResult];
-            if ([results count] == 0) {
+            NSArray *builtResults = [result getResult];
+            if ([builtResults count] == 0) {
                 [self setUpNotCompletedForDailyChallenge];
             } else {
                 [self setUpCompletedForDailyChallenge];
+                userChallengeUID = [[builtResults objectAtIndex:0] objectForKey:@"uid"];
             }
         } onError:^(NSError *error, ResponseType type) {
             // query execution failed.
@@ -165,11 +168,13 @@ BuiltUser *user; // This should really be a global variable
 - (void)setUpNotCompletedForDailyChallenge
 {
     _challengeCompleted.text = @"NO!";
+    dailyCompleted = false;
 }
 
 - (void)setUpCompletedForDailyChallenge
 {
     _challengeCompleted.text = @"YES!";
+    dailyCompleted = true;
 }
 
 #pragma mark - All Challenge Helper
@@ -212,5 +217,41 @@ BuiltUser *user; // This should really be a global variable
     // Close the session and remove the access token from the cache
     // The session state handler (in the app delegate) will be called automatically
     [FBSession.activeSession closeAndClearTokenInformation];
+}
+
+- (IBAction)toggleDailyChallenge:(id)sender {
+    NSLog(@"%@", [BuiltUser currentUser]);
+    if (dailyCompleted) {
+        [self setUpNotCompletedForDailyChallenge];
+        BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
+        
+        [obj setUid:userChallengeUID];
+        
+        [obj destroyOnSuccess:^{
+            // object is deleted
+            NSLog(@"Built updated challenge not completed");
+        } onError:^(NSError *error) {
+            // there was an error in deleting the object
+            // error.userinfo contains more details regarding the same
+            NSLog(@"%@", @"ERROR");
+            NSLog(@"%@", error.userInfo);
+        }];
+    } else {
+        [self setUpCompletedForDailyChallenge];
+        BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
+        [obj setReference:user.uid
+                   forKey:@"user"];
+        [obj setReference:challenge.uid
+                   forKey:@"challenge"];
+        [obj saveOnSuccess:^{
+            // object is created successfully
+            NSLog(@"Built updated challenge completed");
+        } onError:^(NSError *error) {
+            // there was an error in creating the object
+            // error.userinfo contains more details regarding the same
+            NSLog(@"%@", @"ERROR");
+            NSLog(@"%@", error.userInfo);
+        }];
+    }
 }
 @end

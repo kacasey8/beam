@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *challengeInformation;
 @property (strong, nonatomic) IBOutlet UILabel *challengeCompleted;
 - (IBAction)logout:(id)sender;
+- (IBAction)toggleDailyChallenge:(id)sender;
 
 @end
