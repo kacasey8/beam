@@ -15,19 +15,20 @@
 
 @implementation ChallengeViewController
 
-NSDictionary *challenge;
+BuiltObject *challenge;
+BuiltUser *user; // This should really be a global variable
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //[self getUserInfo];
+    [self getUserInfo];
     [self getDailyChallenge];
 }
 
 - (void)getUserInfo
 {
-    BuiltUser *user = [BuiltUser user];
+    user = [BuiltUser user];
     
     NSString *fbAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];
     
@@ -35,7 +36,9 @@ NSDictionary *challenge;
                              onSuccess:^{
                                  // user has logged in successfully
                                  // user.authtoken contains the session authtoken
-                                 NSLog(@"%@", user);
+                                 NSLog(@"User synced");
+                                 [self setUpDailyChallengeCompleted];
+                                 [self getAllChallengesIHaveCompleted];
                              } onError:^(NSError *error) {
                                  // login failed
                                  // error.userinfo contains more details regarding the same
@@ -73,10 +76,10 @@ NSDictionary *challenge;
     
     BuiltQuery *test1 = [BuiltQuery queryWithClassUID:@"challenge"];
     [test1     whereKey:@"date"
-               lessThan:[dateFormatter stringFromDate:[self endOfDay:[NSDate date]]]];
+               lessThanOrEqualTo:[dateFormatter stringFromDate:[self endOfDay:[NSDate date]]]];
     BuiltQuery *test2 = [BuiltQuery queryWithClassUID:@"challenge"];
     [test2     whereKey:@"date"
-            greaterThan:[dateFormatter stringFromDate:[self beginningOfDay:[NSDate date]]]];
+            greaterThanOrEqualTo:[dateFormatter stringFromDate:[self beginningOfDay:[NSDate date]]]];
     
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"challenge"];
     [query andWithSubqueries:@[test1,test2]];
@@ -91,11 +94,13 @@ NSDictionary *challenge;
         // [result getResult] will contain a list of objects that satisfy the conditions
         
         NSArray *results = [result getResult];
-        if ([result count] == 0) {
+        if ([results count] == 0) {
             NSLog(@"NO DAILY CHALLENGE!");
         } else {
             challenge = [results objectAtIndex:0];
+            NSLog(@"%@", challenge);
             [self setUpInformationForChallenge];
+            [self setUpDailyChallengeCompleted];
         }
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
@@ -129,6 +134,76 @@ NSDictionary *challenge;
     date = [date dateByAddingTimeInterval:-1];
     
     return date;
+}
+
+- (void)setUpDailyChallengeCompleted
+{
+    if (user.uid && challenge.uid) {
+        BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
+        [query whereKey:@"user" equalTo:user.uid];
+        [query whereKey:@"challenge" equalTo:challenge.uid];
+        
+        [query exec:^(QueryResult *result, ResponseType type) {
+            // the query has executed successfully.
+            // [result getResult] will contain a list of objects that satisfy the conditions
+            
+            NSArray *results = [result getResult];
+            if ([results count] == 0) {
+                [self setUpNotCompletedForDailyChallenge];
+            } else {
+                [self setUpCompletedForDailyChallenge];
+            }
+        } onError:^(NSError *error, ResponseType type) {
+            // query execution failed.
+            // error.userinfo contains more details regarding the same
+            NSLog(@"%@", @"ERROR");
+            NSLog(@"%@", error.userInfo);
+        }];
+    }
+}
+
+- (void)setUpNotCompletedForDailyChallenge
+{
+    _challengeCompleted.text = @"NO!";
+}
+
+- (void)setUpCompletedForDailyChallenge
+{
+    _challengeCompleted.text = @"YES!";
+}
+
+#pragma mark - All Challenge Helper
+
+- (void)getAllChallengesIHaveCompleted
+{
+    if (!user.uid) {
+        return;
+    }
+    BuiltQuery *select_query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
+    [select_query whereKey:@"user" equalTo:user.uid];
+    
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"challenge"];
+    [query whereKey:@"uid" equalToResultOfSelectQuery:select_query forKey:@"challenge"];
+    
+    [query includeOnlyFields:[NSArray arrayWithObjects: @"date", @"information", nil]];
+    [query includeCount];
+    
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        
+        NSArray *builtResult = [result getResult];
+        
+        NSLog(@"%@", builtResult);
+        
+        int challengesCompelted = [builtResult count];
+        NSLog(@"Challenges completed = %d", challengesCompelted);
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", @"ERROR");
+        NSLog(@"%@", error.userInfo);
+    }];
 }
 
 #pragma mark - Actions

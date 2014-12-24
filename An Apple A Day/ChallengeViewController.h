@@ -11,6 +11,7 @@
 
 @interface ChallengeViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UILabel *challengeInformation;
+@property (strong, nonatomic) IBOutlet UILabel *challengeCompleted;
 - (IBAction)logout:(id)sender;
 
 @end
