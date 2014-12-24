@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "ChallengeViewController.h"
+#import <BuiltIO/BuiltIO.h>
 
 @interface AppDelegate ()
 
@@ -18,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [Built initializeWithApiKey:@"blt2edd3e168f0a895a" andUid:@"anappleaday"];
     
     // Whenever a person opens the app, check for a cached session
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
@@ -39,6 +42,23 @@
 - (void)userLoggedIn
 {
     NSLog(@"login");
+    
+    BuiltUser *user = [BuiltUser user];
+    
+    NSString *fbAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];
+    
+    [user loginWithFacebookAccessToken:fbAccessToken
+                             onSuccess:^{
+                                 // user has logged in successfully
+                                 // user.authtoken contains the session authtoken
+                                 NSLog(@"%@", user);
+                             } onError:^(NSError *error) {
+                                 // login failed
+                                 // error.userinfo contains more details regarding the same
+                                 NSLog(@"Facebook To Built Failed!!!");
+                                 NSLog(@"%@", error.userInfo);
+                             }];
+    
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ChallengeViewController* vc = (ChallengeViewController *)[sb instantiateViewControllerWithIdentifier:@"challenge"];
     self.window.rootViewController = vc;
