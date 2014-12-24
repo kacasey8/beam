@@ -43,22 +43,6 @@
 {
     NSLog(@"login");
     
-    BuiltUser *user = [BuiltUser user];
-    
-    NSString *fbAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];
-    
-    [user loginWithFacebookAccessToken:fbAccessToken
-                             onSuccess:^{
-                                 // user has logged in successfully
-                                 // user.authtoken contains the session authtoken
-                                 NSLog(@"%@", user);
-                             } onError:^(NSError *error) {
-                                 // login failed
-                                 // error.userinfo contains more details regarding the same
-                                 NSLog(@"Facebook To Built Failed!!!");
-                                 NSLog(@"%@", error.userInfo);
-                             }];
-    
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ChallengeViewController* vc = (ChallengeViewController *)[sb instantiateViewControllerWithIdentifier:@"challenge"];
     self.window.rootViewController = vc;

@@ -10,6 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 @interface ChallengeViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UILabel *challengeInformation;
 - (IBAction)logout:(id)sender;
 
 @end
