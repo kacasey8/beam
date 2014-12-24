@@ -8,6 +8,7 @@
 
 #import "ChallengeViewController.h"
 #import <BuiltIO/BuiltIO.h>
+#import "Global.h"
 
 @interface ChallengeViewController ()
 
@@ -15,38 +16,24 @@
 
 @implementation ChallengeViewController
 
+NSString *userUID;
 BuiltObject *challenge;
-BuiltUser *user; // This should really be a global variable
-NSString *userChallengeUID;
+NSString *usersChallengesDailyUID;
 bool dailyCompleted;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self getUserInfo];
     [self getDailyChallenge];
 }
 
-- (void)getUserInfo
+- (NSString *)getUserUID
 {
-    user = [BuiltUser user];
-    
-    NSString *fbAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];
-    
-    [user loginWithFacebookAccessToken:fbAccessToken
-                             onSuccess:^{
-                                 // user has logged in successfully
-                                 // user.authtoken contains the session authtoken
-                                 NSLog(@"User synced");
-                                 [self setUpDailyChallengeCompleted];
-                                 [self getAllChallengesIHaveCompleted];
-                             } onError:^(NSError *error) {
-                                 // login failed
-                                 // error.userinfo contains more details regarding the same
-                                 NSLog(@"Facebook To Built Failed!!!");
-                                 NSLog(@"%@", error.userInfo);
-                             }];
+    if (!userUID) {
+        userUID = [[Global globalClass] getValueforKey:builtUserUID];
+    }
+    return userUID;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,14 +61,14 @@ bool dailyCompleted;
 - (void)getDailyChallenge
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"]; // add zzz at end to use local time zone.
     
     BuiltQuery *test1 = [BuiltQuery queryWithClassUID:@"challenge"];
-    [test1     whereKey:@"date"
+    [test1              whereKey:@"date"
                lessThanOrEqualTo:[dateFormatter stringFromDate:[self endOfDay:[NSDate date]]]];
     BuiltQuery *test2 = [BuiltQuery queryWithClassUID:@"challenge"];
-    [test2     whereKey:@"date"
-            greaterThanOrEqualTo:[dateFormatter stringFromDate:[self beginningOfDay:[NSDate date]]]];
+    [test2                  whereKey:@"date"
+                greaterThanOrEqualTo:[dateFormatter stringFromDate:[self beginningOfDay:[NSDate date]]]];
     
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"challenge"];
     [query andWithSubqueries:@[test1,test2]];
@@ -140,9 +127,9 @@ bool dailyCompleted;
 
 - (void)setUpDailyChallengeCompleted
 {
-    if (user.uid && challenge.uid) {
+    if (challenge.uid) {
         BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
-        [query whereKey:@"user" equalTo:user.uid];
+        [query whereKey:@"user" equalTo:[self getUserUID]];
         [query whereKey:@"challenge" equalTo:challenge.uid];
         
         [query exec:^(QueryResult *result, ResponseType type) {
@@ -154,7 +141,7 @@ bool dailyCompleted;
                 [self setUpNotCompletedForDailyChallenge];
             } else {
                 [self setUpCompletedForDailyChallenge];
-                userChallengeUID = [[builtResults objectAtIndex:0] objectForKey:@"uid"];
+                usersChallengesDailyUID = [[builtResults objectAtIndex:0] objectForKey:@"uid"];
             }
         } onError:^(NSError *error, ResponseType type) {
             // query execution failed.
@@ -181,11 +168,8 @@ bool dailyCompleted;
 
 - (void)getAllChallengesIHaveCompleted
 {
-    if (!user.uid) {
-        return;
-    }
     BuiltQuery *select_query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
-    [select_query whereKey:@"user" equalTo:user.uid];
+    [select_query whereKey:@"user" equalTo:[self getUserUID]];
     
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"challenge"];
     [query whereKey:@"uid" equalToResultOfSelectQuery:select_query forKey:@"challenge"];
@@ -220,12 +204,11 @@ bool dailyCompleted;
 }
 
 - (IBAction)toggleDailyChallenge:(id)sender {
-    NSLog(@"%@", [BuiltUser currentUser]);
     if (dailyCompleted) {
         [self setUpNotCompletedForDailyChallenge];
         BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
         
-        [obj setUid:userChallengeUID];
+        [obj setUid:usersChallengesDailyUID];
         
         [obj destroyOnSuccess:^{
             // object is deleted
@@ -239,13 +222,14 @@ bool dailyCompleted;
     } else {
         [self setUpCompletedForDailyChallenge];
         BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
-        [obj setReference:user.uid
+        [obj setReference:[self getUserUID]
                    forKey:@"user"];
         [obj setReference:challenge.uid
                    forKey:@"challenge"];
         [obj saveOnSuccess:^{
             // object is created successfully
             NSLog(@"Built updated challenge completed");
+            usersChallengesDailyUID = obj.uid;
         } onError:^(NSError *error) {
             // there was an error in creating the object
             // error.userinfo contains more details regarding the same

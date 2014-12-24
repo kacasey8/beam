@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "ChallengeViewController.h"
 #import <BuiltIO/BuiltIO.h>
+#import "Global.h"
 
 @interface AppDelegate ()
 
@@ -43,6 +44,20 @@
 {
     NSLog(@"login");
     
+    BuiltUser *user = [BuiltUser user];
+    
+    NSString *fbAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];
+    
+    [user loginWithFacebookAccessToken:fbAccessToken
+                             onSuccess:^{
+                                 // user has logged in successfully
+                                 // user.authtoken contains the session authtoken
+                                 [[Global globalClass] setValue:user.uid forKey:builtUserUID];
+                             } onError:^(NSError *error) {
+                                 // login failed
+                                 // error.userinfo contains more details regarding the same
+                             }];
+    
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ChallengeViewController* vc = (ChallengeViewController *)[sb instantiateViewControllerWithIdentifier:@"challenge"];
     self.window.rootViewController = vc;
@@ -51,6 +66,8 @@
 - (void)userLoggedOut
 {
     NSLog(@"logout");
+    
+    [[Global globalClass] setValue:nil forKey:builtUserUID];
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController* vc = (LoginViewController *)[sb instantiateViewControllerWithIdentifier:@"login"];
     self.window.rootViewController = vc;

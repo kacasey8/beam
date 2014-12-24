@@ -27,6 +27,7 @@
 		995BB6A91A4AC83800C32B27 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6A81A4AC83800C32B27 /* Social.framework */; };
 		995BB6AB1A4AC83D00C32B27 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6AA1A4AC83D00C32B27 /* Accounts.framework */; };
 		99F2BEAA1A4B2D2400EA9592 /* BuiltIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F2BEA91A4B2D2400EA9592 /* BuiltIO.framework */; };
+		99F2BEAD1A4B6CCB00EA9592 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 99F2BEAC1A4B6CCB00EA9592 /* Global.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		995BB6A81A4AC83800C32B27 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		995BB6AA1A4AC83D00C32B27 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		99F2BEA91A4B2D2400EA9592 /* BuiltIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuiltIO.framework; sourceTree = "<group>"; };
+		99F2BEAB1A4B6CCB00EA9592 /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		99F2BEAC1A4B6CCB00EA9592 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
 		B4FE2D2640C6CA9AAF67947A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E946D728C64AE1B0F4173F49 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F4D29D854CD7DD50863B22BA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +161,8 @@
 				991D95491A4AA625005FE2D1 /* LoginViewController.m */,
 				995BB6931A4AC51D00C32B27 /* ChallengeViewController.h */,
 				995BB6941A4AC51D00C32B27 /* ChallengeViewController.m */,
+				99F2BEAB1A4B6CCB00EA9592 /* Global.h */,
+				99F2BEAC1A4B6CCB00EA9592 /* Global.m */,
 				991D954B1A4AA625005FE2D1 /* Main.storyboard */,
 				991D954E1A4AA625005FE2D1 /* Images.xcassets */,
 				991D95501A4AA625005FE2D1 /* LaunchScreen.xib */,
@@ -329,6 +334,7 @@
 			files = (
 				991D954A1A4AA625005FE2D1 /* LoginViewController.m in Sources */,
 				991D95471A4AA625005FE2D1 /* AppDelegate.m in Sources */,
+				99F2BEAD1A4B6CCB00EA9592 /* Global.m in Sources */,
 				995BB6951A4AC51D00C32B27 /* ChallengeViewController.m in Sources */,
 				991D95441A4AA625005FE2D1 /* main.m in Sources */,
 			);
