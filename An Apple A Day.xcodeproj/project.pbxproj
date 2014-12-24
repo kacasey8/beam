@@ -16,7 +16,6 @@
 		991D95521A4AA625005FE2D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991D95501A4AA625005FE2D1 /* LaunchScreen.xib */; };
 		991D955E1A4AA625005FE2D1 /* An_Apple_A_DayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D955D1A4AA625005FE2D1 /* An_Apple_A_DayTests.m */; };
 		995BB6951A4AC51D00C32B27 /* ChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 995BB6941A4AC51D00C32B27 /* ChallengeViewController.m */; };
-		995BB6971A4AC7ED00C32B27 /* BuiltIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6961A4AC7ED00C32B27 /* BuiltIO.framework */; };
 		995BB6991A4AC80300C32B27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6981A4AC80300C32B27 /* QuartzCore.framework */; };
 		995BB69B1A4AC80900C32B27 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB69A1A4AC80900C32B27 /* CoreGraphics.framework */; };
 		995BB69D1A4AC80F00C32B27 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB69C1A4AC80F00C32B27 /* Security.framework */; };
@@ -27,6 +26,7 @@
 		995BB6A71A4AC83200C32B27 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6A61A4AC83200C32B27 /* Twitter.framework */; };
 		995BB6A91A4AC83800C32B27 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6A81A4AC83800C32B27 /* Social.framework */; };
 		995BB6AB1A4AC83D00C32B27 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6AA1A4AC83D00C32B27 /* Accounts.framework */; };
+		99F2BEAA1A4B2D2400EA9592 /* BuiltIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F2BEA91A4B2D2400EA9592 /* BuiltIO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,6 @@
 		991D955D1A4AA625005FE2D1 /* An_Apple_A_DayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = An_Apple_A_DayTests.m; sourceTree = "<group>"; };
 		995BB6931A4AC51D00C32B27 /* ChallengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeViewController.h; sourceTree = "<group>"; };
 		995BB6941A4AC51D00C32B27 /* ChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeViewController.m; sourceTree = "<group>"; };
-		995BB6961A4AC7ED00C32B27 /* BuiltIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BuiltIO.framework; path = "An Apple A Day/BuiltIO.framework"; sourceTree = "<group>"; };
 		995BB6981A4AC80300C32B27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		995BB69A1A4AC80900C32B27 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		995BB69C1A4AC80F00C32B27 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -66,6 +65,7 @@
 		995BB6A61A4AC83200C32B27 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		995BB6A81A4AC83800C32B27 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		995BB6AA1A4AC83D00C32B27 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		99F2BEA91A4B2D2400EA9592 /* BuiltIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuiltIO.framework; sourceTree = "<group>"; };
 		B4FE2D2640C6CA9AAF67947A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E946D728C64AE1B0F4173F49 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F4D29D854CD7DD50863B22BA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				995BB6AB1A4AC83D00C32B27 /* Accounts.framework in Frameworks */,
+				99F2BEAA1A4B2D2400EA9592 /* BuiltIO.framework in Frameworks */,
 				995BB6A91A4AC83800C32B27 /* Social.framework in Frameworks */,
 				995BB6A71A4AC83200C32B27 /* Twitter.framework in Frameworks */,
 				995BB6A51A4AC82C00C32B27 /* CoreLocation.framework in Frameworks */,
@@ -87,7 +88,6 @@
 				995BB69B1A4AC80900C32B27 /* CoreGraphics.framework in Frameworks */,
 				995BB6991A4AC80300C32B27 /* QuartzCore.framework in Frameworks */,
 				69AB875F0D41BD079FEB23F9 /* libPods.a in Frameworks */,
-				995BB6971A4AC7ED00C32B27 /* BuiltIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +104,7 @@
 		5CADD213FAEFEBEB683BD4BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				995BB6961A4AC7ED00C32B27 /* BuiltIO.framework */,
+				99F2BEA91A4B2D2400EA9592 /* BuiltIO.framework */,
 				995BB6AA1A4AC83D00C32B27 /* Accounts.framework */,
 				995BB6A81A4AC83800C32B27 /* Social.framework */,
 				995BB6A61A4AC83200C32B27 /* Twitter.framework */,
@@ -465,6 +465,7 @@
 					Apple,
 					A,
 					Day,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "An Apple A Day/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -487,6 +488,7 @@
 					Apple,
 					A,
 					Day,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "An Apple A Day/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
