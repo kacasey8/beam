@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,85 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJj-Zh-Hzr">
+                                <rect key="frame" x="16" y="285" width="568" height="30"/>
+                                <state key="normal" title="Log in With Facebook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebookPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Luw-HA-C8m"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zJj-Zh-Hzr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="221" id="6m1-Aj-TqB"/>
+                            <constraint firstItem="zJj-Zh-Hzr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="QfH-gS-1hH"/>
+                            <constraint firstItem="zJj-Zh-Hzr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="WJu-jf-crC"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="9p3-D6-ts5"/>
+                    <connections>
+                        <outlet property="facebookButton" destination="zJj-Zh-Hzr" id="i9R-IU-Qqq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vkn-Wm-obh">
+            <objects>
+                <navigationController storyboardIdentifier="challenge" id="COO-iI-64J" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9d3-Fe-kwW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="R2q-bP-afG" kind="relationship" relationship="rootViewController" id="fsL-P4-xHk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7su-rs-FO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1050" y="-460"/>
+        </scene>
+        <!--Challenge View Controller-->
+        <scene sceneID="0WY-7g-SEg">
+            <objects>
+                <viewController id="R2q-bP-afG" customClass="ChallengeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dUi-hF-4Ol"/>
+                        <viewControllerLayoutGuide type="bottom" id="8ih-O4-doj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A0k-Ut-mPi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Homepage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX0-bI-Fdq">
+                                <rect key="frame" x="16" y="96" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZX0-bI-Fdq" firstAttribute="trailing" secondItem="A0k-Ut-mPi" secondAttribute="trailingMargin" id="1g7-xS-XlS"/>
+                            <constraint firstItem="ZX0-bI-Fdq" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leadingMargin" id="Zi3-Kl-uhG"/>
+                            <constraint firstItem="ZX0-bI-Fdq" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="32" id="bP9-Cf-nBL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gp2-ph-c3p">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="YYe-hH-5TX">
+                            <connections>
+                                <action selector="logout:" destination="R2q-bP-afG" id="o3O-Lf-56m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1EM-W3-uDL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1266" y="276"/>
         </scene>
     </scenes>
 </document>
