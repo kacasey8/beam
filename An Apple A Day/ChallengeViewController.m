@@ -16,7 +16,6 @@
 
 @implementation ChallengeViewController
 
-NSString *userUID;
 BuiltObject *challenge;
 NSString *usersChallengesDailyUID;
 bool dailyCompleted;
@@ -26,14 +25,6 @@ bool dailyCompleted;
     // Do any additional setup after loading the view.
     
     [self getDailyChallenge];
-}
-
-- (NSString *)getUserUID
-{
-    if (!userUID) {
-        userUID = [[Global globalClass] getValueforKey:builtUserUID];
-    }
-    return userUID;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,6 +53,7 @@ bool dailyCompleted;
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"]; // add zzz at end to use local time zone.
+    // currently just dropping time zone, just looking for date to match up.
     
     BuiltQuery *test1 = [BuiltQuery queryWithClassUID:@"challenge"];
     [test1              whereKey:@"date"
@@ -129,7 +121,7 @@ bool dailyCompleted;
 {
     if (challenge.uid) {
         BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
-        [query whereKey:@"user" equalTo:[self getUserUID]];
+        [query whereKey:@"user" equalTo:[[Global globalClass] getValueforKey:builtUserUID]];
         [query whereKey:@"challenge" equalTo:challenge.uid];
         
         [query exec:^(QueryResult *result, ResponseType type) {
@@ -169,7 +161,7 @@ bool dailyCompleted;
 - (void)getAllChallengesIHaveCompleted
 {
     BuiltQuery *select_query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
-    [select_query whereKey:@"user" equalTo:[self getUserUID]];
+    [select_query whereKey:@"user" equalTo:[[Global globalClass] getValueforKey:builtUserUID]];
     
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"challenge"];
     [query whereKey:@"uid" equalToResultOfSelectQuery:select_query forKey:@"challenge"];
@@ -222,7 +214,7 @@ bool dailyCompleted;
     } else {
         [self setUpCompletedForDailyChallenge];
         BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
-        [obj setReference:[self getUserUID]
+        [obj setReference:[[Global globalClass] getValueforKey:builtUserUID]
                    forKey:@"user"];
         [obj setReference:challenge.uid
                    forKey:@"challenge"];
