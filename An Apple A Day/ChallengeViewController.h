@@ -14,9 +14,14 @@
 @interface ChallengeViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UILabel *challengeInformation;
 @property (strong, nonatomic) IBOutlet UILabel *challengeCompleted;
+@property (strong, nonatomic) NSMutableDictionary *challenge;
+@property (strong, nonatomic) NSString *usersChallengesDailyUID;
+@property (strong, nonatomic) Global *globalKeyValueStore;
+
 - (IBAction)logout:(id)sender;
-- (IBAction)toggleDailyChallenge:(id)sender;
 
 - (void)activateView;
+- (void)setUpCompletedForDailyChallenge;
+- (void)setUpNotCompletedForDailyChallenge;
 
 @end

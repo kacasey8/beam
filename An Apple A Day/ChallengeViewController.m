@@ -15,12 +15,10 @@
 
 @implementation ChallengeViewController
 
-NSMutableDictionary *challenge;
-NSString *usersChallengesDailyUID;
 NSString *dateQueried;
 bool dailyCompleted;
 NSDateFormatter *dateFormatter;
-Global *globalKeyValueStore;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,7 +28,7 @@ Global *globalKeyValueStore;
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"]; // add zzz at end to use local time zone.
     // currently just dropping time zone, just looking for date to match up.
     
-    globalKeyValueStore = [Global globalClass];
+    _globalKeyValueStore = [Global globalClass];
     
     [self loadCacheFromPersistantStorage];
     
@@ -62,24 +60,24 @@ Global *globalKeyValueStore;
 
 - (void)saveCacheToPersistantStorage
 {
-    [globalKeyValueStore setValue:challenge forKey:kChallengeObject];
-    [globalKeyValueStore setValue:[NSNumber numberWithBool:dailyCompleted] forKey:kChallengeCompleted];
-    [globalKeyValueStore setValue:usersChallengesDailyUID forKey:kUsersChallengesUID];
+    [_globalKeyValueStore setValue:_challenge forKey:kChallengeObject];
+    [_globalKeyValueStore setValue:[NSNumber numberWithBool:dailyCompleted] forKey:kChallengeCompleted];
+    [_globalKeyValueStore setValue:_usersChallengesDailyUID forKey:kUsersChallengesUID];
     
-    [globalKeyValueStore setValue:dateQueried forKey:kChallengeDate];
+    [_globalKeyValueStore setValue:dateQueried forKey:kChallengeDate];
 }
 
 - (void)loadCacheFromPersistantStorage
 {
-    dateQueried = [globalKeyValueStore getValueforKey:kChallengeDate];
+    dateQueried = [_globalKeyValueStore getValueforKey:kChallengeDate];
     if (![self shouldUseCache]) {
         // Date doesn't line up. No point in querying anything else
         return;
     }
     
-    challenge = [globalKeyValueStore getValueforKey:kChallengeObject];
-    dailyCompleted = [[globalKeyValueStore getValueforKey:kChallengeCompleted] boolValue];
-    usersChallengesDailyUID = [globalKeyValueStore getValueforKey:kUsersChallengesUID];
+    _challenge = [_globalKeyValueStore getValueforKey:kChallengeObject];
+    dailyCompleted = [[_globalKeyValueStore getValueforKey:kChallengeCompleted] boolValue];
+    _usersChallengesDailyUID = [_globalKeyValueStore getValueforKey:kUsersChallengesUID];
 }
 
 - (BOOL) shouldUseCache
@@ -88,11 +86,6 @@ Global *globalKeyValueStore;
 }
 
 #pragma mark - Daily Challenge
-
-- (void)setUpInformationForChallenge
-{
-    _challengeInformation.text = [challenge objectForKey:@"information"];
-}
 
 - (void)getDailyChallenge
 {
@@ -123,16 +116,16 @@ Global *globalKeyValueStore;
             NSLog(@"NO DAILY CHALLENGE!");
         } else {
             BuiltObject *tmp = [results objectAtIndex:0];
-            challenge = [NSMutableDictionary dictionary];
+            _challenge = [NSMutableDictionary dictionary];
             
             NSArray *keysToTransfer = @[@"uid", @"information"];
             
             for (NSString *s in keysToTransfer) {
                 NSString *hi = [tmp objectForKey:s];
-                [challenge setValue:hi forKey:s];
+                [_challenge setValue:hi forKey:s];
             }
                                         
-            NSLog(@"%@", challenge);
+            NSLog(@"%@", _challenge);
             [self setUpInformationForChallenge];
             [self setUpIsDailyChallengeCompleted];
         }
@@ -142,6 +135,11 @@ Global *globalKeyValueStore;
         NSLog(@"%@", @"ERROR");
         NSLog(@"%@", error.userInfo);
     }];
+}
+
+- (void)setUpInformationForChallenge
+{
+    _challengeInformation.text = [_challenge objectForKey:@"information"];
 }
 
 - (NSDate *)beginningOfDay:(NSDate *)date
@@ -172,14 +170,14 @@ Global *globalKeyValueStore;
 
 - (void)setUpIsDailyChallengeCompleted
 {
-    if ([challenge objectForKey:@"uid"]) {
-        while ([globalKeyValueStore getValueforKey:kBuiltUserUID] == NULL) {
+    if ([_challenge objectForKey:@"uid"]) {
+        while ([_globalKeyValueStore getValueforKey:kBuiltUserUID] == NULL) {
             // Needed to wait for the built login to execute before moving on.
             [NSThread sleepForTimeInterval:0.5];
         }
         BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
-        [query whereKey:@"user" equalTo:[globalKeyValueStore getValueforKey:kBuiltUserUID]];
-        [query whereKey:@"challenge" equalTo:[challenge objectForKey:@"uid"]];
+        [query whereKey:@"user" equalTo:[_globalKeyValueStore getValueforKey:kBuiltUserUID]];
+        [query whereKey:@"challenge" equalTo:[_challenge objectForKey:@"uid"]];
         
         [query exec:^(QueryResult *result, ResponseType type) {
             // the query has executed successfully.
@@ -190,7 +188,7 @@ Global *globalKeyValueStore;
                 [self setUpNotCompletedForDailyChallenge];
             } else {
                 [self setUpCompletedForDailyChallenge];
-                usersChallengesDailyUID = [[builtResults objectAtIndex:0] objectForKey:@"uid"];
+                _usersChallengesDailyUID = [[builtResults objectAtIndex:0] objectForKey:@"uid"];
             }
         } onError:^(NSError *error, ResponseType type) {
             // query execution failed.
@@ -222,7 +220,7 @@ Global *globalKeyValueStore;
 - (void)getAllChallengesIHaveCompleted
 {
     BuiltQuery *select_query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
-    [select_query whereKey:@"user" equalTo:[globalKeyValueStore getValueforKey:kBuiltUserUID]];
+    [select_query whereKey:@"user" equalTo:[_globalKeyValueStore getValueforKey:kBuiltUserUID]];
     
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"challenge"];
     [query whereKey:@"uid" equalToResultOfSelectQuery:select_query forKey:@"challenge"];
@@ -258,17 +256,17 @@ Global *globalKeyValueStore;
 
 - (IBAction)promptCompleteChallenge:(id)sender {
     CompleteChallengeViewController *vc = [[CompleteChallengeViewController alloc] init];
-    
+
     vc.presenter = self;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (IBAction)toggleDailyChallenge:(id)sender {
+/*- (IBAction)toggleDailyChallenge:(id)sender {
     if (dailyCompleted) {
         [self setUpNotCompletedForDailyChallenge];
         BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
         
-        [obj setUid:usersChallengesDailyUID];
+        [obj setUid:_usersChallengesDailyUID];
         
         [obj destroyOnSuccess:^{
             // object is deleted
@@ -283,14 +281,14 @@ Global *globalKeyValueStore;
     } else {
         [self setUpCompletedForDailyChallenge];
         BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
-        [obj setReference:[globalKeyValueStore getValueforKey:kBuiltUserUID]
+        [obj setReference:[_globalKeyValueStore getValueforKey:kBuiltUserUID]
                    forKey:@"user"];
-        [obj setReference:[challenge objectForKey:@"uid"]
+        [obj setReference:[_challenge objectForKey:@"uid"]
                    forKey:@"challenge"];
         [obj saveOnSuccess:^{
             // object is created successfully
             NSLog(@"Built updated challenge completed");
-            usersChallengesDailyUID = obj.uid;
+            _usersChallengesDailyUID = obj.uid;
         } onError:^(NSError *error) {
             // there was an error in creating the object
             // error.userinfo contains more details regarding the same
@@ -299,5 +297,5 @@ Global *globalKeyValueStore;
             NSLog(@"%@", error.userInfo);
         }];
     }
-}
+}*/
 @end

@@ -36,6 +36,29 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)completeChallenge:(id)sender {
+    BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
+    [obj setReference:[_presenter.globalKeyValueStore getValueforKey:kBuiltUserUID]
+               forKey:@"user"];
+    [obj setReference:[_presenter.challenge objectForKey:@"uid"]
+               forKey:@"challenge"];
+    [obj saveOnSuccess:^{
+        // object is created successfully
+        NSLog(@"Built updated challenge completed");
+        _presenter.usersChallengesDailyUID = obj.uid;
+        [_presenter setUpCompletedForDailyChallenge];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } onError:^(NSError *error) {
+        // there was an error in creating the object
+        // error.userinfo contains more details regarding the same
+        [_presenter setUpNotCompletedForDailyChallenge]; // it failed. revert local state.
+        NSLog(@"%@", @"ERROR");
+        NSLog(@"%@", error.userInfo);
+    }];
+
+}
+
+
 /*
 #pragma mark - Navigation
 
