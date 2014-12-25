@@ -7,6 +7,7 @@
 //
 
 #import "ChallengeViewController.h"
+#import "CompleteChallengeViewController.h"
 
 @interface ChallengeViewController ()
 

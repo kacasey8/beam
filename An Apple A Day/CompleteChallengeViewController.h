@@ -11,6 +11,7 @@
 
 @interface CompleteChallengeViewController : UIViewController
 
-@property (weak, nonatomic) ChallengeViewController *presenter;
+@property (weak, atomic) ChallengeViewController *presenter;
+
 
 @end

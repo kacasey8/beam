@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		69AB875F0D41BD079FEB23F9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D29D854CD7DD50863B22BA /* libPods.a */; };
-		843B2D5F1A4CBFF500B39CAF /* CompleteChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843B2D5E1A4CBFF500B39CAF /* CompleteChallengeViewController.m */; };
+		843B2D631A4CC2CD00B39CAF /* CompleteChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843B2D611A4CC2CD00B39CAF /* CompleteChallengeViewController.m */; };
+		843B2D641A4CC2CD00B39CAF /* CompleteChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843B2D621A4CC2CD00B39CAF /* CompleteChallengeViewController.xib */; };
 		991D95441A4AA625005FE2D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95431A4AA625005FE2D1 /* main.m */; };
 		991D95471A4AA625005FE2D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95461A4AA625005FE2D1 /* AppDelegate.m */; };
 		991D954A1A4AA625005FE2D1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95491A4AA625005FE2D1 /* LoginViewController.m */; };
@@ -42,8 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		843B2D5D1A4CBFF500B39CAF /* CompleteChallengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteChallengeViewController.h; sourceTree = "<group>"; };
-		843B2D5E1A4CBFF500B39CAF /* CompleteChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteChallengeViewController.m; sourceTree = "<group>"; };
+		843B2D601A4CC2CD00B39CAF /* CompleteChallengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteChallengeViewController.h; sourceTree = "<group>"; };
+		843B2D611A4CC2CD00B39CAF /* CompleteChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteChallengeViewController.m; sourceTree = "<group>"; };
+		843B2D621A4CC2CD00B39CAF /* CompleteChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompleteChallengeViewController.xib; sourceTree = "<group>"; };
 		991D953E1A4AA625005FE2D1 /* An Apple A Day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "An Apple A Day.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		991D95421A4AA625005FE2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		991D95431A4AA625005FE2D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -158,8 +160,6 @@
 		991D95401A4AA625005FE2D1 /* An Apple A Day */ = {
 			isa = PBXGroup;
 			children = (
-				843B2D5D1A4CBFF500B39CAF /* CompleteChallengeViewController.h */,
-				843B2D5E1A4CBFF500B39CAF /* CompleteChallengeViewController.m */,
 				991D95451A4AA625005FE2D1 /* AppDelegate.h */,
 				991D95461A4AA625005FE2D1 /* AppDelegate.m */,
 				991D95481A4AA625005FE2D1 /* LoginViewController.h */,
@@ -172,6 +172,9 @@
 				991D954E1A4AA625005FE2D1 /* Images.xcassets */,
 				991D95501A4AA625005FE2D1 /* LaunchScreen.xib */,
 				991D95411A4AA625005FE2D1 /* Supporting Files */,
+				843B2D601A4CC2CD00B39CAF /* CompleteChallengeViewController.h */,
+				843B2D611A4CC2CD00B39CAF /* CompleteChallengeViewController.m */,
+				843B2D621A4CC2CD00B39CAF /* CompleteChallengeViewController.xib */,
 			);
 			path = "An Apple A Day";
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				991D954D1A4AA625005FE2D1 /* Main.storyboard in Resources */,
 				991D95521A4AA625005FE2D1 /* LaunchScreen.xib in Resources */,
 				991D954F1A4AA625005FE2D1 /* Images.xcassets in Resources */,
+				843B2D641A4CC2CD00B39CAF /* CompleteChallengeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +345,7 @@
 				991D954A1A4AA625005FE2D1 /* LoginViewController.m in Sources */,
 				991D95471A4AA625005FE2D1 /* AppDelegate.m in Sources */,
 				99F2BEAD1A4B6CCB00EA9592 /* Global.m in Sources */,
-				843B2D5F1A4CBFF500B39CAF /* CompleteChallengeViewController.m in Sources */,
+				843B2D631A4CC2CD00B39CAF /* CompleteChallengeViewController.m in Sources */,
 				995BB6951A4AC51D00C32B27 /* ChallengeViewController.m in Sources */,
 				991D95441A4AA625005FE2D1 /* main.m in Sources */,
 			);

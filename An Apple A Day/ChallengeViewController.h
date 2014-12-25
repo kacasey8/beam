@@ -10,7 +10,6 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <BuiltIO/BuiltIO.h>
 #import "Global.h"
-#import "CompleteChallengeViewController.h"
 
 @interface ChallengeViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UILabel *challengeInformation;
