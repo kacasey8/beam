@@ -37,6 +37,16 @@
                                       }];
     }
     
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge
+                                                                                             |UIUserNotificationTypeSound
+                                                                                             |UIUserNotificationTypeAlert) categories:nil];
+        [application registerUserNotificationSettings:settings];
+    } else {
+        UIRemoteNotificationType myTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        [application registerForRemoteNotificationTypes:myTypes];
+    }
+
     return YES;
 }
 
@@ -179,6 +189,55 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"Installed");
+    BuiltInstallation *installation = [BuiltInstallation installation];
+    [installation createInstallationWithDeviceToken:deviceToken
+                            andSubscriptionChannels:nil
+                                          onSuccess:^{
+                                          }
+                                            onError:^(NSError *error) {
+                                                
+                                            }];
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    //register to receive notifications
+    [application registerForRemoteNotifications];
+}
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"error %@", error);
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
+{
+    //handle the actions
+    NSLog(@"action");
+    if ([identifier isEqualToString:@"declineAction"]){
+    }
+    else if ([identifier isEqualToString:@"answerAction"]){
+    }
+}
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    NSLog(@"GOT IT");
+    if (application.applicationState != UIApplicationStateActive) {
+        // app opened by push notification
+        BuiltEvent *appOpenOnNotification = [[BuiltEvent alloc] init];
+        [appOpenOnNotification setEventUid:@"appOpenedOnReceivingNotification"];
+        
+        // you can set a property wasInactive to YES to differentiate if app was brought to foreground by notification
+        [appOpenOnNotification setProperties:@{@"wasInactive": @"YES"}];
+        
+        BuiltAnalytics *analyticsInstance = [BuiltAnalytics sharedInstance];
+        [analyticsInstance trigger:appOpenOnNotification];
+    }
 }
 
 @end
