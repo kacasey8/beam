@@ -53,6 +53,7 @@
                                  // user has logged in successfully
                                  // user.authtoken contains the session authtoken
                                  [[Global globalClass] setValue:user.uid forKey:kBuiltUserUID];
+                                 NSLog(@"Built Login");
                              } onError:^(NSError *error) {
                                  // login failed
                                  // error.userinfo contains more details regarding the same

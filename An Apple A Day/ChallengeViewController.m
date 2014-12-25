@@ -168,6 +168,10 @@ Global *globalKeyValueStore;
 - (void)setUpIsDailyChallengeCompleted
 {
     if ([challenge objectForKey:@"uid"]) {
+        while ([globalKeyValueStore getValueforKey:kBuiltUserUID] == NULL) {
+            // Needed to wait for the built login to execute before moving on.
+            [NSThread sleepForTimeInterval:0.5];
+        }
         BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
         [query whereKey:@"user" equalTo:[globalKeyValueStore getValueforKey:kBuiltUserUID]];
         [query whereKey:@"challenge" equalTo:[challenge objectForKey:@"uid"]];
