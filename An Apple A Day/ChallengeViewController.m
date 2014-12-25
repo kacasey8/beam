@@ -7,8 +7,6 @@
 //
 
 #import "ChallengeViewController.h"
-#import <BuiltIO/BuiltIO.h>
-#import "Global.h"
 
 @interface ChallengeViewController ()
 
@@ -255,6 +253,13 @@ Global *globalKeyValueStore;
     // Close the session and remove the access token from the cache
     // The session state handler (in the app delegate) will be called automatically
     [FBSession.activeSession closeAndClearTokenInformation];
+}
+
+- (IBAction)promptCompleteChallenge:(id)sender {
+    CompleteChallengeViewController *vc = [[CompleteChallengeViewController alloc] init];
+    
+    vc.presenter = self;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)toggleDailyChallenge:(id)sender {
