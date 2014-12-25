@@ -70,20 +70,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX0-bI-Fdq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX0-bI-Fdq">
                                 <rect key="frame" x="16" y="96" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eew-Oy-2Fz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eew-Oy-2Fz">
                                 <rect key="frame" x="16" y="226" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQ9-h5-pge">
-                                <rect key="frame" x="16" y="170" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -97,19 +91,19 @@
                                     <action selector="promptCompleteChallenge:" destination="R2q-bP-afG" eventType="touchUpInside" id="IpQ-kP-xYw"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQy-tS-6mr">
+                                <rect key="frame" x="180" y="301" width="240" height="128"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZX0-bI-Fdq" firstAttribute="trailing" secondItem="A0k-Ut-mPi" secondAttribute="trailingMargin" id="1g7-xS-XlS"/>
                             <constraint firstItem="eew-Oy-2Fz" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leadingMargin" id="2sI-Cf-lRJ"/>
-                            <constraint firstItem="nQ9-h5-pge" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leadingMargin" id="5Dy-on-cLw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nQ9-h5-pge" secondAttribute="trailing" id="5ih-Tu-qhq"/>
                             <constraint firstItem="ZX0-bI-Fdq" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leadingMargin" id="Zi3-Kl-uhG"/>
                             <constraint firstItem="eew-Oy-2Fz" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="162" id="Zw9-9U-W72"/>
                             <constraint firstItem="ZX0-bI-Fdq" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="32" id="bP9-Cf-nBL"/>
                             <constraint firstItem="eew-Oy-2Fz" firstAttribute="trailing" secondItem="A0k-Ut-mPi" secondAttribute="trailingMargin" id="iz9-zV-11f"/>
                             <constraint firstAttribute="centerX" secondItem="noB-4z-L4M" secondAttribute="centerX" id="r0C-TB-Yod"/>
-                            <constraint firstItem="nQ9-h5-pge" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="106" id="rwe-9U-hTT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Daily Challenge" id="gp2-ph-c3p">
@@ -120,8 +114,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="challengeCompleted" destination="eew-Oy-2Fz" id="vJz-Je-U7D"/>
                         <outlet property="challengeInformation" destination="ZX0-bI-Fdq" id="1Hn-Di-akf"/>
+                        <outlet property="completedDescription" destination="eew-Oy-2Fz" id="EjV-5A-tg3"/>
+                        <outlet property="completedImageView" destination="pQy-tS-6mr" id="UqA-7t-qGN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1EM-W3-uDL" userLabel="First Responder" sceneMemberID="firstResponder"/>

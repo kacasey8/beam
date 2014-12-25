@@ -30,7 +30,7 @@ NSDateFormatter *dateFormatter;
     
     _globalKeyValueStore = [Global globalClass];
     
-    [self loadCacheFromPersistantStorage];
+    /*[self loadCacheFromPersistantStorage];
     
     if ([self shouldUseCache]) {
         NSLog(@"using cache");
@@ -40,7 +40,7 @@ NSDateFormatter *dateFormatter;
         } else {
             [self setUpNotCompletedForDailyChallenge];
         }
-    }
+    }*/
 }
 
 - (void)activateView
@@ -185,11 +185,16 @@ NSDateFormatter *dateFormatter;
             
             NSArray *builtResults = [result getResult];
             if ([builtResults count] == 0) {
-                [self setUpNotCompletedForDailyChallenge];
+                _completedDescription.text = @"NO!";
+                dailyCompleted = false;
             } else {
-                [self setUpCompletedForDailyChallenge];
+                NSDictionary *resultDict = [builtResults objectAtIndex:0];
+                _completedDescription.text = [resultDict objectForKey:@"comment"];
+                //change image
+                dailyCompleted = true;
                 _usersChallengesDailyUID = [[builtResults objectAtIndex:0] objectForKey:@"uid"];
             }
+            [self saveCacheToPersistantStorage];
         } onError:^(NSError *error, ResponseType type) {
             // query execution failed.
             // error.userinfo contains more details regarding the same
@@ -197,22 +202,6 @@ NSDateFormatter *dateFormatter;
             NSLog(@"%@", error.userInfo);
         }];
     }
-}
-
-- (void)setUpNotCompletedForDailyChallenge
-{
-    _challengeCompleted.text = @"NO!";
-    dailyCompleted = false;
-    
-    [self saveCacheToPersistantStorage];
-}
-
-- (void)setUpCompletedForDailyChallenge
-{
-    _challengeCompleted.text = @"YES!";
-    dailyCompleted = true;
-    
-    [self saveCacheToPersistantStorage];
 }
 
 #pragma mark - All Challenge Helper
