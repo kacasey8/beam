@@ -52,7 +52,7 @@
                              onSuccess:^{
                                  // user has logged in successfully
                                  // user.authtoken contains the session authtoken
-                                 [[Global globalClass] setValue:user.uid forKey:builtUserUID];
+                                 [[Global globalClass] setValue:user.uid forKey:kBuiltUserUID];
                              } onError:^(NSError *error) {
                                  // login failed
                                  // error.userinfo contains more details regarding the same
@@ -67,7 +67,7 @@
 {
     NSLog(@"logout");
     
-    [[Global globalClass] setValue:nil forKey:builtUserUID];
+    [[Global globalClass] setValue:nil forKey:kBuiltUserUID];
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController* vc = (LoginViewController *)[sb instantiateViewControllerWithIdentifier:@"login"];
     self.window.rootViewController = vc;

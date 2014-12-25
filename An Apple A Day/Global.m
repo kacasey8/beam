@@ -11,7 +11,11 @@
 @implementation Global
 
 static Global *globalClass = nil;
-NSString *builtUserUID = @"builtUserUID";
+NSString *kBuiltUserUID = @"builtUserUID";
+NSString *kChallengeObject = @"challengeObject";
+NSString *kChallengeCompleted = @"challengeCompleted";
+NSString *kChallengeDate = @"challengeDate";
+NSString *kUsersChallengesUID = @"usersChallengesUID";
 
 + (Global *)globalClass
 {

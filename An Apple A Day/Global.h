@@ -10,7 +10,11 @@
 
 @interface Global : NSObject
 
-extern NSString *builtUserUID;
+extern NSString *kBuiltUserUID;
+extern NSString *kChallengeObject;
+extern NSString *kChallengeCompleted;
+extern NSString *kChallengeDate;
+extern NSString *kUsersChallengesUID;
 
 + (Global *)globalClass;
 
