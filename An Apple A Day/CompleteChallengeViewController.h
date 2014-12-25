@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 #import "ChallengeViewController.h"
 
-@interface CompleteChallengeViewController : UIViewController
+
+@interface CompleteChallengeViewController : UIViewController <UIImagePickerControllerDelegate,
+UINavigationControllerDelegate>
 
 @property (weak, atomic) ChallengeViewController *presenter;
-
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property BOOL newMedia;
 
 @end
