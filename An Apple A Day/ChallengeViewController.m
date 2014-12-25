@@ -43,7 +43,13 @@ Global *globalKeyValueStore;
         } else {
             [self setUpNotCompletedForDailyChallenge];
         }
-    } else {
+    }
+}
+
+- (void)activateView
+{
+    if (![self shouldUseCache]) {
+        NSLog(@"Querying server for challenge");
         [self getDailyChallenge];
     }
 }

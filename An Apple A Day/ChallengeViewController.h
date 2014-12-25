@@ -15,4 +15,6 @@
 - (IBAction)logout:(id)sender;
 - (IBAction)toggleDailyChallenge:(id)sender;
 
+- (void)activateView;
+
 @end

@@ -48,20 +48,22 @@
     
     NSString *fbAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];
     
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController* nvc = (UINavigationController *)[sb instantiateViewControllerWithIdentifier:@"challenge"];
+    ChallengeViewController *vc = [[nvc viewControllers] objectAtIndex:0];
+    self.window.rootViewController = nvc;
+    
     [user loginWithFacebookAccessToken:fbAccessToken
                              onSuccess:^{
                                  // user has logged in successfully
                                  // user.authtoken contains the session authtoken
                                  [[Global globalClass] setValue:user.uid forKey:kBuiltUserUID];
                                  NSLog(@"Built Login");
+                                 [vc activateView];
                              } onError:^(NSError *error) {
                                  // login failed
                                  // error.userinfo contains more details regarding the same
                              }];
-    
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ChallengeViewController* vc = (ChallengeViewController *)[sb instantiateViewControllerWithIdentifier:@"challenge"];
-    self.window.rootViewController = vc;
 }
 
 - (void)userLoggedOut
