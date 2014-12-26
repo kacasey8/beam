@@ -171,10 +171,6 @@ NSDateFormatter *dateFormatter;
 - (void)updateCompletedDailyChallenge
 {
     if ([_challenge objectForKey:@"uid"]) {
-        while ([_globalKeyValueStore getValueforKey:kBuiltUserUID] == NULL) {
-            // Needed to wait for the built login to execute before moving on.
-            [NSThread sleepForTimeInterval:0.5];
-        }
         BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
         [query whereKey:@"user" equalTo:[_globalKeyValueStore getValueforKey:kBuiltUserUID]];
         [query whereKey:@"challenge" equalTo:[_challenge objectForKey:@"uid"]];

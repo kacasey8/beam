@@ -49,21 +49,26 @@
     [file saveOnSuccess:^ {
         //file successfully uploaded
         //file properties are populated
+        
+        NSLog(@"File up, uid: %@", file.uid);
+        
+        [obj setObject:[NSArray arrayWithObjects: file.uid, nil]
+                forKey:@"files"];
+        
+        [obj saveOnSuccess:^{
+            // object is created successfully
+            NSLog(@"Built updated challenge completed");
+            _presenter.usersChallengesDailyUID = obj.uid;
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [_presenter updateCompletedDailyChallenge];
+        } onError:^(NSError *error) {
+            // there was an error in creating the object
+            // error.userinfo contains more details regarding the same
+            NSLog(@"%@", @"ERROR");
+            NSLog(@"%@", error.userInfo);
+        }];
     } onError:^(NSError *error) {
         //error in uploading
-    }];
-    
-    [obj saveOnSuccess:^{
-        // object is created successfully
-        NSLog(@"Built updated challenge completed");
-        _presenter.usersChallengesDailyUID = obj.uid;
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [_presenter updateCompletedDailyChallenge];
-    } onError:^(NSError *error) {
-        // there was an error in creating the object
-        // error.userinfo contains more details regarding the same
-        NSLog(@"%@", @"ERROR");
-        NSLog(@"%@", error.userInfo);
     }];
 }
 

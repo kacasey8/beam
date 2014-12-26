@@ -169,12 +169,12 @@
 				99F2BEAB1A4B6CCB00EA9592 /* Global.h */,
 				99F2BEAC1A4B6CCB00EA9592 /* Global.m */,
 				991D954B1A4AA625005FE2D1 /* Main.storyboard */,
-				991D954E1A4AA625005FE2D1 /* Images.xcassets */,
-				991D95501A4AA625005FE2D1 /* LaunchScreen.xib */,
-				991D95411A4AA625005FE2D1 /* Supporting Files */,
 				843B2D601A4CC2CD00B39CAF /* CompleteChallengeViewController.h */,
 				843B2D611A4CC2CD00B39CAF /* CompleteChallengeViewController.m */,
 				843B2D621A4CC2CD00B39CAF /* CompleteChallengeViewController.xib */,
+				991D954E1A4AA625005FE2D1 /* Images.xcassets */,
+				991D95501A4AA625005FE2D1 /* LaunchScreen.xib */,
+				991D95411A4AA625005FE2D1 /* Supporting Files */,
 			);
 			path = "An Apple A Day";
 			sourceTree = "<group>";
