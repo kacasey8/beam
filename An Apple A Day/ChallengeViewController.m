@@ -127,7 +127,7 @@ NSDateFormatter *dateFormatter;
                                         
             NSLog(@"%@", _challenge);
             [self setUpInformationForChallenge];
-            [self updateCompletedDailyChallenge];
+            [self queryCompletedDailyChallenge];
         }
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
@@ -168,7 +168,7 @@ NSDateFormatter *dateFormatter;
     return date;
 }
 
-- (void)updateCompletedDailyChallenge
+- (void)queryCompletedDailyChallenge
 {
     if ([_challenge objectForKey:@"uid"]) {
         BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
@@ -183,9 +183,6 @@ NSDateFormatter *dateFormatter;
                 _completedDescription.text = @"NO!";
                 dailyCompleted = false;
             } else {
-                NSDictionary *resultDict = [builtResults objectAtIndex:0];
-                _completedDescription.text = [resultDict objectForKey:@"comment"];
-                //change image
                 dailyCompleted = true;
                 _usersChallengesDailyUID = [[builtResults objectAtIndex:0] objectForKey:@"uid"];
             }
@@ -198,6 +195,12 @@ NSDateFormatter *dateFormatter;
         }];
     }
 }
+
+- (void)updateCompletedDailyChallengeWithText:(NSString *)text andImage:(UIImage *)image {
+    _completedDescription.text = text;
+    _completedImageView.image = image;
+}
+
 
 #pragma mark - All Challenge Helper
 

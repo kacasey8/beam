@@ -37,6 +37,8 @@
 }
 
 - (IBAction)completeChallenge:(id)sender {
+    [_presenter updateCompletedDailyChallengeWithText:_textView.text andImage:_imageView.image];
+
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
     [obj setReference:[_presenter.globalKeyValueStore getValueforKey:kBuiltUserUID]
                forKey:@"user"];
@@ -60,7 +62,6 @@
             NSLog(@"Built updated challenge completed");
             _presenter.usersChallengesDailyUID = obj.uid;
             [self dismissViewControllerAnimated:YES completion:nil];
-            [_presenter updateCompletedDailyChallenge];
         } onError:^(NSError *error) {
             // there was an error in creating the object
             // error.userinfo contains more details regarding the same
