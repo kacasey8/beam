@@ -22,6 +22,6 @@
 - (IBAction)logout:(id)sender;
 
 - (void)activateView;
-- (void)setUpIsDailyChallengeCompleted;
+- (void)updateCompletedDailyChallenge;
 
 @end

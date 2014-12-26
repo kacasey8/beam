@@ -43,20 +43,28 @@
     [obj setReference:[_presenter.challenge objectForKey:@"uid"]
                forKey:@"challenge"];
     [obj setObject:_textView.text forKey:@"comment"];
-    // save image
+    
+    BuiltFile *file = [BuiltFile file];
+    [file setImage:_imageView.image forKey:@"files"];
+    [file saveOnSuccess:^ {
+        //file successfully uploaded
+        //file properties are populated
+    } onError:^(NSError *error) {
+        //error in uploading
+    }];
+    
     [obj saveOnSuccess:^{
         // object is created successfully
         NSLog(@"Built updated challenge completed");
         _presenter.usersChallengesDailyUID = obj.uid;
         [self dismissViewControllerAnimated:YES completion:nil];
+        [_presenter updateCompletedDailyChallenge];
     } onError:^(NSError *error) {
         // there was an error in creating the object
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", @"ERROR");
         NSLog(@"%@", error.userInfo);
     }];
-    
-    [_presenter setUpIsDailyChallengeCompleted];
 }
 
 - (IBAction)useCamera:(id)sender {

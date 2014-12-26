@@ -127,7 +127,7 @@ NSDateFormatter *dateFormatter;
                                         
             NSLog(@"%@", _challenge);
             [self setUpInformationForChallenge];
-            [self setUpIsDailyChallengeCompleted];
+            [self updateCompletedDailyChallenge];
         }
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
@@ -168,7 +168,7 @@ NSDateFormatter *dateFormatter;
     return date;
 }
 
-- (void)setUpIsDailyChallengeCompleted
+- (void)updateCompletedDailyChallenge
 {
     if ([_challenge objectForKey:@"uid"]) {
         while ([_globalKeyValueStore getValueforKey:kBuiltUserUID] == NULL) {
@@ -182,7 +182,6 @@ NSDateFormatter *dateFormatter;
         [query exec:^(QueryResult *result, ResponseType type) {
             // the query has executed successfully.
             // [result getResult] will contain a list of objects that satisfy the conditions
-            
             NSArray *builtResults = [result getResult];
             if ([builtResults count] == 0) {
                 _completedDescription.text = @"NO!";
