@@ -38,6 +38,7 @@
 
 - (IBAction)completeChallenge:(id)sender {
     [_presenter updateCompletedDailyChallengeWithText:_textView.text andImage:_imageView.image];
+    [self dismissViewControllerAnimated:YES completion:nil];
 
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
     [obj setReference:[_presenter.globalKeyValueStore getValueforKey:kBuiltUserUID]
@@ -46,6 +47,17 @@
                forKey:@"challenge"];
     [obj setObject:_textView.text forKey:@"comment"];
     
+    [obj saveOnSuccess:^{
+        // object is created successfully
+        NSLog(@"initial update, modal is done.");
+        _presenter.usersChallengesDailyUID = obj.uid;
+    } onError:^(NSError *error) {
+        // there was an error in creating the object
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", @"ERROR");
+        NSLog(@"%@", error.userInfo);
+    }];
+
     BuiltFile *file = [BuiltFile file];
     [file setImage:_imageView.image forKey:@"files"];
     [file saveOnSuccess:^ {
@@ -59,9 +71,7 @@
         
         [obj saveOnSuccess:^{
             // object is created successfully
-            NSLog(@"Built updated challenge completed");
-            _presenter.usersChallengesDailyUID = obj.uid;
-            [self dismissViewControllerAnimated:YES completion:nil];
+            NSLog(@"Secondary update, file attached");
         } onError:^(NSError *error) {
             // there was an error in creating the object
             // error.userinfo contains more details regarding the same
