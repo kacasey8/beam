@@ -59,28 +59,30 @@
     }];
 
     BuiltFile *file = [BuiltFile file];
-    [file setImage:_imageView.image forKey:@"files"];
-    [file saveOnSuccess:^ {
-        //file successfully uploaded
-        //file properties are populated
-        
-        NSLog(@"File up, uid: %@", file.uid);
-        
-        [obj setObject:[NSArray arrayWithObjects: file.uid, nil]
-                forKey:@"files"];
-        
-        [obj saveOnSuccess:^{
-            // object is created successfully
-            NSLog(@"Secondary update, file attached");
+    if (_imageView != nil) {
+        [file setImage:_imageView.image forKey:@"files"];
+        [file saveOnSuccess:^ {
+            //file successfully uploaded
+            //file properties are populated
+            
+            NSLog(@"File up, uid: %@", file.uid);
+            
+            [obj setObject:[NSArray arrayWithObjects: file.uid, nil]
+                    forKey:@"files"];
+            
+            [obj saveOnSuccess:^{
+                // object is created successfully
+                NSLog(@"Secondary update, file attached");
+            } onError:^(NSError *error) {
+                // there was an error in creating the object
+                // error.userinfo contains more details regarding the same
+                NSLog(@"%@", @"ERROR");
+                NSLog(@"%@", error.userInfo);
+            }];
         } onError:^(NSError *error) {
-            // there was an error in creating the object
-            // error.userinfo contains more details regarding the same
-            NSLog(@"%@", @"ERROR");
-            NSLog(@"%@", error.userInfo);
+            //error in uploading
         }];
-    } onError:^(NSError *error) {
-        //error in uploading
-    }];
+    }
 }
 
 - (IBAction)useCamera:(id)sender {

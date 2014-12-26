@@ -29,6 +29,8 @@ NSDateFormatter *dateFormatter;
     // currently just dropping time zone, just looking for date to match up.
     
     _globalKeyValueStore = [Global globalClass];
+    _completedDescription.hidden = YES;
+    _completedImageView.hidden = YES;
     
     /*[self loadCacheFromPersistantStorage];
     
@@ -198,7 +200,15 @@ NSDateFormatter *dateFormatter;
 
 - (void)updateCompletedDailyChallengeWithText:(NSString *)text andImage:(UIImage *)image {
     _completedDescription.text = text;
-    _completedImageView.image = image;
+    _completedDescription.hidden = NO;
+    _completeButton.hidden = YES;
+    _challengeInformation.hidden = YES;
+    
+    if (image) {
+        _completedImageView.image = image;
+        _completedImageView.hidden = NO;
+        _completedImageView.contentMode = UIViewContentModeScaleAspectFit;
+    }
 }
 
 
