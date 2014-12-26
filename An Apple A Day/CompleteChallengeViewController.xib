@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompleteChallengeViewController">
@@ -16,13 +17,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k5Y-zy-Ocy">
-                    <rect key="frame" x="8" y="46" width="240" height="128"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tx-To-eAM">
                     <rect key="frame" x="553" y="21" width="32" height="30"/>
                     <state key="normal" title="Post">
@@ -32,7 +26,7 @@
                         <action selector="completeChallenge:" destination="-1" eventType="touchUpInside" id="91W-Wv-hsp"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XO-sR-tGH">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XO-sR-tGH">
                     <rect key="frame" x="26" y="428" width="54" height="30"/>
                     <state key="normal" title="Camera">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,7 +35,7 @@
                         <action selector="useCamera:" destination="-1" eventType="touchUpInside" id="qhX-A4-5ze"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGy-25-Sx7">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGy-25-Sx7">
                     <rect key="frame" x="116" y="428" width="50" height="30"/>
                     <state key="normal" title="Images">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,10 +44,14 @@
                         <action selector="useImages:" destination="-1" eventType="touchUpInside" id="sJx-PT-Lyg"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y1w-rH-cho">
-                    <rect key="frame" x="8" y="182" width="240" height="128"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y1w-rH-cho">
+                    <rect key="frame" x="171" y="216" width="259" height="148"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="259" id="W3j-gS-Yr4"/>
+                        <constraint firstAttribute="height" constant="148" id="e9i-Pt-Hcq"/>
+                    </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id9-h0-dKo">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id9-h0-dKo">
                     <rect key="frame" x="8" y="21" width="30" height="30"/>
                     <state key="normal" title="X">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -62,11 +60,32 @@
                         <action selector="closeView:" destination="-1" eventType="touchUpInside" id="OeT-Oa-bxS"/>
                     </connections>
                 </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5Y-zy-Ocy">
+                    <rect key="frame" x="12" y="53" width="577" height="160"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="160" id="NaQ-7v-qHb"/>
+                    </constraints>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="tGy-25-Sx7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="116" id="7DC-hh-7BL"/>
+                <constraint firstItem="k5Y-zy-Ocy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="8sV-Zw-TkA"/>
+                <constraint firstItem="tGy-25-Sx7" firstAttribute="baseline" secondItem="7XO-sR-tGH" secondAttribute="baseline" id="An7-WL-JF6"/>
+                <constraint firstItem="id9-h0-dKo" firstAttribute="baseline" secondItem="5tx-To-eAM" secondAttribute="baseline" id="CF2-1Y-glL"/>
                 <constraint firstAttribute="trailing" secondItem="5tx-To-eAM" secondAttribute="trailing" constant="15" id="EAN-yL-mPD"/>
+                <constraint firstAttribute="bottom" secondItem="7XO-sR-tGH" secondAttribute="bottom" constant="142" id="FiF-8o-ia0"/>
                 <constraint firstItem="5tx-To-eAM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="21" id="LCa-AP-QHu"/>
+                <constraint firstItem="y1w-rH-cho" firstAttribute="top" secondItem="k5Y-zy-Ocy" secondAttribute="bottom" constant="3" id="fnF-bc-WAF"/>
+                <constraint firstItem="id9-h0-dKo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="qMt-I3-umz"/>
+                <constraint firstItem="y1w-rH-cho" firstAttribute="centerX" secondItem="k5Y-zy-Ocy" secondAttribute="centerX" id="sn1-ux-xgH"/>
+                <constraint firstItem="tGy-25-Sx7" firstAttribute="leading" secondItem="7XO-sR-tGH" secondAttribute="trailing" constant="36" id="ssb-Da-Eg0"/>
+                <constraint firstAttribute="centerX" secondItem="y1w-rH-cho" secondAttribute="centerX" constant="-0.5" id="tOz-ZQ-TSu"/>
+                <constraint firstItem="k5Y-zy-Ocy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="53" id="tlD-7o-P2E"/>
             </constraints>
             <point key="canvasLocation" x="256" y="296"/>
         </view>
