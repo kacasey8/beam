@@ -97,7 +97,7 @@
                                     <action selector="promptCompleteChallenge:" destination="R2q-bP-afG" eventType="touchUpInside" id="IpQ-kP-xYw"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQy-tS-6mr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pQy-tS-6mr">
                                 <rect key="frame" x="161" y="266" width="277" height="169"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="277" id="O3h-Md-pFS"/>
@@ -114,7 +114,7 @@
                             <constraint firstItem="pQy-tS-6mr" firstAttribute="centerX" secondItem="noB-4z-L4M" secondAttribute="centerX" id="kiX-wA-JTS"/>
                             <constraint firstAttribute="trailing" secondItem="noB-4z-L4M" secondAttribute="trailing" id="lwb-zK-PtV"/>
                             <constraint firstItem="noB-4z-L4M" firstAttribute="bottom" secondItem="8ih-O4-doj" secondAttribute="top" id="tZu-Es-U2P"/>
-                            <constraint firstItem="pQy-tS-6mr" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="121" id="ud2-A2-HWH"/>
+                            <constraint firstItem="pQy-tS-6mr" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="202" id="ud2-A2-HWH"/>
                             <constraint firstItem="noB-4z-L4M" firstAttribute="leading" secondItem="eew-Oy-2Fz" secondAttribute="leading" id="wVn-4e-Vfe"/>
                             <constraint firstItem="ZX0-bI-Fdq" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="244" id="yl0-Yi-yL0"/>
                         </constraints>

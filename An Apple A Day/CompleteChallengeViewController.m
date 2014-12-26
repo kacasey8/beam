@@ -40,6 +40,7 @@
     [_presenter updateCompletedDailyChallengeWithText:_textView.text andImage:_imageView.image];
     [self dismissViewControllerAnimated:YES completion:nil];
 
+    // Quickly dismiss, then save to built
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
     [obj setReference:[_presenter.globalKeyValueStore getValueforKey:kBuiltUserUID]
                forKey:@"user"];
@@ -50,7 +51,6 @@
     [obj saveOnSuccess:^{
         // object is created successfully
         NSLog(@"initial update, modal is done.");
-        _presenter.usersChallengesDailyUID = obj.uid;
     } onError:^(NSError *error) {
         // there was an error in creating the object
         // error.userinfo contains more details regarding the same

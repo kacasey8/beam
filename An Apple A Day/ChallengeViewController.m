@@ -25,12 +25,13 @@ NSDateFormatter *dateFormatter;
     // Do any additional setup after loading the view.
     
     dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"]; // add zzz at end to use local time zone.
-    // currently just dropping time zone, just looking for date to match up.
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"]; // using ISODate format so it will sort properly
     
     _globalKeyValueStore = [Global globalClass];
     _completedDescription.hidden = YES;
     _completedImageView.hidden = YES;
+    
+    [self getDailyChallenge];
     
     /*[self loadCacheFromPersistantStorage];
     
@@ -49,7 +50,10 @@ NSDateFormatter *dateFormatter;
 {
     if (![self shouldUseCache]) {
         NSLog(@"Querying server for challenge");
-        [self getDailyChallenge];
+        [self queryCompletedDailyChallenge];
+    } else {
+        NSLog(@"Querying server for challenge");
+        [self queryCompletedDailyChallenge];
     }
 }
 
@@ -64,7 +68,6 @@ NSDateFormatter *dateFormatter;
 {
     [_globalKeyValueStore setValue:_challenge forKey:kChallengeObject];
     [_globalKeyValueStore setValue:[NSNumber numberWithBool:dailyCompleted] forKey:kChallengeCompleted];
-    [_globalKeyValueStore setValue:_usersChallengesDailyUID forKey:kUsersChallengesUID];
     
     [_globalKeyValueStore setValue:dateQueried forKey:kChallengeDate];
 }
@@ -79,33 +82,22 @@ NSDateFormatter *dateFormatter;
     
     _challenge = [_globalKeyValueStore getValueforKey:kChallengeObject];
     dailyCompleted = [[_globalKeyValueStore getValueforKey:kChallengeCompleted] boolValue];
-    _usersChallengesDailyUID = [_globalKeyValueStore getValueforKey:kUsersChallengesUID];
 }
 
 - (BOOL) shouldUseCache
 {
-    return [dateQueried isEqualToString:[dateFormatter stringFromDate:[self beginningOfDay:[NSDate date]]]];
+    return [dateQueried isEqualToString:[dateFormatter stringFromDate:[NSDate date]]];
 }
 
 #pragma mark - Daily Challenge
 
 - (void)getDailyChallenge
 {
-    BuiltQuery *test1 = [BuiltQuery queryWithClassUID:@"challenge"];
-    [test1              whereKey:@"date"
-               lessThanOrEqualTo:[dateFormatter stringFromDate:[self endOfDay:[NSDate date]]]];
-    BuiltQuery *test2 = [BuiltQuery queryWithClassUID:@"challenge"];
-    [test2                  whereKey:@"date"
-                greaterThanOrEqualTo:[dateFormatter stringFromDate:[self beginningOfDay:[NSDate date]]]];
-    
     // Set date queried to be stored to persistent storage later
-    dateQueried = [dateFormatter stringFromDate:[self beginningOfDay:[NSDate date]]];
+    dateQueried = [dateFormatter stringFromDate:[NSDate date]];
     
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"challenge"];
-    [query andWithSubqueries:@[test1,test2]];
-    // this is kind of stupid. According to the docs you can put both less than
-    // and greater than on a single query, but doesn't seem to work.
-    // I've constructed both individually for now and 'and' them together
+    [query whereKey:@"date" equalTo:dateQueried];
     
     [query includeOnlyFields:[NSArray arrayWithObjects: @"date", @"information", nil]];
     
@@ -119,6 +111,8 @@ NSDateFormatter *dateFormatter;
         } else {
             BuiltObject *tmp = [results objectAtIndex:0];
             _challenge = [NSMutableDictionary dictionary];
+            
+            // I'm transferring it to a mutable dictionary so it can be saved to persistent storage on device
             
             NSArray *keysToTransfer = @[@"uid", @"information"];
             
@@ -144,35 +138,9 @@ NSDateFormatter *dateFormatter;
     _challengeInformation.text = [_challenge objectForKey:@"information"];
 }
 
-- (NSDate *)beginningOfDay:(NSDate *)date
-{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
-                                               fromDate:date];
-    
-    return [calendar dateFromComponents:components];
-}
-
-- (NSDate *)endOfDay:(NSDate *)givenDate
-{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    NSDateComponents *components = [NSDateComponents new];
-    components.day = 1;
-    
-    NSDate *date = [calendar dateByAddingComponents:components
-                                             toDate:[self beginningOfDay:givenDate]
-                                            options:0];
-    
-    date = [date dateByAddingTimeInterval:-1];
-    
-    return date;
-}
-
 - (void)queryCompletedDailyChallenge
 {
-    if ([_challenge objectForKey:@"uid"]) {
+    if ([_challenge objectForKey:@"uid"] && [_globalKeyValueStore getValueforKey:kBuiltUserUID]) {
         BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
         [query whereKey:@"user" equalTo:[_globalKeyValueStore getValueforKey:kBuiltUserUID]];
         [query whereKey:@"challenge" equalTo:[_challenge objectForKey:@"uid"]];
@@ -182,11 +150,12 @@ NSDateFormatter *dateFormatter;
             // [result getResult] will contain a list of objects that satisfy the conditions
             NSArray *builtResults = [result getResult];
             if ([builtResults count] == 0) {
+                NSLog(@"not completed");
                 _completedDescription.text = @"NO!";
                 dailyCompleted = false;
             } else {
+                NSLog(@"completed");
                 dailyCompleted = true;
-                _usersChallengesDailyUID = [[builtResults objectAtIndex:0] objectForKey:@"uid"];
             }
             [self saveCacheToPersistantStorage];
         } onError:^(NSError *error, ResponseType type) {
@@ -258,41 +227,4 @@ NSDateFormatter *dateFormatter;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-/*- (IBAction)toggleDailyChallenge:(id)sender {
-    if (dailyCompleted) {
-        [self setUpNotCompletedForDailyChallenge];
-        BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
-        
-        [obj setUid:_usersChallengesDailyUID];
-        
-        [obj destroyOnSuccess:^{
-            // object is deleted
-            NSLog(@"Built updated challenge not completed");
-        } onError:^(NSError *error) {
-            // there was an error in deleting the object
-            // error.userinfo contains more details regarding the same
-            [self setUpCompletedForDailyChallenge]; // It failed. revert local state.
-            NSLog(@"%@", @"ERROR");
-            NSLog(@"%@", error.userInfo);
-        }];
-    } else {
-        [self setUpCompletedForDailyChallenge];
-        BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
-        [obj setReference:[_globalKeyValueStore getValueforKey:kBuiltUserUID]
-                   forKey:@"user"];
-        [obj setReference:[_challenge objectForKey:@"uid"]
-                   forKey:@"challenge"];
-        [obj saveOnSuccess:^{
-            // object is created successfully
-            NSLog(@"Built updated challenge completed");
-            _usersChallengesDailyUID = obj.uid;
-        } onError:^(NSError *error) {
-            // there was an error in creating the object
-            // error.userinfo contains more details regarding the same
-            [self setUpNotCompletedForDailyChallenge]; // it failed. revert local state.
-            NSLog(@"%@", @"ERROR");
-            NSLog(@"%@", error.userInfo);
-        }];
-    }
-}*/
 @end
