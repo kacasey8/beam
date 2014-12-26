@@ -59,7 +59,7 @@
     }];
 
     BuiltFile *file = [BuiltFile file];
-    if (_imageView != nil) {
+    if (_imageView.image != nil) {
         [file setImage:_imageView.image forKey:@"files"];
         [file saveOnSuccess:^ {
             //file successfully uploaded
