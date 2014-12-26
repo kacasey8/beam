@@ -46,6 +46,20 @@
     
     BuiltFile *file = [BuiltFile file];
     [file setImage:_imageView.image forKey:@"files"];
+    
+    [obj saveOnSuccess:^{
+        // object is created successfully
+        NSLog(@"initial update, modal is done.");
+        _presenter.usersChallengesDailyUID = obj.uid;
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [_presenter updateCompletedDailyChallenge];
+    } onError:^(NSError *error) {
+        // there was an error in creating the object
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", @"ERROR");
+        NSLog(@"%@", error.userInfo);
+    }];
+
     [file saveOnSuccess:^ {
         //file successfully uploaded
         //file properties are populated
@@ -57,10 +71,7 @@
         
         [obj saveOnSuccess:^{
             // object is created successfully
-            NSLog(@"Built updated challenge completed");
-            _presenter.usersChallengesDailyUID = obj.uid;
-            [self dismissViewControllerAnimated:YES completion:nil];
-            [_presenter updateCompletedDailyChallenge];
+            NSLog(@"Secondary update, file attached");
         } onError:^(NSError *error) {
             // there was an error in creating the object
             // error.userinfo contains more details regarding the same
