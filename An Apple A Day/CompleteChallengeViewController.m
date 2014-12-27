@@ -60,21 +60,21 @@
         NSLog(@"%@", error.userInfo);
     }];
 
-    BuiltFile *file = [BuiltFile file];
+    BuiltFile *imgFile = [BuiltFile file];
     if (_imageView.image != nil) {
-        [file setImage:_imageView.image forKey:@"files"];
-        [file saveOnSuccess:^ {
+        [imgFile setImage:_imageView.image forKey:@"image"];
+        [imgFile saveOnSuccess:^ {
             //file successfully uploaded
             //file properties are populated
             
-            NSLog(@"File up, uid: %@", file.uid);
+            NSLog(@"Image up, uid: %@", imgFile.uid);
             
-            [obj setObject:[NSArray arrayWithObjects: file.uid, nil]
+            [obj setObject:[NSArray arrayWithObjects: imgFile.uid, nil]
                     forKey:@"files"];
             
             [obj saveOnSuccess:^{
                 // object is created successfully
-                NSLog(@"Secondary update, file attached");
+                NSLog(@"Secondary update, image attached");
             } onError:^(NSError *error) {
                 // there was an error in creating the object
                 // error.userinfo contains more details regarding the same
@@ -86,7 +86,31 @@
         }];
     }
     
-    // need to save video
+    BuiltFile *videoFile = [BuiltFile file];
+    if (_videoUrl != nil) {
+        [videoFile setFile:[[NSBundle mainBundle] pathForResource:_videoUrl ofType:@"mov"] forKey:@"movie"];
+        [videoFile saveOnSuccess:^ {
+            //file successfully uploaded
+            //file properties are populated
+            
+            NSLog(@"Video up, uid: %@", videoFile.uid);
+            
+            [obj setObject:[NSArray arrayWithObjects: videoFile.uid, nil]
+                    forKey:@"files"];
+            
+            [obj saveOnSuccess:^{
+                // object is created successfully
+                NSLog(@"Secondary update, video attached");
+            } onError:^(NSError *error) {
+                // there was an error in creating the object
+                // error.userinfo contains more details regarding the same
+                NSLog(@"%@", @"ERROR");
+                NSLog(@"%@", error.userInfo);
+            }];
+        } onError:^(NSError *error) {
+            //error in uploading
+        }];
+    }
 }
 
 - (IBAction)useCamera:(id)sender {
@@ -124,8 +148,8 @@
     
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
-        
         _imageView.image = image;
+        
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
@@ -134,9 +158,16 @@
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
         NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];
+        _videoUrl = [url relativePath];
         MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
         player.view.frame = CGRectMake(0, 200, 400, 300);
         [self.view addSubview:player.view];
+        
+        if (_newMedia)
+            UISaveVideoAtPathToSavedPhotosAlbum(_videoUrl,
+                                                self,
+                                                @selector(video:didFinishSavingWithError:contextInfo:),
+                                                nil);
     }
 }
 
@@ -146,6 +177,18 @@
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle: @"Save failed"
                               message: @"Failed to save image"
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    if (error != nil) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Save failed"
+                              message: @"Failed to save video"
                               delegate: nil
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil];

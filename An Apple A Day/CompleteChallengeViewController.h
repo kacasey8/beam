@@ -18,6 +18,7 @@ UINavigationControllerDelegate>
 @property (weak, atomic) ChallengeViewController *presenter;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property NSString *videoUrl;
 @property BOOL newMedia;
 
 @end
