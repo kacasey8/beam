@@ -64,6 +64,7 @@
 #pragma mark - All Challenge Helper
 
 - (void)getAllChallengesIHaveCompleted {
+    NSLog(@"getting all completed challenges");
     BuiltQuery *select_query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
     [select_query whereKey:@"user" equalTo:[_globalKeyValueStore getValueforKey:kBuiltUserUID]];
     
@@ -82,7 +83,7 @@
         self.completedChallenges = [[NSMutableDictionary alloc] init];
         
         for (int i = 0; i < [builtResult count]; i++) {
-            BuiltObject *tmp = [builtResult objectAtIndex:0];
+            BuiltObject *tmp = [builtResult objectAtIndex:i];
             NSString *date = [tmp objectForKey:@"date"];
             NSString *info = [tmp objectForKey:@"information"];
             NSString *uid = [tmp objectForKey:@"uid"];

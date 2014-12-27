@@ -16,7 +16,7 @@
 @property (strong, nonatomic) Global *globalKeyValueStore;
 @property (strong, nonatomic) IBOutlet UILabel *totalCompletedCountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *currentStreakCountLabel;
-@property (strong, nonatomic) IBOutlet UILabel *longestStreakCountLabel;
+@property (strong, nonatomic) IBOutlet UILabel *highestStreakCountLabel;
 @property (strong, nonatomic) IBOutlet UIView *calendarViewContainer;
 @property (strong, nonatomic) IBOutlet UIView *listViewContainer;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *toggleButton;

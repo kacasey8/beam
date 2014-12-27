@@ -11,6 +11,8 @@
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+//UIColorFromRGB(0xA1E7EC)
+
 @interface CalendarViewController ()
 
 @property(nonatomic, strong) NSDate *minimumDate;
@@ -20,41 +22,6 @@
 @implementation CalendarViewController
 
 NSDateFormatter *dateFormatter;
-
-//- (id)init {
-//    self = [super init];
-//    if (self) {
-//        CKCalendarView *calendar = [[CKCalendarView alloc] initWithStartDay:startMonday];
-//        self.calendar = calendar;
-//        calendar.delegate = self;
-//        
-//        self.dateFormatter = [[NSDateFormatter alloc] init];
-//        [self.dateFormatter setDateFormat:@"MM/dd/yyyy"];
-//        self.minimumDate = [self.dateFormatter dateFromString:@"09/20/2014"];
-//        
-//        self.challengeCompletedDates = @[
-//                               [self.dateFormatter dateFromString:@"01/05/2015"],
-//                               [self.dateFormatter dateFromString:@"01/06/2015"],
-//                               [self.dateFormatter dateFromString:@"01/07/2015"]
-//                               ];
-//        
-//        calendar.onlyShowCurrentMonth = NO;
-//        calendar.adaptHeightToNumberOfWeeksInMonth = NO;
-//        calendar.backgroundColor = [UIColor clearColor];
-//        calendar.titleColor = [UIColor blackColor];
-//        [calendar setInnerBorderColor:[UIColor clearColor]];
-//        [calendar setDayOfWeekBottomColor:[UIColor blackColor] topColor:[UIColor blackColor]];
-//        calendar.dayOfWeekTextColor = [UIColor whiteColor];
-//        
-//        calendar.frame = CGRectMake(0, 20, 320, 320);
-//        [self.view addSubview:calendar];
-//        
-//        self.view.backgroundColor = UIColorFromRGB(0xA1E7EC);
-//        
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange) name:NSCurrentLocaleDidChangeNotification object:nil];
-//    }
-//    return self;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,7 +35,15 @@ NSDateFormatter *dateFormatter;
     // Or you will have to call reloadAppearance
     self.calendar.calendarAppearance.calendar.firstWeekday = 1; // Sunday == 1, Saturday == 7
     self.calendar.calendarAppearance.dayCircleRatio = 9. / 10.;
-    self.calendar.calendarAppearance.ratioContentMenu = 2.;
+    self.calendar.calendarAppearance.ratioContentMenu = 1.5;
+    self.calendar.calendarAppearance.weekDayTextColor = [UIColor whiteColor];
+    self.calendar.calendarAppearance.dayTextColorOtherMonth = [UIColor blackColor];
+    self.calendar.calendarAppearance.dayTextColor = [UIColor whiteColor];
+    self.calendar.calendarAppearance.dayTextColorSelected = [UIColor whiteColor];
+    self.calendar.calendarAppearance.dayCircleColorSelected = UIColorFromRGB(0xD7B850);
+    self.calendar.calendarAppearance.dayCircleColorToday = UIColorFromRGB(0xF7B850);
+    self.calendar.calendarAppearance.dayCircleColorSelectedOtherMonth = UIColorFromRGB(0xD7B850);
+    self.calendar.calendarAppearance.dayDotColor = [UIColor redColor];
     
     self.calendar.calendarAppearance.monthBlock = ^NSString *(NSDate *date, JTCalendar *jt_calendar){
         NSCalendar *calendar = jt_calendar.calendarAppearance.calendar;
