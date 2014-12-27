@@ -53,7 +53,7 @@ NSString *userChallengeUID;
     }
 
     if (_textView.text.length > 0) {
-        [properties setValue:_textView.text forKey:@"text"];
+        [properties setValue:_textView.text forKey:@"comment"];
         [obj setObject:_textView.text forKey:@"comment"];
     }
 

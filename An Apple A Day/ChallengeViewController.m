@@ -39,9 +39,7 @@ NSDateFormatter *dateFormatter;
         NSLog(@"using cache");
         [self setUpInformationForChallenge];
         if (dailyCompleted) {
-            [self setUpCompletedForDailyChallenge];
-        } else {
-            [self setUpNotCompletedForDailyChallenge];
+            
         }
     }*/
 }
@@ -67,9 +65,8 @@ NSDateFormatter *dateFormatter;
 - (void)saveCacheToPersistantStorage
 {
     [_globalKeyValueStore setValue:_challenge forKey:kChallengeObject];
-    [_globalKeyValueStore setValue:[NSNumber numberWithBool:dailyCompleted] forKey:kChallengeCompleted];
-    
     [_globalKeyValueStore setValue:dateQueried forKey:kChallengeDate];
+    [_globalKeyValueStore setValue:[NSNumber numberWithBool:dailyCompleted] forKey:kChallengeCompleted];
 }
 
 - (void)loadCacheFromPersistantStorage
@@ -149,13 +146,28 @@ NSDateFormatter *dateFormatter;
             // the query has executed successfully.
             // [result getResult] will contain a list of objects that satisfy the conditions
             NSArray *builtResults = [result getResult];
+            
             if ([builtResults count] == 0) {
                 NSLog(@"not completed");
-                _completedDescription.text = @"NO!";
                 dailyCompleted = false;
             } else {
                 NSLog(@"completed");
                 dailyCompleted = true;
+                NSDictionary *builtResult = [builtResults objectAtIndex:0];
+                NSLog(@"%@", builtResult);
+                
+                NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
+                NSString *text = [builtResult objectForKey:@"comment"];
+                NSString *imageUrl = [[[builtResult objectForKey:@"files"] objectAtIndex:0] objectForKey:@"url"];
+                
+                NSURL *url = [NSURL URLWithString:imageUrl];
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                UIImage *img = [[UIImage alloc] initWithData:data];
+                
+                [properties setObject:text forKey:@"comment"];
+                [properties setObject:img forKey:@"image"];
+                
+                [self updateCompletedDailyChallengeWithProperties:properties];
             }
             [self saveCacheToPersistantStorage];
         } onError:^(NSError *error, ResponseType type) {
@@ -168,9 +180,9 @@ NSDateFormatter *dateFormatter;
 }
 
 - (void)updateCompletedDailyChallengeWithProperties:(NSMutableDictionary *)properties {
-    NSString *text = [properties objectForKey:@"text"];
-    if (text) {
-        _completedDescription.text = text;
+    NSString *comment = [properties objectForKey:@"comment"];
+    if (comment) {
+        _completedDescription.text = comment;
         _completedDescription.hidden = NO;
         [_completeButton setTitle:@"Update" forState:UIControlStateNormal];
     }
