@@ -37,19 +37,19 @@
 }
 
 - (IBAction)completeChallenge:(id)sender {
-    NSDictionary *properties = @{@"text":_textView.text,
-                                 @"image":_imageView.image};
-    [_presenter updateCompletedDailyChallengeWithProperties:properties];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
 
-    // Quickly dismiss, then save to built
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
     [obj setReference:[_presenter.globalKeyValueStore getValueforKey:kBuiltUserUID]
                forKey:@"user"];
     [obj setReference:[_presenter.challenge objectForKey:@"uid"]
                forKey:@"challenge"];
-    [obj setObject:_textView.text forKey:@"comment"];
     
+    if (_textView.text.length > 0) {
+        [properties setValue:_textView.text forKey:@"text"];
+        [obj setObject:_textView.text forKey:@"comment"];
+    }
+
     [obj saveOnSuccess:^{
         // object is created successfully
         NSLog(@"initial update, modal is done.");
@@ -62,6 +62,7 @@
 
     BuiltFile *imgFile = [BuiltFile file];
     if (_imageView.image != nil) {
+        [properties setValue:_imageView.image forKey:@"image"];
         [imgFile setImage:_imageView.image forKey:@"image"];
         [imgFile saveOnSuccess:^ {
             //file successfully uploaded
@@ -111,6 +112,9 @@
             //error in uploading
         }];
     }
+    
+    [_presenter updateCompletedDailyChallengeWithProperties:properties];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)useCamera:(id)sender {

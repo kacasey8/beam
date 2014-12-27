@@ -167,7 +167,7 @@ NSDateFormatter *dateFormatter;
     }
 }
 
-- (void)updateCompletedDailyChallengeWithProperties:(NSDictionary *)properties {
+- (void)updateCompletedDailyChallengeWithProperties:(NSMutableDictionary *)properties {
     NSString *text = [properties objectForKey:@"text"];
     NSLog(@"%@", text);
     if (text) {
