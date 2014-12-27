@@ -12,6 +12,8 @@
 
 @end
 
+NSString *userChallengeUID;
+
 @implementation CompleteChallengeViewController
 
 - (id)init {
@@ -37,20 +39,28 @@
 }
 
 - (IBAction)completeChallenge:(id)sender {
-    [_presenter updateCompletedDailyChallengeWithText:_textView.text andImage:_imageView.image];
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-    // Quickly dismiss, then save to built
+    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
-    [obj setReference:[_presenter.globalKeyValueStore getValueforKey:kBuiltUserUID]
-               forKey:@"user"];
-    [obj setReference:[_presenter.challenge objectForKey:@"uid"]
-               forKey:@"challenge"];
-    [obj setObject:_textView.text forKey:@"comment"];
     
+    if ([[_presenter.completeButton currentTitle] isEqualToString:@"Update"]) {
+        [obj setUid:userChallengeUID];
+        NSLog(@"updaing object with uid: %@", userChallengeUID);
+    } else {
+        [obj setReference:[_presenter.globalKeyValueStore getValueforKey:kBuiltUserUID]
+                   forKey:@"user"];
+        [obj setReference:[_presenter.challenge objectForKey:@"uid"]
+                   forKey:@"challenge"];
+    }
+
+    if (_textView.text.length > 0) {
+        [properties setValue:_textView.text forKey:@"text"];
+        [obj setObject:_textView.text forKey:@"comment"];
+    }
+
     [obj saveOnSuccess:^{
         // object is created successfully
-        NSLog(@"initial update, modal is done.");
+        userChallengeUID = obj.uid;
+        NSLog(@"initial update, modal is done. uid: %@", obj.uid);
     } onError:^(NSError *error) {
         // there was an error in creating the object
         // error.userinfo contains more details regarding the same
@@ -58,21 +68,22 @@
         NSLog(@"%@", error.userInfo);
     }];
 
-    BuiltFile *file = [BuiltFile file];
+    BuiltFile *imgFile = [BuiltFile file];
     if (_imageView.image != nil) {
-        [file setImage:_imageView.image forKey:@"files"];
-        [file saveOnSuccess:^ {
+        [properties setValue:_imageView.image forKey:@"image"];
+        [imgFile setImage:_imageView.image forKey:@"image"];
+        [imgFile saveOnSuccess:^ {
             //file successfully uploaded
             //file properties are populated
             
-            NSLog(@"File up, uid: %@", file.uid);
+            NSLog(@"Image up, uid: %@", imgFile.uid);
             
-            [obj setObject:[NSArray arrayWithObjects: file.uid, nil]
+            [obj setObject:[NSArray arrayWithObjects: imgFile.uid, nil]
                     forKey:@"files"];
             
             [obj saveOnSuccess:^{
                 // object is created successfully
-                NSLog(@"Secondary update, file attached");
+                NSLog(@"Secondary update, image attached");
             } onError:^(NSError *error) {
                 // there was an error in creating the object
                 // error.userinfo contains more details regarding the same
@@ -83,38 +94,58 @@
             //error in uploading
         }];
     }
+    
+    BuiltFile *videoFile = [BuiltFile file];
+    if (_videoUrl != nil) {
+        [videoFile setFile:[[NSBundle mainBundle] pathForResource:_videoUrl ofType:@"mov"] forKey:@"movie"];
+        [videoFile saveOnSuccess:^ {
+            //file successfully uploaded
+            //file properties are populated
+            
+            NSLog(@"Video up, uid: %@", videoFile.uid);
+            
+            [obj setObject:[NSArray arrayWithObjects: videoFile.uid, nil]
+                    forKey:@"files"];
+            
+            [obj saveOnSuccess:^{
+                // object is created successfully
+                NSLog(@"Secondary update, video attached");
+            } onError:^(NSError *error) {
+                // there was an error in creating the object
+                // error.userinfo contains more details regarding the same
+                NSLog(@"%@", @"ERROR");
+                NSLog(@"%@", error.userInfo);
+            }];
+        } onError:^(NSError *error) {
+            //error in uploading
+        }];
+    }
+    
+    [_presenter updateCompletedDailyChallengeWithProperties:properties];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)useCamera:(id)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypeCamera;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage, (NSString *) kUTTypeMovie];
         imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker
-                           animated:YES completion:nil];
+        [self presentViewController:imagePicker animated:YES completion:nil];
         _newMedia = YES;
     }
 }
 
 - (IBAction)useImages:(id)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
-    {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
         UIImagePickerController *imagePicker =
         [[UIImagePickerController alloc] init];
         imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage, (NSString *) kUTTypeMovie];
         imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker
-                           animated:YES completion:nil];
+        [self presentViewController:imagePicker animated:YES completion:nil];
         _newMedia = NO;
     }
 }
@@ -129,17 +160,26 @@
     
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
-        
         _imageView.image = image;
+        
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
                                            @selector(image:finishedSavingWithError:contextInfo:),
                                            nil);
     }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-    {
-        // Code here to support video if enabled
+    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
+        NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];
+        _videoUrl = [url relativePath];
+        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+        player.view.frame = CGRectMake(0, 200, 400, 300);
+        [self.view addSubview:player.view];
+        
+        if (_newMedia)
+            UISaveVideoAtPathToSavedPhotosAlbum(_videoUrl,
+                                                self,
+                                                @selector(video:didFinishSavingWithError:contextInfo:),
+                                                nil);
     }
 }
 
@@ -149,6 +189,18 @@
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle: @"Save failed"
                               message: @"Failed to save image"
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    if (error != nil) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Save failed"
+                              message: @"Failed to save video"
                               delegate: nil
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil];

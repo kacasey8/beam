@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "ChallengeViewController.h"
 
 
@@ -17,6 +18,7 @@ UINavigationControllerDelegate>
 @property (weak, atomic) ChallengeViewController *presenter;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property NSString *videoUrl;
 @property BOOL newMedia;
 
 @end

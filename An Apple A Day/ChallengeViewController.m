@@ -167,19 +167,21 @@ NSDateFormatter *dateFormatter;
     }
 }
 
-- (void)updateCompletedDailyChallengeWithText:(NSString *)text andImage:(UIImage *)image {
-    _completedDescription.text = text;
-    _completedDescription.hidden = NO;
-    _completeButton.hidden = YES;
-    _challengeInformation.hidden = YES;
-    
+- (void)updateCompletedDailyChallengeWithProperties:(NSMutableDictionary *)properties {
+    NSString *text = [properties objectForKey:@"text"];
+    if (text) {
+        _completedDescription.text = text;
+        _completedDescription.hidden = NO;
+        [_completeButton setTitle:@"Update" forState:UIControlStateNormal];
+    }
+
+    UIImage *image = [properties objectForKey:@"image"];
     if (image) {
         _completedImageView.image = image;
         _completedImageView.hidden = NO;
-        _completedImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _completedImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
 }
-
 
 #pragma mark - All Challenge Helper
 
