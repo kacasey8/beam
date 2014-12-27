@@ -12,8 +12,6 @@
 
 @end
 
-NSString *userChallengeUID;
-
 @implementation CompleteChallengeViewController
 
 - (id)init {
@@ -27,6 +25,8 @@ NSString *userChallengeUID;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _textView.text = [_presenter.challengePost objectForKey:@"comment"];
+    _imageView.image = [_presenter.challengePost objectForKey:@"image"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,27 +39,26 @@ NSString *userChallengeUID;
 }
 
 - (IBAction)completeChallenge:(id)sender {
-    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
     
-    if ([[_presenter.completeButton currentTitle] isEqualToString:@"Update"]) {
-        [obj setUid:userChallengeUID];
-        NSLog(@"updaing object with uid: %@", userChallengeUID);
+    if (_presenter.challengePost != nil) {
+        [obj setUid:[_presenter.challengePost objectForKey:@"uid"]];
+        NSLog(@"updaing object with uid: %@", [_presenter.challengePost objectForKey:@"uid"]);
     } else {
         [obj setReference:[_presenter.globalKeyValueStore getValueforKey:kBuiltUserUID]
                    forKey:@"user"];
         [obj setReference:[_presenter.challenge objectForKey:@"uid"]
                    forKey:@"challenge"];
     }
-
+    
+    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
     if (_textView.text.length > 0) {
-        [properties setValue:_textView.text forKey:@"text"];
+        [properties setValue:_textView.text forKey:@"comment"];
         [obj setObject:_textView.text forKey:@"comment"];
     }
 
     [obj saveOnSuccess:^{
         // object is created successfully
-        userChallengeUID = obj.uid;
         NSLog(@"initial update, modal is done. uid: %@", obj.uid);
     } onError:^(NSError *error) {
         // there was an error in creating the object
