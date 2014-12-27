@@ -12,6 +12,8 @@
 
 @end
 
+NSString *userChallengeUID;
+
 @implementation CompleteChallengeViewController
 
 - (id)init {
@@ -38,13 +40,18 @@
 
 - (IBAction)completeChallenge:(id)sender {
     NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
-
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
-    [obj setReference:[_presenter.globalKeyValueStore getValueforKey:kBuiltUserUID]
-               forKey:@"user"];
-    [obj setReference:[_presenter.challenge objectForKey:@"uid"]
-               forKey:@"challenge"];
     
+    if ([[_presenter.completeButton currentTitle] isEqualToString:@"Update"]) {
+        [obj setUid:userChallengeUID];
+        NSLog(@"updaing object with uid: %@", userChallengeUID);
+    } else {
+        [obj setReference:[_presenter.globalKeyValueStore getValueforKey:kBuiltUserUID]
+                   forKey:@"user"];
+        [obj setReference:[_presenter.challenge objectForKey:@"uid"]
+                   forKey:@"challenge"];
+    }
+
     if (_textView.text.length > 0) {
         [properties setValue:_textView.text forKey:@"text"];
         [obj setObject:_textView.text forKey:@"comment"];
@@ -52,7 +59,8 @@
 
     [obj saveOnSuccess:^{
         // object is created successfully
-        NSLog(@"initial update, modal is done.");
+        userChallengeUID = obj.uid;
+        NSLog(@"initial update, modal is done. uid: %@", obj.uid);
     } onError:^(NSError *error) {
         // there was an error in creating the object
         // error.userinfo contains more details regarding the same

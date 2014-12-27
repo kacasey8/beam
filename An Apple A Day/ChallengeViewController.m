@@ -169,7 +169,6 @@ NSDateFormatter *dateFormatter;
 
 - (void)updateCompletedDailyChallengeWithProperties:(NSMutableDictionary *)properties {
     NSString *text = [properties objectForKey:@"text"];
-    NSLog(@"%@", text);
     if (text) {
         _completedDescription.text = text;
         _completedDescription.hidden = NO;
