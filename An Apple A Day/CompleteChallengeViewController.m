@@ -83,38 +83,43 @@
             //error in uploading
         }];
     }
+    
+    // need to save video
 }
 
-- (IBAction)useCamera:(id)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
+- (IBAction)takePhoto:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypeCamera;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
         imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker
-                           animated:YES completion:nil];
+        [self presentViewController:imagePicker animated:YES completion:nil];
+        _newMedia = YES;
+    }
+}
+
+- (IBAction)recordVideo:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeMovie];
+        imagePicker.allowsEditing = NO;
+        [self presentViewController:imagePicker animated:YES completion:NULL];
         _newMedia = YES;
     }
 }
 
 - (IBAction)useImages:(id)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
-    {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
         UIImagePickerController *imagePicker =
         [[UIImagePickerController alloc] init];
         imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage, (NSString *) kUTTypeMovie];
         imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker
-                           animated:YES completion:nil];
+        [self presentViewController:imagePicker animated:YES completion:nil];
         _newMedia = NO;
     }
 }
@@ -137,9 +142,11 @@
                                            @selector(image:finishedSavingWithError:contextInfo:),
                                            nil);
     }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-    {
-        // Code here to support video if enabled
+    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
+        NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];
+        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+        player.view.frame = CGRectMake(184, 200, 400, 300);
+        [self.view addSubview:player.view];
     }
 }
 
