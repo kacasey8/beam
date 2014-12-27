@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *completedDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *completedImageView;
 @property (strong, nonatomic) NSMutableDictionary *challenge;
+@property (strong, nonatomic) NSMutableDictionary *challengePost;
 @property (strong, nonatomic) Global *globalKeyValueStore;
 
 - (IBAction)logout:(id)sender;

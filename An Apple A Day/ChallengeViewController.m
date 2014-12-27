@@ -156,18 +156,20 @@ NSDateFormatter *dateFormatter;
                 NSDictionary *builtResult = [builtResults objectAtIndex:0];
                 NSLog(@"%@", builtResult);
                 
-                NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
+                _challengePost = [[NSMutableDictionary alloc] init];
                 NSString *text = [builtResult objectForKey:@"comment"];
                 NSString *imageUrl = [[[builtResult objectForKey:@"files"] objectAtIndex:0] objectForKey:@"url"];
+                NSString *uid = [builtResult objectForKey:@"uid"];
                 
                 NSURL *url = [NSURL URLWithString:imageUrl];
                 NSData *data = [NSData dataWithContentsOfURL:url];
                 UIImage *img = [[UIImage alloc] initWithData:data];
                 
-                [properties setObject:text forKey:@"comment"];
-                [properties setObject:img forKey:@"image"];
+                [_challengePost setObject:text forKey:@"comment"];
+                [_challengePost setObject:img forKey:@"image"];
+                [_challengePost setObject:uid forKey:@"uid"];
                 
-                [self updateCompletedDailyChallengeWithProperties:properties];
+                [self updateCompletedDailyChallengeWithProperties:_challengePost];
             }
             [self saveCacheToPersistantStorage];
         } onError:^(NSError *error, ResponseType type) {
