@@ -37,7 +37,9 @@
 }
 
 - (IBAction)completeChallenge:(id)sender {
-    [_presenter updateCompletedDailyChallengeWithText:_textView.text andImage:_imageView.image];
+    NSDictionary *properties = @{@"text":_textView.text,
+                                 @"image":_imageView.image};
+    [_presenter updateCompletedDailyChallengeWithProperties:properties];
     [self dismissViewControllerAnimated:YES completion:nil];
 
     // Quickly dismiss, then save to built
@@ -133,7 +135,7 @@
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
         NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];
         MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
-        player.view.frame = CGRectMake(184, 200, 400, 300);
+        player.view.frame = CGRectMake(0, 200, 400, 300);
         [self.view addSubview:player.view];
     }
 }

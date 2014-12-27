@@ -22,6 +22,6 @@
 - (IBAction)logout:(id)sender;
 
 - (void)activateView;
-- (void)updateCompletedDailyChallengeWithText:(NSString *)text andImage:(UIImage *)image;
+- (void)updateCompletedDailyChallengeWithProperties:(NSDictionary *)properties;
 
 @end
