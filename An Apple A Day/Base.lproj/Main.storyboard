@@ -71,17 +71,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aAI-Ml-xCb">
-                                <rect key="frame" x="0.0" y="176" width="600" height="361"/>
+                                <rect key="frame" x="0.0" y="176" width="600" height="389"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQy-tS-6mr">
-                                        <rect key="frame" x="-1" y="0.0" width="602" height="224"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pQy-tS-6mr">
+                                        <rect key="frame" x="-1" y="0.0" width="602" height="250"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eew-Oy-2Fz">
-                                        <rect key="frame" x="-1" y="214" width="602" height="111"/>
-                                        <color key="backgroundColor" red="0.72933324972429814" green="1" blue="0.9726424782352977" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="111" id="pMM-Dn-qI5"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eew-Oy-2Fz">
+                                        <rect key="frame" x="0.0" y="250" width="602" height="139"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -89,20 +86,20 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="eew-Oy-2Fz" secondAttribute="bottom" id="3Ke-Q9-jCt"/>
-                                    <constraint firstItem="eew-Oy-2Fz" firstAttribute="top" secondItem="aAI-Ml-xCb" secondAttribute="top" constant="214" id="Dyv-Um-KBz"/>
-                                    <constraint firstAttribute="trailing" secondItem="eew-Oy-2Fz" secondAttribute="trailing" constant="-1" id="Esi-ob-a6G"/>
+                                    <constraint firstItem="eew-Oy-2Fz" firstAttribute="top" secondItem="aAI-Ml-xCb" secondAttribute="top" constant="250" id="Dyv-Um-KBz"/>
+                                    <constraint firstItem="eew-Oy-2Fz" firstAttribute="top" secondItem="pQy-tS-6mr" secondAttribute="bottom" id="Ny9-DJ-Oom"/>
                                     <constraint firstItem="pQy-tS-6mr" firstAttribute="centerX" secondItem="aAI-Ml-xCb" secondAttribute="centerX" id="WLv-yb-a6y"/>
-                                    <constraint firstItem="pQy-tS-6mr" firstAttribute="trailing" secondItem="eew-Oy-2Fz" secondAttribute="trailing" id="lcv-u3-waC"/>
-                                    <constraint firstItem="eew-Oy-2Fz" firstAttribute="leading" secondItem="aAI-Ml-xCb" secondAttribute="leading" constant="-1" id="lom-W1-4Zh"/>
-                                    <constraint firstItem="pQy-tS-6mr" firstAttribute="leading" secondItem="aAI-Ml-xCb" secondAttribute="leading" constant="-1" id="nu1-3F-bmI"/>
+                                    <constraint firstAttribute="trailing" secondItem="pQy-tS-6mr" secondAttribute="trailing" constant="-1" id="fS4-Pj-Xdb"/>
+                                    <constraint firstItem="eew-Oy-2Fz" firstAttribute="leading" secondItem="aAI-Ml-xCb" secondAttribute="leading" id="lom-W1-4Zh"/>
+                                    <constraint firstItem="pQy-tS-6mr" firstAttribute="leading" secondItem="aAI-Ml-xCb" secondAttribute="leading" constant="-1" id="oAo-om-GPA"/>
                                     <constraint firstItem="eew-Oy-2Fz" firstAttribute="width" secondItem="pQy-tS-6mr" secondAttribute="width" id="vUy-cO-rNu"/>
                                     <constraint firstItem="pQy-tS-6mr" firstAttribute="top" secondItem="aAI-Ml-xCb" secondAttribute="top" id="zZe-Bi-zG4"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noB-4z-L4M">
-                                <rect key="frame" x="0.0" y="537" width="601" height="63"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noB-4z-L4M">
+                                <rect key="frame" x="0.0" y="561" width="601" height="39"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="I did it!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -110,7 +107,7 @@
                                     <action selector="promptCompleteChallenge:" destination="R2q-bP-afG" eventType="touchUpInside" id="IpQ-kP-xYw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Challenge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX0-bI-Fdq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX0-bI-Fdq">
                                 <rect key="frame" x="262" y="84" width="77" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -119,11 +116,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.72023492370307007" green="1" blue="0.99402394816975792" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ZX0-bI-Fdq" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="54" id="3Yu-qn-fwS"/>
-                            <constraint firstItem="noB-4z-L4M" firstAttribute="top" secondItem="aAI-Ml-xCb" secondAttribute="bottom" id="5qA-W6-k8S"/>
+                            <constraint firstItem="ZX0-bI-Fdq" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="20" id="3Yu-qn-fwS"/>
+                            <constraint firstItem="noB-4z-L4M" firstAttribute="top" secondItem="aAI-Ml-xCb" secondAttribute="bottom" constant="-4" id="5qA-W6-k8S"/>
                             <constraint firstItem="noB-4z-L4M" firstAttribute="bottom" secondItem="8ih-O4-doj" secondAttribute="top" id="8Sn-iY-uvS"/>
                             <constraint firstItem="ZX0-bI-Fdq" firstAttribute="centerX" secondItem="aAI-Ml-xCb" secondAttribute="centerX" id="9Hy-Uf-kH4"/>
-                            <constraint firstItem="aAI-Ml-xCb" firstAttribute="top" secondItem="ZX0-bI-Fdq" secondAttribute="bottom" constant="73" id="CyY-b9-lYi"/>
+                            <constraint firstItem="aAI-Ml-xCb" firstAttribute="top" secondItem="ZX0-bI-Fdq" secondAttribute="bottom" constant="71" id="CyY-b9-lYi"/>
                             <constraint firstItem="noB-4z-L4M" firstAttribute="leading" secondItem="aAI-Ml-xCb" secondAttribute="leading" id="KWS-3w-4US"/>
                             <constraint firstItem="ZX0-bI-Fdq" firstAttribute="centerX" secondItem="A0k-Ut-mPi" secondAttribute="centerX" id="QJy-tL-Nat"/>
                             <constraint firstItem="noB-4z-L4M" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leading" id="S3M-Hd-qDA"/>
