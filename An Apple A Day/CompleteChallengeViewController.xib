@@ -63,20 +63,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="takePhoto:" destination="-1" eventType="touchUpInside" id="gTR-y3-R9P"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="jbB-2C-OR0"/>
-                        <barButtonItem style="plain" id="FWk-hV-S5b">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="M9L-BF-UVX">
-                                <rect key="frame" x="275" y="555" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Record">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="recordVideo:" destination="-1" eventType="touchUpInside" id="Xov-QH-5bV"/>
+                                    <action selector="useCamera:" destination="-1" eventType="touchUpInside" id="y1C-7s-D6T"/>
                                 </connections>
                             </button>
                         </barButtonItem>
