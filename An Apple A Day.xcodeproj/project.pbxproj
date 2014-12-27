@@ -14,6 +14,7 @@
 		86B5C6C71A4E6E63001019C5 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6C61A4E6E63001019C5 /* CalendarViewController.m */; };
 		86B5C6D61A4E70AC001019C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B5C6D51A4E70AC001019C5 /* UIKit.framework */; };
 		86B5C6D91A4E7B02001019C5 /* CalendarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6D81A4E7B02001019C5 /* CalendarTableViewController.m */; };
+		86B5C6DC1A4E930F001019C5 /* Challenge.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6DB1A4E930F001019C5 /* Challenge.m */; };
 		991D95441A4AA625005FE2D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95431A4AA625005FE2D1 /* main.m */; };
 		991D95471A4AA625005FE2D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95461A4AA625005FE2D1 /* AppDelegate.m */; };
 		991D954A1A4AA625005FE2D1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95491A4AA625005FE2D1 /* LoginViewController.m */; };
@@ -57,6 +58,8 @@
 		86B5C6D51A4E70AC001019C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		86B5C6D71A4E7B02001019C5 /* CalendarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarTableViewController.h; sourceTree = "<group>"; };
 		86B5C6D81A4E7B02001019C5 /* CalendarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarTableViewController.m; sourceTree = "<group>"; };
+		86B5C6DA1A4E930F001019C5 /* Challenge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Challenge.h; sourceTree = "<group>"; };
+		86B5C6DB1A4E930F001019C5 /* Challenge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Challenge.m; sourceTree = "<group>"; };
 		991D953E1A4AA625005FE2D1 /* An Apple A Day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "An Apple A Day.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		991D95421A4AA625005FE2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		991D95431A4AA625005FE2D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 				995BB6941A4AC51D00C32B27 /* ChallengeViewController.m */,
 				99F2BEAB1A4B6CCB00EA9592 /* Global.h */,
 				99F2BEAC1A4B6CCB00EA9592 /* Global.m */,
+				86B5C6DA1A4E930F001019C5 /* Challenge.h */,
+				86B5C6DB1A4E930F001019C5 /* Challenge.m */,
 				991D954B1A4AA625005FE2D1 /* Main.storyboard */,
 				843B2D601A4CC2CD00B39CAF /* CompleteChallengeViewController.h */,
 				843B2D611A4CC2CD00B39CAF /* CompleteChallengeViewController.m */,
@@ -362,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				991D954A1A4AA625005FE2D1 /* LoginViewController.m in Sources */,
+				86B5C6DC1A4E930F001019C5 /* Challenge.m in Sources */,
 				991D95471A4AA625005FE2D1 /* AppDelegate.m in Sources */,
 				99F2BEAD1A4B6CCB00EA9592 /* Global.m in Sources */,
 				843B2D631A4CC2CD00B39CAF /* CompleteChallengeViewController.m in Sources */,

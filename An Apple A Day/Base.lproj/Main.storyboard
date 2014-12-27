@@ -102,13 +102,13 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJc-wv-1Mv" userLabel="CalendarContainerView">
                                 <rect key="frame" x="0.0" y="131" width="600" height="468.5"/>
                                 <connections>
-                                    <segue destination="UbC-g1-k7A" kind="embed" id="ksR-it-3Wc"/>
+                                    <segue destination="UbC-g1-k7A" kind="embed" identifier="embedCalendarView" id="ksR-it-3Wc"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHf-eV-hfo" userLabel="ListContainerView">
                                 <rect key="frame" x="0.0" y="131.5" width="600" height="468.5"/>
                                 <connections>
-                                    <segue destination="cWX-WE-AAt" kind="embed" id="9IW-KJ-AZ5"/>
+                                    <segue destination="cWX-WE-AAt" kind="embed" identifier="embedListView" id="9IW-KJ-AZ5"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -264,7 +264,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Calendar" id="PHK-LO-bE8">
                             <connections>
-                                <segue destination="cc3-Y7-Hu6" kind="show" id="OwA-pc-Z7x"/>
+                                <segue destination="cc3-Y7-Hu6" kind="show" identifier="openHistory" id="OwA-pc-Z7x"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

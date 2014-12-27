@@ -183,37 +183,6 @@ NSDateFormatter *dateFormatter;
     }
 }
 
-#pragma mark - All Challenge Helper
-
-- (void)getAllChallengesIHaveCompleted
-{
-    BuiltQuery *select_query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
-    [select_query whereKey:@"user" equalTo:[_globalKeyValueStore getValueforKey:kBuiltUserUID]];
-    
-    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"challenge"];
-    [query whereKey:@"uid" equalToResultOfSelectQuery:select_query forKey:@"challenge"];
-    
-    [query includeOnlyFields:[NSArray arrayWithObjects: @"date", @"information", nil]];
-    [query includeCount];
-    
-    [query exec:^(QueryResult *result, ResponseType type) {
-        // the query has executed successfully.
-        // [result getResult] will contain a list of objects that satisfy the conditions
-        
-        NSArray *builtResult = [result getResult];
-        
-        NSLog(@"%@", builtResult);
-        
-        int challengesCompelted = [builtResult count];
-        NSLog(@"Challenges completed = %d", challengesCompelted);
-    } onError:^(NSError *error, ResponseType type) {
-        // query execution failed.
-        // error.userinfo contains more details regarding the same
-        NSLog(@"%@", @"ERROR");
-        NSLog(@"%@", error.userInfo);
-    }];
-}
-
 #pragma mark - Actions
 
 - (IBAction)logout:(id)sender {

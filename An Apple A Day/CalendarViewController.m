@@ -7,17 +7,19 @@
 //
 
 #import "CalendarViewController.h"
+#import "HistoryViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface CalendarViewController ()
 
-@property(nonatomic, strong) NSDateFormatter *dateFormatter;
 @property(nonatomic, strong) NSDate *minimumDate;
 
 @end
 
 @implementation CalendarViewController
+
+NSDateFormatter *dateFormatter;
 
 //- (id)init {
 //    self = [super init];
@@ -56,6 +58,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"]; // using ISODate format so it will sort properly
+    
     self.calendar = [JTCalendar new];
     
     // All modifications on calendarAppearance have to be done before setMenuMonthsView and setContentView
@@ -68,12 +74,6 @@
         NSCalendar *calendar = jt_calendar.calendarAppearance.calendar;
         NSDateComponents *comps = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth fromDate:date];
         NSInteger currentMonthIndex = comps.month;
-        
-        static NSDateFormatter *dateFormatter;
-        if(!dateFormatter){
-            dateFormatter = [NSDateFormatter new];
-            dateFormatter.timeZone = jt_calendar.calendarAppearance.calendar.timeZone;
-        }
         
         while(currentMonthIndex <= 0){
             currentMonthIndex += 12;
@@ -99,12 +99,17 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Calendar datasource
+
 - (BOOL)calendarHaveEvent:(JTCalendar *)calendar date:(NSDate *)date {
-    return NO;
+    HistoryViewController *parentVC = (HistoryViewController *) self.parentViewController;
+    NSArray *completdDates = [parentVC.completedChallenges allKeys];
+    NSString *currentDate = [dateFormatter stringFromDate:date];
+    return [completdDates containsObject:currentDate];
 }
 
 - (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date {
-    NSLog(@"%@", date);
+    NSLog(@"%@", [dateFormatter stringFromDate:date]);
 }
 
 @end
