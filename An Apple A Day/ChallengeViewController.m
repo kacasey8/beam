@@ -165,9 +165,11 @@ NSDateFormatter *dateFormatter;
                 NSData *data = [NSData dataWithContentsOfURL:url];
                 UIImage *img = [[UIImage alloc] initWithData:data];
                 
-                [_challengePost setObject:text forKey:@"comment"];
-                [_challengePost setObject:img forKey:@"image"];
                 [_challengePost setObject:uid forKey:@"uid"];
+                [_challengePost setObject:text forKey:@"comment"];
+                if (img != nil) {
+                    [_challengePost setObject:img forKey:@"image"];
+                }
                 
                 [self updateCompletedDailyChallengeWithProperties:_challengePost];
                 
@@ -199,6 +201,7 @@ NSDateFormatter *dateFormatter;
 }
 
 - (void)updateCompletedDailyChallengeWithProperties:(NSMutableDictionary *)properties {
+    _challengePost = [[NSMutableDictionary alloc] initWithDictionary:properties];
     NSString *comment = [properties objectForKey:@"comment"];
     if (comment) {
         _completedDescription.text = comment;

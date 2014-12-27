@@ -39,7 +39,6 @@
 }
 
 - (IBAction)completeChallenge:(id)sender {
-    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
     
     if (_presenter.challengePost != nil) {
@@ -51,7 +50,8 @@
         [obj setReference:[_presenter.challenge objectForKey:@"uid"]
                    forKey:@"challenge"];
     }
-
+    
+    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
     if (_textView.text.length > 0) {
         [properties setValue:_textView.text forKey:@"comment"];
         [obj setObject:_textView.text forKey:@"comment"];
