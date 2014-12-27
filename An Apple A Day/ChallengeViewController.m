@@ -137,6 +137,8 @@ NSDateFormatter *dateFormatter;
 
 - (void)queryCompletedDailyChallenge
 {
+    // Make sure everything is set up first. This method gets called when we successfully login and when challenge
+    // is successfully queried
     if ([_challenge objectForKey:@"uid"] && [_globalKeyValueStore getValueforKey:kBuiltUserUID]) {
         BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
         [query whereKey:@"user" equalTo:[_globalKeyValueStore getValueforKey:kBuiltUserUID]];
@@ -158,37 +160,26 @@ NSDateFormatter *dateFormatter;
                 
                 _challengePost = [[NSMutableDictionary alloc] init];
                 NSString *text = [builtResult objectForKey:@"comment"];
-                NSString *imageUrl = [[[builtResult objectForKey:@"files"] objectAtIndex:0] objectForKey:@"url"];
+                NSArray *files = [builtResult objectForKey:@"files"];
+                NSString *imageUrl;
+                if ([files count] > 0) {
+                    imageUrl = [[[builtResult objectForKey:@"files"] objectAtIndex:0] objectForKey:@"url"];
+                }
                 NSString *uid = [builtResult objectForKey:@"uid"];
                 
-                NSURL *url = [NSURL URLWithString:imageUrl];
-                NSData *data = [NSData dataWithContentsOfURL:url];
-                UIImage *img = [[UIImage alloc] initWithData:data];
+                if (imageUrl) {
+                    NSURL *url = [NSURL URLWithString:imageUrl];
+                    NSData *data = [NSData dataWithContentsOfURL:url];
+                    UIImage *img = [[UIImage alloc] initWithData:data];
+                    if (img != nil) {
+                        [_challengePost setObject:img forKey:@"image"];
+                    }
+                }
                 
                 [_challengePost setObject:uid forKey:@"uid"];
                 [_challengePost setObject:text forKey:@"comment"];
-                if (img != nil) {
-                    [_challengePost setObject:img forKey:@"image"];
-                }
                 
                 [self updateCompletedDailyChallengeWithProperties:_challengePost];
-                
-                /* uncomment to clear the user challenges
-                for (int i = 0; i < [builtResults count]; i++) {
-                    NSDictionary *result = [builtResults objectAtIndex:i];
-                    BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
-                    
-                    [obj setUid:[result objectForKey:@"uid"]];
-                    
-                    [obj destroyOnSuccess:^{
-                        // object is deleted
-                        NSLog(@"%d", i);
-                    } onError:^(NSError *error) {
-                        // there was an error in deleting the object
-                        // error.userinfo contains more details regarding the same
-                        NSLog(@"%@", error.userInfo);
-                    }];
-                }*/
             }
             [self saveCacheToPersistantStorage];
         } onError:^(NSError *error, ResponseType type) {

@@ -7,6 +7,7 @@
 //
 
 #import "Global.h"
+#import <BuiltIO/BuiltIO.h> // TODO TAKE THIS OUT OF PRODUCTION
 
 @implementation Global
 
@@ -39,4 +40,38 @@ NSString *kUsersChallengesUID = @"usersChallengesUID";
     return [[NSUserDefaults standardUserDefaults] objectForKey:key];
 }
 
+- (void)deleteAllUsersChallenges
+{
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        NSArray *builtResults = [result getResult];
+        for (int i = 0; i < [builtResults count]; i++) {
+             NSDictionary *result = [builtResults objectAtIndex:i];
+             BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
+             
+             [obj setUid:[result objectForKey:@"uid"]];
+             
+             NSLog(@"%d", i);
+             
+             [obj destroyOnSuccess:^{
+                 // object is deleted
+                 NSLog(@"%d", i);
+                } onError:^(NSError *error) {
+                    // there was an error in deleting the object
+                    // error.userinfo contains more details regarding the same
+                    NSLog(@"%@", error.userInfo);
+             }];
+        }
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", @"ERROR");
+        NSLog(@"%@", error.userInfo);
+    }];
+    
+}
+
 @end
+

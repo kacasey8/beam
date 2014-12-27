@@ -72,7 +72,6 @@
     [query whereKey:@"uid" equalToResultOfSelectQuery:select_query forKey:@"challenge"];
     
     [query includeOnlyFields:[NSArray arrayWithObjects: @"date", @"information", nil]];
-    [query includeCount];
     
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
