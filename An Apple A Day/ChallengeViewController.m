@@ -160,11 +160,9 @@ NSDateFormatter *dateFormatter;
                 
                 _challengePost = [[NSMutableDictionary alloc] init];
                 NSString *text = [builtResult objectForKey:@"comment"];
-                NSArray *files = [builtResult objectForKey:@"files"];
-
-                if ([files count] > 0) {
-                    NSDictionary *file = [[builtResult objectForKey:@"files"] objectAtIndex:0];
-                    NSString *fileUrl = [[[builtResult objectForKey:@"files"] objectAtIndex:0] objectForKey:@"url"];
+                NSDictionary *file = [builtResult objectForKey:@"files"];
+                if (file) {
+                    NSString *fileUrl = [file objectForKey:@"url"];
                     NSURL *url = [NSURL URLWithString:fileUrl];
                     if ([[file objectForKey:@"filename"] isEqualToString:@"image"]) {
                         NSData *data = [NSData dataWithContentsOfURL:url];

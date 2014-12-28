@@ -77,7 +77,7 @@
             
             NSLog(@"Image up, uid: %@", imgFile.uid);
             
-            [obj setObject:[NSArray arrayWithObjects: imgFile.uid, nil]
+            [obj setObject:imgFile.uid
                     forKey:@"files"];
             
             [obj saveOnSuccess:^{
@@ -104,7 +104,7 @@
             
             NSLog(@"Video up, uid: %@", videoFile.uid);
             
-            [obj setObject:[NSArray arrayWithObjects: videoFile.uid, nil]
+            [obj setObject:videoFile.uid
                     forKey:@"files"];
             
             [obj saveOnSuccess:^{
