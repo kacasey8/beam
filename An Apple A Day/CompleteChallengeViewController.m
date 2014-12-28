@@ -10,8 +10,6 @@
 
 @interface CompleteChallengeViewController ()
 
-@property (nonatomic, strong) MPMoviePlayerController *player;
-
 @end
 
 @implementation CompleteChallengeViewController
@@ -181,13 +179,10 @@
                                            self,
                                            @selector(image:finishedSavingWithError:contextInfo:),
                                            nil);
-    }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
+    } else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
         _videoUrl = [info objectForKey:UIImagePickerControllerMediaURL];
         _player = [[MPMoviePlayerController alloc] initWithContentURL:_videoUrl];
-        _player.controlStyle = MPMovieControlStyleEmbedded;
-        _player.view.frame = CGRectMake(0, 200, self.view.frame.size.width, 300);
-        [_player prepareToPlay];
+        _player.view.frame = CGRectMake(0, _imageView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.width);
         [self.view addSubview:_player.view];
         
         if (_newMedia)
