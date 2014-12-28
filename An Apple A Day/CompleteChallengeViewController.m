@@ -31,10 +31,13 @@ CGFloat SCREEN_HEIGHT;
     SCREEN_WIDTH = screenRect.size.width;
     SCREEN_HEIGHT = screenRect.size.height;
     // Do any additional setup after loading the view from its nib.
+    
     _textView.text = [_presenter.challengePost objectForKey:@"comment"];
     
-    _imageView.hidden = YES;
+    [self clearImageAndVideo];
     [self insertAndSetUpImage:[_presenter.challengePost objectForKey:@"image"]];
+    _videoUrl = [_presenter.challengePost objectForKey:@"video"];
+    [self insertAndSetUpVideoGivenVideoUrl];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,6 +46,16 @@ CGFloat SCREEN_HEIGHT;
 }
 
 #pragma mark - Helpers
+
+- (void)clearImageAndVideo
+{
+    if (_player) {
+        [_player.view removeFromSuperview];
+    }
+    _player = nil;
+    _videoUrl = nil;
+    _imageView.image = nil;
+}
 
 - (void)insertAndSetUpImage:(UIImage *)image
 {
@@ -59,6 +72,59 @@ CGFloat SCREEN_HEIGHT;
     _imageView.contentMode = UIViewContentModeScaleAspectFill;
     _imageView.hidden = NO;
     [self.view setNeedsDisplay];
+}
+
+- (void)insertAndSetUpVideoGivenVideoUrl
+{
+    if (_videoUrl == NULL) {
+        return;
+    }
+    _player = [[MPMoviePlayerController alloc] initWithContentURL:_videoUrl];
+    _player.view.frame = CGRectMake(0, _imageView.frame.origin.y, SCREEN_WIDTH, SCREEN_WIDTH);
+    [_player prepareToPlay];
+    [self.scrollView addSubview:_player.view];
+    
+    // Need to add in all the constraints. This is basically all constraints on the _imageView
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
+                                                                attribute:NSLayoutAttributeCenterX
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.scrollView
+                                                                attribute:NSLayoutAttributeCenterX
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
+                                                                attribute:NSLayoutAttributeTop
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:_textView
+                                                                attribute:NSLayoutAttributeBottom
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
+                                                                attribute:NSLayoutAttributeBottom
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.scrollView
+                                                                attribute:NSLayoutAttributeBottom
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
+                                                                attribute:NSLayoutAttributeTrailing
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.scrollView
+                                                                attribute:NSLayoutAttributeTrailing
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
+                                                                attribute:NSLayoutAttributeLeading
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.scrollView
+                                                                attribute:NSLayoutAttributeLeading
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
 }
 
 #pragma mark - Actions
@@ -184,12 +250,7 @@ CGFloat SCREEN_HEIGHT;
 #pragma mark UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    if (_player) {
-        [_player.view removeFromSuperview];
-    }
-    _player = nil;
-    _videoUrl = nil;
-    _imageView.image = nil;
+    [self clearImageAndVideo];
     
     NSString *mediaType = info[UIImagePickerControllerMediaType];
     
@@ -207,50 +268,8 @@ CGFloat SCREEN_HEIGHT;
                                            nil);
     } else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
         _videoUrl = [info objectForKey:UIImagePickerControllerMediaURL];
-        _player = [[MPMoviePlayerController alloc] initWithContentURL:_videoUrl];
-        _player.view.frame = CGRectMake(0, _imageView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.width);
-        [_player prepareToPlay];
-        [self.scrollView addSubview:_player.view];
         
-        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
-                                                                    attribute:NSLayoutAttributeCenterX
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.scrollView
-                                                                    attribute:NSLayoutAttributeCenterX
-                                                                   multiplier:1.0
-                                                                     constant:0.0]];
-
-        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
-                                                                    attribute:NSLayoutAttributeTop
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:_textView
-                                                                    attribute:NSLayoutAttributeBottom
-                                                                   multiplier:1.0
-                                                                     constant:0.0]];
-        
-        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
-                                                                    attribute:NSLayoutAttributeBottom
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.scrollView
-                                                                    attribute:NSLayoutAttributeBottom
-                                                                   multiplier:1.0
-                                                                     constant:0.0]];
-        
-        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
-                                                                    attribute:NSLayoutAttributeTrailing
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.scrollView
-                                                                    attribute:NSLayoutAttributeTrailing
-                                                                   multiplier:1.0
-                                                                     constant:0.0]];
-        
-        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
-                                                                    attribute:NSLayoutAttributeLeading
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.scrollView
-                                                                    attribute:NSLayoutAttributeLeading
-                                                                   multiplier:1.0
-                                                                     constant:0.0]];
+        [self insertAndSetUpVideoGivenVideoUrl];
         
         if (_newMedia)
             UISaveVideoAtPathToSavedPhotosAlbum([_videoUrl relativePath],
