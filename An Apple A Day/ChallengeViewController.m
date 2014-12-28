@@ -170,8 +170,16 @@ NSDateFormatter *dateFormatter;
                         }
 
                     } else { // must be MOV filename
-                        // Use the url as the video.
-                        [_challengePost setObject:url forKey:@"video"];
+                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                        NSString *documentsDirectory = [paths objectAtIndex:0];
+                        NSString *path = [documentsDirectory stringByAppendingPathComponent:@"tmp.mov"];
+                        
+                        NSData *videoData = [NSData dataWithContentsOfURL:url];
+                        
+                        [[NSFileManager defaultManager] createFileAtPath:path contents:videoData attributes:nil];
+                        NSURL *moveUrl = [NSURL fileURLWithPath:path];
+                        
+                        [_challengePost setObject:moveUrl forKey:@"video"];
                     }
                 }
                 NSString *uid = [builtResult objectForKey:@"uid"];
@@ -222,8 +230,8 @@ NSDateFormatter *dateFormatter;
         _completedImageView.hidden = NO;
         _completedImageView.contentMode = UIViewContentModeScaleAspectFill;
     } else if (videoUrl) {
-        _player = [[MPMoviePlayerController alloc] initWithContentURL:[videoUrl URLByAppendingPathExtension:@"mov"]];
-        _player.view.frame = CGRectMake(0, _completedImageView.frame.origin.x, self.view.frame.size.width, self.view.frame.size.width);
+        _player = [[MPMoviePlayerController alloc] initWithContentURL:videoUrl];
+        _player.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
         [_player prepareToPlay];
         [self.scrollView addSubview:_player.view];
 
