@@ -102,6 +102,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0 && !self.challenge.image) {
+        return 0;
+    }
     return 300;
 }
 
