@@ -193,7 +193,7 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"Installed");
+    NSLog(@"Installed for remote notification");
     BuiltInstallation *installation = [BuiltInstallation installation];
     [installation createInstallationWithDeviceToken:deviceToken
                             andSubscriptionChannels:nil
@@ -210,15 +210,9 @@
     [application registerForRemoteNotifications];
 }
 
--(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
-    NSLog(@"error %@", error);
-}
-
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
 {
     //handle the actions
-    NSLog(@"action");
     if ([identifier isEqualToString:@"declineAction"]){
     }
     else if ([identifier isEqualToString:@"answerAction"]){
@@ -226,7 +220,6 @@
 }
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
-    NSLog(@"GOT IT");
     if (application.applicationState != UIApplicationStateActive) {
         // app opened by push notification
         BuiltEvent *appOpenOnNotification = [[BuiltEvent alloc] init];
