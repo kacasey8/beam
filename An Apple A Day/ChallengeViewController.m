@@ -202,8 +202,13 @@ NSDateFormatter *dateFormatter;
         _completedDescription.hidden = NO;
         [_completeButton setTitle:@"Update"];
     }
+    
+    _player = nil;
+    _completedImageView.image = nil;
 
     UIImage *image = [properties objectForKey:@"image"];
+    NSURL *videoUrl = [properties objectForKey:@"video"];
+
     if (image) {
         CGSize newSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.width);
         UIGraphicsBeginImageContext( newSize );
@@ -213,13 +218,11 @@ NSDateFormatter *dateFormatter;
         _completedImageView.image = newImage;
         _completedImageView.hidden = NO;
         _completedImageView.contentMode = UIViewContentModeScaleAspectFill;
-    }
-    
-    NSURL *videoUrl = [properties objectForKey:@"video"];
-    if (videoUrl) {
-        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:videoUrl];
-        player.view.frame = CGRectMake(0, 200, 400, 300);
-        [self.view addSubview:player.view];
+    } else if (videoUrl) {
+        _player = [[MPMoviePlayerController alloc] initWithContentURL:videoUrl];
+        _player.view.frame = CGRectMake(0, _completedImageView.frame.origin.x, self.view.frame.size.width, self.view.frame.size.width);
+        [self.view addSubview:_player.view];
+        _completedImageView.image = nil;
     }
 }
 

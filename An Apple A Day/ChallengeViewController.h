@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <BuiltIO/BuiltIO.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "Global.h"
 
 @interface ChallengeViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UILabel *challengeInformation;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *completeButton;
 @property (strong, nonatomic) IBOutlet UILabel *completedDescription;
-@property (weak, nonatomic) IBOutlet UIImageView *completedImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *completedImageView;
+@property (strong, nonatomic) MPMoviePlayerController *player;
 @property (strong, nonatomic) NSMutableDictionary *challenge;
 @property (strong, nonatomic) NSMutableDictionary *challengePost;
 @property (strong, nonatomic) Global *globalKeyValueStore;
