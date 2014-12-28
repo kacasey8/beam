@@ -307,6 +307,13 @@ CGFloat SCREEN_HEIGHT;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    if (_player) {
+        _player.view.frame = CGRectMake(0, _imageView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.width);
+    }
+}
+
 
 /*
 #pragma mark - Navigation
