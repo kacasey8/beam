@@ -97,7 +97,7 @@
     BuiltFile *videoFile = [BuiltFile file];
     if (_videoUrl != nil) {
         [properties setValue:_videoUrl forKey:@"video"];
-        [videoFile setFile:[[NSBundle mainBundle] pathForResource:[_videoUrl relativePath] ofType:@"mov"] forKey:@"video"];
+        [videoFile setFile:[_videoUrl path] forKey:@"video"];
         [videoFile saveOnSuccess:^ {
             //file successfully uploaded
             //file properties are populated
