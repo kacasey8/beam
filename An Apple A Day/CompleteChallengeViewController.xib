@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompleteChallengeViewController">
             <connections>
                 <outlet property="imageView" destination="y1w-rH-cho" id="w8S-IG-sGo"/>
+                <outlet property="scrollView" destination="e0o-yg-gKl" id="gIS-GA-eCb"/>
                 <outlet property="textView" destination="k5Y-zy-Ocy" id="l5R-zS-szi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
