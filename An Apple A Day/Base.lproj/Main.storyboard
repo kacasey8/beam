@@ -199,17 +199,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noB-4z-L4M">
-                                <rect key="frame" x="0.0" y="558" width="600" height="42"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="I did it!">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="promptCompleteChallenge:" destination="R2q-bP-afG" eventType="touchUpInside" id="IpQ-kP-xYw"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ZX0-bI-Fdq">
                                 <rect key="frame" x="16" y="84" width="568" height="75"/>
                                 <constraints>
@@ -249,36 +238,39 @@
                                     <constraint firstItem="pQy-tS-6mr" firstAttribute="top" secondItem="aAI-Ml-xCb" secondAttribute="top" id="tDl-jI-BVD"/>
                                 </constraints>
                             </scrollView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VM3-eU-Yaa">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WNc-HQ-yWN"/>
+                                    <barButtonItem title="I did it!" id="mDv-S4-gi8">
+                                        <connections>
+                                            <action selector="promptCompleteChallenge:" destination="R2q-bP-afG" id="c4L-6i-KAy"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AAm-Qy-8pB"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.72023492370307007" green="1" blue="0.99402394816975792" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aAI-Ml-xCb" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leadingMargin" constant="-16" id="2gF-Th-dAd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="noB-4z-L4M" secondAttribute="trailing" constant="-16" id="9S3-Q7-odV"/>
-                            <constraint firstItem="noB-4z-L4M" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leading" id="C73-QJ-URM"/>
+                            <constraint firstItem="VM3-eU-Yaa" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leading" id="75b-Dp-r2y"/>
                             <constraint firstItem="aAI-Ml-xCb" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leading" id="EWl-ZQ-hfv"/>
-                            <constraint firstAttribute="trailing" secondItem="noB-4z-L4M" secondAttribute="trailing" id="FLA-MK-CbD"/>
                             <constraint firstItem="aAI-Ml-xCb" firstAttribute="top" secondItem="ZX0-bI-Fdq" secondAttribute="bottom" constant="8" id="HOO-Ou-Twb"/>
+                            <constraint firstAttribute="trailing" secondItem="VM3-eU-Yaa" secondAttribute="trailing" id="Ig7-id-30L"/>
                             <constraint firstAttribute="trailing" secondItem="aAI-Ml-xCb" secondAttribute="trailing" id="Ijv-H1-WzH"/>
                             <constraint firstAttribute="centerX" secondItem="ZX0-bI-Fdq" secondAttribute="centerX" id="IxV-9s-yI8"/>
                             <constraint firstItem="ZX0-bI-Fdq" firstAttribute="top" secondItem="dUi-hF-4Ol" secondAttribute="bottom" constant="20" id="J2J-2T-gkA"/>
-                            <constraint firstItem="8ih-O4-doj" firstAttribute="top" secondItem="noB-4z-L4M" secondAttribute="bottom" id="T4v-Lc-uCz"/>
+                            <constraint firstItem="VM3-eU-Yaa" firstAttribute="top" secondItem="aAI-Ml-xCb" secondAttribute="bottom" constant="-2" id="TyW-tM-Ex1"/>
                             <constraint firstItem="pQy-tS-6mr" firstAttribute="width" secondItem="A0k-Ut-mPi" secondAttribute="width" id="YPc-ll-DNs"/>
-                            <constraint firstItem="8ih-O4-doj" firstAttribute="top" secondItem="noB-4z-L4M" secondAttribute="bottom" id="aC5-5T-Mo3"/>
+                            <constraint firstItem="8ih-O4-doj" firstAttribute="top" secondItem="VM3-eU-Yaa" secondAttribute="bottom" id="b2K-iB-JiF"/>
                             <constraint firstAttribute="centerX" secondItem="aAI-Ml-xCb" secondAttribute="centerX" id="gGL-ae-Zzy"/>
                             <constraint firstItem="ZX0-bI-Fdq" firstAttribute="trailing" secondItem="A0k-Ut-mPi" secondAttribute="trailingMargin" id="ghZ-Dy-jus"/>
-                            <constraint firstItem="noB-4z-L4M" firstAttribute="top" secondItem="aAI-Ml-xCb" secondAttribute="bottom" id="kRK-oV-s8m"/>
-                            <constraint firstItem="noB-4z-L4M" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leadingMargin" constant="-16" id="kjh-nT-B61"/>
-                            <constraint firstItem="noB-4z-L4M" firstAttribute="top" secondItem="aAI-Ml-xCb" secondAttribute="bottom" id="pe2-Gc-MzF"/>
                             <constraint firstItem="ZX0-bI-Fdq" firstAttribute="leading" secondItem="A0k-Ut-mPi" secondAttribute="leadingMargin" id="y2F-uv-pdC"/>
-                            <constraint firstAttribute="centerX" secondItem="noB-4z-L4M" secondAttribute="centerX" id="yzz-2s-mhI"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="2gF-Th-dAd"/>
-                                <exclude reference="9S3-Q7-odV"/>
-                                <exclude reference="kRK-oV-s8m"/>
-                                <exclude reference="kjh-nT-B61"/>
-                                <exclude reference="aC5-5T-Mo3"/>
                             </mask>
                         </variation>
                     </view>
@@ -296,7 +288,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="challengeInformation" destination="ZX0-bI-Fdq" id="1Hn-Di-akf"/>
-                        <outlet property="completeButton" destination="noB-4z-L4M" id="bR8-Qj-jmB"/>
+                        <outlet property="completeButton" destination="mDv-S4-gi8" id="XkZ-jF-df9"/>
                         <outlet property="completedDescription" destination="eew-Oy-2Fz" id="EjV-5A-tg3"/>
                         <outlet property="completedImageView" destination="pQy-tS-6mr" id="UqA-7t-qGN"/>
                     </connections>

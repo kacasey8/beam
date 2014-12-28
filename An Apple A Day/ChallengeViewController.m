@@ -200,7 +200,7 @@ NSDateFormatter *dateFormatter;
     if (comment) {
         _completedDescription.text = comment;
         _completedDescription.hidden = NO;
-        [_completeButton setTitle:@"Update" forState:UIControlStateNormal];
+        [_completeButton setTitle:@"Update"];
     }
 
     UIImage *image = [properties objectForKey:@"image"];
