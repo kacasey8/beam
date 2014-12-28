@@ -157,6 +157,10 @@
 #pragma mark UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    _player = nil;
+    _videoUrl = nil;
+    _imageView.image = nil;
+    
     NSString *mediaType = info[UIImagePickerControllerMediaType];
     
     [self dismissViewControllerAnimated:YES completion:nil];
