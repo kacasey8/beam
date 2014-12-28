@@ -165,8 +165,8 @@ NSDateFormatter *dateFormatter;
                 if ([files count] > 0) {
                     NSDictionary *file = [[builtResult objectForKey:@"files"] objectAtIndex:0];
                     NSString *fileUrl = [[[builtResult objectForKey:@"files"] objectAtIndex:0] objectForKey:@"url"];
+                    NSURL *url = [NSURL URLWithString:fileUrl];
                     if ([[file objectForKey:@"filename"] isEqualToString:@"image"]) {
-                        NSURL *url = [NSURL URLWithString:fileUrl];
                         NSData *data = [NSData dataWithContentsOfURL:url];
                         UIImage *img = [[UIImage alloc] initWithData:data];
                         if (img != nil) {
@@ -174,9 +174,10 @@ NSDateFormatter *dateFormatter;
                         }
 
                     } else {
-                        
+                        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+                        player.view.frame = CGRectMake(0, 200, 400, 300);
+                        [self.view addSubview:player.view];
                     }
-                    
                 }
                 NSString *uid = [builtResult objectForKey:@"uid"];
                 
