@@ -160,6 +160,7 @@
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
         _imageView.image = image;
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
         
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
