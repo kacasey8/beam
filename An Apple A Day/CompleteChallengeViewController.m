@@ -161,7 +161,13 @@
     
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
-        _imageView.image = image;
+        CGSize newSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.width);
+        UIGraphicsBeginImageContext( newSize );
+        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        _imageView.image = newImage;
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
         
         if (_newMedia)
