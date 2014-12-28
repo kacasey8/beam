@@ -10,6 +10,8 @@
 
 @interface CompleteChallengeViewController ()
 
+@property (nonatomic, strong) MPMoviePlayerController *player;
+
 @end
 
 @implementation CompleteChallengeViewController
@@ -172,9 +174,11 @@
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
         _videoUrl = [info objectForKey:UIImagePickerControllerMediaURL];
-        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:_videoUrl];
-        player.view.frame = CGRectMake(0, 200, 400, 300);
-        [self.view addSubview:player.view];
+        _player = [[MPMoviePlayerController alloc] initWithContentURL:_videoUrl];
+        _player.controlStyle = MPMovieControlStyleEmbedded;
+        _player.view.frame = CGRectMake(0, 200, self.view.frame.size.width, 300);
+        [_player prepareToPlay];
+        [self.view addSubview:_player.view];
         
         if (_newMedia)
             UISaveVideoAtPathToSavedPhotosAlbum([_videoUrl relativePath],

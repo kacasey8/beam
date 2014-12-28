@@ -70,7 +70,6 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y1w-rH-cho">
                     <rect key="frame" x="0.0" y="216" width="600" height="340"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="600" id="W3j-gS-Yr4"/>
                         <constraint firstAttribute="height" constant="340" id="e9i-Pt-Hcq"/>
                     </constraints>
                 </imageView>
