@@ -96,7 +96,7 @@ NSDateFormatter *dateFormatter;
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"challenge"];
     [query whereKey:@"date" equalTo:dateQueried];
     
-    [query includeOnlyFields:[NSArray arrayWithObjects: @"date", @"information", nil]];
+    [query includeOnlyFields:[NSArray arrayWithObjects: @"date", @"information", @"background", nil]];
     
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
@@ -106,19 +106,8 @@ NSDateFormatter *dateFormatter;
         if ([results count] == 0) {
             NSLog(@"NO DAILY CHALLENGE!");
         } else {
-            BuiltObject *tmp = [results objectAtIndex:0];
-            _challenge = [NSMutableDictionary dictionary];
-            
-            // I'm transferring it to a mutable dictionary so it can be saved to persistent storage on device
-            
-            NSArray *keysToTransfer = @[@"uid", @"information"];
-            
-            for (NSString *s in keysToTransfer) {
-                NSString *hi = [tmp objectForKey:s];
-                [_challenge setValue:hi forKey:s];
-            }
-                                        
-            NSLog(@"%@", _challenge);
+            _challenge = [results objectAtIndex:0];
+            NSLog(@"CHALLENGE %@", _challenge);
             [self setUpInformationForChallenge];
             [self queryCompletedDailyChallenge];
         }
@@ -133,6 +122,15 @@ NSDateFormatter *dateFormatter;
 - (void)setUpInformationForChallenge
 {
     _challengeInformation.text = [_challenge objectForKey:@"information"];
+    NSDictionary *file = [_challenge objectForKey:@"background"];
+    if (file) {
+        NSString *fileUrl = [file objectForKey:@"url"];
+        NSURL *url = [NSURL URLWithString:fileUrl];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[[UIImage alloc] initWithData:data]];
+    } else {
+        // self.view.backgroundColor = [UIColor colorWithPatternImage:[[UIImage imageNamed:@"background"]]];
+    }
 }
 
 - (void)queryCompletedDailyChallenge
@@ -184,7 +182,7 @@ NSDateFormatter *dateFormatter;
                 
                 [self updateCompletedDailyChallengeWithProperties:_challengePost];
             }
-            [self saveCacheToPersistantStorage];
+            // [self saveCacheToPersistantStorage];
         } onError:^(NSError *error, ResponseType type) {
             // query execution failed.
             // error.userinfo contains more details regarding the same
