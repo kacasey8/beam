@@ -96,7 +96,8 @@
     
     BuiltFile *videoFile = [BuiltFile file];
     if (_videoUrl != nil) {
-        [videoFile setFile:[[NSBundle mainBundle] pathForResource:_videoUrl ofType:@"mov"] forKey:@"movie"];
+        [properties setValue:_videoUrl forKey:@"video"];
+        [videoFile setFile:[[NSBundle mainBundle] pathForResource:[_videoUrl relativePath] ofType:@"mov"] forKey:@"video"];
         [videoFile saveOnSuccess:^ {
             //file successfully uploaded
             //file properties are populated
@@ -169,14 +170,13 @@
                                            nil);
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
-        NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];
-        _videoUrl = [url relativePath];
-        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+        _videoUrl = [info objectForKey:UIImagePickerControllerMediaURL];
+        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:_videoUrl];
         player.view.frame = CGRectMake(0, 200, 400, 300);
         [self.view addSubview:player.view];
         
         if (_newMedia)
-            UISaveVideoAtPathToSavedPhotosAlbum(_videoUrl,
+            UISaveVideoAtPathToSavedPhotosAlbum([_videoUrl relativePath],
                                                 self,
                                                 @selector(video:didFinishSavingWithError:contextInfo:),
                                                 nil);

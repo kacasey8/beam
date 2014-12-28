@@ -161,20 +161,24 @@ NSDateFormatter *dateFormatter;
                 _challengePost = [[NSMutableDictionary alloc] init];
                 NSString *text = [builtResult objectForKey:@"comment"];
                 NSArray *files = [builtResult objectForKey:@"files"];
-                NSString *imageUrl;
+
                 if ([files count] > 0) {
-                    imageUrl = [[[builtResult objectForKey:@"files"] objectAtIndex:0] objectForKey:@"url"];
+                    NSDictionary *file = [[builtResult objectForKey:@"files"] objectAtIndex:0];
+                    NSString *fileUrl = [[[builtResult objectForKey:@"files"] objectAtIndex:0] objectForKey:@"url"];
+                    if ([[file objectForKey:@"filename"] isEqualToString:@"image"]) {
+                        NSURL *url = [NSURL URLWithString:fileUrl];
+                        NSData *data = [NSData dataWithContentsOfURL:url];
+                        UIImage *img = [[UIImage alloc] initWithData:data];
+                        if (img != nil) {
+                            [_challengePost setObject:img forKey:@"image"];
+                        }
+
+                    } else {
+                        
+                    }
+                    
                 }
                 NSString *uid = [builtResult objectForKey:@"uid"];
-                
-                if (imageUrl) {
-                    NSURL *url = [NSURL URLWithString:imageUrl];
-                    NSData *data = [NSData dataWithContentsOfURL:url];
-                    UIImage *img = [[UIImage alloc] initWithData:data];
-                    if (img != nil) {
-                        [_challengePost setObject:img forKey:@"image"];
-                    }
-                }
                 
                 [_challengePost setObject:uid forKey:@"uid"];
                 [_challengePost setObject:text forKey:@"comment"];
@@ -205,6 +209,13 @@ NSDateFormatter *dateFormatter;
         _completedImageView.image = image;
         _completedImageView.hidden = NO;
         _completedImageView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    
+    NSURL *videoUrl = [properties objectForKey:@"video"];
+    if (videoUrl) {
+        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:videoUrl];
+        player.view.frame = CGRectMake(0, 200, 400, 300);
+        [self.view addSubview:player.view];
     }
 }
 
