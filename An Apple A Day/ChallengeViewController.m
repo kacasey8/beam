@@ -219,6 +219,7 @@ NSDateFormatter *dateFormatter;
     } else if (videoUrl) {
         _player = [[MPMoviePlayerController alloc] initWithContentURL:videoUrl];
         _player.view.frame = CGRectMake(0, _completedImageView.frame.origin.x, self.view.frame.size.width, self.view.frame.size.width);
+        [_player prepareToPlay];
         [self.view addSubview:_player.view];
         _completedImageView.image = nil;
     }
