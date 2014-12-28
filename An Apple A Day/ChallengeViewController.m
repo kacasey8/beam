@@ -96,7 +96,7 @@ NSDateFormatter *dateFormatter;
     BuiltQuery *query = [BuiltQuery queryWithClassUID:@"challenge"];
     [query whereKey:@"date" equalTo:dateQueried];
     
-    [query includeOnlyFields:[NSArray arrayWithObjects: @"date", @"information", nil]];
+    [query includeOnlyFields:[NSArray arrayWithObjects: @"date", @"information", @"background", nil]];
     
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
@@ -106,19 +106,8 @@ NSDateFormatter *dateFormatter;
         if ([results count] == 0) {
             NSLog(@"NO DAILY CHALLENGE!");
         } else {
-            BuiltObject *tmp = [results objectAtIndex:0];
-            _challenge = [NSMutableDictionary dictionary];
-            
-            // I'm transferring it to a mutable dictionary so it can be saved to persistent storage on device
-            
-            NSArray *keysToTransfer = @[@"uid", @"information"];
-            
-            for (NSString *s in keysToTransfer) {
-                NSString *hi = [tmp objectForKey:s];
-                [_challenge setValue:hi forKey:s];
-            }
-                                        
-            NSLog(@"%@", _challenge);
+            _challenge = [results objectAtIndex:0];
+            NSLog(@"CHALLENGE %@", _challenge);
             [self setUpInformationForChallenge];
             [self queryCompletedDailyChallenge];
         }
@@ -133,10 +122,21 @@ NSDateFormatter *dateFormatter;
 - (void)setUpInformationForChallenge
 {
     _challengeInformation.text = [_challenge objectForKey:@"information"];
+    NSDictionary *file = [_challenge objectForKey:@"background"];
+    if (file) {
+        NSString *fileUrl = [file objectForKey:@"url"];
+        NSURL *url = [NSURL URLWithString:fileUrl];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[[UIImage alloc] initWithData:data]];
+    } else {
+        // self.view.backgroundColor = [UIColor colorWithPatternImage:[[UIImage imageNamed:@"background"]]];
+    }
 }
 
 - (void)queryCompletedDailyChallenge
 {
+    // Make sure everything is set up first. This method gets called when we successfully login and when challenge
+    // is successfully queried
     if ([_challenge objectForKey:@"uid"] && [_globalKeyValueStore getValueforKey:kBuiltUserUID]) {
         BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
         [query whereKey:@"user" equalTo:[_globalKeyValueStore getValueforKey:kBuiltUserUID]];
@@ -158,39 +158,31 @@ NSDateFormatter *dateFormatter;
                 
                 _challengePost = [[NSMutableDictionary alloc] init];
                 NSString *text = [builtResult objectForKey:@"comment"];
-                NSString *imageUrl = [[[builtResult objectForKey:@"files"] objectAtIndex:0] objectForKey:@"url"];
+                NSDictionary *file = [builtResult objectForKey:@"files"];
+                if (file) {
+                    NSString *fileUrl = [file objectForKey:@"url"];
+                    NSURL *url = [NSURL URLWithString:fileUrl];
+                    if ([[file objectForKey:@"filename"] isEqualToString:@"image"]) {
+                        NSData *data = [NSData dataWithContentsOfURL:url];
+                        UIImage *img = [[UIImage alloc] initWithData:data];
+                        if (img != nil) {
+                            [_challengePost setObject:img forKey:@"image"];
+                        }
+
+                    } else {
+                        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+                        player.view.frame = CGRectMake(0, 200, 400, 300);
+                        [self.view addSubview:player.view];
+                    }
+                }
                 NSString *uid = [builtResult objectForKey:@"uid"];
-                
-                NSURL *url = [NSURL URLWithString:imageUrl];
-                NSData *data = [NSData dataWithContentsOfURL:url];
-                UIImage *img = [[UIImage alloc] initWithData:data];
                 
                 [_challengePost setObject:uid forKey:@"uid"];
                 [_challengePost setObject:text forKey:@"comment"];
-                if (img != nil) {
-                    [_challengePost setObject:img forKey:@"image"];
-                }
                 
                 [self updateCompletedDailyChallengeWithProperties:_challengePost];
-                
-                /* uncomment to clear the user challenges
-                for (int i = 0; i < [builtResults count]; i++) {
-                    NSDictionary *result = [builtResults objectAtIndex:i];
-                    BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
-                    
-                    [obj setUid:[result objectForKey:@"uid"]];
-                    
-                    [obj destroyOnSuccess:^{
-                        // object is deleted
-                        NSLog(@"%d", i);
-                    } onError:^(NSError *error) {
-                        // there was an error in deleting the object
-                        // error.userinfo contains more details regarding the same
-                        NSLog(@"%@", error.userInfo);
-                    }];
-                }*/
             }
-            [self saveCacheToPersistantStorage];
+            // [self saveCacheToPersistantStorage];
         } onError:^(NSError *error, ResponseType type) {
             // query execution failed.
             // error.userinfo contains more details regarding the same
@@ -206,14 +198,30 @@ NSDateFormatter *dateFormatter;
     if (comment) {
         _completedDescription.text = comment;
         _completedDescription.hidden = NO;
-        [_completeButton setTitle:@"Update" forState:UIControlStateNormal];
+        [_completeButton setTitle:@"Update"];
     }
+    
+    _player = nil;
+    _completedImageView.image = nil;
 
     UIImage *image = [properties objectForKey:@"image"];
+    NSURL *videoUrl = [properties objectForKey:@"video"];
+
     if (image) {
-        _completedImageView.image = image;
+        CGSize newSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.width);
+        UIGraphicsBeginImageContext( newSize );
+        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        _completedImageView.image = newImage;
         _completedImageView.hidden = NO;
         _completedImageView.contentMode = UIViewContentModeScaleAspectFill;
+    } else if (videoUrl) {
+        _player = [[MPMoviePlayerController alloc] initWithContentURL:videoUrl];
+        _player.view.frame = CGRectMake(0, _completedImageView.frame.origin.x, self.view.frame.size.width, self.view.frame.size.width);
+        [_player prepareToPlay];
+        [self.view addSubview:_player.view];
+        _completedImageView.image = nil;
     }
 }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -17,16 +18,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5Y-zy-Ocy">
-                    <rect key="frame" x="12" y="53" width="573" height="160"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="160" id="NaQ-7v-qHb"/>
-                    </constraints>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tx-To-eAM">
                     <rect key="frame" x="553" y="21" width="32" height="30"/>
                     <state key="normal" title="Post">
@@ -36,13 +27,6 @@
                         <action selector="completeChallenge:" destination="-1" eventType="touchUpInside" id="91W-Wv-hsp"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y1w-rH-cho">
-                    <rect key="frame" x="171" y="216" width="259" height="148"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="259" id="W3j-gS-Yr4"/>
-                        <constraint firstAttribute="height" constant="148" id="e9i-Pt-Hcq"/>
-                    </constraints>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id9-h0-dKo">
                     <rect key="frame" x="8" y="21" width="30" height="30"/>
                     <state key="normal" title="X">
@@ -82,21 +66,53 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0o-yg-gKl">
+                    <rect key="frame" x="0.0" y="59" width="600" height="497"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y1w-rH-cho">
+                            <rect key="frame" x="0.0" y="116.5" width="600" height="340"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="600" placeholder="YES" id="Nfh-p0-BGT"/>
+                                <constraint firstAttribute="height" constant="340" placeholder="YES" id="gvs-5g-f4H"/>
+                            </constraints>
+                        </imageView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5Y-zy-Ocy">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="116.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="116.5" placeholder="YES" id="YGv-rS-Hi7"/>
+                            </constraints>
+                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="y1w-rH-cho" firstAttribute="centerX" secondItem="e0o-yg-gKl" secondAttribute="centerX" id="2X6-HB-RWw"/>
+                        <constraint firstAttribute="bottom" secondItem="y1w-rH-cho" secondAttribute="bottom" id="7ZW-0i-Mss"/>
+                        <constraint firstItem="k5Y-zy-Ocy" firstAttribute="top" secondItem="e0o-yg-gKl" secondAttribute="top" id="CnK-2U-BpY"/>
+                        <constraint firstAttribute="trailing" secondItem="y1w-rH-cho" secondAttribute="trailing" id="MIo-vx-fLl"/>
+                        <constraint firstItem="y1w-rH-cho" firstAttribute="leading" secondItem="e0o-yg-gKl" secondAttribute="leading" id="Qvg-kO-Xkl"/>
+                        <constraint firstItem="k5Y-zy-Ocy" firstAttribute="leading" secondItem="e0o-yg-gKl" secondAttribute="leading" id="S09-16-Q4Y"/>
+                        <constraint firstItem="y1w-rH-cho" firstAttribute="top" secondItem="k5Y-zy-Ocy" secondAttribute="bottom" id="YnH-O2-rps"/>
+                        <constraint firstAttribute="centerX" secondItem="k5Y-zy-Ocy" secondAttribute="centerX" id="hxl-df-1gh"/>
+                        <constraint firstAttribute="trailing" secondItem="k5Y-zy-Ocy" secondAttribute="trailing" id="kg7-8i-y6Z"/>
+                    </constraints>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="k5Y-zy-Ocy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="8sV-Zw-TkA"/>
+                <constraint firstItem="e0o-yg-gKl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="04P-VK-M1k"/>
+                <constraint firstItem="OaO-7k-PXb" firstAttribute="top" secondItem="e0o-yg-gKl" secondAttribute="bottom" id="ATe-Na-UAr"/>
                 <constraint firstItem="id9-h0-dKo" firstAttribute="baseline" secondItem="5tx-To-eAM" secondAttribute="baseline" id="CF2-1Y-glL"/>
                 <constraint firstAttribute="trailing" secondItem="5tx-To-eAM" secondAttribute="trailing" constant="15" id="EAN-yL-mPD"/>
                 <constraint firstItem="5tx-To-eAM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="21" id="LCa-AP-QHu"/>
+                <constraint firstItem="e0o-yg-gKl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="59" id="OfK-Gm-rbl"/>
                 <constraint firstItem="OaO-7k-PXb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OyG-mo-1i0"/>
+                <constraint firstAttribute="trailing" secondItem="e0o-yg-gKl" secondAttribute="trailing" id="aGm-gP-eHM"/>
                 <constraint firstAttribute="bottom" secondItem="OaO-7k-PXb" secondAttribute="bottom" id="b6b-cu-csb"/>
-                <constraint firstItem="OaO-7k-PXb" firstAttribute="centerX" secondItem="y1w-rH-cho" secondAttribute="centerX" id="cpf-dZ-0Se"/>
-                <constraint firstItem="y1w-rH-cho" firstAttribute="top" secondItem="k5Y-zy-Ocy" secondAttribute="bottom" constant="3" id="fnF-bc-WAF"/>
-                <constraint firstItem="y1w-rH-cho" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gjI-qn-xPq"/>
                 <constraint firstItem="id9-h0-dKo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="qMt-I3-umz"/>
-                <constraint firstItem="y1w-rH-cho" firstAttribute="centerX" secondItem="k5Y-zy-Ocy" secondAttribute="centerX" constant="2" id="sn1-ux-xgH"/>
-                <constraint firstItem="k5Y-zy-Ocy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="53" id="tlD-7o-P2E"/>
+                <constraint firstAttribute="trailing" secondItem="OaO-7k-PXb" secondAttribute="trailing" id="stc-vD-4mA"/>
             </constraints>
             <point key="canvasLocation" x="256" y="296"/>
         </view>

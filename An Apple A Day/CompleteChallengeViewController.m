@@ -60,6 +60,7 @@
     [obj saveOnSuccess:^{
         // object is created successfully
         NSLog(@"initial update, modal is done. uid: %@", obj.uid);
+        [_presenter.challengePost setObject:obj.uid forKey:@"uid"];
     } onError:^(NSError *error) {
         // there was an error in creating the object
         // error.userinfo contains more details regarding the same
@@ -77,7 +78,7 @@
             
             NSLog(@"Image up, uid: %@", imgFile.uid);
             
-            [obj setObject:[NSArray arrayWithObjects: imgFile.uid, nil]
+            [obj setObject:imgFile.uid
                     forKey:@"files"];
             
             [obj saveOnSuccess:^{
@@ -96,14 +97,15 @@
     
     BuiltFile *videoFile = [BuiltFile file];
     if (_videoUrl != nil) {
-        [videoFile setFile:[[NSBundle mainBundle] pathForResource:_videoUrl ofType:@"mov"] forKey:@"movie"];
+        [properties setValue:_videoUrl forKey:@"video"];
+        [videoFile setFile:[_videoUrl path] forKey:@"video"];
         [videoFile saveOnSuccess:^ {
             //file successfully uploaded
             //file properties are populated
             
             NSLog(@"Video up, uid: %@", videoFile.uid);
             
-            [obj setObject:[NSArray arrayWithObjects: videoFile.uid, nil]
+            [obj setObject:videoFile.uid
                     forKey:@"files"];
             
             [obj saveOnSuccess:^{
@@ -153,29 +155,38 @@
 #pragma mark UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    _player = nil;
+    _videoUrl = nil;
+    _imageView.image = nil;
+    
     NSString *mediaType = info[UIImagePickerControllerMediaType];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
-        _imageView.image = image;
+        CGSize newSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.width);
+        UIGraphicsBeginImageContext( newSize );
+        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        _imageView.image = newImage;
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
         
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
                                            @selector(image:finishedSavingWithError:contextInfo:),
                                            nil);
-    }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
-        NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];
-        _videoUrl = [url relativePath];
-        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
-        player.view.frame = CGRectMake(0, 200, 400, 300);
-        [self.view addSubview:player.view];
+    } else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
+        _videoUrl = [info objectForKey:UIImagePickerControllerMediaURL];
+        _player = [[MPMoviePlayerController alloc] initWithContentURL:_videoUrl];
+        _player.view.frame = CGRectMake(0, _imageView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.width);
+        [self.view addSubview:_player.view];
         
         if (_newMedia)
-            UISaveVideoAtPathToSavedPhotosAlbum(_videoUrl,
+            UISaveVideoAtPathToSavedPhotosAlbum([_videoUrl relativePath],
                                                 self,
                                                 @selector(video:didFinishSavingWithError:contextInfo:),
                                                 nil);

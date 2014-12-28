@@ -22,4 +22,6 @@ extern NSString *kUsersChallengesUID;
 
 - (id)getValueforKey:(NSString *)key;
 
+-(void)deleteAllUsersChallenges; // TODO TAKE THIS OUT OF PRODUCTION
+
 @end
