@@ -60,6 +60,7 @@
     [obj saveOnSuccess:^{
         // object is created successfully
         NSLog(@"initial update, modal is done. uid: %@", obj.uid);
+        [_presenter.challengePost setObject:obj.uid forKey:@"uid"];
     } onError:^(NSError *error) {
         // there was an error in creating the object
         // error.userinfo contains more details regarding the same
@@ -175,11 +176,11 @@
         player.view.frame = CGRectMake(0, 200, 400, 300);
         [self.view addSubview:player.view];
         
-        if (_newMedia)
-            UISaveVideoAtPathToSavedPhotosAlbum([_videoUrl relativePath],
-                                                self,
-                                                @selector(video:didFinishSavingWithError:contextInfo:),
-                                                nil);
+//        if (_newMedia)
+//            UISaveVideoAtPathToSavedPhotosAlbum([_videoUrl relativePath],
+//                                                self,
+//                                                @selector(video:didFinishSavingWithError:contextInfo:),
+//                                                nil);
     }
 }
 

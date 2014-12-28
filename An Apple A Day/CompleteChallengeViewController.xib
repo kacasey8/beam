@@ -37,13 +37,6 @@
                         <action selector="completeChallenge:" destination="-1" eventType="touchUpInside" id="91W-Wv-hsp"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y1w-rH-cho">
-                    <rect key="frame" x="0.0" y="216" width="600" height="340"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="600" id="W3j-gS-Yr4"/>
-                        <constraint firstAttribute="height" constant="340" id="e9i-Pt-Hcq"/>
-                    </constraints>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="id9-h0-dKo">
                     <rect key="frame" x="8" y="21" width="30" height="30"/>
                     <state key="normal" title="X">
@@ -83,6 +76,12 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y1w-rH-cho">
+                    <rect key="frame" x="0.0" y="216" width="600" height="340"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="340" id="e9i-Pt-Hcq"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
