@@ -176,18 +176,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeImageCell" id="cXM-X9-YjH">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeImageCell" rowHeight="300" id="cXM-X9-YjH" customClass="ChallengeImageTableViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cXM-X9-YjH" id="x4W-oh-WRV">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2aQ-Mn-NDl">
+                                            <rect key="frame" x="0.0" y="-1" width="600" height="299.5"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2aQ-Mn-NDl" firstAttribute="leading" secondItem="x4W-oh-WRV" secondAttribute="leadingMargin" constant="-8" id="2iU-L8-ymh"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="2aQ-Mn-NDl" secondAttribute="trailing" constant="-8" id="8Ws-NT-Olk"/>
+                                        <constraint firstItem="2aQ-Mn-NDl" firstAttribute="top" secondItem="x4W-oh-WRV" secondAttribute="topMargin" constant="-9" id="XYC-lj-vO7"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="2aQ-Mn-NDl" secondAttribute="bottom" constant="-7" id="eCD-d0-cQg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="image" destination="2aQ-Mn-NDl" id="4P7-Gr-0l0"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeCommentCell" id="w5X-pe-XmZ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeCommentCell" rowHeight="300" id="w5X-pe-XmZ" customClass="ChallengeCommentTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w5X-pe-XmZ" id="xtm-gp-8Lp">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="12" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6dP-gU-5Ak">
+                                            <rect key="frame" x="28" y="13" width="544" height="61"/>
+                                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat pharetra quam vitae semper. Suspendisse in eros feugiat, tempor nunc sit amet, dignissim </string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="6dP-gU-5Ak" secondAttribute="bottom" constant="5" id="2mG-6M-PLB"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="6dP-gU-5Ak" secondAttribute="trailing" constant="20" id="4Ht-Do-77v"/>
+                                        <constraint firstItem="6dP-gU-5Ak" firstAttribute="leading" secondItem="xtm-gp-8Lp" secondAttribute="leadingMargin" constant="20" id="AJe-nj-14U"/>
+                                        <constraint firstItem="6dP-gU-5Ak" firstAttribute="top" secondItem="xtm-gp-8Lp" secondAttribute="topMargin" constant="5" id="lld-nO-Pgy"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="2mG-6M-PLB"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="comment" destination="6dP-gU-5Ak" id="1dQ-dd-VQ9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

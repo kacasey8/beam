@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <BuiltIO/BuiltIO.h>
 #import "Challenge.h"
+#import "Global.h"
 
 @interface ChallengeDetailTableViewController : UITableViewController
 
+@property (strong, nonatomic) Global *globalKeyValueStore;
 @property (assign) Challenge *challenge;
 
 @end

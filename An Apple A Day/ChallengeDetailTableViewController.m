@@ -7,6 +7,8 @@
 //
 
 #import "ChallengeDetailTableViewController.h"
+#import "ChallengeImageTableViewCell.h"
+#import "ChallengeCommentTableViewCell.h"
 
 @interface ChallengeDetailTableViewController ()
 
@@ -16,11 +18,60 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _globalKeyValueStore = [Global globalClass];
     self.tableView.rowHeight = 300;
+    self.navigationItem.title = self.challenge.date;
+    [self getChallengeDetail];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)getChallengeDetail {
+    NSLog(@"getting challenge detail");
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
+    [query whereKey:@"challenge" equalTo:self.challenge.uid];
+    [query whereKey:@"user" equalTo:[_globalKeyValueStore getValueforKey:kBuiltUserUID]];
+    
+    [query includeOnlyFields:[NSArray arrayWithObjects: @"uid", @"comment", @"files", nil]];
+    
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        
+        NSDictionary *builtResult = [[result getResult] objectAtIndex:0];
+        //NSLog(@"challenge detail result %@", builtResult);
+        
+        NSString *comment = [builtResult objectForKey:@"comment"];
+        self.challenge.comment = comment;
+        
+        NSDictionary *file = [builtResult objectForKey:@"files"];
+        if (file) {
+            NSString *fileUrl = [file objectForKey:@"url"];
+            NSURL *url = [NSURL URLWithString:fileUrl];
+            if ([[file objectForKey:@"filename"] isEqualToString:@"image"]) {
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                UIImage *img = [[UIImage alloc] initWithData:data];
+                if (img != nil) {
+                    self.challenge.image = img;
+                }
+                
+//            } else {
+//                MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+//                player.view.frame = CGRectMake(0, 200, 400, 300);
+//                [self.view addSubview:player.view];
+            }
+        }
+        NSLog(@"%@", [self.challenge toString]);
+
+        [self.tableView reloadData];
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", @"ERROR");
+        NSLog(@"%@", error.userInfo);
+    }];
 }
 
 #pragma mark - Table view data source
@@ -40,12 +91,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeImageCell" forIndexPath:indexPath];
-        cell.textLabel.text = @"image should be here";
+        ChallengeImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeImageCell" forIndexPath:indexPath];
+        cell.image.image = self.challenge.image;
         return cell;
     } else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeCommentCell" forIndexPath:indexPath];
-        cell.textLabel.text = @"comment";
+        ChallengeCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeCommentCell" forIndexPath:indexPath];
+        cell.comment.text = self.challenge.comment;
         return cell;
     }
 }
@@ -59,7 +110,6 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    NSLog(@"tableview width %f", self.tableView.frame.size.width);
     UIView *customHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
     customHeaderView.backgroundColor = [UIColor whiteColor];
     UILabel *challengeTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.tableView.frame.size.width-20, 100)];
@@ -76,15 +126,5 @@
     [customHeaderView addSubview:seperatorView];
     return customHeaderView;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
