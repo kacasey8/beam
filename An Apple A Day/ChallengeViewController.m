@@ -158,7 +158,7 @@ NSDateFormatter *dateFormatter;
                 
                 _challengePost = [[NSMutableDictionary alloc] init];
                 NSString *text = [builtResult objectForKey:@"comment"];
-                NSDictionary *file = [builtResult objectForKey:@"files"];
+                NSDictionary *file = [builtResult objectForKey:@"file"];
                 if (file) {
                     NSString *fileUrl = [file objectForKey:@"url"];
                     NSURL *url = [NSURL URLWithString:fileUrl];

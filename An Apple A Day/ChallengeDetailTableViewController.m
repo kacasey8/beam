@@ -34,7 +34,7 @@
     [query whereKey:@"challenge" equalTo:self.challenge.uid];
     [query whereKey:@"user" equalTo:[_globalKeyValueStore getValueforKey:kBuiltUserUID]];
     
-    [query includeOnlyFields:[NSArray arrayWithObjects: @"uid", @"comment", @"files", nil]];
+    [query includeOnlyFields:[NSArray arrayWithObjects: @"uid", @"comment", @"file", nil]];
     
     [query exec:^(QueryResult *result, ResponseType type) {
         // the query has executed successfully.
@@ -46,7 +46,7 @@
         NSString *comment = [builtResult objectForKey:@"comment"];
         self.challenge.comment = comment;
         
-        NSDictionary *file = [builtResult objectForKey:@"files"];
+        NSDictionary *file = [builtResult objectForKey:@"file"];
         if (file) {
             NSString *fileUrl = [file objectForKey:@"url"];
             NSURL *url = [NSURL URLWithString:fileUrl];

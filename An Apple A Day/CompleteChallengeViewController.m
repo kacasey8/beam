@@ -174,7 +174,7 @@ CGFloat SCREEN_HEIGHT;
             NSLog(@"Image up, uid: %@", file.uid);
             
             [obj setObject:file.uid
-                    forKey:@"files"];
+                    forKey:@"file"];
             
             [obj saveOnSuccess:^{
                 // object is created successfully
@@ -199,7 +199,7 @@ CGFloat SCREEN_HEIGHT;
             NSLog(@"Video up, uid: %@", file.uid);
             
             [obj setObject:file.uid
-                    forKey:@"files"];
+                    forKey:@"file"];
             
             [obj saveOnSuccess:^{
                 // object is created successfully
