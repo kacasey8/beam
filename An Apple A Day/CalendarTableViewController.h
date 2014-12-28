@@ -10,4 +10,8 @@
 
 @interface CalendarTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSMutableArray *completedChallenges;
+
+- (void)updateCompletedChallenges;
+
 @end

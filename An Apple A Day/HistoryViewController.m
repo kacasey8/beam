@@ -57,12 +57,12 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"destinationViewController:%@", [segue destinationViewController]);
     if ([segue.identifier isEqualToString:@"embedCalendarView"]) {
         self.calendarViewController = (CalendarViewController *) [segue destinationViewController];
     } else if ([segue.identifier isEqualToString:@"embedListView"]) {
         self.calendarTableViewController = (CalendarTableViewController *) [segue destinationViewController];
     } else if ([segue.identifier isEqualToString:@"openChallengeDetail"]) {
-        NSLog(@"destinationViewController:%@", [segue destinationViewController]);
         ChallengeDetailTableViewController *challengeDetailVC = (ChallengeDetailTableViewController *)[segue destinationViewController];
         Challenge *selectedChallenge = [self.completedChallenges objectForKey:self.challengeDate];
         NSLog(@"challenge date: %@", self.challengeDate);
@@ -111,6 +111,7 @@
         self.totalCompletedCountLabel.text = [NSString stringWithFormat:@"%d", (int)challengesCompelted];
         
         [self.calendarViewController.calendar reloadData];
+        [self.calendarTableViewController updateCompletedChallenges]; //this should reload the table view data
         
         NSLog(@"Challenges completed = %d", (int)challengesCompelted);
         NSLog(@"Completed Challenges: %@", self.completedChallenges);
