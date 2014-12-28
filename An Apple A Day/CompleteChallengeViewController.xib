@@ -69,31 +69,32 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0o-yg-gKl">
                     <rect key="frame" x="0.0" y="59" width="600" height="497"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y1w-rH-cho">
-                            <rect key="frame" x="0.0" y="157" width="600" height="340"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="340" id="e9i-Pt-Hcq"/>
-                            </constraints>
-                        </imageView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5Y-zy-Ocy">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5Y-zy-Ocy">
                             <rect key="frame" x="0.0" y="-5" width="600" height="163"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="163" id="NaQ-7v-qHb"/>
+                                <constraint firstAttribute="height" constant="163" id="KtE-fI-dtJ"/>
                             </constraints>
                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y1w-rH-cho">
+                            <rect key="frame" x="0.0" y="157" width="600" height="340"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="600" id="Nfh-p0-BGT"/>
+                                <constraint firstAttribute="height" constant="340" id="gvs-5g-f4H"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="k5Y-zy-Ocy" firstAttribute="top" secondItem="e0o-yg-gKl" secondAttribute="top" constant="-5" id="0Kf-iP-c6H"/>
                         <constraint firstItem="y1w-rH-cho" firstAttribute="centerX" secondItem="e0o-yg-gKl" secondAttribute="centerX" id="2X6-HB-RWw"/>
                         <constraint firstItem="y1w-rH-cho" firstAttribute="trailing" secondItem="k5Y-zy-Ocy" secondAttribute="trailing" id="41n-1k-ADR"/>
                         <constraint firstAttribute="trailing" secondItem="y1w-rH-cho" secondAttribute="trailing" id="MIo-vx-fLl"/>
                         <constraint firstAttribute="bottom" secondItem="y1w-rH-cho" secondAttribute="bottom" id="Md4-RV-YL7"/>
                         <constraint firstItem="y1w-rH-cho" firstAttribute="leading" secondItem="e0o-yg-gKl" secondAttribute="leading" id="Qvg-kO-Xkl"/>
-                        <constraint firstItem="y1w-rH-cho" firstAttribute="top" secondItem="e0o-yg-gKl" secondAttribute="top" constant="157" id="gda-A7-0U7"/>
+                        <constraint firstItem="k5Y-zy-Ocy" firstAttribute="top" secondItem="e0o-yg-gKl" secondAttribute="top" constant="-5" id="gMu-AO-mGm"/>
+                        <constraint firstItem="y1w-rH-cho" firstAttribute="top" secondItem="e0o-yg-gKl" secondAttribute="top" constant="157" id="mqU-po-M9v"/>
                         <constraint firstItem="y1w-rH-cho" firstAttribute="leading" secondItem="k5Y-zy-Ocy" secondAttribute="leading" id="rUl-tv-oju"/>
                     </constraints>
                 </scrollView>
