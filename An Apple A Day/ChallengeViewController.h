@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSMutableDictionary *challenge;
 @property (strong, nonatomic) NSMutableDictionary *challengePost;
 @property (strong, nonatomic) Global *globalKeyValueStore;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (IBAction)logout:(id)sender;
 

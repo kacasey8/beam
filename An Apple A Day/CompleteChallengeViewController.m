@@ -163,17 +163,17 @@ CGFloat SCREEN_HEIGHT;
         NSLog(@"%@", error.userInfo);
     }];
 
-    BuiltFile *imgFile = [BuiltFile file];
+    BuiltFile *file = [BuiltFile file];
     if (_imageView.image != nil) {
         [properties setValue:_imageView.image forKey:@"image"];
-        [imgFile setImage:_imageView.image forKey:@"image"];
-        [imgFile saveOnSuccess:^ {
+        [file setImage:_imageView.image forKey:@"image"];
+        [file saveOnSuccess:^ {
             //file successfully uploaded
             //file properties are populated
             
-            NSLog(@"Image up, uid: %@", imgFile.uid);
+            NSLog(@"Image up, uid: %@", file.uid);
             
-            [obj setObject:imgFile.uid
+            [obj setObject:file.uid
                     forKey:@"files"];
             
             [obj saveOnSuccess:^{
@@ -188,19 +188,17 @@ CGFloat SCREEN_HEIGHT;
         } onError:^(NSError *error) {
             //error in uploading
         }];
-    }
-    
-    BuiltFile *videoFile = [BuiltFile file];
-    if (_videoUrl != nil) {
+    } else if (_videoUrl != nil) {
         [properties setValue:_videoUrl forKey:@"video"];
-        [videoFile setFile:[_videoUrl path] forKey:@"video"];
-        [videoFile saveOnSuccess:^ {
+        [file setFile:[_videoUrl path] forKey:@"video"];
+        [file setContentType:@"mov"];
+        [file saveOnSuccess:^ {
             //file successfully uploaded
             //file properties are populated
             
-            NSLog(@"Video up, uid: %@", videoFile.uid);
+            NSLog(@"Video up, uid: %@", file.uid);
             
-            [obj setObject:videoFile.uid
+            [obj setObject:file.uid
                     forKey:@"files"];
             
             [obj saveOnSuccess:^{

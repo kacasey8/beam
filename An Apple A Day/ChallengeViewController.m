@@ -169,10 +169,9 @@ NSDateFormatter *dateFormatter;
                             [_challengePost setObject:img forKey:@"image"];
                         }
 
-                    } else {
-                        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:url];
-                        player.view.frame = CGRectMake(0, 200, 400, 300);
-                        [self.view addSubview:player.view];
+                    } else { // must be MOV filename
+                        // Use the url as the video.
+                        [_challengePost setObject:url forKey:@"video"];
                     }
                 }
                 NSString *uid = [builtResult objectForKey:@"uid"];
@@ -194,6 +193,8 @@ NSDateFormatter *dateFormatter;
 
 - (void)updateCompletedDailyChallengeWithProperties:(NSMutableDictionary *)properties {
     _challengePost = [[NSMutableDictionary alloc] initWithDictionary:properties];
+    
+    // set text information
     NSString *comment = [properties objectForKey:@"comment"];
     if (comment) {
         _completedDescription.text = comment;
@@ -201,6 +202,10 @@ NSDateFormatter *dateFormatter;
         [_completeButton setTitle:@"Update"];
     }
     
+    // Clear old data.
+    if (_player) {
+        [_player.view removeFromSuperview];
+    }
     _player = nil;
     _completedImageView.image = nil;
 
@@ -217,11 +222,52 @@ NSDateFormatter *dateFormatter;
         _completedImageView.hidden = NO;
         _completedImageView.contentMode = UIViewContentModeScaleAspectFill;
     } else if (videoUrl) {
-        _player = [[MPMoviePlayerController alloc] initWithContentURL:videoUrl];
+        _player = [[MPMoviePlayerController alloc] initWithContentURL:[videoUrl URLByAppendingPathExtension:@"mov"]];
         _player.view.frame = CGRectMake(0, _completedImageView.frame.origin.x, self.view.frame.size.width, self.view.frame.size.width);
         [_player prepareToPlay];
-        [self.view addSubview:_player.view];
-        _completedImageView.image = nil;
+        [self.scrollView addSubview:_player.view];
+
+        // Need to add in all the constraints. This is basically all constraints on the _imageView
+        
+        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
+                                                                    attribute:NSLayoutAttributeCenterX
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.scrollView
+                                                                    attribute:NSLayoutAttributeCenterX
+                                                                   multiplier:1.0
+                                                                     constant:0.0]];
+        
+        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:_completedDescription
+                                                                    attribute:NSLayoutAttributeTop
+                                                                   multiplier:1.0
+                                                                     constant:0.0]];
+        
+        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.scrollView
+                                                                    attribute:NSLayoutAttributeTop
+                                                                   multiplier:1.0
+                                                                     constant:0.0]];
+        
+        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
+                                                                    attribute:NSLayoutAttributeTrailing
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.scrollView
+                                                                    attribute:NSLayoutAttributeTrailing
+                                                                   multiplier:1.0
+                                                                     constant:0.0]];
+        
+        [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:_player.view
+                                                                    attribute:NSLayoutAttributeLeading
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.scrollView
+                                                                    attribute:NSLayoutAttributeLeading
+                                                                   multiplier:1.0
+                                                                     constant:0.0]];
     }
 }
 
