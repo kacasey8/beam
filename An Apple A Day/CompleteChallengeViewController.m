@@ -176,11 +176,11 @@
         player.view.frame = CGRectMake(0, 200, 400, 300);
         [self.view addSubview:player.view];
         
-//        if (_newMedia)
-//            UISaveVideoAtPathToSavedPhotosAlbum([_videoUrl relativePath],
-//                                                self,
-//                                                @selector(video:didFinishSavingWithError:contextInfo:),
-//                                                nil);
+        if (_newMedia)
+            UISaveVideoAtPathToSavedPhotosAlbum([_videoUrl relativePath],
+                                                self,
+                                                @selector(video:didFinishSavingWithError:contextInfo:),
+                                                nil);
     }
 }
 
