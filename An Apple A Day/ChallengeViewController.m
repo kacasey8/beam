@@ -212,7 +212,7 @@ NSDateFormatter *dateFormatter;
         UIGraphicsEndImageContext();
         _completedImageView.image = newImage;
         _completedImageView.hidden = NO;
-        _completedImageView.contentMode = UIViewContentModeScaleToFill;
+        _completedImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     
     NSURL *videoUrl = [properties objectForKey:@"video"];
