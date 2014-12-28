@@ -30,6 +30,7 @@
     _globalKeyValueStore = [Global globalClass];
     
     self.isCalendarView = YES;
+    self.calendarViewContainer.hidden = NO;
     self.listViewContainer.hidden = YES;
     [self getAllChallengesIHaveCompleted];
 }

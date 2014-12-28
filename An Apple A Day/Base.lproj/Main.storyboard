@@ -99,16 +99,16 @@
                                     <constraint firstAttribute="height" constant="1" id="noE-us-1eM"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJc-wv-1Mv" userLabel="CalendarContainerView">
-                                <rect key="frame" x="0.0" y="126" width="600" height="474"/>
-                                <connections>
-                                    <segue destination="UbC-g1-k7A" kind="embed" identifier="embedCalendarView" id="ksR-it-3Wc"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fHf-eV-hfo" userLabel="ListContainerView">
                                 <rect key="frame" x="0.0" y="132" width="600" height="469"/>
                                 <connections>
                                     <segue destination="cWX-WE-AAt" kind="embed" identifier="embedListView" id="9IW-KJ-AZ5"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJc-wv-1Mv" userLabel="CalendarContainerView">
+                                <rect key="frame" x="0.0" y="126" width="600" height="474"/>
+                                <connections>
+                                    <segue destination="UbC-g1-k7A" kind="embed" identifier="embedCalendarView" id="ksR-it-3Wc"/>
                                 </connections>
                             </containerView>
                         </subviews>

@@ -17,7 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.rowHeight = 300;
-    self.info.text = self.challenge.info;
 }
 
 - (void)didReceiveMemoryWarning {
