@@ -24,4 +24,6 @@
 - (void)updateComment:(NSString *)comment;
 - (void)updateImage:(UIImage *)image;
 
+- (NSString *)toString;
+
 @end

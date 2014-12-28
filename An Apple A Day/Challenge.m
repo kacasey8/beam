@@ -30,4 +30,14 @@
     self.image = image;
 }
 
+- (NSString *)toString {
+    NSString *result = @"Challenge:\n";
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"\tdate: %@\n", self.date]];
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"\tinfo: %@\n", self.info]];
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"\tuid: %@\n", self.uid]];
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"\tcomment: %@\n", self.comment]];
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"\timage: %@\n", self.image]];
+    return result;
+}
+
 @end

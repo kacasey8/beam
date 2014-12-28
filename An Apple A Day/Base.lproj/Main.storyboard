@@ -105,12 +105,6 @@
                                     <segue destination="UbC-g1-k7A" kind="embed" identifier="embedCalendarView" id="ksR-it-3Wc"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHf-eV-hfo" userLabel="ListContainerView">
-                                <rect key="frame" x="0.0" y="131.5" width="600" height="468.5"/>
-                                <connections>
-                                    <segue destination="cWX-WE-AAt" kind="embed" identifier="embedListView" id="9IW-KJ-AZ5"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -126,14 +120,10 @@
                             <constraint firstItem="LIw-Te-RCH" firstAttribute="centerX" secondItem="Szq-yY-F5F" secondAttribute="centerX" id="V6g-rD-hmB"/>
                             <constraint firstItem="Szq-yY-F5F" firstAttribute="top" secondItem="5N3-aw-YUj" secondAttribute="bottom" constant="10" id="Wgf-98-m4h"/>
                             <constraint firstItem="mmx-UA-DQJ" firstAttribute="centerX" secondItem="nL5-cC-TOm" secondAttribute="centerX" id="aT4-bz-e5m"/>
-                            <constraint firstAttribute="trailing" secondItem="fHf-eV-hfo" secondAttribute="trailing" id="iZ1-K0-Ul5"/>
                             <constraint firstItem="0EL-xw-EJa" firstAttribute="leading" secondItem="Szq-yY-F5F" secondAttribute="trailing" constant="20" id="jMs-ag-nXO"/>
                             <constraint firstItem="XJc-wv-1Mv" firstAttribute="top" secondItem="b0J-sg-2oe" secondAttribute="bottom" id="kdY-yV-XKH"/>
-                            <constraint firstItem="fHf-eV-hfo" firstAttribute="top" secondItem="b0J-sg-2oe" secondAttribute="bottom" constant="5" id="kgg-fI-v1h"/>
-                            <constraint firstItem="Nkf-cb-ysa" firstAttribute="top" secondItem="fHf-eV-hfo" secondAttribute="bottom" id="mUC-zZ-tw2"/>
                             <constraint firstItem="XJc-wv-1Mv" firstAttribute="leading" secondItem="zVT-aq-XVw" secondAttribute="leading" id="nBO-wd-eI9"/>
                             <constraint firstAttribute="trailing" secondItem="XJc-wv-1Mv" secondAttribute="trailing" id="nef-pT-oSl"/>
-                            <constraint firstItem="fHf-eV-hfo" firstAttribute="leading" secondItem="zVT-aq-XVw" secondAttribute="leading" id="nwm-UL-JXa"/>
                             <constraint firstItem="Szq-yY-F5F" firstAttribute="width" secondItem="0EL-xw-EJa" secondAttribute="width" id="rFO-sg-fFG"/>
                             <constraint firstItem="b0J-sg-2oe" firstAttribute="leading" secondItem="say-3I-14I" secondAttribute="trailing" constant="-305" id="rKC-6Z-LdR"/>
                             <constraint firstAttribute="bottom" secondItem="XJc-wv-1Mv" secondAttribute="bottom" id="rX0-ZA-SSg"/>
@@ -162,14 +152,47 @@
                         <outlet property="calendarViewContainer" destination="XJc-wv-1Mv" id="mfr-TE-2P5"/>
                         <outlet property="currentStreakCountLabel" destination="LIw-Te-RCH" id="GQG-ky-ZEU"/>
                         <outlet property="highestStreakCountLabel" destination="say-3I-14I" id="8UC-7o-Uwi"/>
-                        <outlet property="listViewContainer" destination="fHf-eV-hfo" id="OA4-j2-00g"/>
                         <outlet property="toggleButton" destination="LaZ-XG-1Gr" id="JhH-bx-mdT"/>
                         <outlet property="totalCompletedCountLabel" destination="nL5-cC-TOm" id="Kjj-0m-ipZ"/>
+                        <segue destination="X63-ol-Scd" kind="show" identifier="openChallengeDetail" id="Jvz-ZB-dNk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiX-Oz-95V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1710" y="-1048"/>
+        </scene>
+        <!--Challenge Detail Table View Controller-->
+        <scene sceneID="t15-jy-CST">
+            <objects>
+                <tableViewController id="X63-ol-Scd" customClass="ChallengeDetailTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BgJ-ww-JOi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeImageCell" id="cXM-X9-YjH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cXM-X9-YjH" id="x4W-oh-WRV">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeCommentCell" id="w5X-pe-XmZ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w5X-pe-XmZ" id="xtm-gp-8Lp">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="X63-ol-Scd" id="gVr-r4-mbs"/>
+                            <outlet property="delegate" destination="X63-ol-Scd" id="Ueo-Ju-oSE"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ATU-ec-Pww" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2395" y="-1048"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vkn-Wm-obh">
@@ -337,7 +360,7 @@
             <objects>
                 <tableViewController id="cWX-WE-AAt" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9cw-ua-eNV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="468.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -356,7 +379,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WK5-Tb-ExJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2395" y="-366.75"/>
+            <point key="canvasLocation" x="2395" y="-304"/>
         </scene>
     </scenes>
 </document>

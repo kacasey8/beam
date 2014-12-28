@@ -21,6 +21,8 @@
 @property (strong, nonatomic) IBOutlet UIView *listViewContainer;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *toggleButton;
 
-@property NSMutableDictionary *completedChallenges;
+@property (strong, nonatomic) NSMutableDictionary *completedChallenges;
+
+- (void)openChallengeDetailForDate:(NSString *)date;
 
 @end

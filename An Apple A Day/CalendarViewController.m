@@ -77,6 +77,7 @@ NSDateFormatter *dateFormatter;
 #pragma mark - Calendar datasource
 
 - (BOOL)calendarHaveEvent:(JTCalendar *)calendar date:(NSDate *)date {
+    //display dot if challenge was completed on this date
     HistoryViewController *parentVC = (HistoryViewController *) self.parentViewController;
     NSArray *completdDates = [parentVC.completedChallenges allKeys];
     NSString *currentDate = [dateFormatter stringFromDate:date];
@@ -84,7 +85,13 @@ NSDateFormatter *dateFormatter;
 }
 
 - (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date {
-    NSLog(@"%@", [dateFormatter stringFromDate:date]);
+    //only open challenge detial page if the challenge was completed on this date
+    NSString *currentDate = [dateFormatter stringFromDate:date];
+    HistoryViewController *parentVC = (HistoryViewController *) self.parentViewController;
+    NSArray *completdDates = [parentVC.completedChallenges allKeys];
+    if ([completdDates containsObject:currentDate]) {
+        [parentVC openChallengeDetailForDate:currentDate];
+    }
 }
 
 @end

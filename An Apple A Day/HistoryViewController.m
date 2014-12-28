@@ -10,12 +10,15 @@
 #import "Challenge.h"
 #import "CalendarViewController.h"
 #import "CalendarTableViewController.h"
+#import "ChallengeDetailTableViewController.h"
 
 @interface HistoryViewController ()
 
 @property BOOL isCalendarView;
 @property CalendarViewController *calendarViewController;
 @property CalendarTableViewController *calendarTableViewController;
+
+@property NSString *challengeDate; //used to open the correct challenge detail based on this date
 
 @end
 
@@ -52,13 +55,25 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"embedCalendarView"]) {
         self.calendarViewController = (CalendarViewController *) [segue destinationViewController];
     } else if ([segue.identifier isEqualToString:@"embedListView"]) {
         self.calendarTableViewController = (CalendarTableViewController *) [segue destinationViewController];
+    } else if ([segue.identifier isEqualToString:@"openChallengeDetail"]) {
+        NSLog(@"destinationViewController:%@", [segue destinationViewController]);
+        ChallengeDetailTableViewController *challengeDetailVC = (ChallengeDetailTableViewController *)[segue destinationViewController];
+        Challenge *selectedChallenge = [self.completedChallenges objectForKey:self.challengeDate];
+        NSLog(@"challenge date: %@", self.challengeDate);
+        NSLog(@"Completed Challenges: %@", self.completedChallenges);
+        NSLog(@"selected challenge: %@", [selectedChallenge toString]);
+        [challengeDetailVC setChallenge:selectedChallenge];
     }
+}
+
+- (void)openChallengeDetailForDate:(NSString *)date {
+    self.challengeDate = date;
+    [self performSegueWithIdentifier:@"openChallengeDetail" sender:self];
 }
 
 #pragma mark - All Challenge Helper
