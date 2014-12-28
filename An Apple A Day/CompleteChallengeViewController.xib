@@ -89,7 +89,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="y1w-rH-cho" firstAttribute="centerX" secondItem="e0o-yg-gKl" secondAttribute="centerX" id="2X6-HB-RWw"/>
-                        <constraint firstAttribute="bottom" secondItem="y1w-rH-cho" secondAttribute="bottom" constant="40.5" id="7ZW-0i-Mss"/>
+                        <constraint firstAttribute="bottom" secondItem="y1w-rH-cho" secondAttribute="bottom" id="7ZW-0i-Mss"/>
                         <constraint firstItem="k5Y-zy-Ocy" firstAttribute="top" secondItem="e0o-yg-gKl" secondAttribute="top" id="CnK-2U-BpY"/>
                         <constraint firstAttribute="trailing" secondItem="y1w-rH-cho" secondAttribute="trailing" id="MIo-vx-fLl"/>
                         <constraint firstItem="y1w-rH-cho" firstAttribute="leading" secondItem="e0o-yg-gKl" secondAttribute="leading" id="Qvg-kO-Xkl"/>
