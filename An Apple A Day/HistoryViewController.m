@@ -33,6 +33,7 @@
     self.calendarViewContainer.hidden = NO;
     self.listViewContainer.hidden = YES;
     [self getAllChallengesIHaveCompleted];
+    [self updateStreakInformation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,6 +79,47 @@
 }
 
 #pragma mark - All Challenge Helper
+
+- (void)updateStreakInformation {
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"built_io_application_user"];
+    [query whereKey:@"uid" equalTo:[_globalKeyValueStore getValueforKey:kBuiltUserUID]];
+    [query includeOnlyFields:[NSArray arrayWithObjects:@"current_streak", @"highest_streak", @"last_date_completed", nil]];
+    
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        
+        BuiltObject *user = [[result getResult] objectAtIndex:0];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"]; // using ISODate
+        
+        NSDate *today = [NSDate date];
+        
+        NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:-84000]; // 84000 seconds in a day.
+        
+        if([[dateFormatter stringFromDate:today] isEqualToString:[user objectForKey:@"last_date_completed"]]
+           ||
+           [[dateFormatter stringFromDate:yesterday] isEqualToString:[user objectForKey:@"last_date_completed"]]) {
+            // Either completed today or yesterday. Thus current streak from server is valid.
+            _currentStreakCountLabel.text = [NSString stringWithFormat:@"%@", [user objectForKey:@"current_streak"]];
+        } else {
+            // Haven't completed the challenge today or yesterday, invalid current streak
+            _currentStreakCountLabel.text = @"0";
+        }
+        
+        NSNumber *highest_streak = [user objectForKey:@"highest_streak"];
+        
+        if (highest_streak) {
+            _highestStreakCountLabel.text = [NSString stringWithFormat:@"%@", [user objectForKey:@"highest_streak"]];
+        }
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", @"ERROR");
+        NSLog(@"%@", error.userInfo);
+    }];
+}
 
 - (void)getAllChallengesIHaveCompleted {
     NSLog(@"getting all completed challenges");
