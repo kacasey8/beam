@@ -25,26 +25,28 @@
 NSDateFormatter *dateFormatter;
 Global *globalKeyValueStore;
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.challenge = [[Challenge alloc] init];
-        globalKeyValueStore = [Global globalClass];
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     //self.tableView.contentInset = UIEdgeInsetsMake(-64.0f, 0.0f, 0.0f, 0.0f); //hack to remove top space
     
+    self.challenge = [[Challenge alloc] init];
+    globalKeyValueStore = [Global globalClass];
+    
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"]; // using ISODate format so it will sort properly
+    
+    [self getChallengeForDay];
 }
 
-- (void)getChallengeForDay
-{
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Query
+
+- (void)getChallengeForDay {
+    NSLog(@"getChallengeForDay");
     // Set date queried to be stored to persistent storage later
     NSString *dateQueried = [dateFormatter stringFromDate:self.date];
     
@@ -66,7 +68,12 @@ Global *globalKeyValueStore;
             self.challenge.date = dateQueried;
             self.challenge.info = [builtChallenge objectForKey:@"information"];
             self.challenge.uid = [builtChallenge objectForKey:@"uid"];
+            self.challenge.completed = NO;
         }
+        
+        NSLog(@"today's challenge: %@", [self.challenge toString]);
+        
+        [self.tableView reloadData];
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
@@ -75,10 +82,11 @@ Global *globalKeyValueStore;
     }];
 }
 
-- (void)queryCompletedDailyChallenge
-{
+- (void)queryCompletedDailyChallenge {
+    NSLog(@"queryCompletedDailyChallenge");
     // Make sure everything is set up first. This method gets called when we successfully login and when challenge
     // is successfully queried
+    NSLog(@"uid: %@   useruid: %@", self.challenge.uid, [globalKeyValueStore getValueforKey:kBuiltUserUID]);
     if (self.challenge.uid && [globalKeyValueStore getValueforKey:kBuiltUserUID]) {
         BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
         [query whereKey:@"user" equalTo:[globalKeyValueStore getValueforKey:kBuiltUserUID]];
@@ -91,12 +99,16 @@ Global *globalKeyValueStore;
             
             if ([builtResults count] == 0) {
                 NSLog(@"not completed");
+                self.challenge.completed = NO;
             } else {
                 NSLog(@"completed");
+                self.challenge.completed = YES;
+                
                 NSDictionary *builtResult = [builtResults objectAtIndex:0];
                 NSLog(@"%@", builtResult);
                 
                 self.challenge.comment = [builtResult objectForKey:@"comment"];
+                
                 NSDictionary *file = [builtResult objectForKey:@"file"];
                 if (file) {
                     NSString *fileUrl = [file objectForKey:@"url"];
@@ -107,7 +119,6 @@ Global *globalKeyValueStore;
                         if (img != nil) {
                             self.challenge.image = img;
                         }
-                        
                     } else { // must be MOV file
                         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
                         NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -121,7 +132,12 @@ Global *globalKeyValueStore;
                         self.challenge.videoUrl = moveUrl;
                     }
                 }
+                
                 self.challenge.usersChallengesUID = [builtResult objectForKey:@"uid"];
+                
+                NSLog(@"completed challenge: %@", [self.challenge toString]);
+                
+                [self.tableView reloadData];
             }
         } onError:^(NSError *error, ResponseType type) {
             // query execution failed.
@@ -130,11 +146,6 @@ Global *globalKeyValueStore;
             NSLog(@"%@", error.userInfo);
         }];
     }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -149,19 +160,37 @@ Global *globalKeyValueStore;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat screenHeight = self.view.frame.size.height;
-    NSLog(@"table view height: %f", screenHeight);
+    //NSLog(@"table view height: %f", screenHeight);
     if (indexPath.row == 0) {
-        NSLog(@"header height: %f", screenHeight*0.3);
-        return screenHeight*0.3;
+        if (self.challenge.completed) {
+            return 0;
+        } else {
+            return screenHeight*0.4;
+        }
     } else if (indexPath.row == 1) {
-        NSLog(@"info height: %f", screenHeight*0.7);
-        return screenHeight*0.7;
+        if (self.challenge.completed) {
+            return screenHeight*0.5;
+        } else {
+            return screenHeight*0.6;
+        }
     } else if (indexPath.row == 2) {
-        return 300;
+        if (self.challenge.completed) {
+            return 300;
+        } else {
+            return 0;
+        }
     } else if (indexPath.row == 3) {
-        return 200;
+        if (self.challenge.completed) {
+            return 200;
+        } else {
+            return 0;
+        }
     } else if (indexPath.row == 4) {
-        return 60;
+        if (self.challenge.completed) {
+            return 60;
+        } else {
+            return 0;
+        }
     }
     return 40;
 }
@@ -169,12 +198,16 @@ Global *globalKeyValueStore;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         ChallengeHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeHeaderCell" forIndexPath:indexPath];
-        cell.dateLabel.text = @"12/28/14";
         return cell;
     } else if (indexPath.row == 1) {
         ChallengeInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeInfoCell" forIndexPath:indexPath];
-        cell.title.text = @"Bake Something";
-        cell.info.text = @"Gather with friends and bake something delicious! Cookies, brownies, anything!";
+        cell.info.text = self.challenge.info;
+        if (self.challenge.completed) {
+            cell.completeButton.hidden = YES;
+        } else {
+            cell.completeButton.hidden = NO;
+            [cell.completeButton addTarget:self action:@selector(challengeButtonWasPressed:) forControlEvents:UIControlEventTouchUpInside];
+        }
         return cell;
     } else if (indexPath.row == 2) {
         ChallengeImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeImageCell" forIndexPath:indexPath];
@@ -192,48 +225,15 @@ Global *globalKeyValueStore;
     return nil;
 }
 
-- (void)challengeButtonWasPressed
-{
+- (IBAction)challengeButtonWasPressed:(UIButton *)sender {
     CompleteChallengeViewController *vc = [[CompleteChallengeViewController alloc] init];
-    
     vc.presenter = self;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)updateCompletedDailyChallenge {
+    
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

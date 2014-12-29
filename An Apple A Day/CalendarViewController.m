@@ -36,14 +36,17 @@ NSDateFormatter *dateFormatter;
     self.calendar.calendarAppearance.calendar.firstWeekday = 1; // Sunday == 1, Saturday == 7
     self.calendar.calendarAppearance.dayCircleRatio = 9. / 10.;
     self.calendar.calendarAppearance.ratioContentMenu = 1.5;
+    self.calendar.calendarAppearance.menuMonthTextColor = [UIColor whiteColor];
+    self.calendar.calendarAppearance.menuMonthTextFont = [UIFont fontWithName:@"Gotham-Book" size:20.0f];
     self.calendar.calendarAppearance.weekDayTextColor = [UIColor whiteColor];
-    self.calendar.calendarAppearance.dayTextColorOtherMonth = [UIColor blackColor];
+    self.calendar.calendarAppearance.weekDayTextFont = [UIFont fontWithName:@"Gotham-Book" size:12.0f];
+    self.calendar.calendarAppearance.dayTextColorOtherMonth = UIColorFromRGB(0x3fafc9);
     self.calendar.calendarAppearance.dayTextColor = [UIColor whiteColor];
     self.calendar.calendarAppearance.dayTextColorSelected = [UIColor whiteColor];
     self.calendar.calendarAppearance.dayCircleColorSelected = UIColorFromRGB(0xD7B850);
     self.calendar.calendarAppearance.dayCircleColorToday = UIColorFromRGB(0xF7B850);
     self.calendar.calendarAppearance.dayCircleColorSelectedOtherMonth = UIColorFromRGB(0xD7B850);
-    self.calendar.calendarAppearance.dayDotColor = [UIColor redColor];
+    [self.calendar.calendarAppearance setDayDotColorForAll:UIColorFromRGB(0xFAC564)];
     
     self.calendar.calendarAppearance.monthBlock = ^NSString *(NSDate *date, JTCalendar *jt_calendar){
         NSCalendar *calendar = jt_calendar.calendarAppearance.calendar;
