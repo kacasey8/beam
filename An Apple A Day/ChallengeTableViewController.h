@@ -16,5 +16,6 @@
 @property (strong, nonatomic) NSDate *date;
 
 - (void)updateCompletedDailyChallenge;
+- (void)queryCompletedDailyChallenge;
 
 @end

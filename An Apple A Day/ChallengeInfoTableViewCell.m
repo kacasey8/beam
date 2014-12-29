@@ -23,8 +23,4 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)completeChallengeClicked:(UIButton *)sender {
-    NSLog(@"clicked");
-}
-
 @end
