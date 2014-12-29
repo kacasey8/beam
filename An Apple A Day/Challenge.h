@@ -19,6 +19,7 @@
 @property UIImage *image;
 @property NSURL *videoUrl;
 @property NSURL *localVideoUrl;
+@property BOOL completed;
 
 - (instancetype)initWithDate:(NSString *)date
                         info:(NSString *)info

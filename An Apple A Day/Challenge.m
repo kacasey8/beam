@@ -34,9 +34,13 @@
     NSString *result = @"Challenge:\n";
     result = [result stringByAppendingString:[NSString stringWithFormat:@"\tdate: %@\n", self.date]];
     result = [result stringByAppendingString:[NSString stringWithFormat:@"\tinfo: %@\n", self.info]];
-    result = [result stringByAppendingString:[NSString stringWithFormat:@"\tuid: %@\n", self.uid]];
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"\tchallengeuid: %@\n", self.uid]];
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"\tusersChallengesUID: %@\n", self.usersChallengesUID]];
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"\tcompleted: %@\n", self.completed ? @"Yes" : @"No"]];
     result = [result stringByAppendingString:[NSString stringWithFormat:@"\tcomment: %@\n", self.comment]];
     result = [result stringByAppendingString:[NSString stringWithFormat:@"\timage: %@\n", self.image]];
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"\tvideoURL: %@\n", self.videoUrl]];
+    
     return result;
 }
 

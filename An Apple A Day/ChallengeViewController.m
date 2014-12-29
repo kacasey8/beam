@@ -26,9 +26,9 @@ NSDateFormatter *dateFormatter;
     // Do any additional setup after loading the view.
 }
 
-- (void)activateView
-{
-    
+- (void)activateView {
+    NSLog(@"activateView");
+    [self.tableViewController queryCompletedDailyChallenge];
 }
 
 - (void)didReceiveMemoryWarning {
