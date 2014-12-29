@@ -239,6 +239,20 @@ CGFloat SCREEN_HEIGHT;
         }];
     }
     
+    BuiltInstallation *installation = [BuiltInstallation currentInstallation];
+    
+    [installation setObject:[NSNumber numberWithInt:0]
+                     forKey:@"badge"];
+    
+    [installation saveOnSuccess:^{
+        // the badge is cleared
+        NSLog(@"Badge cleared");
+    } onError:^(NSError *error) {
+        // error in clearing the badge
+        NSLog(@"%@", @"ERROR");
+        NSLog(@"%@", error.userInfo);
+    }];
+    
     [_presenter updateCompletedDailyChallengeWithProperties:properties];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
