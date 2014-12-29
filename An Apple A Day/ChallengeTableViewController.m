@@ -151,11 +151,11 @@ Global *globalKeyValueStore;
     CGFloat screenHeight = self.view.frame.size.height;
     NSLog(@"table view height: %f", screenHeight);
     if (indexPath.row == 0) {
-        NSLog(@"header height: %f", screenHeight*0.3);
-        return screenHeight*0.3;
+        NSLog(@"header height: %f", screenHeight*0.4);
+        return screenHeight*0.4;
     } else if (indexPath.row == 1) {
-        NSLog(@"info height: %f", screenHeight*0.7);
-        return screenHeight*0.7;
+        NSLog(@"info height: %f", screenHeight*0.6);
+        return screenHeight*0.6;
     } else if (indexPath.row == 2) {
         return 300;
     } else if (indexPath.row == 3) {
@@ -169,11 +169,9 @@ Global *globalKeyValueStore;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         ChallengeHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeHeaderCell" forIndexPath:indexPath];
-        cell.dateLabel.text = @"12/28/14";
         return cell;
     } else if (indexPath.row == 1) {
         ChallengeInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeInfoCell" forIndexPath:indexPath];
-        cell.title.text = @"Bake Something";
         cell.info.text = @"Gather with friends and bake something delicious! Cookies, brownies, anything!";
         return cell;
     } else if (indexPath.row == 2) {
