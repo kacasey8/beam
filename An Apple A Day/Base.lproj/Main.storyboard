@@ -561,19 +561,19 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Info" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9H-TJ-wN2">
-                                            <rect key="frame" x="83" y="-1" width="517" height="79"/>
+                                            <rect key="frame" x="83" y="-1" width="517" height="76"/>
                                             <color key="backgroundColor" red="0.30588235294117649" green="0.73333333333333328" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLT-9c-Kba">
-                                            <rect key="frame" x="550" y="-1" width="50" height="75"/>
+                                            <rect key="frame" x="550" y="-1" width="50" height="76"/>
                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="24"/>
                                             <state key="normal" title="&gt;"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qM-Uu-By0">
-                                            <rect key="frame" x="0.0" y="31" width="63" height="47"/>
+                                            <rect key="frame" x="0.0" y="31" width="63" height="43"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="63" id="VcU-fQ-ZWw"/>
@@ -592,12 +592,12 @@
                                     <color key="backgroundColor" red="0.30196078431372547" green="0.73333333333333328" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="9qM-Uu-By0" firstAttribute="top" secondItem="G6d-YW-MVj" secondAttribute="bottom" id="1OF-qU-9pB"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="KLT-9c-Kba" secondAttribute="bottom" constant="-8" id="33y-i1-x6v"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="KLT-9c-Kba" secondAttribute="bottom" constant="-9" id="33y-i1-x6v"/>
                                         <constraint firstItem="R9H-TJ-wN2" firstAttribute="leading" secondItem="G6d-YW-MVj" secondAttribute="trailing" constant="20" id="5FV-bD-x7g"/>
                                         <constraint firstAttribute="trailing" secondItem="R9H-TJ-wN2" secondAttribute="trailing" id="7mh-Tf-JZ2"/>
                                         <constraint firstItem="G6d-YW-MVj" firstAttribute="leading" secondItem="9qM-Uu-By0" secondAttribute="leading" id="8W8-m8-qxp"/>
                                         <constraint firstAttribute="centerY" secondItem="G6d-YW-MVj" secondAttribute="centerY" constant="25" id="ILK-Zo-cpF"/>
-                                        <constraint firstItem="R9H-TJ-wN2" firstAttribute="centerY" secondItem="cqJ-wP-7gC" secondAttribute="centerY" constant="1" id="Ikg-JJ-4fO"/>
+                                        <constraint firstItem="R9H-TJ-wN2" firstAttribute="centerY" secondItem="cqJ-wP-7gC" secondAttribute="centerY" id="Ikg-JJ-4fO"/>
                                         <constraint firstItem="G6d-YW-MVj" firstAttribute="firstBaseline" secondItem="R9H-TJ-wN2" secondAttribute="firstBaseline" id="Lnc-iK-ga9"/>
                                         <constraint firstItem="G6d-YW-MVj" firstAttribute="leading" secondItem="cqJ-wP-7gC" secondAttribute="leading" id="Ob0-5R-m1j"/>
                                         <constraint firstItem="KLT-9c-Kba" firstAttribute="leading" secondItem="R9H-TJ-wN2" secondAttribute="trailing" constant="-50" id="Per-Db-W6Z"/>
@@ -606,7 +606,7 @@
                                         <constraint firstItem="9qM-Uu-By0" firstAttribute="top" secondItem="G6d-YW-MVj" secondAttribute="bottom" id="lTa-Z9-Fw8"/>
                                         <constraint firstItem="G6d-YW-MVj" firstAttribute="top" secondItem="cqJ-wP-7gC" secondAttribute="topMargin" id="lhp-sG-MQr"/>
                                         <constraint firstAttribute="trailing" secondItem="KLT-9c-Kba" secondAttribute="trailing" id="q08-IN-W0K"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="9qM-Uu-By0" secondAttribute="bottom" constant="-12" id="xnl-zZ-GnJ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="9qM-Uu-By0" secondAttribute="bottom" constant="-8" id="xnl-zZ-GnJ"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -849,6 +849,6 @@
         <image name="logo_sun" width="1076" height="1076"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i4k-pc-0YI"/>
+        <segue reference="4O4-qb-sxK"/>
     </inferredMetricsTieBreakers>
 </document>
