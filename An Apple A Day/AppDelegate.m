@@ -70,6 +70,13 @@
                                  [[Global globalClass] setValue:user.uid forKey:kBuiltUserUID];
                                  NSLog(@"Built Login");
                                  [vc activateView];
+                                 BuiltInstallation *installation = [BuiltInstallation currentInstallation];
+                                 [installation setObject:user.uid forKey:@"app_user_object_uid"];
+                                 [installation updateInstallationOnSuccess:^{
+                                    
+                                 }                                 onError:^(NSError *error) {
+                                     
+                                 }];
                              } onError:^(NSError *error) {
                                  // login failed
                                  // error.userinfo contains more details regarding the same
@@ -198,6 +205,7 @@
     [installation createInstallationWithDeviceToken:deviceToken
                             andSubscriptionChannels:nil
                                           onSuccess:^{
+                                              
                                           }
                                             onError:^(NSError *error) {
                                                 
