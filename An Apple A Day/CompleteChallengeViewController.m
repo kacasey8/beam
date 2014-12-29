@@ -134,6 +134,16 @@ CGFloat SCREEN_HEIGHT;
 }
 
 - (IBAction)completeChallenge:(id)sender {
+    if (_textView.text.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Text Missing"
+                              message: @"Reflect about what you did to complete the challenge!"
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
     
     if (_presenter.challengePost != nil) {
@@ -147,10 +157,8 @@ CGFloat SCREEN_HEIGHT;
     }
     
     NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
-    if (_textView.text.length > 0) {
-        [properties setValue:_textView.text forKey:@"comment"];
-        [obj setObject:_textView.text forKey:@"comment"];
-    }
+    [properties setValue:_textView.text forKey:@"comment"];
+    [obj setObject:_textView.text forKey:@"comment"];
 
     [obj saveOnSuccess:^{
         // object is created successfully
