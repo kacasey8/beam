@@ -109,7 +109,6 @@ NSDateFormatter *dateFormatter;
             _challenge = [results objectAtIndex:0];
             NSLog(@"CHALLENGE %@", _challenge);
             [self setUpInformationForChallenge];
-            [self queryCompletedDailyChallenge];
         }
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.

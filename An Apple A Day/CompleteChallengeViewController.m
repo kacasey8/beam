@@ -40,6 +40,14 @@ CGFloat SCREEN_HEIGHT;
     [self insertAndSetUpVideoGivenVideoUrl];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [_textView becomeFirstResponder];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [_textView setInputAccessoryView:_toolBar];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

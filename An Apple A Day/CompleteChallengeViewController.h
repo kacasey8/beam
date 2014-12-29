@@ -19,7 +19,8 @@ UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) MPMoviePlayerController *player;
+@property (strong, nonatomic) MPMoviePlayerController *player;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @property NSURL *videoUrl;
 @property BOOL newMedia;
 
