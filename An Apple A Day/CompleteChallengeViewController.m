@@ -35,7 +35,7 @@ CGFloat SCREEN_HEIGHT;
     _textView.text = [_presenter.challengePost objectForKey:@"comment"];
     _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
     UIBarButtonItem *cameraButton = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonSystemItemAction target:self action:@selector(useCamera:)];
-    UIBarButtonItem *imagesButton = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonSystemItemAction target:self action:@selector(useImages:)];
+    UIBarButtonItem *imagesButton = [[UIBarButtonItem alloc] initWithTitle:@"Images" style:UIBarButtonSystemItemAction target:self action:@selector(useImages:)];
     [_toolBar setItems:@[cameraButton, imagesButton]];
     _textView.delegate = self;
     
@@ -49,8 +49,9 @@ CGFloat SCREEN_HEIGHT;
     [_textView becomeFirstResponder];
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView {
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
     [_textView setInputAccessoryView:_toolBar];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {
