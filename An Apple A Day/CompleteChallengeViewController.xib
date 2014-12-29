@@ -37,48 +37,18 @@
                         <action selector="closeView:" destination="-1" eventType="touchUpInside" id="OeT-Oa-bxS"/>
                     </connections>
                 </button>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaO-7k-PXb">
-                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                    <items>
-                        <barButtonItem style="plain" id="zph-7W-HbP">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7XO-sR-tGH">
-                                <rect key="frame" x="23" y="562" width="54" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Camera">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="useCamera:" destination="-1" eventType="touchUpInside" id="y1C-7s-D6T"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Jy1-1k-v9R"/>
-                        <barButtonItem style="plain" id="MY4-7g-UmY">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tGy-25-Sx7">
-                                <rect key="frame" x="535" y="555" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Images">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="useImages:" destination="-1" eventType="touchUpInside" id="sJx-PT-Lyg"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </items>
-                </toolbar>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0o-yg-gKl">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e0o-yg-gKl">
                     <rect key="frame" x="0.0" y="59" width="600" height="497"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y1w-rH-cho">
-                            <rect key="frame" x="0.0" y="116.5" width="600" height="340"/>
+                            <rect key="frame" x="0.0" y="117" width="600" height="340"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="600" placeholder="YES" id="Nfh-p0-BGT"/>
                                 <constraint firstAttribute="height" constant="340" placeholder="YES" id="gvs-5g-f4H"/>
                             </constraints>
                         </imageView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5Y-zy-Ocy">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="116.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="117"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="116.5" placeholder="YES" id="YGv-rS-Hi7"/>
@@ -104,16 +74,12 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="e0o-yg-gKl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="04P-VK-M1k"/>
-                <constraint firstItem="OaO-7k-PXb" firstAttribute="top" secondItem="e0o-yg-gKl" secondAttribute="bottom" id="ATe-Na-UAr"/>
                 <constraint firstItem="id9-h0-dKo" firstAttribute="baseline" secondItem="5tx-To-eAM" secondAttribute="baseline" id="CF2-1Y-glL"/>
                 <constraint firstAttribute="trailing" secondItem="5tx-To-eAM" secondAttribute="trailing" constant="15" id="EAN-yL-mPD"/>
                 <constraint firstItem="5tx-To-eAM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="21" id="LCa-AP-QHu"/>
                 <constraint firstItem="e0o-yg-gKl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="59" id="OfK-Gm-rbl"/>
-                <constraint firstItem="OaO-7k-PXb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OyG-mo-1i0"/>
                 <constraint firstAttribute="trailing" secondItem="e0o-yg-gKl" secondAttribute="trailing" id="aGm-gP-eHM"/>
-                <constraint firstAttribute="bottom" secondItem="OaO-7k-PXb" secondAttribute="bottom" id="b6b-cu-csb"/>
                 <constraint firstItem="id9-h0-dKo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="qMt-I3-umz"/>
-                <constraint firstAttribute="trailing" secondItem="OaO-7k-PXb" secondAttribute="trailing" id="stc-vD-4mA"/>
             </constraints>
             <point key="canvasLocation" x="256" y="296"/>
         </view>

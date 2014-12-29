@@ -13,14 +13,14 @@
 
 
 @interface CompleteChallengeViewController : UIViewController <UIImagePickerControllerDelegate,
-UINavigationControllerDelegate>
+UINavigationControllerDelegate, UITextViewDelegate>
 
 @property (weak, atomic) ChallengeViewController *presenter;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) MPMoviePlayerController *player;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (strong, nonatomic) UIToolbar *toolBar;
 @property NSURL *videoUrl;
 @property BOOL newMedia;
 

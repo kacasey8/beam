@@ -33,6 +33,11 @@ CGFloat SCREEN_HEIGHT;
     // Do any additional setup after loading the view from its nib.
     
     _textView.text = [_presenter.challengePost objectForKey:@"comment"];
+    _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
+    UIBarButtonItem *cameraButton = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonSystemItemAction target:self action:@selector(useCamera:)];
+    UIBarButtonItem *imagesButton = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonSystemItemAction target:self action:@selector(useImages:)];
+    [_toolBar setItems:@[cameraButton, imagesButton]];
+    _textView.delegate = self;
     
     [self clearImageAndVideo];
     [self insertAndSetUpImage:[_presenter.challengePost objectForKey:@"image"]];
@@ -44,7 +49,7 @@ CGFloat SCREEN_HEIGHT;
     [_textView becomeFirstResponder];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
+- (void)textViewDidBeginEditing:(UITextView *)textView {
     [_textView setInputAccessoryView:_toolBar];
 }
 

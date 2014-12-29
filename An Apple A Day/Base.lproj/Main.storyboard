@@ -75,25 +75,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIw-Te-RCH" userLabel="TotalCompletedCount">
-                                <rect key="frame" x="99" y="95" width="10" height="20.5"/>
+                                <rect key="frame" x="99" y="95" width="10" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="say-3I-14I" userLabel="CurrentStreakCount">
-                                <rect key="frame" x="295" y="95" width="10" height="20.5"/>
+                                <rect key="frame" x="295" y="95" width="10" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nL5-cC-TOm" userLabel="LongestStreakCount">
-                                <rect key="frame" x="491" y="95" width="10" height="20.5"/>
+                                <rect key="frame" x="491" y="95" width="10" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0J-sg-2oe">
-                                <rect key="frame" x="16" y="125.5" width="568" height="1"/>
+                                <rect key="frame" x="16" y="126" width="568" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="noE-us-1eM"/>
@@ -105,8 +105,8 @@
                                     <segue destination="cWX-WE-AAt" kind="embed" identifier="embedListView" id="9IW-KJ-AZ5"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJc-wv-1Mv" userLabel="CalendarContainerView">
-                                <rect key="frame" x="0.0" y="126.5" width="600" height="473.5"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XJc-wv-1Mv" userLabel="CalendarContainerView">
+                                <rect key="frame" x="0.0" y="127" width="600" height="474"/>
                                 <connections>
                                     <segue destination="UbC-g1-k7A" kind="embed" identifier="embedCalendarView" id="ksR-it-3Wc"/>
                                 </connections>
@@ -187,8 +187,8 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cXM-X9-YjH" id="x4W-oh-WRV">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2aQ-Mn-NDl">
-                                            <rect key="frame" x="0.0" y="-1" width="600" height="299.5"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2aQ-Mn-NDl">
+                                            <rect key="frame" x="0.0" y="-1" width="600" height="300"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -372,7 +372,7 @@
                         <viewControllerLayoutGuide type="bottom" id="i8k-Qw-lSf"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0Lf-Je-ObV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="473.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="474"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VDK-LM-FhI" userLabel="CalendarMenuView" customClass="JTCalendarMenuView">
@@ -382,8 +382,8 @@
                                     <constraint firstAttribute="height" constant="50" id="zcv-uW-cHe"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hB7-hL-Xhs" userLabel="CalendarContentView" customClass="JTCalendarContentView">
-                                <rect key="frame" x="0.0" y="50" width="600" height="423.5"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hB7-hL-Xhs" userLabel="CalendarContentView" customClass="JTCalendarContentView">
+                                <rect key="frame" x="0.0" y="50" width="600" height="425"/>
                                 <color key="backgroundColor" red="0.29094434306569344" green="0.76910355839416056" blue="0.88825843978102192" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="Zha-sK-HVE"/>
@@ -431,10 +431,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="calendar_cell" translatesAutoresizingMaskIntoConstraints="NO" id="1Qp-RM-qob">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="81"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6d-YW-MVj">
-                                            <rect key="frame" x="8" y="3" width="55" height="21.5"/>
+                                            <rect key="frame" x="8" y="3" width="55" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="55" id="Hr9-Qo-YX9"/>
                                                 <constraint firstAttribute="height" constant="35" id="pqS-YZ-iDb"/>
@@ -464,7 +464,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Challenge Info" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9H-TJ-wN2">
-                                            <rect key="frame" x="73" y="30" width="499" height="20.5"/>
+                                            <rect key="frame" x="73" y="30" width="499" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
