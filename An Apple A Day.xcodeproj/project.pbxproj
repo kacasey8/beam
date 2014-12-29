@@ -19,6 +19,11 @@
 		86B5C6E61A4FF054001019C5 /* ChallengeImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6E41A4FF054001019C5 /* ChallengeImageTableViewCell.m */; };
 		86B5C6EB1A4FF069001019C5 /* ChallengeCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6E91A4FF069001019C5 /* ChallengeCommentTableViewCell.m */; };
 		86B5C6EF1A500695001019C5 /* ChallengeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6EE1A500695001019C5 /* ChallengeTableViewCell.m */; };
+		86B5C6F21A513D73001019C5 /* ChallengeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6F11A513D73001019C5 /* ChallengeTableViewController.m */; };
+		86B5C6F51A5143AF001019C5 /* ChallengeHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6F41A5143AF001019C5 /* ChallengeHeaderTableViewCell.m */; };
+		86B5C6F81A5143BC001019C5 /* ChallengeInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6F71A5143BC001019C5 /* ChallengeInfoTableViewCell.m */; };
+		86B5C6FC1A51440D001019C5 /* ChallengeButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6FB1A51440D001019C5 /* ChallengeButtonTableViewCell.m */; };
+		86B5C6FF1A514D90001019C5 /* ChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6FE1A514D90001019C5 /* ChallengeViewController.m */; };
 		991D95441A4AA625005FE2D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95431A4AA625005FE2D1 /* main.m */; };
 		991D95471A4AA625005FE2D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95461A4AA625005FE2D1 /* AppDelegate.m */; };
 		991D954A1A4AA625005FE2D1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95491A4AA625005FE2D1 /* LoginViewController.m */; };
@@ -26,7 +31,7 @@
 		991D954F1A4AA625005FE2D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 991D954E1A4AA625005FE2D1 /* Images.xcassets */; };
 		991D95521A4AA625005FE2D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991D95501A4AA625005FE2D1 /* LaunchScreen.xib */; };
 		991D955E1A4AA625005FE2D1 /* An_Apple_A_DayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D955D1A4AA625005FE2D1 /* An_Apple_A_DayTests.m */; };
-		995BB6951A4AC51D00C32B27 /* ChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 995BB6941A4AC51D00C32B27 /* ChallengeViewController.m */; };
+		995BB6951A4AC51D00C32B27 /* ChallengeViewControllerOld.m in Sources */ = {isa = PBXBuildFile; fileRef = 995BB6941A4AC51D00C32B27 /* ChallengeViewControllerOld.m */; };
 		995BB6991A4AC80300C32B27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6981A4AC80300C32B27 /* QuartzCore.framework */; };
 		995BB69B1A4AC80900C32B27 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB69A1A4AC80900C32B27 /* CoreGraphics.framework */; };
 		995BB69D1A4AC80F00C32B27 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB69C1A4AC80F00C32B27 /* Security.framework */; };
@@ -72,6 +77,16 @@
 		86B5C6E91A4FF069001019C5 /* ChallengeCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeCommentTableViewCell.m; sourceTree = "<group>"; };
 		86B5C6ED1A500695001019C5 /* ChallengeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeTableViewCell.h; sourceTree = "<group>"; };
 		86B5C6EE1A500695001019C5 /* ChallengeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeTableViewCell.m; sourceTree = "<group>"; };
+		86B5C6F01A513D73001019C5 /* ChallengeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeTableViewController.h; sourceTree = "<group>"; };
+		86B5C6F11A513D73001019C5 /* ChallengeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeTableViewController.m; sourceTree = "<group>"; };
+		86B5C6F31A5143AF001019C5 /* ChallengeHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeHeaderTableViewCell.h; sourceTree = "<group>"; };
+		86B5C6F41A5143AF001019C5 /* ChallengeHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeHeaderTableViewCell.m; sourceTree = "<group>"; };
+		86B5C6F61A5143BC001019C5 /* ChallengeInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeInfoTableViewCell.h; sourceTree = "<group>"; };
+		86B5C6F71A5143BC001019C5 /* ChallengeInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeInfoTableViewCell.m; sourceTree = "<group>"; };
+		86B5C6FA1A51440D001019C5 /* ChallengeButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeButtonTableViewCell.h; sourceTree = "<group>"; };
+		86B5C6FB1A51440D001019C5 /* ChallengeButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeButtonTableViewCell.m; sourceTree = "<group>"; };
+		86B5C6FD1A514D90001019C5 /* ChallengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeViewController.h; sourceTree = "<group>"; };
+		86B5C6FE1A514D90001019C5 /* ChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeViewController.m; sourceTree = "<group>"; };
 		991D953E1A4AA625005FE2D1 /* An Apple A Day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "An Apple A Day.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		991D95421A4AA625005FE2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		991D95431A4AA625005FE2D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,8 +100,8 @@
 		991D95571A4AA625005FE2D1 /* An Apple A DayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "An Apple A DayTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		991D955C1A4AA625005FE2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		991D955D1A4AA625005FE2D1 /* An_Apple_A_DayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = An_Apple_A_DayTests.m; sourceTree = "<group>"; };
-		995BB6931A4AC51D00C32B27 /* ChallengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeViewController.h; sourceTree = "<group>"; };
-		995BB6941A4AC51D00C32B27 /* ChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeViewController.m; sourceTree = "<group>"; };
+		995BB6931A4AC51D00C32B27 /* ChallengeViewControllerOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeViewControllerOld.h; sourceTree = "<group>"; };
+		995BB6941A4AC51D00C32B27 /* ChallengeViewControllerOld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeViewControllerOld.m; sourceTree = "<group>"; };
 		995BB6981A4AC80300C32B27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		995BB69A1A4AC80900C32B27 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		995BB69C1A4AC80F00C32B27 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -165,6 +180,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		86B5C6F91A5143D6001019C5 /* ChallengeTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				86B5C6F31A5143AF001019C5 /* ChallengeHeaderTableViewCell.h */,
+				86B5C6F41A5143AF001019C5 /* ChallengeHeaderTableViewCell.m */,
+				86B5C6F61A5143BC001019C5 /* ChallengeInfoTableViewCell.h */,
+				86B5C6F71A5143BC001019C5 /* ChallengeInfoTableViewCell.m */,
+				86B5C6E31A4FF054001019C5 /* ChallengeImageTableViewCell.h */,
+				86B5C6E41A4FF054001019C5 /* ChallengeImageTableViewCell.m */,
+				86B5C6E81A4FF069001019C5 /* ChallengeCommentTableViewCell.h */,
+				86B5C6E91A4FF069001019C5 /* ChallengeCommentTableViewCell.m */,
+				86B5C6FA1A51440D001019C5 /* ChallengeButtonTableViewCell.h */,
+				86B5C6FB1A51440D001019C5 /* ChallengeButtonTableViewCell.m */,
+			);
+			name = ChallengeTableViewCells;
+			sourceTree = "<group>";
+		};
 		991D95351A4AA625005FE2D1 = {
 			isa = PBXGroup;
 			children = (
@@ -192,8 +224,8 @@
 				991D95461A4AA625005FE2D1 /* AppDelegate.m */,
 				991D95481A4AA625005FE2D1 /* LoginViewController.h */,
 				991D95491A4AA625005FE2D1 /* LoginViewController.m */,
-				995BB6931A4AC51D00C32B27 /* ChallengeViewController.h */,
-				995BB6941A4AC51D00C32B27 /* ChallengeViewController.m */,
+				995BB6931A4AC51D00C32B27 /* ChallengeViewControllerOld.h */,
+				995BB6941A4AC51D00C32B27 /* ChallengeViewControllerOld.m */,
 				99F2BEAB1A4B6CCB00EA9592 /* Global.h */,
 				99F2BEAC1A4B6CCB00EA9592 /* Global.m */,
 				86B5C6DA1A4E930F001019C5 /* Challenge.h */,
@@ -211,14 +243,15 @@
 				86B5C6C61A4E6E63001019C5 /* CalendarViewController.m */,
 				86B5C6D71A4E7B02001019C5 /* CalendarTableViewController.h */,
 				86B5C6D81A4E7B02001019C5 /* CalendarTableViewController.m */,
-				86B5C6E01A4F9D08001019C5 /* ChallengeDetailTableViewController.h */,
-				86B5C6E11A4F9D08001019C5 /* ChallengeDetailTableViewController.m */,
-				86B5C6E31A4FF054001019C5 /* ChallengeImageTableViewCell.h */,
-				86B5C6E41A4FF054001019C5 /* ChallengeImageTableViewCell.m */,
-				86B5C6E81A4FF069001019C5 /* ChallengeCommentTableViewCell.h */,
-				86B5C6E91A4FF069001019C5 /* ChallengeCommentTableViewCell.m */,
 				86B5C6ED1A500695001019C5 /* ChallengeTableViewCell.h */,
 				86B5C6EE1A500695001019C5 /* ChallengeTableViewCell.m */,
+				86B5C6E01A4F9D08001019C5 /* ChallengeDetailTableViewController.h */,
+				86B5C6E11A4F9D08001019C5 /* ChallengeDetailTableViewController.m */,
+				86B5C6F91A5143D6001019C5 /* ChallengeTableViewCells */,
+				86B5C6FD1A514D90001019C5 /* ChallengeViewController.h */,
+				86B5C6FE1A514D90001019C5 /* ChallengeViewController.m */,
+				86B5C6F01A513D73001019C5 /* ChallengeTableViewController.h */,
+				86B5C6F11A513D73001019C5 /* ChallengeTableViewController.m */,
 			);
 			path = "An Apple A Day";
 			sourceTree = "<group>";
@@ -387,15 +420,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				991D954A1A4AA625005FE2D1 /* LoginViewController.m in Sources */,
+				86B5C6FC1A51440D001019C5 /* ChallengeButtonTableViewCell.m in Sources */,
 				86B5C6DC1A4E930F001019C5 /* Challenge.m in Sources */,
+				86B5C6FF1A514D90001019C5 /* ChallengeViewController.m in Sources */,
 				86B5C6E21A4F9D08001019C5 /* ChallengeDetailTableViewController.m in Sources */,
+				86B5C6F21A513D73001019C5 /* ChallengeTableViewController.m in Sources */,
 				991D95471A4AA625005FE2D1 /* AppDelegate.m in Sources */,
 				99F2BEAD1A4B6CCB00EA9592 /* Global.m in Sources */,
+				86B5C6F81A5143BC001019C5 /* ChallengeInfoTableViewCell.m in Sources */,
 				843B2D631A4CC2CD00B39CAF /* CompleteChallengeViewController.m in Sources */,
 				86B5C6C71A4E6E63001019C5 /* CalendarViewController.m in Sources */,
+				86B5C6F51A5143AF001019C5 /* ChallengeHeaderTableViewCell.m in Sources */,
 				86B5C6EF1A500695001019C5 /* ChallengeTableViewCell.m in Sources */,
 				86B5C6D91A4E7B02001019C5 /* CalendarTableViewController.m in Sources */,
-				995BB6951A4AC51D00C32B27 /* ChallengeViewController.m in Sources */,
+				995BB6951A4AC51D00C32B27 /* ChallengeViewControllerOld.m in Sources */,
 				86B5C6E61A4FF054001019C5 /* ChallengeImageTableViewCell.m in Sources */,
 				86B5C6C41A4E6C80001019C5 /* HistoryViewController.m in Sources */,
 				86B5C6EB1A4FF069001019C5 /* ChallengeCommentTableViewCell.m in Sources */,

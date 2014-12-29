@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "ChallengeViewController.h"
+#import "ChallengeViewControllerOld.h"
 
 
 @interface CompleteChallengeViewController : UIViewController <UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UITextViewDelegate>
 
-@property (weak, atomic) ChallengeViewController *presenter;
+@property (weak, atomic) ChallengeViewControllerOld *presenter;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
