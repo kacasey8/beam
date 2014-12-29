@@ -36,7 +36,9 @@ CGFloat SCREEN_HEIGHT;
     _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
     UIBarButtonItem *cameraButton = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonSystemItemAction target:self action:@selector(useCamera:)];
     UIBarButtonItem *imagesButton = [[UIBarButtonItem alloc] initWithTitle:@"Images" style:UIBarButtonSystemItemAction target:self action:@selector(useImages:)];
-    [_toolBar setItems:@[cameraButton, imagesButton]];
+    UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonSystemItemAction target:self action:@selector(hideKeyboard:)];
+    [_toolBar setItems:@[cameraButton, imagesButton, flex, doneButton]];
     _textView.delegate = self;
     
     [self clearImageAndVideo];
@@ -241,7 +243,7 @@ CGFloat SCREEN_HEIGHT;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)useCamera:(id)sender {
+- (void)useCamera:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.delegate = self;
@@ -253,7 +255,7 @@ CGFloat SCREEN_HEIGHT;
     }
 }
 
-- (IBAction)useImages:(id)sender {
+- (void)useImages:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
         UIImagePickerController *imagePicker =
         [[UIImagePickerController alloc] init];
@@ -264,6 +266,10 @@ CGFloat SCREEN_HEIGHT;
         [self presentViewController:imagePicker animated:YES completion:nil];
         _newMedia = NO;
     }
+}
+
+- (void)hideKeyboard:(id)sender {
+    [_textView resignFirstResponder];
 }
 
 
