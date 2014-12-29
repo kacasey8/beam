@@ -11,5 +11,4 @@
 @interface ChallengeHeaderTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *background;
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @end

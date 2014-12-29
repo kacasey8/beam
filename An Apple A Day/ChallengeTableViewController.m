@@ -165,13 +165,13 @@ Global *globalKeyValueStore;
         if (self.challenge.completed) {
             return 0;
         } else {
-            return screenHeight*0.3;
+            return screenHeight*0.4;
         }
     } else if (indexPath.row == 1) {
         if (self.challenge.completed) {
             return screenHeight*0.5;
         } else {
-            return screenHeight*0.7;
+            return screenHeight*0.6;
         }
     } else if (indexPath.row == 2) {
         if (self.challenge.completed) {
@@ -198,11 +198,9 @@ Global *globalKeyValueStore;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         ChallengeHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeHeaderCell" forIndexPath:indexPath];
-        cell.dateLabel.text = self.challenge.date;
         return cell;
     } else if (indexPath.row == 1) {
         ChallengeInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeInfoCell" forIndexPath:indexPath];
-        cell.title.text = @"Challenge Title";
         cell.info.text = self.challenge.info;
         if (self.challenge.completed) {
             cell.completeButton.hidden = YES;

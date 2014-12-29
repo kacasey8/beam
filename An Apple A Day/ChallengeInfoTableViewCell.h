@@ -10,7 +10,6 @@
 
 @interface ChallengeInfoTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *title;
 @property (strong, nonatomic) IBOutlet UILabel *info;
 @property (strong, nonatomic) IBOutlet UIButton *completeButton;
 
