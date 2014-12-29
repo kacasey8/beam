@@ -225,12 +225,15 @@ Global *globalKeyValueStore;
     return nil;
 }
 
-- (IBAction)challengeButtonWasPressed {
+- (IBAction)challengeButtonWasPressed:(UIButton *)sender {
     CompleteChallengeViewController *vc = [[CompleteChallengeViewController alloc] init];
     vc.presenter = self;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
+- (void)updateCompletedDailyChallenge {
+    
+}
 
 /*
 #pragma mark - Navigation
