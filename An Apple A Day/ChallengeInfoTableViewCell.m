@@ -21,7 +21,7 @@
 }
 
 - (IBAction)completeChallengeClicked:(UIButton *)sender {
-    
+    NSLog(@"clicked");
 }
 
 @end

@@ -26,23 +26,14 @@ NSDateFormatter *dateFormatter;
     // Do any additional setup after loading the view.
 }
 
+- (void)activateView
+{
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)activateView {
-    if ([self shouldUseCache]) {
-        NSLog(@"Querying server for challenge from cache");
-        //[self queryCompletedDailyChallenge];
-    } else {
-        NSLog(@"Querying server for challenge");
-       // [self queryCompletedDailyChallenge];
-    }
-}
-
-- (BOOL) shouldUseCache {
-    return [dateQueried isEqualToString:[dateFormatter stringFromDate:[NSDate date]]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -50,6 +41,7 @@ NSDateFormatter *dateFormatter;
     if ([segue.identifier isEqualToString:@"embedDailyChallenge"]) {
         self.tableViewController = (ChallengeTableViewController *) [segue destinationViewController];
         self.tableViewController.isHomePage = YES;
+        self.tableViewController.date = [NSDate date];
     }
 }
 

@@ -7,6 +7,8 @@
 //
 
 #import "CompleteChallengeViewController.h"
+#import <BuiltIO/BuiltIO.h>
+#import "Global.h"
 
 @interface CompleteChallengeViewController ()
 
@@ -16,11 +18,12 @@
 
 CGFloat SCREEN_WIDTH;
 CGFloat SCREEN_HEIGHT;
+Global *globalKeyValueStore;
 
 - (id)init {
     self = [super initWithNibName:@"CompleteChallengeViewController" bundle:nil];
     if (self != nil) {
-        
+        globalKeyValueStore = [Global globalClass];
     }
     return self;
 }
@@ -32,7 +35,7 @@ CGFloat SCREEN_HEIGHT;
     SCREEN_HEIGHT = screenRect.size.height;
     // Do any additional setup after loading the view from its nib.
     
-    _textView.text = [_presenter.challengePost objectForKey:@"comment"];
+    _textView.text = self.challenge.comment;
     _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
     UIBarButtonItem *cameraButton = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonItemStylePlain target:self action:@selector(useCamera:)];
     UIBarButtonItem *imagesButton = [[UIBarButtonItem alloc] initWithTitle:@"Images" style:UIBarButtonItemStylePlain target:self action:@selector(useImages:)];
@@ -42,8 +45,8 @@ CGFloat SCREEN_HEIGHT;
     _textView.delegate = self;
     
     [self clearImageAndVideo];
-    [self insertAndSetUpImage:[_presenter.challengePost objectForKey:@"image"]];
-    _videoUrl = [_presenter.challengePost objectForKey:@"video"];
+    [self insertAndSetUpImage:self.challenge.image];
+    _videoUrl = self.challenge.videoUrl;
     [self insertAndSetUpVideoGivenVideoUrl];
 }
 
@@ -162,24 +165,23 @@ CGFloat SCREEN_HEIGHT;
     }
     BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
     
-    if (_presenter.challengePost != nil) {
-        [obj setUid:[_presenter.challengePost objectForKey:@"uid"]];
-        NSLog(@"updaing object with uid: %@", [_presenter.challengePost objectForKey:@"uid"]);
+    if (self.challenge.usersChallengesUID != nil) {
+        [obj setUid:self.challenge.usersChallengesUID];
+        NSLog(@"updaing object with uid: %@", self.challenge.usersChallengesUID);
     } else {
-        [obj setReference:[_presenter.globalKeyValueStore getValueforKey:kBuiltUserUID]
+        [obj setReference:[globalKeyValueStore getValueforKey:kBuiltUserUID]
                    forKey:@"user"];
-        [obj setReference:[_presenter.challenge objectForKey:@"uid"]
+        [obj setReference:self.challenge.uid
                    forKey:@"challenge"];
     }
     
-    NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
-    [properties setValue:_textView.text forKey:@"comment"];
     [obj setObject:_textView.text forKey:@"comment"];
+    self.challenge.comment = _textView.text;
 
     [obj saveOnSuccess:^{
         // object is created successfully
         NSLog(@"initial update, modal is done. uid: %@", obj.uid);
-        [_presenter.challengePost setObject:obj.uid forKey:@"uid"];
+        self.challenge.usersChallengesUID = obj.uid;
     } onError:^(NSError *error) {
         // there was an error in creating the object
         // error.userinfo contains more details regarding the same
@@ -189,16 +191,13 @@ CGFloat SCREEN_HEIGHT;
 
     BuiltFile *file = [BuiltFile file];
     if (_imageView.image != nil) {
-        [properties setValue:_imageView.image forKey:@"image"];
+        self.challenge.image = _imageView.image;
         [file setImage:_imageView.image forKey:@"image"];
         [file saveOnSuccess:^ {
             //file successfully uploaded
             //file properties are populated
             
-            NSLog(@"Image up, uid: %@", file.uid);
-            
-            [obj setObject:file.uid
-                    forKey:@"file"];
+            [obj setObject:file.uid forKey:@"file"];
             
             [obj saveOnSuccess:^{
                 // object is created successfully
@@ -213,14 +212,11 @@ CGFloat SCREEN_HEIGHT;
             //error in uploading
         }];
     } else if (_videoUrl != nil) {
-        [properties setValue:_videoUrl forKey:@"video"];
+        self.challenge.localVideoUrl = _videoUrl;
         [file setFile:[_videoUrl path] forKey:@"video"];
-        [file setContentType:@"mov"];
         [file saveOnSuccess:^ {
             //file successfully uploaded
             //file properties are populated
-            
-            NSLog(@"Video up, uid: %@", file.uid);
             
             [obj setObject:file.uid
                     forKey:@"file"];
@@ -253,7 +249,7 @@ CGFloat SCREEN_HEIGHT;
         NSLog(@"%@", error.userInfo);
     }];
     
-    [_presenter updateCompletedDailyChallengeWithProperties:properties];
+    [_presenter updateCompletedDailyChallenge];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

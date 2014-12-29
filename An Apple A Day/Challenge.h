@@ -14,8 +14,11 @@
 @property NSString *date;
 @property NSString *info;
 @property NSString *uid;
+@property NSString *usersChallengesUID;
 @property NSString *comment;
 @property UIImage *image;
+@property NSURL *videoUrl;
+@property NSURL *localVideoUrl;
 
 - (instancetype)initWithDate:(NSString *)date
                         info:(NSString *)info

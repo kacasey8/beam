@@ -13,5 +13,8 @@
 
 @property BOOL isHomePage;
 @property (strong, nonatomic) Challenge *challenge;
+@property (strong, nonatomic) NSDate *date;
+
+- (void)updateCompletedDailyChallenge;
 
 @end

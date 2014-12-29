@@ -12,16 +12,124 @@
 #import "ChallengeImageTableViewCell.h"
 #import "ChallengeCommentTableViewCell.h"
 #import "ChallengeButtonTableViewCell.h"
+#import "CompleteChallengeViewController.h"
+#import <BuiltIO/BuiltIO.h>
+#import "Global.h"
 
-@interface ChallengeTableViewController ()
+@interface ChallengeTableViewController () <ChallengeButtonTableViewCellDelegate>
 
 @end
 
 @implementation ChallengeTableViewController
 
+NSDateFormatter *dateFormatter;
+Global *globalKeyValueStore;
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.challenge = [[Challenge alloc] init];
+        globalKeyValueStore = [Global globalClass];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //self.tableView.contentInset = UIEdgeInsetsMake(-64.0f, 0.0f, 0.0f, 0.0f); //hack to remove top space
+    
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"]; // using ISODate format so it will sort properly
+}
+
+- (void)getChallengeForDay
+{
+    // Set date queried to be stored to persistent storage later
+    NSString *dateQueried = [dateFormatter stringFromDate:self.date];
+    
+    BuiltQuery *query = [BuiltQuery queryWithClassUID:@"challenge"];
+    [query whereKey:@"date" equalTo:dateQueried];
+    
+    [query includeOnlyFields:[NSArray arrayWithObjects: @"uid", @"date", @"information", nil]];
+    
+    [query exec:^(QueryResult *result, ResponseType type) {
+        // the query has executed successfully.
+        // [result getResult] will contain a list of objects that satisfy the conditions
+        
+        NSArray *results = [result getResult];
+        if ([results count] == 0) {
+            NSLog(@"NO DAILY CHALLENGE!");
+        } else {
+            BuiltObject *builtChallenge = [results objectAtIndex:0];
+            NSLog(@"CHALLENGE %@", builtChallenge);
+            self.challenge.date = dateQueried;
+            self.challenge.info = [builtChallenge objectForKey:@"information"];
+            self.challenge.uid = [builtChallenge objectForKey:@"uid"];
+        }
+    } onError:^(NSError *error, ResponseType type) {
+        // query execution failed.
+        // error.userinfo contains more details regarding the same
+        NSLog(@"%@", @"ERROR");
+        NSLog(@"%@", error.userInfo);
+    }];
+}
+
+- (void)queryCompletedDailyChallenge
+{
+    // Make sure everything is set up first. This method gets called when we successfully login and when challenge
+    // is successfully queried
+    if (self.challenge.uid && [globalKeyValueStore getValueforKey:kBuiltUserUID]) {
+        BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
+        [query whereKey:@"user" equalTo:[globalKeyValueStore getValueforKey:kBuiltUserUID]];
+        [query whereKey:@"challenge" equalTo:self.challenge.uid];
+        
+        [query exec:^(QueryResult *result, ResponseType type) {
+            // the query has executed successfully.
+            // [result getResult] will contain a list of objects that satisfy the conditions
+            NSArray *builtResults = [result getResult];
+            
+            if ([builtResults count] == 0) {
+                NSLog(@"not completed");
+            } else {
+                NSLog(@"completed");
+                NSDictionary *builtResult = [builtResults objectAtIndex:0];
+                NSLog(@"%@", builtResult);
+                
+                self.challenge.comment = [builtResult objectForKey:@"comment"];
+                NSDictionary *file = [builtResult objectForKey:@"file"];
+                if (file) {
+                    NSString *fileUrl = [file objectForKey:@"url"];
+                    NSURL *url = [NSURL URLWithString:fileUrl];
+                    NSData *data = [NSData dataWithContentsOfURL:url];
+                    if ([[file objectForKey:@"filename"] isEqualToString:@"image"]) {
+                        UIImage *img = [[UIImage alloc] initWithData:data];
+                        if (img != nil) {
+                            self.challenge.image = img;
+                        }
+                        
+                    } else { // must be MOV file
+                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                        NSString *documentsDirectory = [paths objectAtIndex:0];
+                        NSString *path = [documentsDirectory stringByAppendingPathComponent:@"tmp.mov"];
+                        
+                        NSData *videoData = [NSData dataWithContentsOfURL:url];
+                        
+                        [[NSFileManager defaultManager] createFileAtPath:path contents:videoData attributes:nil];
+                        NSURL *moveUrl = [NSURL fileURLWithPath:path];
+                        
+                        self.challenge.videoUrl = moveUrl;
+                    }
+                }
+                self.challenge.usersChallengesUID = [builtResult objectForKey:@"uid"];
+            }
+        } onError:^(NSError *error, ResponseType type) {
+            // query execution failed.
+            // error.userinfo contains more details regarding the same
+            NSLog(@"%@", @"ERROR");
+            NSLog(@"%@", error.userInfo);
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,9 +186,18 @@
         return cell;
     } else if (indexPath.row == 4) {
         ChallengeButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeButtonCell" forIndexPath:indexPath];
+        cell.delegate = self;
         return cell;
     }
     return nil;
+}
+
+- (void)challengeButtonWasPressed
+{
+    CompleteChallengeViewController *vc = [[CompleteChallengeViewController alloc] init];
+    
+    vc.presenter = self;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 

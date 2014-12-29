@@ -761,7 +761,7 @@
                                     <outlet property="comment" destination="Fn9-vP-cjP" id="lN8-dZ-9r8"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeButtonCell" rowHeight="60" id="M2h-Hp-lEa">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeButtonCell" rowHeight="60" id="M2h-Hp-lEa" customClass="ChallengeButtonTableViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M2h-Hp-lEa" id="tWZ-LY-2QL">
@@ -781,6 +781,9 @@
                                                     <exclude reference="1AY-nK-a56"/>
                                                 </mask>
                                             </variation>
+                                            <connections>
+                                                <action selector="buttonPressed:" destination="M2h-Hp-lEa" eventType="touchUpInside" id="b4a-U7-cBb"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.36470588240000001" green="0.78823529410000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
