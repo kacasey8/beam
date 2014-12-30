@@ -263,7 +263,8 @@ Global *globalKeyValueStore;
     
     [installation saveOnSuccess:^{
         // the badge is cleared
-        NSLog(@"Badge cleared");
+        // clear badge client side
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     } onError:^(NSError *error) {
         // error in clearing the badge
         NSLog(@"%@", @"ERROR");

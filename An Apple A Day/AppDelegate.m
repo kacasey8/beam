@@ -205,7 +205,7 @@
     [installation createInstallationWithDeviceToken:deviceToken
                             andSubscriptionChannels:nil
                                           onSuccess:^{
-                                              
+
                                           }
                                             onError:^(NSError *error) {
                                                 
