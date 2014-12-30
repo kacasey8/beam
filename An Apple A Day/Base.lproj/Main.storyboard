@@ -703,14 +703,14 @@
                         <viewControllerLayoutGuide type="bottom" id="0S0-QA-gXI"/>
                     </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Dl8-1Z-deQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0Z-wW-z0n">
-                                <rect key="frame" x="0.0" y="59" width="600" height="433"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0Z-wW-z0n">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Ea-ka-e12">
-                                        <rect key="frame" x="0.0" y="117" width="600" height="340"/>
+                                        <rect key="frame" x="0.0" y="125" width="600" height="340"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="600" placeholder="YES" id="ELZ-NB-a20"/>
                                             <constraint firstAttribute="height" constant="340" placeholder="YES" id="bky-Di-vSU"/>
@@ -731,22 +731,21 @@
                                     <constraint firstAttribute="centerX" secondItem="qQn-xf-7Um" secondAttribute="centerX" id="2mk-BS-3UV"/>
                                     <constraint firstItem="8Ea-ka-e12" firstAttribute="leading" secondItem="X0Z-wW-z0n" secondAttribute="leading" id="3kw-sz-gnp"/>
                                     <constraint firstAttribute="trailing" secondItem="8Ea-ka-e12" secondAttribute="trailing" id="5LP-N7-dKc"/>
-                                    <constraint firstAttribute="bottom" secondItem="8Ea-ka-e12" secondAttribute="bottom" id="K58-Ro-ZHa"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Ea-ka-e12" secondAttribute="bottom" constant="71" id="K58-Ro-ZHa"/>
                                     <constraint firstAttribute="trailing" secondItem="qQn-xf-7Um" secondAttribute="trailing" id="Vf3-g3-tQz"/>
                                     <constraint firstItem="8Ea-ka-e12" firstAttribute="centerX" secondItem="X0Z-wW-z0n" secondAttribute="centerX" id="VwS-BY-0nU"/>
                                     <constraint firstItem="qQn-xf-7Um" firstAttribute="top" secondItem="X0Z-wW-z0n" secondAttribute="top" id="Xt6-oC-7Zq"/>
-                                    <constraint firstItem="8Ea-ka-e12" firstAttribute="top" secondItem="qQn-xf-7Um" secondAttribute="bottom" id="c7j-XY-w9N"/>
+                                    <constraint firstItem="8Ea-ka-e12" firstAttribute="top" secondItem="qQn-xf-7Um" secondAttribute="bottom" constant="8" id="c7j-XY-w9N"/>
                                     <constraint firstItem="qQn-xf-7Um" firstAttribute="leading" secondItem="X0Z-wW-z0n" secondAttribute="leading" id="pTi-gs-9CH"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0S0-QA-gXI" firstAttribute="top" secondItem="X0Z-wW-z0n" secondAttribute="bottom" constant="44" id="49S-bx-fVe"/>
+                            <constraint firstItem="0S0-QA-gXI" firstAttribute="top" secondItem="X0Z-wW-z0n" secondAttribute="bottom" id="49S-bx-fVe"/>
                             <constraint firstAttribute="trailing" secondItem="X0Z-wW-z0n" secondAttribute="trailing" id="5gI-PT-Tvr"/>
-                            <constraint firstItem="X0Z-wW-z0n" firstAttribute="top" secondItem="Dl8-1Z-deQ" secondAttribute="top" constant="59" id="clx-6T-GZ9"/>
+                            <constraint firstItem="X0Z-wW-z0n" firstAttribute="top" secondItem="Tx6-tO-Iav" secondAttribute="bottom" id="VFy-30-rSu"/>
                             <constraint firstItem="X0Z-wW-z0n" firstAttribute="leading" secondItem="Dl8-1Z-deQ" secondAttribute="leading" id="mRZ-tu-TAu"/>
-                            <constraint firstItem="0S0-QA-gXI" firstAttribute="top" secondItem="X0Z-wW-z0n" secondAttribute="bottom" constant="44" id="osv-k0-UKg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Entry" id="tbW-7P-hET">
@@ -827,8 +826,8 @@
         <image name="logo_sun" width="1076" height="1076"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="B4h-hx-V4I"/>
         <segue reference="4O4-qb-sxK"/>
-        <segue reference="19F-UH-GZC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96470588235294119" green="0.72941176470588232" blue="0.32156862745098042" alpha="1" colorSpace="calibratedRGB"/>
 </document>
