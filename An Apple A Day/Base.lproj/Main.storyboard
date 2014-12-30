@@ -11,8 +11,10 @@
             <string>Gotham-Bold</string>
             <string>Gotham-Bold</string>
             <string>Gotham-Bold</string>
+            <string>Gotham-Bold</string>
         </mutableArray>
         <mutableArray key="Gotham-Book.ttf">
+            <string>Gotham-Book</string>
             <string>Gotham-Book</string>
             <string>Gotham-Book</string>
             <string>Gotham-Book</string>
@@ -40,10 +42,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEAM" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="tap-N0-Dn9">
+                                <rect key="frame" x="80" y="316" width="441" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="Q8S-hc-o3T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="46"/>
+                                <color key="textColor" red="0.96470588239999999" green="0.72549019609999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="Qbq-zu-URT">
+                                <rect key="frame" x="204" y="92" width="192" height="192"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="192" id="aiq-VH-DFx"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJj-Zh-Hzr">
-                                <rect key="frame" x="16" y="285" width="568" height="30"/>
-                                <state key="normal" title="Log in With Facebook">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="175" y="467" width="250" height="59"/>
+                                <color key="backgroundColor" red="0.23921568627450981" green="0.33725490196078434" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="1Os-8g-qNb"/>
+                                    <constraint firstAttribute="height" constant="59" id="KbZ-oE-Oiu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Log in with Facebook">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="facebookPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Luw-HA-C8m"/>
@@ -52,9 +77,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zJj-Zh-Hzr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="265" id="6m1-Aj-TqB"/>
-                            <constraint firstItem="zJj-Zh-Hzr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="QfH-gS-1hH"/>
-                            <constraint firstItem="zJj-Zh-Hzr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="WJu-jf-crC"/>
+                            <constraint firstAttribute="centerX" secondItem="zJj-Zh-Hzr" secondAttribute="centerX" id="7WA-lr-jou"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zJj-Zh-Hzr" secondAttribute="bottom" constant="74" id="7Z7-a4-QX0"/>
+                            <constraint firstItem="zJj-Zh-Hzr" firstAttribute="centerX" secondItem="tap-N0-Dn9" secondAttribute="centerX" id="7jG-fa-0Ee"/>
+                            <constraint firstItem="Qbq-zu-URT" firstAttribute="centerX" secondItem="tap-N0-Dn9" secondAttribute="centerX" id="Ma2-vw-WTT"/>
+                            <constraint firstItem="tap-N0-Dn9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="64" id="S9P-d4-QDy"/>
+                            <constraint firstItem="tap-N0-Dn9" firstAttribute="top" secondItem="Qbq-zu-URT" secondAttribute="bottom" constant="32" id="Y3l-70-2bm"/>
+                            <constraint firstItem="Qbq-zu-URT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="72" id="mi5-yF-XKg"/>
+                            <constraint firstAttribute="centerX" secondItem="Qbq-zu-URT" secondAttribute="centerX" id="oeS-Xn-r8O"/>
+                            <constraint firstItem="zJj-Zh-Hzr" firstAttribute="top" secondItem="tap-N0-Dn9" secondAttribute="bottom" constant="108" id="sfd-yl-d1H"/>
+                            <constraint firstAttribute="centerX" secondItem="tap-N0-Dn9" secondAttribute="centerX" id="yBY-RE-fS7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9p3-D6-ts5"/>
