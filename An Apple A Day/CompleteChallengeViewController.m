@@ -215,7 +215,7 @@ Global *globalKeyValueStore;
             //error in uploading
         }];
     } else if (_videoUrl != nil) {
-        self.challenge.localVideoUrl = _videoUrl;
+        self.challenge.videoUrl = _videoUrl;
         [file setFile:[_videoUrl path] forKey:@"video"];
         [file saveOnSuccess:^ {
             //file successfully uploaded

@@ -178,8 +178,11 @@ Global *globalKeyValueStore;
             if (self.challenge.image) {
                 NSLog(@"image height: %f, width: %f", self.challenge.image.size.height, self.challenge.image.size.width);
                 return self.challenge.image.size.height;
+            } else if (self.challenge.videoUrl) {
+                // This is the height of the video player.
+                return self.view.frame.size.width;
             }
-            return 300;
+            return 0;
         }
         return 0;
     } else if (indexPath.row == 3) {
