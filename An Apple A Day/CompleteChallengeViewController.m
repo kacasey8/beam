@@ -252,6 +252,8 @@ Global *globalKeyValueStore;
         NSLog(@"%@", error.userInfo);
     }];
     
+    self.challenge.completed = YES;
+    
     [_presenter updateCompletedDailyChallenge];
     [self.navigationController popViewControllerAnimated:YES];
 }
