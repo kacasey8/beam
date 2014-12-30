@@ -25,6 +25,7 @@
             <string>Gotham-Book</string>
             <string>Gotham-Book</string>
             <string>Gotham-Book</string>
+            <string>Gotham-Book</string>
         </mutableArray>
         <mutableArray key="Gotham-Medium.ttf">
             <string>Gotham-Medium</string>
@@ -623,17 +624,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="12" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fn9-vP-cjP">
-                                            <rect key="frame" x="28" y="13" width="544" height="61"/>
+                                            <rect key="frame" x="18" y="18" width="564" height="48"/>
                                             <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat pharetra quam vitae semper. Suspendisse in eros feugiat, tempor nunc sit amet, dignissim </string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Fn9-vP-cjP" firstAttribute="leading" secondItem="PrS-uR-0vy" secondAttribute="leadingMargin" constant="20" id="GrK-ga-7uX"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Fn9-vP-cjP" secondAttribute="trailing" constant="20" id="hGt-Mw-fTB"/>
-                                        <constraint firstItem="Fn9-vP-cjP" firstAttribute="top" secondItem="PrS-uR-0vy" secondAttribute="topMargin" constant="5" id="uK1-en-APp"/>
+                                        <constraint firstItem="Fn9-vP-cjP" firstAttribute="leading" secondItem="PrS-uR-0vy" secondAttribute="leadingMargin" constant="10" id="GrK-ga-7uX"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Fn9-vP-cjP" secondAttribute="trailing" constant="10" id="hGt-Mw-fTB"/>
+                                        <constraint firstItem="Fn9-vP-cjP" firstAttribute="top" secondItem="PrS-uR-0vy" secondAttribute="topMargin" constant="10" id="uK1-en-APp"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Fn9-vP-cjP" secondAttribute="bottom" constant="5" id="zI6-xi-uAL"/>
                                     </constraints>
                                     <variation key="default">
@@ -693,7 +694,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsq-oA-JNl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1354" y="-1055"/>
+            <point key="canvasLocation" x="1354" y="-1057"/>
         </scene>
         <!--Entry-->
         <scene sceneID="avF-bl-CtB">

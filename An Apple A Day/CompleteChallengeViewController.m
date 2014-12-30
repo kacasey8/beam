@@ -39,6 +39,7 @@ Global *globalKeyValueStore;
     _textView.textContainerInset = UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0);
     if (self.challenge.comment) {
         _textView.text = self.challenge.comment;
+        _textView.textColor = [UIColor blackColor];
     }
     
     _textView.delegate = self;
@@ -80,28 +81,11 @@ Global *globalKeyValueStore;
         textView.textColor = [UIColor lightGrayColor];
     } else if (textView.text.length > placeHolderText.length) {
         if ([[textView.text substringToIndex:placeHolderText.length] isEqualToString:placeHolderText]) {
-            NSLog(@"YES%@", [textView.text substringToIndex:placeHolderText.length]);
             textView.text = [textView.text substringFromIndex:placeHolderText.length];
             textView.textColor = [UIColor blackColor];
         }
     }
 }
-
-/*- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    if ([textView.text isEqualToString:@"How was your experience? What did you do?"]) {
-        textView.text = @"";
-        textView.textColor = [UIColor blackColor];
-    }
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    if ([textView.text isEqualToString:@""]) {
-        textView.text = @"How was your experience? What did you do?";
-        textView.textColor = [UIColor lightGrayColor]; //optional
-    }
-}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
