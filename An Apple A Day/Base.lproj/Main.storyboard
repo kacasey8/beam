@@ -312,7 +312,7 @@
             </objects>
             <point key="canvasLocation" x="214" y="-1048"/>
         </scene>
-        <!--Beam-->
+        <!--Challenge View Controller-->
         <scene sceneID="qHO-0Z-tPN">
             <objects>
                 <viewController id="2To-ua-96w" customClass="ChallengeViewController" sceneMemberID="viewController">
@@ -358,7 +358,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Beam" id="yCX-sD-bZV">
+                    <navigationItem key="navigationItem" id="yCX-sD-bZV">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="GtY-4R-E4Z">
                             <connections>
                                 <action selector="logout:" destination="2To-ua-96w" id="sVK-Is-7yN"/>
@@ -808,10 +808,10 @@
             </objects>
             <point key="canvasLocation" x="1710" y="-1063"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Navigation View Controller-->
         <scene sceneID="kSK-5k-70k">
             <objects>
-                <navigationController storyboardIdentifier="challenge" id="Dfs-0D-WZv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="challenge" id="Dfs-0D-WZv" customClass="CustomNavigationViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x9V-4m-4N3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -851,4 +851,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="4O4-qb-sxK"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.96470588235294119" green="0.72941176470588232" blue="0.32156862745098042" alpha="1" colorSpace="calibratedRGB"/>
 </document>

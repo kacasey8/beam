@@ -26,6 +26,7 @@
 		84CED7261A51F5010011D326 /* Gotham-UltraItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84CED7161A51F5010011D326 /* Gotham-UltraItalic.ttf */; };
 		84CED7271A51F5010011D326 /* Gotham-XLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84CED7171A51F5010011D326 /* Gotham-XLight.ttf */; };
 		84CED7281A51F5010011D326 /* Gotham-XLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84CED7181A51F5010011D326 /* Gotham-XLightItalic.ttf */; };
+		84EA1FE81A521EB200E240CB /* CustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA1FE71A521EB200E240CB /* CustomNavigationViewController.m */; };
 		86B5C6C41A4E6C80001019C5 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6C31A4E6C80001019C5 /* HistoryViewController.m */; };
 		86B5C6C71A4E6E63001019C5 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6C61A4E6E63001019C5 /* CalendarViewController.m */; };
 		86B5C6D61A4E70AC001019C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B5C6D51A4E70AC001019C5 /* UIKit.framework */; };
@@ -92,6 +93,8 @@
 		84CED7161A51F5010011D326 /* Gotham-UltraItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-UltraItalic.ttf"; path = "fonts/Gotham-UltraItalic.ttf"; sourceTree = "<group>"; };
 		84CED7171A51F5010011D326 /* Gotham-XLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-XLight.ttf"; path = "fonts/Gotham-XLight.ttf"; sourceTree = "<group>"; };
 		84CED7181A51F5010011D326 /* Gotham-XLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-XLightItalic.ttf"; path = "fonts/Gotham-XLightItalic.ttf"; sourceTree = "<group>"; };
+		84EA1FE61A521EB200E240CB /* CustomNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationViewController.h; sourceTree = "<group>"; };
+		84EA1FE71A521EB200E240CB /* CustomNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationViewController.m; sourceTree = "<group>"; };
 		86B5C6C21A4E6C80001019C5 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		86B5C6C31A4E6C80001019C5 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		86B5C6C51A4E6E63001019C5 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
@@ -286,6 +289,8 @@
 				86B5C6DA1A4E930F001019C5 /* Challenge.h */,
 				86B5C6DB1A4E930F001019C5 /* Challenge.m */,
 				991D954B1A4AA625005FE2D1 /* Main.storyboard */,
+				84EA1FE61A521EB200E240CB /* CustomNavigationViewController.h */,
+				84EA1FE71A521EB200E240CB /* CustomNavigationViewController.m */,
 				843B2D601A4CC2CD00B39CAF /* CompleteChallengeViewController.h */,
 				843B2D611A4CC2CD00B39CAF /* CompleteChallengeViewController.m */,
 				843B2D621A4CC2CD00B39CAF /* CompleteChallengeViewController.xib */,
@@ -501,6 +506,7 @@
 				99F2BEAD1A4B6CCB00EA9592 /* Global.m in Sources */,
 				86B5C6F81A5143BC001019C5 /* ChallengeInfoTableViewCell.m in Sources */,
 				843B2D631A4CC2CD00B39CAF /* CompleteChallengeViewController.m in Sources */,
+				84EA1FE81A521EB200E240CB /* CustomNavigationViewController.m in Sources */,
 				86B5C6C71A4E6E63001019C5 /* CalendarViewController.m in Sources */,
 				86B5C6F51A5143AF001019C5 /* ChallengeHeaderTableViewCell.m in Sources */,
 				86B5C6EF1A500695001019C5 /* ChallengeTableViewCell.m in Sources */,
