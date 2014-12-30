@@ -199,8 +199,6 @@ NSDateFormatter *dateFormatter;
 }
 
 - (void)updateCompletedDailyChallengeWithProperties:(NSMutableDictionary *)properties {
-    _challengePost = [[NSMutableDictionary alloc] initWithDictionary:properties];
-    
     // set text information
     NSString *comment = [properties objectForKey:@"comment"];
     if (comment) {

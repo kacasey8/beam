@@ -195,6 +195,7 @@ Global *globalKeyValueStore;
     BuiltFile *file = [BuiltFile file];
     if (_imageView.image != nil) {
         self.challenge.image = _imageView.image;
+        self.challenge.videoUrl = nil;
         [file setImage:_imageView.image forKey:@"image"];
         [file saveOnSuccess:^ {
             //file successfully uploaded
@@ -216,6 +217,7 @@ Global *globalKeyValueStore;
         }];
     } else if (_videoUrl != nil) {
         self.challenge.videoUrl = _videoUrl;
+        self.challenge.image = nil;
         [file setFile:[_videoUrl path] forKey:@"video"];
         [file saveOnSuccess:^ {
             //file successfully uploaded
