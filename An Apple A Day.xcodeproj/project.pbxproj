@@ -40,6 +40,7 @@
 		86B5C6F81A5143BC001019C5 /* ChallengeInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6F71A5143BC001019C5 /* ChallengeInfoTableViewCell.m */; };
 		86B5C6FC1A51440D001019C5 /* ChallengeButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6FB1A51440D001019C5 /* ChallengeButtonTableViewCell.m */; };
 		86B5C6FF1A514D90001019C5 /* ChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6FE1A514D90001019C5 /* ChallengeViewController.m */; };
+		86B5C7031A521028001019C5 /* ChallengeVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C7021A521028001019C5 /* ChallengeVideoTableViewCell.m */; };
 		991D95441A4AA625005FE2D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95431A4AA625005FE2D1 /* main.m */; };
 		991D95471A4AA625005FE2D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95461A4AA625005FE2D1 /* AppDelegate.m */; };
 		991D954A1A4AA625005FE2D1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D95491A4AA625005FE2D1 /* LoginViewController.m */; };
@@ -120,6 +121,8 @@
 		86B5C6FB1A51440D001019C5 /* ChallengeButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeButtonTableViewCell.m; sourceTree = "<group>"; };
 		86B5C6FD1A514D90001019C5 /* ChallengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeViewController.h; sourceTree = "<group>"; };
 		86B5C6FE1A514D90001019C5 /* ChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeViewController.m; sourceTree = "<group>"; };
+		86B5C7011A521028001019C5 /* ChallengeVideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeVideoTableViewCell.h; sourceTree = "<group>"; };
+		86B5C7021A521028001019C5 /* ChallengeVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeVideoTableViewCell.m; sourceTree = "<group>"; };
 		991D953E1A4AA625005FE2D1 /* An Apple A Day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "An Apple A Day.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		991D95421A4AA625005FE2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		991D95431A4AA625005FE2D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 				86B5C6E91A4FF069001019C5 /* ChallengeCommentTableViewCell.m */,
 				86B5C6FA1A51440D001019C5 /* ChallengeButtonTableViewCell.h */,
 				86B5C6FB1A51440D001019C5 /* ChallengeButtonTableViewCell.m */,
+				86B5C7011A521028001019C5 /* ChallengeVideoTableViewCell.h */,
+				86B5C7021A521028001019C5 /* ChallengeVideoTableViewCell.m */,
 			);
 			name = ChallengeTableViewCells;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 				995BB6951A4AC51D00C32B27 /* ChallengeViewControllerOld.m in Sources */,
 				86B5C6E61A4FF054001019C5 /* ChallengeImageTableViewCell.m in Sources */,
 				86B5C6C41A4E6C80001019C5 /* HistoryViewController.m in Sources */,
+				86B5C7031A521028001019C5 /* ChallengeVideoTableViewCell.m in Sources */,
 				86B5C6EB1A4FF069001019C5 /* ChallengeCommentTableViewCell.m in Sources */,
 				991D95441A4AA625005FE2D1 /* main.m in Sources */,
 			);

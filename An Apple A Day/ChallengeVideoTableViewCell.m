@@ -1,14 +1,14 @@
 //
-//  ChallengeButtonTableViewCell.m
+//  ChallengeVideoTableViewCell.m
 //  An Apple A Day
 //
 //  Created by Gavin Chu on 12/29/14.
 //  Copyright (c) 2014 ieor190. All rights reserved.
 //
 
-#import "ChallengeButtonTableViewCell.h"
+#import "ChallengeVideoTableViewCell.h"
 
-@implementation ChallengeButtonTableViewCell
+@implementation ChallengeVideoTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

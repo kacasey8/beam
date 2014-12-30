@@ -13,10 +13,11 @@
 #import "ChallengeCommentTableViewCell.h"
 #import "ChallengeButtonTableViewCell.h"
 #import "CompleteChallengeViewController.h"
+#import "ChallengeVideoTableViewCell.h"
 #import <BuiltIO/BuiltIO.h>
 #import "Global.h"
 
-@interface ChallengeTableViewController () <ChallengeButtonTableViewCellDelegate>
+@interface ChallengeTableViewController ()
 
 @end
 
@@ -175,10 +176,13 @@ Global *globalKeyValueStore;
         }
     } else if (indexPath.row == 2) {
         if (self.challenge.completed) {
+            if (self.challenge.image) {
+                NSLog(@"image height: %f, width: %f", self.challenge.image.size.height, self.challenge.image.size.width);
+                return self.challenge.image.size.height;
+            }
             return 300;
-        } else {
-            return 0;
         }
+        return 0;
     } else if (indexPath.row == 3) {
         if (self.challenge.completed) {
             return 200;
@@ -206,20 +210,29 @@ Global *globalKeyValueStore;
             cell.completeButton.hidden = YES;
         } else {
             cell.completeButton.hidden = NO;
-            [cell.completeButton addTarget:self action:@selector(challengeButtonWasPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.completeButton addTarget:self action:@selector(updateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         }
         return cell;
     } else if (indexPath.row == 2) {
-        ChallengeImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeImageCell" forIndexPath:indexPath];
-        cell.image.image = self.challenge.image;
-        return cell;
+        if (self.challenge.videoUrl) {
+            ChallengeVideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeVideoCell" forIndexPath:indexPath];
+            cell.player = [[MPMoviePlayerController alloc] initWithContentURL:self.challenge.videoUrl];
+            cell.player.view.frame = CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.width);
+            [cell.player prepareToPlay];
+            [cell addSubview:cell.player.view];
+            return cell;
+        } else {
+            ChallengeImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeImageCell" forIndexPath:indexPath];
+            cell.image.image = self.challenge.image;
+            return cell;
+        }
     } else if (indexPath.row == 3) {
         ChallengeCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeCommentCell" forIndexPath:indexPath];
         cell.comment.text = self.challenge.comment;
         return cell;
     } else if (indexPath.row == 4) {
         ChallengeButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeButtonCell" forIndexPath:indexPath];
-        cell.delegate = self;
+        [cell.button addTarget:self action:@selector(updateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
     return nil;
@@ -238,8 +251,15 @@ Global *globalKeyValueStore;
     }
 }
 
+- (IBAction)updateButtonPressed:(UIButton *)sender {
+    CompleteChallengeViewController *vc = [[CompleteChallengeViewController alloc] init];
+    vc.presenter = self;
+    vc.challenge = self.challenge;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 - (void)updateCompletedDailyChallenge {
-    
+    [self.tableView reloadData];
 }
 
 /*

@@ -8,19 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ChallengeButtonTableViewCellDelegate;
-
 @interface ChallengeButtonTableViewCell : UITableViewCell
-- (IBAction)buttonPressed:(id)sender;
 
-@property (nonatomic, weak) id<ChallengeButtonTableViewCellDelegate> delegate;
-
-
-
-@end
-
-@protocol ChallengeButtonTableViewCellDelegate <NSObject>
-
-- (void)challengeButtonWasPressed;
+@property (strong, nonatomic) IBOutlet UIButton *button;
 
 @end
