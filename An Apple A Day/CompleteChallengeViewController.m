@@ -18,6 +18,7 @@
 
 CGFloat SCREEN_WIDTH;
 CGFloat SCREEN_HEIGHT;
+NSString *placeHolderText = @"How was your experience? What did you do?";
 Global *globalKeyValueStore;
 
 - (id)init {
@@ -35,9 +36,14 @@ Global *globalKeyValueStore;
     SCREEN_HEIGHT = screenRect.size.height;
     // Do any additional setup after loading the view from its nib.
     
-    _textView.text = self.challenge.comment;
+    _textView.textContainerInset = UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0);
+    if (self.challenge.comment) {
+        _textView.text = self.challenge.comment;
+    }
+    
     _textView.delegate = self;
     _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
+    _videoUrl = self.challenge.videoUrl;
 
     UIImage *cameraIcon = [self imageWithImage:[UIImage imageNamed:@"camera_icon"] scaledToSize:CGSizeMake(30.0f, 20.0f)];
     UIBarButtonItem *cameraButton = [[UIBarButtonItem alloc] initWithImage:cameraIcon style:UIBarButtonItemStylePlain target:self action:@selector(useCamera:)];
@@ -55,7 +61,6 @@ Global *globalKeyValueStore;
     
     [self clearImageAndVideo];
     [self insertAndSetUpImage:self.challenge.image];
-    _videoUrl = self.challenge.videoUrl;
     [self insertAndSetUpVideoGivenVideoUrl];
 }
 
@@ -67,6 +72,36 @@ Global *globalKeyValueStore;
     [_textView setInputAccessoryView:_toolBar];
     return YES;
 }
+
+-(void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.text.length == 0) {
+        textView.text = placeHolderText;
+        textView.textColor = [UIColor lightGrayColor];
+    } else if (textView.text.length > placeHolderText.length) {
+        if ([[textView.text substringToIndex:placeHolderText.length] isEqualToString:placeHolderText]) {
+            NSLog(@"YES%@", [textView.text substringToIndex:placeHolderText.length]);
+            textView.text = [textView.text substringFromIndex:placeHolderText.length];
+            textView.textColor = [UIColor blackColor];
+        }
+    }
+}
+
+/*- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@"How was your experience? What did you do?"]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor];
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = @"How was your experience? What did you do?";
+        textView.textColor = [UIColor lightGrayColor]; //optional
+    }
+}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

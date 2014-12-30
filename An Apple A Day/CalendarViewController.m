@@ -43,7 +43,7 @@ NSDateFormatter *dateFormatter;
     self.calendar.calendarAppearance.dayTextColorOtherMonth = UIColorFromRGB(0x3fafc9);
     self.calendar.calendarAppearance.dayTextColor = [UIColor whiteColor];
     self.calendar.calendarAppearance.dayTextColorSelected = [UIColor whiteColor];
-    self.calendar.calendarAppearance.dayCircleColorSelected = UIColorFromRGB(0xD7B850);
+    self.calendar.calendarAppearance.dayCircleColorSelected = [UIColor clearColor];
     self.calendar.calendarAppearance.dayCircleColorToday = UIColorFromRGB(0xF7B850);
     self.calendar.calendarAppearance.dayCircleColorSelectedOtherMonth = UIColorFromRGB(0xD7B850);
     [self.calendar.calendarAppearance setDayDotColorForAll:UIColorFromRGB(0xFAC564)];
