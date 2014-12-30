@@ -17,6 +17,8 @@
 #import <BuiltIO/BuiltIO.h>
 #import "Global.h"
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 @interface ChallengeTableViewController ()
 
 @property BOOL checkedIfCompleted;
@@ -254,8 +256,10 @@ Global *globalKeyValueStore;
     } else if (indexPath.row == 4) {
         ChallengeButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeButtonCell" forIndexPath:indexPath];
         if (self.challenge.completed) {
-            [cell.button setTitle:@"Update" forState:UIControlStateNormal];
+            [cell.button setTitle:@"Edit" forState:UIControlStateNormal];
         }
+        [cell.button addTarget:self action:@selector(highlightButton:) forControlEvents:UIControlEventTouchDown];
+        [cell.button addTarget:self action:@selector(unhighlightButton:) forControlEvents:UIControlEventTouchUpOutside];
         [cell.button addTarget:self action:@selector(updateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
@@ -271,7 +275,19 @@ Global *globalKeyValueStore;
     }
 }
 
-- (IBAction)updateButtonPressed:(UIButton *)sender {
+- (void)unhighlightButton:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+    sender.layer.borderColor = [[UIColor whiteColor] CGColor];
+}
+
+- (void)highlightButton:(UIButton *)sender {
+    sender.layer.borderColor = [UIColorFromRGB(0xFAC564) CGColor];
+    sender.backgroundColor = UIColorFromRGB(0xFAC564);
+}
+
+- (void)updateButtonPressed:(UIButton *)sender {
+    sender.backgroundColor = [UIColor clearColor];
+    sender.layer.borderColor = [[UIColor whiteColor] CGColor];
     [self performSegueWithIdentifier:@"completeChallenge" sender:self];
 }
 
