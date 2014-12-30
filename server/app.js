@@ -47,20 +47,7 @@ Built.Extension.beforeSave('usersChallenges', function(request, response) {
           user_object.save({
             onSuccess: function(data, res) {
               // object update is successful
-
-              // Standard string formatting
-              if (!String.prototype.format) {
-                String.prototype.format = function() {
-                  var args = arguments;
-                  return this.replace(/{(\d+)}/g, function(match, number) { 
-                    return typeof args[number] != 'undefined'
-                      ? args[number]
-                      : match
-                    ;
-                  });
-                };
-              }
-              console.log("SUCCESS - user: {0}, current_streak: {1}, highest_streak: {2}, last_date_completed: {3}".format(user, highest_streak, current_streak, date_str));
+              console.log("someone posted");
             },
             onError: function(err) {
               // some error has occurred
@@ -98,11 +85,11 @@ var sendNotification = function() {
       }
 
       var notification = new Built.Notification();
-      notification.addUsers(user_uids);
+      notification.addUsers('blt5cdaa01a6deb9a41');
 
       var d = new Date();
       d.setHours(24 + 9,0,0,0); // next 9 am
-      //notification.atTime(d).inLocalTime(true).message('Theres a new daily challenge waiting for you');
+      //notification.atTime(d).inLocalTime(true).setMessage("Remember to complete today's challenge");
 
       notification.setMessage("Testing scripted notification");
 
