@@ -26,12 +26,12 @@
 		84CED7271A51F5010011D326 /* Gotham-XLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84CED7171A51F5010011D326 /* Gotham-XLight.ttf */; };
 		84CED7281A51F5010011D326 /* Gotham-XLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84CED7181A51F5010011D326 /* Gotham-XLightItalic.ttf */; };
 		84EA1FE81A521EB200E240CB /* CustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA1FE71A521EB200E240CB /* CustomNavigationViewController.m */; };
+		8632AA471A52913D00C1248D /* ChallengeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8632AA461A52913D00C1248D /* ChallengeDetailViewController.m */; };
 		86B5C6C41A4E6C80001019C5 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6C31A4E6C80001019C5 /* HistoryViewController.m */; };
 		86B5C6C71A4E6E63001019C5 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6C61A4E6E63001019C5 /* CalendarViewController.m */; };
 		86B5C6D61A4E70AC001019C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B5C6D51A4E70AC001019C5 /* UIKit.framework */; };
 		86B5C6D91A4E7B02001019C5 /* CalendarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6D81A4E7B02001019C5 /* CalendarTableViewController.m */; };
 		86B5C6DC1A4E930F001019C5 /* Challenge.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6DB1A4E930F001019C5 /* Challenge.m */; };
-		86B5C6E21A4F9D08001019C5 /* ChallengeDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6E11A4F9D08001019C5 /* ChallengeDetailTableViewController.m */; };
 		86B5C6E61A4FF054001019C5 /* ChallengeImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6E41A4FF054001019C5 /* ChallengeImageTableViewCell.m */; };
 		86B5C6EB1A4FF069001019C5 /* ChallengeCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6E91A4FF069001019C5 /* ChallengeCommentTableViewCell.m */; };
 		86B5C6EF1A500695001019C5 /* ChallengeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B5C6EE1A500695001019C5 /* ChallengeTableViewCell.m */; };
@@ -48,7 +48,6 @@
 		991D954F1A4AA625005FE2D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 991D954E1A4AA625005FE2D1 /* Images.xcassets */; };
 		991D95521A4AA625005FE2D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 991D95501A4AA625005FE2D1 /* LaunchScreen.xib */; };
 		991D955E1A4AA625005FE2D1 /* An_Apple_A_DayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 991D955D1A4AA625005FE2D1 /* An_Apple_A_DayTests.m */; };
-		995BB6951A4AC51D00C32B27 /* ChallengeViewControllerOld.m in Sources */ = {isa = PBXBuildFile; fileRef = 995BB6941A4AC51D00C32B27 /* ChallengeViewControllerOld.m */; };
 		995BB6991A4AC80300C32B27 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6981A4AC80300C32B27 /* QuartzCore.framework */; };
 		995BB69B1A4AC80900C32B27 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB69A1A4AC80900C32B27 /* CoreGraphics.framework */; };
 		995BB69D1A4AC80F00C32B27 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB69C1A4AC80F00C32B27 /* Security.framework */; };
@@ -94,6 +93,8 @@
 		84CED7181A51F5010011D326 /* Gotham-XLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-XLightItalic.ttf"; path = "fonts/Gotham-XLightItalic.ttf"; sourceTree = "<group>"; };
 		84EA1FE61A521EB200E240CB /* CustomNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationViewController.h; sourceTree = "<group>"; };
 		84EA1FE71A521EB200E240CB /* CustomNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationViewController.m; sourceTree = "<group>"; };
+		8632AA451A52913D00C1248D /* ChallengeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeDetailViewController.h; sourceTree = "<group>"; };
+		8632AA461A52913D00C1248D /* ChallengeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeDetailViewController.m; sourceTree = "<group>"; };
 		86B5C6C21A4E6C80001019C5 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		86B5C6C31A4E6C80001019C5 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		86B5C6C51A4E6E63001019C5 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
@@ -103,8 +104,6 @@
 		86B5C6D81A4E7B02001019C5 /* CalendarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarTableViewController.m; sourceTree = "<group>"; };
 		86B5C6DA1A4E930F001019C5 /* Challenge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Challenge.h; sourceTree = "<group>"; };
 		86B5C6DB1A4E930F001019C5 /* Challenge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Challenge.m; sourceTree = "<group>"; };
-		86B5C6E01A4F9D08001019C5 /* ChallengeDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeDetailTableViewController.h; sourceTree = "<group>"; };
-		86B5C6E11A4F9D08001019C5 /* ChallengeDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeDetailTableViewController.m; sourceTree = "<group>"; };
 		86B5C6E31A4FF054001019C5 /* ChallengeImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeImageTableViewCell.h; sourceTree = "<group>"; };
 		86B5C6E41A4FF054001019C5 /* ChallengeImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeImageTableViewCell.m; sourceTree = "<group>"; };
 		86B5C6E81A4FF069001019C5 /* ChallengeCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeCommentTableViewCell.h; sourceTree = "<group>"; };
@@ -136,8 +135,6 @@
 		991D95571A4AA625005FE2D1 /* An Apple A DayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "An Apple A DayTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		991D955C1A4AA625005FE2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		991D955D1A4AA625005FE2D1 /* An_Apple_A_DayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = An_Apple_A_DayTests.m; sourceTree = "<group>"; };
-		995BB6931A4AC51D00C32B27 /* ChallengeViewControllerOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeViewControllerOld.h; sourceTree = "<group>"; };
-		995BB6941A4AC51D00C32B27 /* ChallengeViewControllerOld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeViewControllerOld.m; sourceTree = "<group>"; };
 		995BB6981A4AC80300C32B27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		995BB69A1A4AC80900C32B27 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		995BB69C1A4AC80F00C32B27 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -281,24 +278,29 @@
 		991D95401A4AA625005FE2D1 /* An Apple A Day */ = {
 			isa = PBXGroup;
 			children = (
-				991D95451A4AA625005FE2D1 /* AppDelegate.h */,
-				991D95461A4AA625005FE2D1 /* AppDelegate.m */,
-				991D95481A4AA625005FE2D1 /* LoginViewController.h */,
-				991D95491A4AA625005FE2D1 /* LoginViewController.m */,
-				995BB6931A4AC51D00C32B27 /* ChallengeViewControllerOld.h */,
-				995BB6941A4AC51D00C32B27 /* ChallengeViewControllerOld.m */,
+				991D95411A4AA625005FE2D1 /* Supporting Files */,
+				991D954B1A4AA625005FE2D1 /* Main.storyboard */,
+				991D95501A4AA625005FE2D1 /* LaunchScreen.xib */,
+				991D954E1A4AA625005FE2D1 /* Images.xcassets */,
 				99F2BEAB1A4B6CCB00EA9592 /* Global.h */,
 				99F2BEAC1A4B6CCB00EA9592 /* Global.m */,
 				86B5C6DA1A4E930F001019C5 /* Challenge.h */,
 				86B5C6DB1A4E930F001019C5 /* Challenge.m */,
-				991D954B1A4AA625005FE2D1 /* Main.storyboard */,
+				991D95451A4AA625005FE2D1 /* AppDelegate.h */,
+				991D95461A4AA625005FE2D1 /* AppDelegate.m */,
+				991D95481A4AA625005FE2D1 /* LoginViewController.h */,
+				991D95491A4AA625005FE2D1 /* LoginViewController.m */,
 				84EA1FE61A521EB200E240CB /* CustomNavigationViewController.h */,
 				84EA1FE71A521EB200E240CB /* CustomNavigationViewController.m */,
+				86B5C6FD1A514D90001019C5 /* ChallengeViewController.h */,
+				86B5C6FE1A514D90001019C5 /* ChallengeViewController.m */,
 				843B2D601A4CC2CD00B39CAF /* CompleteChallengeViewController.h */,
 				843B2D611A4CC2CD00B39CAF /* CompleteChallengeViewController.m */,
-				991D954E1A4AA625005FE2D1 /* Images.xcassets */,
-				991D95501A4AA625005FE2D1 /* LaunchScreen.xib */,
-				991D95411A4AA625005FE2D1 /* Supporting Files */,
+				8632AA451A52913D00C1248D /* ChallengeDetailViewController.h */,
+				8632AA461A52913D00C1248D /* ChallengeDetailViewController.m */,
+				86B5C6F01A513D73001019C5 /* ChallengeTableViewController.h */,
+				86B5C6F11A513D73001019C5 /* ChallengeTableViewController.m */,
+				86B5C6F91A5143D6001019C5 /* ChallengeTableViewCells */,
 				86B5C6C21A4E6C80001019C5 /* HistoryViewController.h */,
 				86B5C6C31A4E6C80001019C5 /* HistoryViewController.m */,
 				86B5C6C51A4E6E63001019C5 /* CalendarViewController.h */,
@@ -307,13 +309,6 @@
 				86B5C6D81A4E7B02001019C5 /* CalendarTableViewController.m */,
 				86B5C6ED1A500695001019C5 /* ChallengeTableViewCell.h */,
 				86B5C6EE1A500695001019C5 /* ChallengeTableViewCell.m */,
-				86B5C6E01A4F9D08001019C5 /* ChallengeDetailTableViewController.h */,
-				86B5C6E11A4F9D08001019C5 /* ChallengeDetailTableViewController.m */,
-				86B5C6F91A5143D6001019C5 /* ChallengeTableViewCells */,
-				86B5C6FD1A514D90001019C5 /* ChallengeViewController.h */,
-				86B5C6FE1A514D90001019C5 /* ChallengeViewController.m */,
-				86B5C6F01A513D73001019C5 /* ChallengeTableViewController.h */,
-				86B5C6F11A513D73001019C5 /* ChallengeTableViewController.m */,
 			);
 			path = "An Apple A Day";
 			sourceTree = "<group>";
@@ -501,7 +496,7 @@
 				86B5C6FC1A51440D001019C5 /* ChallengeButtonTableViewCell.m in Sources */,
 				86B5C6DC1A4E930F001019C5 /* Challenge.m in Sources */,
 				86B5C6FF1A514D90001019C5 /* ChallengeViewController.m in Sources */,
-				86B5C6E21A4F9D08001019C5 /* ChallengeDetailTableViewController.m in Sources */,
+				8632AA471A52913D00C1248D /* ChallengeDetailViewController.m in Sources */,
 				86B5C6F21A513D73001019C5 /* ChallengeTableViewController.m in Sources */,
 				991D95471A4AA625005FE2D1 /* AppDelegate.m in Sources */,
 				99F2BEAD1A4B6CCB00EA9592 /* Global.m in Sources */,
@@ -512,7 +507,6 @@
 				86B5C6F51A5143AF001019C5 /* ChallengeHeaderTableViewCell.m in Sources */,
 				86B5C6EF1A500695001019C5 /* ChallengeTableViewCell.m in Sources */,
 				86B5C6D91A4E7B02001019C5 /* CalendarTableViewController.m in Sources */,
-				995BB6951A4AC51D00C32B27 /* ChallengeViewControllerOld.m in Sources */,
 				86B5C6E61A4FF054001019C5 /* ChallengeImageTableViewCell.m in Sources */,
 				86B5C6C41A4E6C80001019C5 /* HistoryViewController.m in Sources */,
 				86B5C7031A521028001019C5 /* ChallengeVideoTableViewCell.m in Sources */,

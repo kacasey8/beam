@@ -19,6 +19,8 @@
 
 @interface ChallengeTableViewController ()
 
+@property BOOL checkedIfCompleted;
+
 @end
 
 @implementation ChallengeTableViewController
@@ -39,13 +41,23 @@ Global *globalKeyValueStore;
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    self.challenge = [[Challenge alloc] init];
+    if (!self.challenge) {
+        self.challenge = [[Challenge alloc] init];
+    }
+    
     globalKeyValueStore = [Global globalClass];
     
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"]; // using ISODate format so it will sort properly
     
-    [self getChallengeForDay];
+    self.checkedIfCompleted = NO;
+    
+    //challenge detail should already have challenge uid
+    if (self.isChallengeDetail) {
+        [self queryCompletedDailyChallenge];
+    } else {
+        [self getChallengeForDay];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,7 +95,7 @@ Global *globalKeyValueStore;
         
         NSLog(@"today's challenge: %@", [self.challenge toString]);
         
-        [self.tableView reloadData];
+        //[self.tableView reloadData];
         [self queryCompletedDailyChallenge];
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
@@ -95,10 +107,12 @@ Global *globalKeyValueStore;
 
 - (void)queryCompletedDailyChallenge {
     NSLog(@"queryCompletedDailyChallenge");
-    // Make sure everything is set up first. This method gets called when we successfully login and when challenge
-    // is successfully queried
-    NSLog(@"uid: %@   useruid: %@", self.challenge.uid, [globalKeyValueStore getValueforKey:kBuiltUserUID]);
-    if (self.challenge.uid && [globalKeyValueStore getValueforKey:kBuiltUserUID]) {
+    // Make sure everything is set up first. This method gets called when we successfully login and when challenge is successfully queried
+    if (!self.checkedIfCompleted && self.challenge.uid && [globalKeyValueStore getValueforKey:kBuiltUserUID]) {
+        
+        //only make this query once
+        self.checkedIfCompleted = YES;
+        
         BuiltQuery *query = [BuiltQuery queryWithClassUID:@"usersChallenges"];
         [query whereKey:@"user" equalTo:[globalKeyValueStore getValueforKey:kBuiltUserUID]];
         [query whereKey:@"challenge" equalTo:self.challenge.uid];
@@ -116,7 +130,6 @@ Global *globalKeyValueStore;
                 self.challenge.completed = YES;
                 
                 NSDictionary *builtResult = [builtResults objectAtIndex:0];
-                NSLog(@"%@", builtResult);
                 
                 self.challenge.comment = [builtResult objectForKey:@"comment"];
                 
@@ -147,9 +160,8 @@ Global *globalKeyValueStore;
                 self.challenge.usersChallengesUID = [builtResult objectForKey:@"uid"];
                 
                 NSLog(@"completed challenge: %@", [self.challenge toString]);
-                
-                [self.tableView reloadData];
             }
+            [self.tableView reloadData];
         } onError:^(NSError *error, ResponseType type) {
             // query execution failed.
             // error.userinfo contains more details regarding the same
@@ -203,6 +215,9 @@ Global *globalKeyValueStore;
             return 0;
         }
     } else if (indexPath.row == 4) {
+        if (self.isChallengeDetail) {
+            return 0;
+        }
         return 100;
     }
     return 40;

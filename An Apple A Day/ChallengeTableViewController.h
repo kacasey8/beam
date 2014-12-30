@@ -11,7 +11,7 @@
 
 @interface ChallengeTableViewController : UITableViewController
 
-@property BOOL isHomePage;
+@property BOOL isChallengeDetail; //used to determine if update button is visible
 @property (strong, nonatomic) Challenge *challenge;
 @property (strong, nonatomic) NSDate *date;
 

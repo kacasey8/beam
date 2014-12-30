@@ -40,7 +40,7 @@ NSDateFormatter *dateFormatter;
     NSLog(@"destinationViewController:%@", [segue destinationViewController]);
     if ([segue.identifier isEqualToString:@"embedDailyChallenge"]) {
         self.tableViewController = (ChallengeTableViewController *) [segue destinationViewController];
-        self.tableViewController.isHomePage = YES;
+        self.tableViewController.isChallengeDetail = NO;
         self.tableViewController.date = [NSDate date];
     }
 }

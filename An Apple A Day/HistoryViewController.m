@@ -10,7 +10,7 @@
 #import "Challenge.h"
 #import "CalendarViewController.h"
 #import "CalendarTableViewController.h"
-#import "ChallengeDetailTableViewController.h"
+#import "ChallengeDetailViewController.h"
 
 @interface HistoryViewController ()
 
@@ -63,13 +63,15 @@
         self.calendarViewController = (CalendarViewController *) [segue destinationViewController];
     } else if ([segue.identifier isEqualToString:@"embedListView"]) {
         self.calendarTableViewController = (CalendarTableViewController *) [segue destinationViewController];
-    } else if ([segue.identifier isEqualToString:@"swag"]) {
-        ChallengeDetailTableViewController *challengeDetailVC = (ChallengeDetailTableViewController *)[segue destinationViewController];
+    } else if ([segue.identifier isEqualToString:@"openChallengeDetail"]) {
+        ChallengeDetailViewController *challengeDetailVC = (ChallengeDetailViewController *)[segue destinationViewController];
         Challenge *selectedChallenge = [self.completedChallenges objectForKey:self.challengeDate];
+        challengeDetailVC.challenge = selectedChallenge;
+        
         NSLog(@"challenge date: %@", self.challengeDate);
         NSLog(@"Completed Challenges: %@", self.completedChallenges);
         NSLog(@"selected challenge: %@", [selectedChallenge toString]);
-        [challengeDetailVC setChallenge:selectedChallenge];
+        
     }
 }
 
