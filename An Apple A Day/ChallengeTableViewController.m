@@ -252,10 +252,7 @@ Global *globalKeyValueStore;
 }
 
 - (IBAction)updateButtonPressed:(UIButton *)sender {
-    CompleteChallengeViewController *vc = [[CompleteChallengeViewController alloc] init];
-    vc.presenter = self;
-    vc.challenge = self.challenge;
-    [self presentViewController:vc animated:YES completion:nil];
+    [self performSegueWithIdentifier:@"completeChallenge" sender:self];
 }
 
 - (void)updateCompletedDailyChallenge {
