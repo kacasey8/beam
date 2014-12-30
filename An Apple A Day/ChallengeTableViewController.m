@@ -171,7 +171,6 @@ Global *globalKeyValueStore;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat screenHeight = self.view.frame.size.height;
-    //NSLog(@"table view height: %f", screenHeight);
     if (indexPath.row == 0) {
         if (self.challenge.completed) {
             return 0;
@@ -183,7 +182,6 @@ Global *globalKeyValueStore;
     } else if (indexPath.row == 2) {
         if (self.challenge.completed) {
             if (self.challenge.image) {
-                NSLog(@"image height: %f, width: %f", self.challenge.image.size.height, self.challenge.image.size.width);
                 return self.challenge.image.size.height * SCREEN_WIDTH / self.challenge.image.size.width;
             } else if (self.challenge.videoUrl) {
                 // This is the height of the video player.
@@ -194,7 +192,7 @@ Global *globalKeyValueStore;
         return 0;
     } else if (indexPath.row == 3) {
         if (self.challenge.completed) {
-            return 200;
+            return screenHeight*0.6 - 100;
         } else {
             return 0;
         }
