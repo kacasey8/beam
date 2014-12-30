@@ -101,14 +101,10 @@ Global *globalKeyValueStore;
     if (!image) {
         return;
     }
-//    CGSize newSize = CGSizeMake(SCREEN_WIDTH, image.size.height);
-//    UIGraphicsBeginImageContext( newSize );
-//    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-//    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
     
-    _imageView.image = image;
-    [_imageView setFrame:CGRectMake(0,0,SCREEN_WIDTH,image.size.height * SCREEN_WIDTH / image.size.width)];
+    [_imageView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, image.size.height * SCREEN_WIDTH / image.size.width)];
+    _imageView.contentMode = UIViewContentModeScaleAspectFill;
+    _imageView.image = [self imageWithImage:image scaledToSize:CGSizeMake(SCREEN_WIDTH, image.size.height * SCREEN_WIDTH / image.size.width)];
     _imageView.hidden = NO;
     [self.view setNeedsDisplay];
 }
