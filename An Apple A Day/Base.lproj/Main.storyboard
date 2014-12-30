@@ -555,17 +555,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ir6-oi-Nnt">
-                                            <rect key="frame" x="28" y="28" width="544" height="30"/>
+                                            <rect key="frame" x="28" y="29" width="544" height="30"/>
                                             <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is the Challenge's detail description that should be one sentence long, but it should also fit up to 4 lines." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsB-Ex-Qhu">
-                                            <rect key="frame" x="28" y="71" width="544" height="100"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the Challenge's detail description that should be one sentence long, but it should also fit up to 4 lines." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsB-Ex-Qhu">
+                                            <rect key="frame" x="28" y="67" width="544" height="106"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="OUk-l2-lIO"/>
+                                                <constraint firstAttribute="height" constant="106" id="OUk-l2-lIO"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="18"/>
+                                            <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham" pointSize="20"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -574,7 +574,7 @@
                                     <constraints>
                                         <constraint firstAttribute="centerY" secondItem="rsB-Ex-Qhu" secondAttribute="centerY" constant="-15" id="95i-eb-GTA"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="rsB-Ex-Qhu" secondAttribute="trailing" constant="20" id="Dhj-wW-ZVO"/>
-                                        <constraint firstItem="Ir6-oi-Nnt" firstAttribute="top" secondItem="UA0-18-k8B" secondAttribute="topMargin" constant="20" id="I6d-Aa-xer"/>
+                                        <constraint firstItem="Ir6-oi-Nnt" firstAttribute="top" secondItem="UA0-18-k8B" secondAttribute="topMargin" constant="21" id="I6d-Aa-xer"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ir6-oi-Nnt" secondAttribute="trailing" constant="20" id="IGF-on-dfF"/>
                                         <constraint firstItem="rsB-Ex-Qhu" firstAttribute="top" secondItem="Ir6-oi-Nnt" secondAttribute="bottom" id="IQM-kF-DD6"/>
                                         <constraint firstItem="rsB-Ex-Qhu" firstAttribute="leading" secondItem="UA0-18-k8B" secondAttribute="leadingMargin" constant="20" id="o55-Yb-4UE"/>
@@ -694,7 +694,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsq-oA-JNl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1354" y="-1057"/>
+            <point key="canvasLocation" x="1354" y="-1059"/>
         </scene>
         <!--Entry-->
         <scene sceneID="avF-bl-CtB">

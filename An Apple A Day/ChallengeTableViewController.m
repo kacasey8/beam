@@ -200,7 +200,7 @@ Global *globalKeyValueStore;
         if (self.challenge.completed) {
             return 0;
         } else {
-            return screenHeight*0.35;
+            return screenHeight*0.45;
         }
     } else if (indexPath.row == 1) {
         if (self.challenge.completed) {
@@ -209,7 +209,7 @@ Global *globalKeyValueStore;
             }
             return screenHeight*0.4;
         }
-        return screenHeight*0.65 - 100;
+        return screenHeight*0.55 - 100;
     } else if (indexPath.row == 2) {
         if (self.challenge.completed) {
             if (self.challenge.image) {
