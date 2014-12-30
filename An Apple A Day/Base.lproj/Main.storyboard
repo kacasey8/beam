@@ -415,11 +415,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6d-YW-MVj">
-                                            <rect key="frame" x="0.0" y="-1" width="70" height="32"/>
+                                            <rect key="frame" x="0.0" y="-1" width="75" height="32"/>
                                             <color key="backgroundColor" red="0.96470588235294119" green="0.72941176470588232" blue="0.32156862745098042" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="56a-nU-ifI"/>
-                                                <constraint firstAttribute="width" constant="70" id="Hr9-Qo-YX9"/>
+                                                <constraint firstAttribute="width" constant="75" id="Hr9-Qo-YX9"/>
                                                 <constraint firstAttribute="height" constant="35" id="pqS-YZ-iDb"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="18"/>
@@ -432,22 +432,22 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Info" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9H-TJ-wN2">
-                                            <rect key="frame" x="90" y="0.0" width="510" height="74"/>
+                                            <rect key="frame" x="95" y="0.0" width="505" height="74"/>
                                             <color key="backgroundColor" red="0.30588235294117649" green="0.73333333333333328" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLT-9c-Kba">
-                                            <rect key="frame" x="570" y="0.0" width="30" height="74"/>
+                                            <rect key="frame" x="570" y="19" width="30" height="36"/>
                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="24"/>
                                             <state key="normal" title=">"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qM-Uu-By0">
-                                            <rect key="frame" x="0.0" y="31" width="70" height="43"/>
+                                            <rect key="frame" x="0.0" y="31" width="75" height="43"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="70" id="VcU-fQ-ZWw"/>
+                                                <constraint firstAttribute="width" constant="75" id="VcU-fQ-ZWw"/>
                                                 <constraint firstAttribute="height" constant="40" id="dcv-7c-Z3V"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="20"/>
@@ -467,6 +467,7 @@
                                         <constraint firstItem="R9H-TJ-wN2" firstAttribute="leading" secondItem="G6d-YW-MVj" secondAttribute="trailing" constant="20" id="5FV-bD-x7g"/>
                                         <constraint firstAttribute="trailing" secondItem="R9H-TJ-wN2" secondAttribute="trailing" id="7mh-Tf-JZ2"/>
                                         <constraint firstItem="G6d-YW-MVj" firstAttribute="leading" secondItem="9qM-Uu-By0" secondAttribute="leading" id="8W8-m8-qxp"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="R9H-TJ-wN2" secondAttribute="bottom" constant="-7" id="ABO-W7-4M1"/>
                                         <constraint firstAttribute="centerY" secondItem="KLT-9c-Kba" secondAttribute="centerY" id="GEi-s8-RQK"/>
                                         <constraint firstAttribute="centerY" secondItem="G6d-YW-MVj" secondAttribute="centerY" constant="25" id="ILK-Zo-cpF"/>
                                         <constraint firstItem="R9H-TJ-wN2" firstAttribute="centerY" secondItem="cqJ-wP-7gC" secondAttribute="centerY" id="Ikg-JJ-4fO"/>
@@ -479,14 +480,17 @@
                                         <constraint firstItem="G6d-YW-MVj" firstAttribute="top" secondItem="cqJ-wP-7gC" secondAttribute="topMargin" id="lhp-sG-MQr"/>
                                         <constraint firstAttribute="trailing" secondItem="KLT-9c-Kba" secondAttribute="trailing" id="q08-IN-W0K"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="9qM-Uu-By0" secondAttribute="bottom" constant="-8" id="xnl-zZ-GnJ"/>
+                                        <constraint firstItem="R9H-TJ-wN2" firstAttribute="top" secondItem="cqJ-wP-7gC" secondAttribute="topMargin" constant="-8" id="zCD-Tu-qJj"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="ILK-Zo-cpF"/>
+                                            <exclude reference="Lnc-iK-ga9"/>
                                             <exclude reference="lhp-sG-MQr"/>
                                             <exclude reference="lTa-Z9-Fw8"/>
                                             <exclude reference="33y-i1-x6v"/>
                                             <exclude reference="Per-Db-W6Z"/>
+                                            <exclude reference="V3N-ci-uBl"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
