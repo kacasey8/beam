@@ -225,10 +225,17 @@ Global *globalKeyValueStore;
     return nil;
 }
 
-- (IBAction)challengeButtonWasPressed:(UIButton *)sender {
-    CompleteChallengeViewController *vc = [[CompleteChallengeViewController alloc] init];
-    vc.presenter = self;
-    [self presentViewController:vc animated:YES completion:nil];
+- (void)challengeButtonWasPressed {
+    [self performSegueWithIdentifier:@"completeChallenge" sender:self];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"completeChallenge"]) {
+        CompleteChallengeViewController *vc = [segue destinationViewController];
+        vc.presenter = self;
+        vc.challenge = _challenge;
+    }
 }
 
 - (void)updateCompletedDailyChallenge {

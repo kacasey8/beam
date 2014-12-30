@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		69AB875F0D41BD079FEB23F9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D29D854CD7DD50863B22BA /* libPods.a */; };
 		843B2D631A4CC2CD00B39CAF /* CompleteChallengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843B2D611A4CC2CD00B39CAF /* CompleteChallengeViewController.m */; };
-		843B2D641A4CC2CD00B39CAF /* CompleteChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843B2D621A4CC2CD00B39CAF /* CompleteChallengeViewController.xib */; };
 		84CED7191A51F5010011D326 /* Gotham-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84CED7091A51F5010011D326 /* Gotham-Black.ttf */; };
 		84CED71A1A51F5010011D326 /* Gotham-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84CED70A1A51F5010011D326 /* Gotham-BlackItalic.ttf */; };
 		84CED71B1A51F5010011D326 /* Gotham-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84CED70B1A51F5010011D326 /* Gotham-Bold.ttf */; };
@@ -76,7 +75,6 @@
 /* Begin PBXFileReference section */
 		843B2D601A4CC2CD00B39CAF /* CompleteChallengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteChallengeViewController.h; sourceTree = "<group>"; };
 		843B2D611A4CC2CD00B39CAF /* CompleteChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteChallengeViewController.m; sourceTree = "<group>"; };
-		843B2D621A4CC2CD00B39CAF /* CompleteChallengeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompleteChallengeViewController.xib; sourceTree = "<group>"; };
 		84CED7091A51F5010011D326 /* Gotham-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Black.ttf"; path = "fonts/Gotham-Black.ttf"; sourceTree = "<group>"; };
 		84CED70A1A51F5010011D326 /* Gotham-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-BlackItalic.ttf"; path = "fonts/Gotham-BlackItalic.ttf"; sourceTree = "<group>"; };
 		84CED70B1A51F5010011D326 /* Gotham-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gotham-Bold.ttf"; path = "fonts/Gotham-Bold.ttf"; sourceTree = "<group>"; };
@@ -293,7 +291,6 @@
 				84EA1FE71A521EB200E240CB /* CustomNavigationViewController.m */,
 				843B2D601A4CC2CD00B39CAF /* CompleteChallengeViewController.h */,
 				843B2D611A4CC2CD00B39CAF /* CompleteChallengeViewController.m */,
-				843B2D621A4CC2CD00B39CAF /* CompleteChallengeViewController.xib */,
 				991D954E1A4AA625005FE2D1 /* Images.xcassets */,
 				991D95501A4AA625005FE2D1 /* LaunchScreen.xib */,
 				991D95411A4AA625005FE2D1 /* Supporting Files */,
@@ -444,7 +441,6 @@
 				84CED71D1A51F5010011D326 /* Gotham-Book.ttf in Resources */,
 				84CED7271A51F5010011D326 /* Gotham-XLight.ttf in Resources */,
 				84CED7201A51F5010011D326 /* Gotham-LightItalic.ttf in Resources */,
-				843B2D641A4CC2CD00B39CAF /* CompleteChallengeViewController.xib in Resources */,
 				84CED71B1A51F5010011D326 /* Gotham-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

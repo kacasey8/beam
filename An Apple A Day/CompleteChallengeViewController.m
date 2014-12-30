@@ -21,7 +21,7 @@ CGFloat SCREEN_HEIGHT;
 Global *globalKeyValueStore;
 
 - (id)init {
-    self = [super initWithNibName:@"CompleteChallengeViewController" bundle:nil];
+    self = [super init];
     if (self != nil) {
         globalKeyValueStore = [Global globalClass];
     }
@@ -149,7 +149,7 @@ Global *globalKeyValueStore;
 #pragma mark - Actions
 
 - (IBAction)closeView:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)completeChallenge:(id)sender {
@@ -250,7 +250,7 @@ Global *globalKeyValueStore;
     }];
     
     [_presenter updateCompletedDailyChallenge];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)useCamera:(id)sender {
