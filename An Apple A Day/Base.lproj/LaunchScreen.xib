@@ -6,8 +6,8 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Gotham-Bold.ttf">
-            <string>Gotham-Bold</string>
+        <mutableArray key="Gotham-Book.ttf">
+            <string>Gotham-Book</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -23,12 +23,12 @@
                     <color key="textColor" red="0.96470588235294119" green="0.72549019607843135" blue="0.32156862745098042" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEAM" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beam" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
                     <rect key="frame" x="20" y="246" width="441" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="CuX-UW-0Fq"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="36"/>
+                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="36"/>
                     <color key="textColor" red="0.96470588235294119" green="0.72549019607843135" blue="0.32156862745098042" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

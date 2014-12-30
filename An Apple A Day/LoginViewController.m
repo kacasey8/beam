@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+//    _facebookButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+//    _facebookButton.layer.borderWidth = 1.0f;
+//    _facebookButton.layer.cornerRadius = 1.0f;
 }
 
 - (void)didReceiveMemoryWarning {

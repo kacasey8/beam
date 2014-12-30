@@ -11,9 +11,9 @@
             <string>Gotham-Bold</string>
             <string>Gotham-Bold</string>
             <string>Gotham-Bold</string>
-            <string>Gotham-Bold</string>
         </mutableArray>
         <mutableArray key="Gotham-Book.ttf">
+            <string>Gotham-Book</string>
             <string>Gotham-Book</string>
             <string>Gotham-Book</string>
             <string>Gotham-Book</string>
@@ -42,24 +42,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEAM" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="tap-N0-Dn9">
-                                <rect key="frame" x="80" y="316" width="441" height="43"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="beam" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="tap-N0-Dn9">
+                                <rect key="frame" x="80" y="313" width="441" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="Q8S-hc-o3T"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="46"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="46"/>
                                 <color key="textColor" red="0.96470588239999999" green="0.72549019609999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="Qbq-zu-URT">
-                                <rect key="frame" x="204" y="92" width="192" height="192"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="Qbq-zu-URT">
+                                <rect key="frame" x="204" y="92" width="192" height="189"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="192" id="aiq-VH-DFx"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJj-Zh-Hzr">
                                 <rect key="frame" x="175" y="467" width="250" height="59"/>
-                                <color key="backgroundColor" red="0.23921568627450981" green="0.33725490196078434" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.21176470588235294" green="0.31372549019607843" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="1Os-8g-qNb"/>
                                     <constraint firstAttribute="height" constant="59" id="KbZ-oE-Oiu"/>
@@ -67,7 +67,7 @@
                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Log in with Facebook">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
                                 <connections>
@@ -273,7 +273,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cXM-X9-YjH" id="x4W-oh-WRV">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2aQ-Mn-NDl">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2aQ-Mn-NDl">
                                             <rect key="frame" x="0.0" y="-1" width="600" height="300"/>
                                         </imageView>
                                     </subviews>
@@ -475,14 +475,14 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Challenge Info" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9H-TJ-wN2">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Info" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9H-TJ-wN2">
                                             <rect key="frame" x="83" y="-1" width="517" height="76"/>
                                             <color key="backgroundColor" red="0.30588235294117649" green="0.73333333333333328" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLT-9c-Kba">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLT-9c-Kba">
                                             <rect key="frame" x="550" y="-1" width="50" height="76"/>
                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="24"/>
                                             <state key="normal" title="&gt;"/>
@@ -563,7 +563,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G2X-3O-Rjc" id="Mzu-nH-Mhi">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="L2l-xV-zQV">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="L2l-xV-zQV">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                         </imageView>
                                     </subviews>
@@ -619,7 +619,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NLw-hK-eNG" id="tZh-bO-4IY">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0el-3o-3KM">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0el-3o-3KM">
                                             <rect key="frame" x="0.0" y="-1" width="600" height="150"/>
                                         </imageView>
                                     </subviews>
