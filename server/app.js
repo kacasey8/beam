@@ -83,24 +83,41 @@ var sendNotification = function() {
         Built.setHeaders('authtoken', data.application_user.authtoken);
         var user_query = new Built.Query('built_io_application_user');
 
-        user_query.only('uid');
+        user_query.only(['uid', 'last_date_completed', 'first_name']);
 
         user_query.exec({
           onSuccess: function(data) {
             var user_uids = [];
 
+            var today = new Date();
+
+            today.setHours(today.getHours() - 8); // Convert to PST time.
+
+            // No time, only date.
+            today.setHours(0,0,0,0);
+
             for (i = 0; i < data.length; i++) { 
-              user_uids.push(data[i].get('uid'));
+              console.log(data[i]);
+              var last_date = new Date(data[i].get('last_date_completed'));
+
+              if (today.getTime() != last_date.getTime()) {
+                user_uids.push(data[i].get('uid'));
+                console.log('sending to: ' + data[i].get('first_name'));
+              } else {
+                console.log('not sending to: ' + data[i].get('first_name'));
+              }
             }
 
             var notification = new Built.Notification();
             notification.addUsers(user_uids);
 
-            var d = new Date();
-            d.setHours(24 + 9,0,0,0); // next 9 am
+            // Don't send in local time. It'll get confusing. For now just send immediately
+            // based on whether they finished at the send time.
+            // var d = new Date();
+            // d.setHours(24 + 9,0,0,0); // next 9 am
             //notification.atTime(d).inLocalTime(true).setMessage("Remember to complete today's challenge");
 
-            notification.setMessage("Remember to complete today's challenge");
+            notification.setMessage("Remember to complete today's challenge!");
 
             notification.send({
               onSuccess: function(data) {
@@ -123,6 +140,14 @@ var sendNotification = function() {
   );
 }
 
-var sendDailyNotification = setInterval(sendNotification, 84000 * 1000); // 84000 seconds in a day, 1000 milliseconds in a day. Activated once a day
+// 84000 seconds in a day, 1000 milliseconds in a second. Activated once a day
+function sendDailyNotification() {
+  // Send one now, set interval does not send immediately
+  sendNotification();
+  setInterval(sendNotification, 84000 * 1000);
+}
 
-sendNotification();
+// I'm uploading this code at 11:22 pm. I want this to trigger at 9:22 am
+var hours = 10;
+
+setTimeout(sendDailyNotification, 1000 * 3600 * hours);
