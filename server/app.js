@@ -16,16 +16,17 @@ Built.Extension.beforeSave('usersChallenges', function(request, response) {
         onSuccess: function(data) {
           var user_object = data[0];
           var last_completed = new Date(user_object.get('last_date_completed'));
-          if(last_completed == date) {
+          if(last_completed.getTime() == date.getTime()) {
             return; // Updated the challenge, nothing to do.
           }
 
-          var day_before_last_completed = new Date(last_completed.getDate() - 1);
+          var day_after_last_completed = new Date(last_completed);
+          day_after_last_completed.setDate(day_after_last_completed.getDate() + 1);
 
           var current_streak = user_object.get('current_streak');
           var highest_streak = user_object.get('highest_streak');
 
-          if (day_before_last_completed == date) {
+          if (day_after_last_completed.getTime() == date.getTime()) {
             // They added to the current streak.
             current_streak += 1;
           } else {
