@@ -108,7 +108,7 @@ Global *globalKeyValueStore;
 //    UIGraphicsEndImageContext();
     
     _imageView.image = image;
-    [_imageView setFrame:CGRectMake(0,0,SCREEN_WIDTH,image.size.height)];
+    [_imageView setFrame:CGRectMake(0,0,SCREEN_WIDTH,image.size.height * SCREEN_WIDTH / image.size.width)];
     _imageView.hidden = NO;
     [self.view setNeedsDisplay];
 }

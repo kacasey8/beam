@@ -23,12 +23,19 @@
 
 @implementation ChallengeTableViewController
 
+CGFloat SCREEN_WIDTH;
+CGFloat SCREEN_HEIGHT;
+
 NSDateFormatter *dateFormatter;
 Global *globalKeyValueStore;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     //self.tableView.contentInset = UIEdgeInsetsMake(-64.0f, 0.0f, 0.0f, 0.0f); //hack to remove top space
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    SCREEN_WIDTH = screenRect.size.width;
+    SCREEN_HEIGHT = screenRect.size.height;
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
@@ -177,7 +184,7 @@ Global *globalKeyValueStore;
         if (self.challenge.completed) {
             if (self.challenge.image) {
                 NSLog(@"image height: %f, width: %f", self.challenge.image.size.height, self.challenge.image.size.width);
-                return self.challenge.image.size.height;
+                return self.challenge.image.size.height * SCREEN_WIDTH / self.challenge.image.size.width;
             } else if (self.challenge.videoUrl) {
                 // This is the height of the video player.
                 return self.view.frame.size.width;
