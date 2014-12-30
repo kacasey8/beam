@@ -81,14 +81,14 @@ Global *globalKeyValueStore;
     if (!image) {
         return;
     }
-    CGSize newSize = CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH);
-    UIGraphicsBeginImageContext( newSize );
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+//    CGSize newSize = CGSizeMake(SCREEN_WIDTH, image.size.height);
+//    UIGraphicsBeginImageContext( newSize );
+//    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+//    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
     
-    _imageView.image = newImage;
-    _imageView.contentMode = UIViewContentModeScaleAspectFill;
+    _imageView.image = image;
+    [_imageView setFrame:CGRectMake(0,0,SCREEN_WIDTH,image.size.height)];
     _imageView.hidden = NO;
     [self.view setNeedsDisplay];
 }
@@ -163,8 +163,11 @@ Global *globalKeyValueStore;
         [alert show];
         return;
     }
-    BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
     
+    BuiltObject *obj = [BuiltObject objectWithClassUID:@"usersChallenges"];
+    NSLog(@"usersChallengesUID: %@",self.challenge.usersChallengesUID);
+    NSLog(@"challengeUID: %@", self.challenge.uid);
+    NSLog(@"userUID: %@", [globalKeyValueStore getValueforKey:kBuiltUserUID]);
     if (self.challenge.usersChallengesUID != nil) {
         [obj setUid:self.challenge.usersChallengesUID];
         NSLog(@"updaing object with uid: %@", self.challenge.usersChallengesUID);
