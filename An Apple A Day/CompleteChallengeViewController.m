@@ -36,13 +36,22 @@ Global *globalKeyValueStore;
     // Do any additional setup after loading the view from its nib.
     
     _textView.text = self.challenge.comment;
-    _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
-    UIBarButtonItem *cameraButton = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonItemStylePlain target:self action:@selector(useCamera:)];
-    UIBarButtonItem *imagesButton = [[UIBarButtonItem alloc] initWithTitle:@"Images" style:UIBarButtonItemStylePlain target:self action:@selector(useImages:)];
-    UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(hideKeyboard:)];
-    [_toolBar setItems:@[cameraButton, imagesButton, flex, doneButton]];
     _textView.delegate = self;
+    _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
+
+    UIImage *cameraIcon = [self imageWithImage:[UIImage imageNamed:@"camera_icon"] scaledToSize:CGSizeMake(30.0f, 20.0f)];
+    UIBarButtonItem *cameraButton = [[UIBarButtonItem alloc] initWithImage:cameraIcon style:UIBarButtonItemStylePlain target:self action:@selector(useCamera:)];
+    cameraButton.tintColor = [UIColor grayColor];
+    UIImage *galleryIcon = [self imageWithImage:[UIImage imageNamed:@"gallery_icon"] scaledToSize:CGSizeMake(30.0f, 20.0f)];
+    UIBarButtonItem *galleryButton = [[UIBarButtonItem alloc] initWithImage:galleryIcon style:UIBarButtonItemStylePlain target:self action:@selector(useGallery:)];
+    galleryButton.tintColor = [UIColor grayColor];
+    UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    [_toolBar setItems:@[flex, cameraButton, flex, galleryButton, flex]];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
     
     [self clearImageAndVideo];
     [self insertAndSetUpImage:self.challenge.image];
@@ -66,6 +75,17 @@ Global *globalKeyValueStore;
 
 #pragma mark - Helpers
 
+- (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 - (void)clearImageAndVideo
 {
     if (_player) {
@@ -88,7 +108,7 @@ Global *globalKeyValueStore;
 //    UIGraphicsEndImageContext();
     
     _imageView.image = image;
-    [_imageView setFrame:CGRectMake(0,0,SCREEN_WIDTH,image.size.height)];
+    [_imageView setFrame:CGRectMake(0,0,SCREEN_WIDTH,image.size.height * SCREEN_WIDTH / image.size.width)];
     _imageView.hidden = NO;
     [self.view setNeedsDisplay];
 }
@@ -272,7 +292,7 @@ Global *globalKeyValueStore;
     }
 }
 
-- (void)useImages:(id)sender {
+- (void)useGallery:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
         UIImagePickerController *imagePicker =
         [[UIImagePickerController alloc] init];
@@ -285,7 +305,7 @@ Global *globalKeyValueStore;
     }
 }
 
-- (void)hideKeyboard:(id)sender {
+- (void)dismissKeyboard {
     [_textView resignFirstResponder];
 }
 
