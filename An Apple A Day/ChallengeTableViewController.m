@@ -161,6 +161,7 @@ Global *globalKeyValueStore;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat screenHeight = self.view.frame.size.height;
+    CGFloat screenWidth = self.view.frame.size.width;
     //NSLog(@"table view height: %f", screenHeight);
     if (indexPath.row == 0) {
         if (self.challenge.completed) {
@@ -177,10 +178,11 @@ Global *globalKeyValueStore;
     } else if (indexPath.row == 2) {
         if (self.challenge.completed) {
             if (self.challenge.image) {
+                CGFloat imageRatio = self.challenge.image.size.height/self.challenge.image.size.width;
                 NSLog(@"image height: %f, width: %f", self.challenge.image.size.height, self.challenge.image.size.width);
-                return self.challenge.image.size.height;
+                
+                return screenWidth*imageRatio;
             }
-            return 300;
         }
         return 0;
     } else if (indexPath.row == 3) {
