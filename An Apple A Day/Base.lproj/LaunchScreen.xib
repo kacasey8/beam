@@ -6,8 +6,8 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Gotham-Bold.ttf">
-            <string>Gotham-Bold</string>
+        <mutableArray key="Gotham-Book.ttf">
+            <string>Gotham-Book</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -23,17 +23,17 @@
                     <color key="textColor" red="0.96470588235294119" green="0.72549019607843135" blue="0.32156862745098042" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEAM" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beam" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
                     <rect key="frame" x="20" y="246" width="441" height="43"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="CuX-UW-0Fq"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="36"/>
+                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="36"/>
                     <color key="textColor" red="0.96470588235294119" green="0.72549019607843135" blue="0.32156862745098042" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="dw3-Vt-5LO">
-                    <rect key="frame" x="176" y="102" width="128" height="126"/>
+                    <rect key="frame" x="176" y="102" width="128" height="128"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="128" id="gdV-jK-vNo"/>
                     </constraints>
@@ -50,7 +50,7 @@
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="fvb-Df-36g"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="dw3-Vt-5LO" secondAttribute="bottom" constant="18" id="qNH-9r-qbQ"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="dw3-Vt-5LO" secondAttribute="bottom" constant="16" id="qNH-9r-qbQ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

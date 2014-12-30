@@ -16,16 +16,17 @@ Built.Extension.beforeSave('usersChallenges', function(request, response) {
         onSuccess: function(data) {
           var user_object = data[0];
           var last_completed = new Date(user_object.get('last_date_completed'));
-          if(last_completed == date) {
+          if(last_completed.getTime() == date.getTime()) {
             return; // Updated the challenge, nothing to do.
           }
 
-          var day_before_last_completed = new Date(last_completed.getDate() - 1);
+          var day_after_last_completed = new Date(last_completed);
+          day_after_last_completed.setDate(day_after_last_completed.getDate() + 1);
 
           var current_streak = user_object.get('current_streak');
           var highest_streak = user_object.get('highest_streak');
 
-          if (day_before_last_completed == date) {
+          if (day_after_last_completed.getTime() == date.getTime()) {
             // They added to the current streak.
             current_streak += 1;
           } else {
@@ -72,45 +73,54 @@ Built.Extension.beforeSave('usersChallenges', function(request, response) {
 });
 
 var sendNotification = function() {
-  var user_query = new Built.Query('built_io_application_user');
+  Built.User.login(
+    config.notification_user_email(),
+    config.notification_user_password(),
+    { 
+      onSuccess: function(data, res) {
+        // you have successfully logged in
+        // data.application_user will contain the profile
+        Built.setHeaders('authtoken', data.application_user.authtoken);
+        var user_query = new Built.Query('built_io_application_user');
 
-  user_query.only('uid');
+        user_query.only('uid');
 
-  user_query.exec({
-    onSuccess: function(data) {
-      var user_uids = [];
+        user_query.exec({
+          onSuccess: function(data) {
+            var user_uids = [];
 
-      for (i = 0; i < data.length; i++) { 
-        user_uids.push(data[i].get('uid'));
+            for (i = 0; i < data.length; i++) { 
+              user_uids.push(data[i].get('uid'));
+            }
+
+            var notification = new Built.Notification();
+            notification.addUsers(user_uids);
+
+            var d = new Date();
+            d.setHours(24 + 9,0,0,0); // next 9 am
+            //notification.atTime(d).inLocalTime(true).setMessage("Remember to complete today's challenge");
+
+            notification.setMessage("Remember to complete today's challenge");
+
+            notification.send({
+              onSuccess: function(data) {
+                console.log("Notification - Success");
+                console.log(data);
+              },
+              onError: function(err) {
+                console.log("Notification - ERROR");
+                console.log(err);
+              }
+            });
+          },
+          onError: function(err) {
+            console.log("ERROR");
+            console.log(err);
+          }
+        });
       }
-
-      var notification = new Built.Notification();
-      notification.addUsers('blt5cdaa01a6deb9a41');
-
-      var d = new Date();
-      d.setHours(24 + 9,0,0,0); // next 9 am
-      //notification.atTime(d).inLocalTime(true).setMessage("Remember to complete today's challenge");
-
-      notification.setMessage("Testing scripted notification");
-
-      //notification.setMasterKey(config.masterKey());
-
-      notification.send({
-        onSuccess: function(data) {
-          console.log("Notification - Success");
-          console.log(data);
-        },
-        onError: function(err) {
-          console.log("Notification - ERROR");
-          console.log(err);
-        }
-      });
-    },
-    onError: function(err) {
-      console.log("ERROR");
-      console.log(err);
     }
-  });
+  );
 }
 
 var sendDailyNotification = setInterval(sendNotification, 84000 * 1000); // 84000 seconds in a day, 1000 milliseconds in a day. Activated once a day

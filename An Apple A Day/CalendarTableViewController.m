@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
     self.tableView.rowHeight = 81;
     
     [self updateCompletedChallenges];

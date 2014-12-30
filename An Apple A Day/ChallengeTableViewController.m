@@ -23,12 +23,21 @@
 
 @implementation ChallengeTableViewController
 
+CGFloat SCREEN_WIDTH;
+CGFloat SCREEN_HEIGHT;
+
 NSDateFormatter *dateFormatter;
 Global *globalKeyValueStore;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     //self.tableView.contentInset = UIEdgeInsetsMake(-64.0f, 0.0f, 0.0f, 0.0f); //hack to remove top space
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    SCREEN_WIDTH = screenRect.size.width;
+    SCREEN_HEIGHT = screenRect.size.height;
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     self.challenge = [[Challenge alloc] init];
     globalKeyValueStore = [Global globalClass];
@@ -75,6 +84,7 @@ Global *globalKeyValueStore;
         NSLog(@"today's challenge: %@", [self.challenge toString]);
         
         [self.tableView reloadData];
+        [self queryCompletedDailyChallenge];
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
@@ -170,33 +180,27 @@ Global *globalKeyValueStore;
             return screenHeight*0.4;
         }
     } else if (indexPath.row == 1) {
-        if (self.challenge.completed) {
-            return screenHeight*0.5;
-        } else {
-            return screenHeight*0.6;
-        }
+        return screenHeight*0.6 - 100;
     } else if (indexPath.row == 2) {
         if (self.challenge.completed) {
             if (self.challenge.image) {
                 CGFloat imageRatio = self.challenge.image.size.height/self.challenge.image.size.width;
                 NSLog(@"image height: %f, width: %f", self.challenge.image.size.height, self.challenge.image.size.width);
-                
-                return screenWidth*imageRatio;
+                return self.challenge.image.size.height * SCREEN_WIDTH / self.challenge.image.size.width;
+            } else if (self.challenge.videoUrl) {
+                // This is the height of the video player.
+                return self.view.frame.size.width;
             }
         }
         return 0;
     } else if (indexPath.row == 3) {
         if (self.challenge.completed) {
-            return 200;
+            return screenHeight*0.6 - 100;
         } else {
             return 0;
         }
     } else if (indexPath.row == 4) {
-        if (self.challenge.completed) {
-            return 60;
-        } else {
-            return 0;
-        }
+        return 100;
     }
     return 40;
 }
@@ -208,16 +212,13 @@ Global *globalKeyValueStore;
     } else if (indexPath.row == 1) {
         ChallengeInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeInfoCell" forIndexPath:indexPath];
         cell.info.text = self.challenge.info;
-        if (self.challenge.completed) {
-            cell.completeButton.hidden = YES;
-        } else {
-            cell.completeButton.hidden = NO;
-            [cell.completeButton addTarget:self action:@selector(updateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        }
         return cell;
     } else if (indexPath.row == 2) {
         if (self.challenge.videoUrl) {
             ChallengeVideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeVideoCell" forIndexPath:indexPath];
+            if(cell.player) {
+                [cell.player.view removeFromSuperview];
+            }
             cell.player = [[MPMoviePlayerController alloc] initWithContentURL:self.challenge.videoUrl];
             cell.player.view.frame = CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.width);
             [cell.player prepareToPlay];
@@ -234,20 +235,34 @@ Global *globalKeyValueStore;
         return cell;
     } else if (indexPath.row == 4) {
         ChallengeButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeButtonCell" forIndexPath:indexPath];
+        if (self.challenge.completed) {
+            [cell.button setTitle:@"Update" forState:UIControlStateNormal];
+        }
         [cell.button addTarget:self action:@selector(updateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
     return nil;
 }
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"completeChallenge"]) {
+        CompleteChallengeViewController *vc = [segue destinationViewController];
+        vc.presenter = self;
+        vc.challenge = _challenge;
+    }
+}
+
 - (IBAction)updateButtonPressed:(UIButton *)sender {
-    CompleteChallengeViewController *vc = [[CompleteChallengeViewController alloc] init];
-    vc.presenter = self;
-    vc.challenge = self.challenge;
-    [self presentViewController:vc animated:YES completion:nil];
+    [self performSegueWithIdentifier:@"completeChallenge" sender:self];
 }
 
 - (void)updateCompletedDailyChallenge {
+    [self.tableView reloadData];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
     [self.tableView reloadData];
 }
 
