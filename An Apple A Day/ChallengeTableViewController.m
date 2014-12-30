@@ -208,6 +208,9 @@ Global *globalKeyValueStore;
     } else if (indexPath.row == 2) {
         if (self.challenge.videoUrl) {
             ChallengeVideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeVideoCell" forIndexPath:indexPath];
+            if(cell.player) {
+                [cell.player.view removeFromSuperview];
+            }
             cell.player = [[MPMoviePlayerController alloc] initWithContentURL:self.challenge.videoUrl];
             cell.player.view.frame = CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.width);
             [cell.player prepareToPlay];
@@ -248,6 +251,11 @@ Global *globalKeyValueStore;
 }
 
 - (void)updateCompletedDailyChallenge {
+    [self.tableView reloadData];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
     [self.tableView reloadData];
 }
 
