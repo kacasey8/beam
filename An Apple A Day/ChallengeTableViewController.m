@@ -30,6 +30,8 @@ Global *globalKeyValueStore;
     [super viewDidLoad];
     //self.tableView.contentInset = UIEdgeInsetsMake(-64.0f, 0.0f, 0.0f, 0.0f); //hack to remove top space
     
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
     self.challenge = [[Challenge alloc] init];
     globalKeyValueStore = [Global globalClass];
     
@@ -169,11 +171,7 @@ Global *globalKeyValueStore;
             return screenHeight*0.4;
         }
     } else if (indexPath.row == 1) {
-        if (self.challenge.completed) {
-            return screenHeight*0.5;
-        } else {
-            return screenHeight*0.6;
-        }
+        return screenHeight*0.6 - 100;
     } else if (indexPath.row == 2) {
         if (self.challenge.completed) {
             if (self.challenge.image) {
@@ -190,11 +188,7 @@ Global *globalKeyValueStore;
             return 0;
         }
     } else if (indexPath.row == 4) {
-        if (self.challenge.completed) {
-            return 60;
-        } else {
-            return 0;
-        }
+        return 100;
     }
     return 40;
 }
@@ -206,12 +200,6 @@ Global *globalKeyValueStore;
     } else if (indexPath.row == 1) {
         ChallengeInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeInfoCell" forIndexPath:indexPath];
         cell.info.text = self.challenge.info;
-        if (self.challenge.completed) {
-            cell.completeButton.hidden = YES;
-        } else {
-            cell.completeButton.hidden = NO;
-            [cell.completeButton addTarget:self action:@selector(updateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-        }
         return cell;
     } else if (indexPath.row == 2) {
         if (self.challenge.videoUrl) {
@@ -232,6 +220,10 @@ Global *globalKeyValueStore;
         return cell;
     } else if (indexPath.row == 4) {
         ChallengeButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeButtonCell" forIndexPath:indexPath];
+        if (self.challenge.completed) {
+            cell.button.titleLabel.text = @"Update";
+            cell.button.titleLabel.textAlignment = NSTextAlignmentCenter;
+        }
         [cell.button addTarget:self action:@selector(updateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }

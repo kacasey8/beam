@@ -241,7 +241,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cXM-X9-YjH" id="x4W-oh-WRV">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2aQ-Mn-NDl">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2aQ-Mn-NDl">
                                             <rect key="frame" x="0.0" y="-1" width="600" height="300"/>
                                         </imageView>
                                     </subviews>
@@ -443,14 +443,14 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Challenge Info" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9H-TJ-wN2">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge Info" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9H-TJ-wN2">
                                             <rect key="frame" x="83" y="-1" width="517" height="76"/>
                                             <color key="backgroundColor" red="0.30588235294117649" green="0.73333333333333328" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLT-9c-Kba">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLT-9c-Kba">
                                             <rect key="frame" x="550" y="-1" width="50" height="76"/>
                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="24"/>
                                             <state key="normal" title="&gt;"/>
@@ -531,7 +531,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G2X-3O-Rjc" id="Mzu-nH-Mhi">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="L2l-xV-zQV">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="L2l-xV-zQV">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                         </imageView>
                                     </subviews>
@@ -546,7 +546,7 @@
                                     <outlet property="background" destination="L2l-xV-zQV" id="Jir-cS-7tk"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeInfoCell" rowHeight="300" id="YHl-LM-IKq" customClass="ChallengeInfoTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeInfoCell" rowHeight="211" id="YHl-LM-IKq" customClass="ChallengeInfoTableViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YHl-LM-IKq" id="UA0-18-k8B">
@@ -567,32 +567,17 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlJ-iT-FY1">
-                                            <rect key="frame" x="38" y="209" width="524" height="52"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="52" id="Bs2-Wb-hCQ"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
-                                            <state key="normal" title="Challenge Completed">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.30980392156862746" green="0.74117647058823533" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="AlJ-iT-FY1" secondAttribute="bottom" constant="30" id="5QR-Er-sSG"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="rsB-Ex-Qhu" secondAttribute="trailing" constant="20" id="Dhj-wW-ZVO"/>
                                         <constraint firstItem="Ir6-oi-Nnt" firstAttribute="top" secondItem="UA0-18-k8B" secondAttribute="topMargin" constant="23" id="I6d-Aa-xer"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ir6-oi-Nnt" secondAttribute="trailing" constant="20" id="IGF-on-dfF"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="AlJ-iT-FY1" secondAttribute="trailing" constant="30" id="Tda-EV-zl0"/>
-                                        <constraint firstItem="AlJ-iT-FY1" firstAttribute="leading" secondItem="UA0-18-k8B" secondAttribute="leadingMargin" constant="30" id="bHB-oC-bhT"/>
                                         <constraint firstItem="rsB-Ex-Qhu" firstAttribute="leading" secondItem="UA0-18-k8B" secondAttribute="leadingMargin" constant="20" id="o55-Yb-4UE"/>
                                         <constraint firstItem="Ir6-oi-Nnt" firstAttribute="leading" secondItem="UA0-18-k8B" secondAttribute="leadingMargin" constant="20" id="ulC-v6-aLY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="completeButton" destination="AlJ-iT-FY1" id="wbw-ev-Ibp"/>
                                     <outlet property="info" destination="rsB-Ex-Qhu" id="VHH-P4-EWj"/>
                                 </connections>
                             </tableViewCell>
@@ -602,7 +587,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NLw-hK-eNG" id="tZh-bO-4IY">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0el-3o-3KM">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0el-3o-3KM">
                                             <rect key="frame" x="0.0" y="-1" width="600" height="150"/>
                                         </imageView>
                                     </subviews>
@@ -617,7 +602,7 @@
                                     <outlet property="image" destination="0el-3o-3KM" id="Cpc-4o-37I"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeCommentCell" rowHeight="100" id="Nf8-vf-igo" customClass="ChallengeCommentTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeCommentCell" rowHeight="83" id="Nf8-vf-igo" customClass="ChallengeCommentTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nf8-vf-igo" id="PrS-uR-0vy">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -646,19 +631,20 @@
                                     <outlet property="comment" destination="Fn9-vP-cjP" id="lN8-dZ-9r8"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeButtonCell" rowHeight="60" id="M2h-Hp-lEa" customClass="ChallengeButtonTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeButtonCell" rowHeight="100" id="M2h-Hp-lEa" customClass="ChallengeButtonTableViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M2h-Hp-lEa" id="tWZ-LY-2QL">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRP-Aa-6Cm">
-                                            <rect key="frame" x="30" y="10" width="540" height="40"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <rect key="frame" x="30" y="30" width="540" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="1AY-nK-a56"/>
                                             </constraints>
-                                            <state key="normal" title="Update">
+                                            <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="15"/>
+                                            <state key="normal" title="Complete Challenge">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="default">
@@ -668,12 +654,12 @@
                                             </variation>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.36470588240000001" green="0.78823529410000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.30980392156862746" green="0.74117647058823533" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="jRP-Aa-6Cm" secondAttribute="bottom" constant="10" id="MzF-pr-KPJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="jRP-Aa-6Cm" secondAttribute="bottom" constant="29" id="MzF-pr-KPJ"/>
                                         <constraint firstAttribute="trailing" secondItem="jRP-Aa-6Cm" secondAttribute="trailing" constant="30" id="Pv4-CR-15s"/>
                                         <constraint firstItem="jRP-Aa-6Cm" firstAttribute="leading" secondItem="tWZ-LY-2QL" secondAttribute="leading" constant="30" id="Pyh-vB-h5m"/>
-                                        <constraint firstItem="jRP-Aa-6Cm" firstAttribute="top" secondItem="tWZ-LY-2QL" secondAttribute="top" constant="10" id="jzQ-pD-010"/>
+                                        <constraint firstItem="jRP-Aa-6Cm" firstAttribute="top" secondItem="tWZ-LY-2QL" secondAttribute="top" constant="30" id="jzQ-pD-010"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -692,7 +678,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsq-oA-JNl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="-1063"/>
+            <point key="canvasLocation" x="1710" y="-1067"/>
         </scene>
         <!--Entry-->
         <scene sceneID="avF-bl-CtB">
