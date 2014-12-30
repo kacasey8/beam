@@ -225,7 +225,6 @@ Global *globalKeyValueStore;
     } else if (indexPath.row == 4) {
         ChallengeButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeButtonCell" forIndexPath:indexPath];
         if (self.challenge.completed) {
-            NSLog(@"HI");
             [cell.button setTitle:@"Update" forState:UIControlStateNormal];
         }
         [cell.button addTarget:self action:@selector(updateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
