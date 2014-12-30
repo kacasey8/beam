@@ -60,6 +60,15 @@ Global *globalKeyValueStore;
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView beginUpdates];
+    NSIndexPath *indexPathToMovie = [NSIndexPath indexPathForRow:2 inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPathToMovie] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -146,7 +155,8 @@ Global *globalKeyValueStore;
                     } else { // must be MOV file
                         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
                         NSString *documentsDirectory = [paths objectAtIndex:0];
-                        NSString *path = [documentsDirectory stringByAppendingPathComponent:@"tmp.mov"];
+                        NSString *filename = [NSString stringWithFormat:@"tmp - %@.mov", self.challenge.date];
+                        NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
                         
                         NSData *videoData = [NSData dataWithContentsOfURL:url];
                         
