@@ -77,6 +77,7 @@ Global *globalKeyValueStore;
         NSLog(@"today's challenge: %@", [self.challenge toString]);
         
         [self.tableView reloadData];
+        [self queryCompletedDailyChallenge];
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
