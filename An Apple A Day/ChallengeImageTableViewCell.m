@@ -12,6 +12,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    _image.layer.shadowColor = [UIColor blackColor].CGColor;
+    _image.layer.shadowOffset = CGSizeMake(0, 1);
+    _image.layer.shadowOpacity = 0.8;
+    _image.layer.shadowRadius = 2.0;
+    _image.clipsToBounds = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

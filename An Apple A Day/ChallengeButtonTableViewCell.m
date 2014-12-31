@@ -13,8 +13,8 @@
 - (void)awakeFromNib {
     // Initialization code
     _button.layer.borderColor = [[UIColor whiteColor] CGColor];
-    _button.layer.borderWidth = 2.0f;
-    _button.layer.cornerRadius = 2.0f;
+    _button.layer.borderWidth = 1.5f;
+    _button.layer.cornerRadius = 3.0f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

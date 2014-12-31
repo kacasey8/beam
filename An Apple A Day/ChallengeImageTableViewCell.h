@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuartzCore/CALayer.h"
 
 @interface ChallengeImageTableViewCell : UITableViewCell
 
