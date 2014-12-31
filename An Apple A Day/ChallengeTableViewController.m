@@ -67,6 +67,7 @@ Global *globalKeyValueStore;
 {
     [super viewDidAppear:animated];
     [self.tableView beginUpdates];
+    // Reload the video, it breaks when we switch back to it.
     NSIndexPath *indexPathToMovie = [NSIndexPath indexPathForRow:2 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:@[indexPathToMovie] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
