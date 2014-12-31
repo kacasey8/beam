@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "logout_icon.png"
+      "filename" : "logout_icon_40.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "logout_icon_80.png"
     },
     {
       "idiom" : "universal",
