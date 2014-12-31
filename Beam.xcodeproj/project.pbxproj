@@ -683,7 +683,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "An Apple A Day/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Beam;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -710,7 +710,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "An Apple A Day/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Beam;
 				TARGETED_DEVICE_FAMILY = "1,2";
