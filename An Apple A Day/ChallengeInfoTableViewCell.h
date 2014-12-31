@@ -10,6 +10,7 @@
 
 @interface ChallengeInfoTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *challengeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *info;
 
 @end

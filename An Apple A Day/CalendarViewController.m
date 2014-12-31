@@ -34,8 +34,9 @@ NSDateFormatter *dateFormatter;
     // All modifications on calendarAppearance have to be done before setMenuMonthsView and setContentView
     // Or you will have to call reloadAppearance
     self.calendar.calendarAppearance.calendar.firstWeekday = 1; // Sunday == 1, Saturday == 7
-    self.calendar.calendarAppearance.dayCircleRatio = 9. / 10.;
+    self.calendar.calendarAppearance.dayCircleRatio = 1.0;
     self.calendar.calendarAppearance.ratioContentMenu = 1.5;
+    self.calendar.calendarAppearance.dayDotRatio = 0.15;
     self.calendar.calendarAppearance.menuMonthTextColor = [UIColor whiteColor];
     self.calendar.calendarAppearance.menuMonthTextFont = [UIFont fontWithName:@"Gotham-Book" size:20.0f];
     self.calendar.calendarAppearance.weekDayTextColor = [UIColor whiteColor];
@@ -47,6 +48,7 @@ NSDateFormatter *dateFormatter;
     self.calendar.calendarAppearance.dayCircleColorToday = UIColorFromRGB(0xF7B850);
     self.calendar.calendarAppearance.dayCircleColorSelectedOtherMonth = UIColorFromRGB(0xD7B850);
     [self.calendar.calendarAppearance setDayDotColorForAll:UIColorFromRGB(0xFAC564)];
+    self.calendar.calendarAppearance.dayDotColorToday = [UIColor whiteColor];
     
     self.calendar.calendarAppearance.monthBlock = ^NSString *(NSDate *date, JTCalendar *jt_calendar){
         NSCalendar *calendar = jt_calendar.calendarAppearance.calendar;

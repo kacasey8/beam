@@ -195,6 +195,7 @@ Global *globalKeyValueStore;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat screenHeight = self.view.frame.size.height;
+    CGFloat screenWidth = self.view.frame.size.width;
     //NSLog(@"table view height: %f", screenHeight);
     if (indexPath.row == 0) {
         if (self.challenge.completed) {
@@ -213,10 +214,15 @@ Global *globalKeyValueStore;
     } else if (indexPath.row == 2) {
         if (self.challenge.completed) {
             if (self.challenge.image) {
-                return self.challenge.image.size.height * SCREEN_WIDTH / self.challenge.image.size.width;
+//                NSLog(@"SCREEN_WIDTH: %f \t screenWidth: %f", SCREEN_WIDTH, screenWidth);
+                CGFloat imageRatio = self.challenge.image.size.height/self.challenge.image.size.width;
+//                NSLog(@"imageRatio: %f", imageRatio);
+//                NSLog(@"calculated height: %f", self.challenge.image.size.height * SCREEN_WIDTH / self.challenge.image.size.width);
+                //return self.challenge.image.size.height * SCREEN_WIDTH / self.challenge.image.size.width;
+                return SCREEN_WIDTH*imageRatio;
             } else if (self.challenge.videoUrl) {
                 // This is the height of the video player.
-                return self.view.frame.size.width;
+                return self.view.frame.size.width + 10;
             }
         }
         return 0;
@@ -242,6 +248,15 @@ Global *globalKeyValueStore;
     } else if (indexPath.row == 1) {
         ChallengeInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeInfoCell" forIndexPath:indexPath];
         cell.info.text = self.challenge.info;
+        if (self.challenge.completed) {
+            cell.contentView.backgroundColor = [UIColor whiteColor];
+            cell.info.textColor = [UIColor grayColor];
+            cell.challengeLabel.textColor = [UIColor grayColor];
+        } else {
+            cell.contentView.backgroundColor = UIColorFromRGB(0x4FBDE0);
+            cell.info.textColor = [UIColor whiteColor];
+            cell.challengeLabel.textColor = [UIColor whiteColor];
+        }
         return cell;
     } else if (indexPath.row == 2) {
         if (self.challenge.videoUrl) {
@@ -250,15 +265,19 @@ Global *globalKeyValueStore;
                 [cell.player.view removeFromSuperview];
             }
             cell.player = [[MPMoviePlayerController alloc] initWithContentURL:self.challenge.videoUrl];
-            cell.player.view.frame = CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.width);
+            cell.player.view.frame = CGRectMake(10, 10, cell.frame.size.width - 20, cell.frame.size.width - 20);
             [cell.player prepareToPlay];
             [cell addSubview:cell.player.view];
             return cell;
         } else {
             ChallengeImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeImageCell" forIndexPath:indexPath];
             cell.image.image = self.challenge.image;
+            NSLog(@"challenge.image height %f and width %f", self.challenge.image.size.height, self.challenge.image.size.width);
+            NSLog(@"image height %f and width %f", cell.image.frame.size.height, cell.image.frame.size.width);
+            NSLog(@"image cell height %f and width %f", cell.frame.size.height, cell.frame.size.width);
             return cell;
         }
+        
     } else if (indexPath.row == 3) {
         ChallengeCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeCommentCell" forIndexPath:indexPath];
         cell.comment.text = self.challenge.comment;
