@@ -750,9 +750,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="How was your experience? What did you do?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gKw-BX-VK6">
-                                        <rect key="frame" x="15" y="0.0" width="570" height="60"/>
+                                        <rect key="frame" x="15" y="0.0" width="570" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="a7p-h8-Qqa"/>
+                                            <constraint firstAttribute="height" constant="35" id="a7p-h8-Qqa"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -776,9 +776,11 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="HKM-cF-Cfn" secondAttribute="trailing" id="0KF-aW-fDl"/>
                                     <constraint firstItem="HKM-cF-Cfn" firstAttribute="leading" secondItem="X0Z-wW-z0n" secondAttribute="leading" id="5ce-cG-8Uw"/>
+                                    <constraint firstItem="gKw-BX-VK6" firstAttribute="leading" secondItem="X0Z-wW-z0n" secondAttribute="leading" constant="15" id="BiH-Gi-c4J"/>
                                     <constraint firstItem="8Ea-ka-e12" firstAttribute="top" secondItem="HKM-cF-Cfn" secondAttribute="bottom" id="Nrw-Y8-NkN"/>
                                     <constraint firstAttribute="centerX" secondItem="gKw-BX-VK6" secondAttribute="centerX" id="P5X-9a-wdE"/>
                                     <constraint firstItem="gKw-BX-VK6" firstAttribute="top" secondItem="X0Z-wW-z0n" secondAttribute="top" id="TzC-ff-14g"/>
+                                    <constraint firstAttribute="trailing" secondItem="gKw-BX-VK6" secondAttribute="trailing" constant="15" id="U3i-Nj-Knr"/>
                                     <constraint firstAttribute="trailing" secondItem="8Ea-ka-e12" secondAttribute="trailing" id="ffr-S2-5H6"/>
                                     <constraint firstItem="HKM-cF-Cfn" firstAttribute="top" secondItem="X0Z-wW-z0n" secondAttribute="top" id="hOK-1B-EEY"/>
                                     <constraint firstItem="8Ea-ka-e12" firstAttribute="leading" secondItem="X0Z-wW-z0n" secondAttribute="leading" id="xZJ-pT-b3V"/>
@@ -806,6 +808,7 @@
                             <mask key="constraints">
                                 <exclude reference="VFy-30-rSu"/>
                                 <exclude reference="5nU-kt-eQM"/>
+                                <exclude reference="yRB-3x-Tjx"/>
                             </mask>
                         </variation>
                     </view>
@@ -872,7 +875,7 @@
         <image name="facebook" width="1282" height="218"/>
         <image name="loginbackgroud" width="1805" height="3204"/>
         <image name="logo_sun" width="1076" height="1076"/>
-        <image name="logout_icon" width="34" height="40"/>
+        <image name="logout_icon" width="31" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="19F-UH-GZC"/>
