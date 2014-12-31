@@ -10,7 +10,7 @@
 #import <BuiltIO/BuiltIO.h>
 #import "Global.h"
 
-@interface CompleteChallengeViewController ()
+@interface CompleteChallengeViewController () <UIGestureRecognizerDelegate>
 
 @end
 
@@ -34,6 +34,12 @@ Global *globalKeyValueStore;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     SCREEN_WIDTH = screenRect.size.width;
     SCREEN_HEIGHT = screenRect.size.height;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
     
     _textView.textContainerInset = UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0);
     if (self.challenge.comment) {
@@ -60,10 +66,6 @@ Global *globalKeyValueStore;
     UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     
     [_toolBar setItems:@[flex, cameraButton, flex, galleryButton, flex]];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
-    [self.view addGestureRecognizer:tap];
     
     [self insertAndSetUpImage:self.challenge.image];
     NSLog(@"%@ %@", [self.challenge toString], self.challenge.videoUrl);
@@ -90,6 +92,16 @@ Global *globalKeyValueStore;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - gesture delegate
+// this allows you to dispatch touches
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return YES;
+}
+// this enables you to handle multiple recognizers on single view
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 #pragma mark - Helpers
@@ -134,6 +146,11 @@ Global *globalKeyValueStore;
     _player.view.frame = CGRectMake(0, _imageView.frame.origin.y, SCREEN_WIDTH, SCREEN_WIDTH);
     [_player prepareToPlay];
     _player.shouldAutoplay = NO;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    tap.delegate = self;
+    [_player.view addGestureRecognizer:tap];
     [self.scrollView addSubview:_player.view];
     
     // Need to add in all the constraints. This is basically all constraints on the _imageView
