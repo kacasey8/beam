@@ -252,7 +252,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="History" id="X3I-LH-Cas">
+                    <navigationItem key="navigationItem" title="Progress" id="X3I-LH-Cas">
                         <barButtonItem key="rightBarButtonItem" title="List" id="LaZ-XG-1Gr">
                             <connections>
                                 <action selector="toggleView:" destination="cc3-Y7-Hu6" id="OiT-qx-EKt"/>
@@ -321,7 +321,7 @@
             </objects>
             <point key="canvasLocation" x="2814" y="-1805"/>
         </scene>
-        <!--Beam-->
+        <!--Challenge View Controller-->
         <scene sceneID="qHO-0Z-tPN">
             <objects>
                 <viewController id="2To-ua-96w" customClass="ChallengeViewController" sceneMemberID="viewController">
@@ -357,7 +357,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Beam" id="yCX-sD-bZV">
+                    <navigationItem key="navigationItem" id="yCX-sD-bZV">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="GtY-4R-E4Z">
                             <connections>
                                 <action selector="logout:" destination="2To-ua-96w" id="sVK-Is-7yN"/>
