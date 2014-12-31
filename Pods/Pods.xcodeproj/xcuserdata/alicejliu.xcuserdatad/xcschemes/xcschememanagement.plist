@@ -11,6 +11,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>Pods-FLAnimatedImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>Pods-Facebook-iOS-SDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -40,6 +45,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>24092B58BD0D9616A2A2B559</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>304BA1BFB1B368B34D8C9073</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>31FD796B69210FE299A26D67</key>
 		<dict>
 			<key>primary</key>
@@ -50,7 +65,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>57FA40B7AAFD782702AA5F4C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>602385EC04149848B967EC21</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A10B431D3D3F1EC0BCF4076</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>709E11032A111FB16A9A655D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
