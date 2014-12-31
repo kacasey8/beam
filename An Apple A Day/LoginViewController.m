@@ -17,9 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-//    _facebookButton.layer.borderColor = [[UIColor whiteColor] CGColor];
-//    _facebookButton.layer.borderWidth = 1.0f;
-//    _facebookButton.layer.cornerRadius = 1.0f;
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"loginbackgroud"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
 }
 
 - (void)didReceiveMemoryWarning {
