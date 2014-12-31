@@ -24,6 +24,14 @@ NSDateFormatter *dateFormatter;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UIImage *logoutIcon = [self imageWithImage:[UIImage imageNamed:@"logout_icon"] scaledToSize:CGSizeMake(20.0f, 20.0f)];
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithImage:logoutIcon style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
+    UIImage *achievementIcon = [self imageWithImage:[UIImage imageNamed:@"achievement_icon"] scaledToSize:CGSizeMake(20.0f, 20.0f)];
+    UIBarButtonItem *achievementButton = [[UIBarButtonItem alloc] initWithImage:achievementIcon style:UIBarButtonItemStylePlain target:self action:nil];
+    
+    _navBar.leftBarButtonItem = logoutButton;
+    _navBar.rightBarButtonItem = achievementButton;
 }
 
 - (void)activateView {
@@ -47,10 +55,20 @@ NSDateFormatter *dateFormatter;
 
 #pragma mark - Actions
 
-- (IBAction)logout:(id)sender {
+- (void)logout:(id)sender {
     // Close the session and remove the access token from the cache
     // The session state handler (in the app delegate) will be called automatically
     [FBSession.activeSession closeAndClearTokenInformation];
 }
 
+- (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 @end

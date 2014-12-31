@@ -13,8 +13,10 @@
 #import "Global.h"
 
 @interface ChallengeViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 
-- (IBAction)logout:(id)sender;
+
+- (void)logout:(id)sender;
 
 - (void)activateView;
 
