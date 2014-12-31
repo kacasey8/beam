@@ -44,22 +44,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJj-Zh-Hzr">
-                                <rect key="frame" x="175" y="369" width="250" height="45"/>
-                                <color key="backgroundColor" red="0.21176470588235294" green="0.31372549019607843" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="bmL-JL-63K"/>
-                                    <constraint firstAttribute="width" constant="250" id="gjJ-CQ-zpT"/>
-                                </constraints>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" backgroundImage="facebook">
-                                    <color key="titleColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="facebookPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Luw-HA-C8m"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beam" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="tap-N0-Dn9">
                                 <rect key="frame" x="248" y="173" width="104" height="43"/>
                                 <constraints>
@@ -77,8 +61,24 @@
                                     <constraint firstAttribute="height" constant="100" id="gbC-Wc-eiE"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJj-Zh-Hzr">
+                                <rect key="frame" x="175" y="381" width="250" height="45"/>
+                                <color key="backgroundColor" red="0.21176470588235294" green="0.31372549019607843" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="bmL-JL-63K"/>
+                                    <constraint firstAttribute="width" constant="250" id="gjJ-CQ-zpT"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="facebook">
+                                    <color key="titleColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebookPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Luw-HA-C8m"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your daily burst of light!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OrC-uo-koc">
-                                <rect key="frame" x="175" y="327" width="250" height="21"/>
+                                <rect key="frame" x="175" y="339" width="250" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3UD-aR-isF"/>
                                     <constraint firstAttribute="width" constant="250" id="TNQ-Ma-kZO"/>
@@ -93,7 +93,7 @@
                             <constraint firstAttribute="centerX" secondItem="OrC-uo-koc" secondAttribute="centerX" id="JRK-ao-aTT"/>
                             <constraint firstItem="tap-N0-Dn9" firstAttribute="top" secondItem="Qbq-zu-URT" secondAttribute="bottom" constant="8" id="P2i-GI-cBl"/>
                             <constraint firstAttribute="centerX" secondItem="tap-N0-Dn9" secondAttribute="centerX" id="RyJ-aI-s5Q"/>
-                            <constraint firstAttribute="centerY" secondItem="OrC-uo-koc" secondAttribute="centerY" constant="-37.5" id="U2V-fD-KSC"/>
+                            <constraint firstAttribute="centerY" secondItem="OrC-uo-koc" secondAttribute="centerY" constant="-49.5" id="U2V-fD-KSC"/>
                             <constraint firstAttribute="centerX" secondItem="Qbq-zu-URT" secondAttribute="centerX" id="gR2-PI-b2Q"/>
                             <constraint firstAttribute="centerX" secondItem="zJj-Zh-Hzr" secondAttribute="centerX" id="iYb-Rw-ZHu"/>
                             <constraint firstAttribute="centerX" secondItem="Qbq-zu-URT" secondAttribute="centerX" id="oJJ-Kk-sXy"/>
