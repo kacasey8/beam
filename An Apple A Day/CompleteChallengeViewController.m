@@ -57,10 +57,10 @@ Global *globalKeyValueStore;
     _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
     _videoUrl = self.challenge.videoUrl;
 
-    UIImage *cameraIcon = [self imageWithImage:[UIImage imageNamed:@"camera_icon"] scaledToSize:CGSizeMake(30.0f, 20.0f)];
+    UIImage *cameraIcon = [UIImage imageNamed:@"camera_icon"];
     UIBarButtonItem *cameraButton = [[UIBarButtonItem alloc] initWithImage:cameraIcon style:UIBarButtonItemStylePlain target:self action:@selector(useCamera:)];
     cameraButton.tintColor = [UIColor grayColor];
-    UIImage *galleryIcon = [self imageWithImage:[UIImage imageNamed:@"gallery_icon"] scaledToSize:CGSizeMake(30.0f, 20.0f)];
+    UIImage *galleryIcon = [UIImage imageNamed:@"gallery_icon"];
     UIBarButtonItem *galleryButton = [[UIBarButtonItem alloc] initWithImage:galleryIcon style:UIBarButtonItemStylePlain target:self action:@selector(useGallery:)];
     galleryButton.tintColor = [UIColor grayColor];
     UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
@@ -68,7 +68,6 @@ Global *globalKeyValueStore;
     [_toolBar setItems:@[flex, cameraButton, flex, galleryButton, flex]];
     
     [self insertAndSetUpImage:self.challenge.image];
-    NSLog(@"%@ %@", [self.challenge toString], self.challenge.videoUrl);
     [self insertAndSetUpVideoGivenVideoUrl];
 }
 
