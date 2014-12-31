@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "achievement_icon.png"
+      "filename" : "achievement_icon_40.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "achievement_icon_80.png"
     },
     {
       "idiom" : "universal",
