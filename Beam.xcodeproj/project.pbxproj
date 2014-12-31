@@ -122,7 +122,7 @@
 		86B5C6FE1A514D90001019C5 /* ChallengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeViewController.m; sourceTree = "<group>"; };
 		86B5C7011A521028001019C5 /* ChallengeVideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeVideoTableViewCell.h; sourceTree = "<group>"; };
 		86B5C7021A521028001019C5 /* ChallengeVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeVideoTableViewCell.m; sourceTree = "<group>"; };
-		991D953E1A4AA625005FE2D1 /* An Apple A Day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "An Apple A Day.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		991D953E1A4AA625005FE2D1 /* Beam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		991D95421A4AA625005FE2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		991D95431A4AA625005FE2D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		991D95451A4AA625005FE2D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		991D954C1A4AA625005FE2D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		991D954E1A4AA625005FE2D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		991D95511A4AA625005FE2D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		991D95571A4AA625005FE2D1 /* An Apple A DayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "An Apple A DayTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		991D95571A4AA625005FE2D1 /* BeamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		991D955C1A4AA625005FE2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		991D955D1A4AA625005FE2D1 /* An_Apple_A_DayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = An_Apple_A_DayTests.m; sourceTree = "<group>"; };
 		995BB6981A4AC80300C32B27 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -269,8 +269,8 @@
 		991D953F1A4AA625005FE2D1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				991D953E1A4AA625005FE2D1 /* An Apple A Day.app */,
-				991D95571A4AA625005FE2D1 /* An Apple A DayTests.xctest */,
+				991D953E1A4AA625005FE2D1 /* Beam.app */,
+				991D95571A4AA625005FE2D1 /* BeamTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -375,9 +375,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		991D953D1A4AA625005FE2D1 /* An Apple A Day */ = {
+		991D953D1A4AA625005FE2D1 /* Beam */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 991D95611A4AA625005FE2D1 /* Build configuration list for PBXNativeTarget "An Apple A Day" */;
+			buildConfigurationList = 991D95611A4AA625005FE2D1 /* Build configuration list for PBXNativeTarget "Beam" */;
 			buildPhases = (
 				95D9B2CD39427B6E7BF6F600 /* Check Pods Manifest.lock */,
 				991D953A1A4AA625005FE2D1 /* Sources */,
@@ -389,14 +389,14 @@
 			);
 			dependencies = (
 			);
-			name = "An Apple A Day";
+			name = Beam;
 			productName = "An Apple A Day";
-			productReference = 991D953E1A4AA625005FE2D1 /* An Apple A Day.app */;
+			productReference = 991D953E1A4AA625005FE2D1 /* Beam.app */;
 			productType = "com.apple.product-type.application";
 		};
-		991D95561A4AA625005FE2D1 /* An Apple A DayTests */ = {
+		991D95561A4AA625005FE2D1 /* BeamTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 991D95641A4AA625005FE2D1 /* Build configuration list for PBXNativeTarget "An Apple A DayTests" */;
+			buildConfigurationList = 991D95641A4AA625005FE2D1 /* Build configuration list for PBXNativeTarget "BeamTests" */;
 			buildPhases = (
 				991D95531A4AA625005FE2D1 /* Sources */,
 				991D95541A4AA625005FE2D1 /* Frameworks */,
@@ -407,9 +407,9 @@
 			dependencies = (
 				991D95591A4AA625005FE2D1 /* PBXTargetDependency */,
 			);
-			name = "An Apple A DayTests";
+			name = BeamTests;
 			productName = "An Apple A DayTests";
-			productReference = 991D95571A4AA625005FE2D1 /* An Apple A DayTests.xctest */;
+			productReference = 991D95571A4AA625005FE2D1 /* BeamTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -431,7 +431,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 991D95391A4AA625005FE2D1 /* Build configuration list for PBXProject "An Apple A Day" */;
+			buildConfigurationList = 991D95391A4AA625005FE2D1 /* Build configuration list for PBXProject "Beam" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -444,8 +444,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				991D953D1A4AA625005FE2D1 /* An Apple A Day */,
-				991D95561A4AA625005FE2D1 /* An Apple A DayTests */,
+				991D953D1A4AA625005FE2D1 /* Beam */,
+				991D95561A4AA625005FE2D1 /* BeamTests */,
 			);
 		};
 /* End PBXProject section */
@@ -560,7 +560,7 @@
 /* Begin PBXTargetDependency section */
 		991D95591A4AA625005FE2D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 991D953D1A4AA625005FE2D1 /* An Apple A Day */;
+			target = 991D953D1A4AA625005FE2D1 /* Beam */;
 			targetProxy = 991D95581A4AA625005FE2D1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -683,9 +683,9 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "An Apple A Day/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Beam;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -710,9 +710,9 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "An Apple A Day/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Beam;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -731,7 +731,7 @@
 				);
 				INFOPLIST_FILE = "An Apple A DayTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BeamTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/An Apple A Day.app/An Apple A Day";
 			};
 			name = Debug;
@@ -746,7 +746,7 @@
 				);
 				INFOPLIST_FILE = "An Apple A DayTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BeamTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/An Apple A Day.app/An Apple A Day";
 			};
 			name = Release;
@@ -754,7 +754,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		991D95391A4AA625005FE2D1 /* Build configuration list for PBXProject "An Apple A Day" */ = {
+		991D95391A4AA625005FE2D1 /* Build configuration list for PBXProject "Beam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				991D955F1A4AA625005FE2D1 /* Debug */,
@@ -763,7 +763,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		991D95611A4AA625005FE2D1 /* Build configuration list for PBXNativeTarget "An Apple A Day" */ = {
+		991D95611A4AA625005FE2D1 /* Build configuration list for PBXNativeTarget "Beam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				991D95621A4AA625005FE2D1 /* Debug */,
@@ -772,7 +772,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		991D95641A4AA625005FE2D1 /* Build configuration list for PBXNativeTarget "An Apple A DayTests" */ = {
+		991D95641A4AA625005FE2D1 /* Build configuration list for PBXNativeTarget "BeamTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				991D95651A4AA625005FE2D1 /* Debug */,
