@@ -147,11 +147,11 @@
 		995BB6A61A4AC83200C32B27 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		995BB6A81A4AC83800C32B27 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		995BB6AA1A4AC83D00C32B27 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		997999B21A53FDC600AD7B71 /* beam2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = beam2.gif; sourceTree = "<group>"; };
+		997999B21A53FDC600AD7B71 /* beam2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = beam2.gif; path = ../beam2.gif; sourceTree = "<group>"; };
 		99F2BEA91A4B2D2400EA9592 /* BuiltIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuiltIO.framework; sourceTree = "<group>"; };
 		99F2BEAB1A4B6CCB00EA9592 /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		99F2BEAC1A4B6CCB00EA9592 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
-		99F81B6C1A53EFA1004A75A3 /* beam1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = beam1.gif; sourceTree = "<group>"; };
+		99F81B6C1A53EFA1004A75A3 /* beam1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = beam1.gif; path = ../beam1.gif; sourceTree = "<group>"; };
 		B4FE2D2640C6CA9AAF67947A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E946D728C64AE1B0F4173F49 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F4D29D854CD7DD50863B22BA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,8 +262,6 @@
 		991D95351A4AA625005FE2D1 = {
 			isa = PBXGroup;
 			children = (
-				99F81B6C1A53EFA1004A75A3 /* beam1.gif */,
-				997999B21A53FDC600AD7B71 /* beam2.gif */,
 				991D95401A4AA625005FE2D1 /* An Apple A Day */,
 				991D955A1A4AA625005FE2D1 /* An Apple A DayTests */,
 				991D953F1A4AA625005FE2D1 /* Products */,
@@ -303,6 +301,7 @@
 				84CED7291A51F51B0011D326 /* fonts */,
 				991D95421A4AA625005FE2D1 /* Info.plist */,
 				991D95431A4AA625005FE2D1 /* main.m */,
+				997999B41A540C6F00AD7B71 /* gifs */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -322,6 +321,15 @@
 				991D955C1A4AA625005FE2D1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		997999B41A540C6F00AD7B71 /* gifs */ = {
+			isa = PBXGroup;
+			children = (
+				99F81B6C1A53EFA1004A75A3 /* beam1.gif */,
+				997999B21A53FDC600AD7B71 /* beam2.gif */,
+			);
+			name = gifs;
 			sourceTree = "<group>";
 		};
 		99B6507E1A5327CE00730781 /* Homepage */ = {
