@@ -214,11 +214,7 @@ Global *globalKeyValueStore;
     } else if (indexPath.row == 2) {
         if (self.challenge.completed) {
             if (self.challenge.image) {
-//                NSLog(@"SCREEN_WIDTH: %f \t screenWidth: %f", SCREEN_WIDTH, screenWidth);
                 CGFloat imageRatio = self.challenge.image.size.height/self.challenge.image.size.width;
-//                NSLog(@"imageRatio: %f", imageRatio);
-//                NSLog(@"calculated height: %f", self.challenge.image.size.height * SCREEN_WIDTH / self.challenge.image.size.width);
-                //return self.challenge.image.size.height * SCREEN_WIDTH / self.challenge.image.size.width;
                 return SCREEN_WIDTH*imageRatio;
             } else if (self.challenge.videoUrl) {
                 // This is the height of the video player.
@@ -244,6 +240,13 @@ Global *globalKeyValueStore;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         ChallengeHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeHeaderCell" forIndexPath:indexPath];
+        if (self.challenge.completed) {
+            cell.sunLogo.hidden = YES;
+            cell.background.hidden = YES;
+        } else {
+            cell.sunLogo.hidden = NO;
+            cell.background.hidden = NO;
+        }
         return cell;
     } else if (indexPath.row == 1) {
         ChallengeInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeInfoCell" forIndexPath:indexPath];

@@ -10,5 +10,7 @@
 
 @interface ChallengeHeaderTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UIImageView *sunLogo;
+
 @property (strong, nonatomic) IBOutlet UIImageView *background;
 @end

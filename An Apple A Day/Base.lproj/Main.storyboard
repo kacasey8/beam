@@ -543,30 +543,53 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G2X-3O-Rjc" id="Mzu-nH-Mhi">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="95Y-w1-dvR">
-                                            <rect key="frame" x="-94" y="-32" width="50" height="51"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="xHN-R0-AUH"/>
-                                            </constraints>
-                                        </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L2l-xV-zQV">
-                                            <rect key="frame" x="0.0" y="1" width="600" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="600" id="gH4-DC-bRM"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="gH4-DC-bRM"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="95Y-w1-dvR">
+                                            <rect key="frame" x="250" y="0.0" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="Bsf-XN-Ozg"/>
+                                                <constraint firstAttribute="width" constant="100" id="xHN-R0-AUH"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="95Y-w1-dvR" firstAttribute="leading" secondItem="Mzu-nH-Mhi" secondAttribute="leading" constant="-94" id="2Ai-mx-gGQ"/>
+                                        <constraint firstItem="95Y-w1-dvR" firstAttribute="leading" secondItem="Mzu-nH-Mhi" secondAttribute="leading" id="2Ai-mx-gGQ"/>
+                                        <constraint firstItem="L2l-xV-zQV" firstAttribute="top" secondItem="Mzu-nH-Mhi" secondAttribute="top" id="42F-6C-wlQ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="95Y-w1-dvR" secondAttribute="bottom" constant="73" id="AYK-o4-Zum"/>
                                         <constraint firstItem="L2l-xV-zQV" firstAttribute="leading" secondItem="Mzu-nH-Mhi" secondAttribute="leading" id="JK5-0X-6zU"/>
+                                        <constraint firstAttribute="centerX" secondItem="95Y-w1-dvR" secondAttribute="centerX" id="OzS-qU-AzB"/>
+                                        <constraint firstAttribute="trailing" secondItem="L2l-xV-zQV" secondAttribute="trailing" id="RsV-6S-1Ae"/>
                                         <constraint firstItem="L2l-xV-zQV" firstAttribute="top" secondItem="Mzu-nH-Mhi" secondAttribute="top" constant="1" id="Vgm-3h-nD8"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="L2l-xV-zQV" secondAttribute="bottom" constant="-8" id="pGd-kW-BDm"/>
-                                        <constraint firstItem="95Y-w1-dvR" firstAttribute="top" secondItem="Mzu-nH-Mhi" secondAttribute="topMargin" constant="-40" id="tDN-is-BSa"/>
+                                        <constraint firstAttribute="centerY" secondItem="95Y-w1-dvR" secondAttribute="centerY" id="fta-1T-dS6"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="L2l-xV-zQV" secondAttribute="bottom" id="pGd-kW-BDm"/>
+                                        <constraint firstItem="95Y-w1-dvR" firstAttribute="top" secondItem="Mzu-nH-Mhi" secondAttribute="topMargin" constant="20" id="tDN-is-BSa"/>
+                                        <constraint firstAttribute="bottom" secondItem="L2l-xV-zQV" secondAttribute="bottom" id="vdd-Qw-dq1"/>
+                                        <constraint firstItem="L2l-xV-zQV" firstAttribute="leading" secondItem="Mzu-nH-Mhi" secondAttribute="leading" id="wU8-xe-eNq"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="JK5-0X-6zU"/>
+                                            <exclude reference="Vgm-3h-nD8"/>
+                                            <exclude reference="pGd-kW-BDm"/>
+                                            <exclude reference="2Ai-mx-gGQ"/>
+                                            <exclude reference="AYK-o4-Zum"/>
+                                            <exclude reference="tDN-is-BSa"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="background" destination="L2l-xV-zQV" id="Jir-cS-7tk"/>
+                                    <outlet property="background" destination="L2l-xV-zQV" id="d69-oF-xGm"/>
+                                    <outlet property="sunLogo" destination="95Y-w1-dvR" id="y0X-7Q-wOm"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeInfoCell" rowHeight="211" id="YHl-LM-IKq" customClass="ChallengeInfoTableViewCell">
