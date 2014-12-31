@@ -25,10 +25,10 @@ NSDateFormatter *dateFormatter;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIImage *logoutIcon = [self imageWithImage:[UIImage imageNamed:@"logout_icon"] scaledToSize:CGSizeMake(20.0f, 20.0f)];
+    UIImage *logoutIcon = [self imageWithImage:[UIImage imageNamed:@"logout_icon"] scaledToSize:CGSizeMake(24.0f, 20.0f)];
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithImage:logoutIcon style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
-    UIImage *achievementIcon = [self imageWithImage:[UIImage imageNamed:@"achievement_icon"] scaledToSize:CGSizeMake(20.0f, 20.0f)];
-    UIBarButtonItem *achievementButton = [[UIBarButtonItem alloc] initWithImage:achievementIcon style:UIBarButtonItemStylePlain target:self action:nil];
+    UIImage *achievementIcon = [self imageWithImage:[UIImage imageNamed:@"achievement_icon"] scaledToSize:CGSizeMake(20.0f, 24.0f)];
+    UIBarButtonItem *achievementButton = [[UIBarButtonItem alloc] initWithImage:achievementIcon style:UIBarButtonItemStylePlain target:self action:@selector(openHistory)];
     
     _navBar.leftBarButtonItem = logoutButton;
     _navBar.rightBarButtonItem = achievementButton;
@@ -59,6 +59,10 @@ NSDateFormatter *dateFormatter;
     // Close the session and remove the access token from the cache
     // The session state handler (in the app delegate) will be called automatically
     [FBSession.activeSession closeAndClearTokenInformation];
+}
+
+- (void)openHistory {
+    [self performSegueWithIdentifier:@"showHistory" sender:self];
 }
 
 - (UIImage*)imageWithImage:(UIImage*)image
