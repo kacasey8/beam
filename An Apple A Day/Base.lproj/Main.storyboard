@@ -649,26 +649,38 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nf8-vf-igo" id="PrS-uR-0vy">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="12" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fn9-vP-cjP">
-                                            <rect key="frame" x="18" y="18" width="564" height="48"/>
-                                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat pharetra quam vitae semper. Suspendisse in eros feugiat, tempor nunc sit amet, dignissim </string>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openquote" translatesAutoresizingMaskIntoConstraints="NO" id="lp3-tx-gSH">
+                                            <rect key="frame" x="17" y="8" width="32" height="67"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="67" id="QZk-08-fbu"/>
+                                                <constraint firstAttribute="width" constant="32" id="cC1-86-52j"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comments" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="12" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fn9-vP-cjP">
+                                            <rect key="frame" x="57" y="34" width="487" height="16"/>
                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closequote" translatesAutoresizingMaskIntoConstraints="NO" id="sQn-nR-LXr">
+                                            <rect key="frame" x="542" y="39" width="33" height="67"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="33" id="WFw-rq-PtK"/>
+                                                <constraint firstAttribute="height" constant="67" id="oCT-Gk-9HI"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.30980392159999998" green="0.74117647060000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="Fn9-vP-cjP" firstAttribute="leading" secondItem="PrS-uR-0vy" secondAttribute="leadingMargin" constant="10" id="GrK-ga-7uX"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Fn9-vP-cjP" secondAttribute="trailing" constant="10" id="hGt-Mw-fTB"/>
-                                        <constraint firstItem="Fn9-vP-cjP" firstAttribute="top" secondItem="PrS-uR-0vy" secondAttribute="topMargin" constant="10" id="uK1-en-APp"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Fn9-vP-cjP" secondAttribute="bottom" constant="5" id="zI6-xi-uAL"/>
+                                        <constraint firstAttribute="centerX" secondItem="Fn9-vP-cjP" secondAttribute="centerX" id="0yV-6M-vwB"/>
+                                        <constraint firstItem="Fn9-vP-cjP" firstAttribute="leading" secondItem="lp3-tx-gSH" secondAttribute="trailing" constant="8" id="2Fq-bm-JJc"/>
+                                        <constraint firstItem="lp3-tx-gSH" firstAttribute="top" secondItem="PrS-uR-0vy" secondAttribute="topMargin" id="5fN-iG-UrE"/>
+                                        <constraint firstItem="lp3-tx-gSH" firstAttribute="leading" secondItem="PrS-uR-0vy" secondAttribute="leadingMargin" constant="9" id="FAV-i0-Sau"/>
+                                        <constraint firstItem="sQn-nR-LXr" firstAttribute="leading" secondItem="Fn9-vP-cjP" secondAttribute="trailing" constant="-2" id="INV-vt-n1h"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="sQn-nR-LXr" secondAttribute="trailing" constant="17" id="Q1d-YI-mm3"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="sQn-nR-LXr" secondAttribute="bottom" constant="-31" id="cSp-9C-dgw"/>
+                                        <constraint firstAttribute="centerY" secondItem="Fn9-vP-cjP" secondAttribute="centerY" id="p4B-fq-A6l"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="zI6-xi-uAL"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="comment" destination="Fn9-vP-cjP" id="lN8-dZ-9r8"/>
@@ -865,9 +877,11 @@
     </scenes>
     <resources>
         <image name="achievement_icon" width="31" height="40"/>
+        <image name="closequote" width="367" height="782"/>
         <image name="facebook" width="1282" height="218"/>
         <image name="logo_sun" width="1076" height="1076"/>
         <image name="logout_icon" width="31" height="36"/>
+        <image name="openquote" width="367" height="782"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="i4k-pc-0YI"/>
