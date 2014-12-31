@@ -245,7 +245,7 @@ Global *globalKeyValueStore;
         return 0;
     } else if (indexPath.row == 3) {
         if (self.challenge.completed) {
-            return screenHeight*0.6 - 100;
+            return screenHeight*0.6 - 120;
         } else {
             return 0;
         }
@@ -305,6 +305,10 @@ Global *globalKeyValueStore;
         
     } else if (indexPath.row == 3) {
         ChallengeCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeCommentCell" forIndexPath:indexPath];
+        if (self.challenge.comment) {
+            cell.openQuote.hidden = NO;
+            cell.closeQuote.hidden = NO;
+        }
         cell.comment.text = self.challenge.comment;
         return cell;
     } else if (indexPath.row == 4) {

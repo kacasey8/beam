@@ -18,7 +18,7 @@
 
 CGFloat SCREEN_WIDTH;
 CGFloat SCREEN_HEIGHT;
-NSString *placeHolderText = @"How was your experience? What did you do?";
+NSString *placeHolderText = @"Describe your experience...";
 Global *globalKeyValueStore;
 
 - (id)init {

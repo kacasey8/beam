@@ -11,5 +11,7 @@
 @interface ChallengeCommentTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *comment;
+@property (weak, nonatomic) IBOutlet UIImageView *openQuote;
+@property (weak, nonatomic) IBOutlet UIImageView *closeQuote;
 
 @end
