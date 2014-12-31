@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -44,13 +44,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="loginbackgroud" translatesAutoresizingMaskIntoConstraints="NO" id="5Xq-aH-d5K">
-                                <rect key="frame" x="0.0" y="0.0" width="605" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="5Xq-aH-d5K" secondAttribute="height" multiplier="121:120" id="avA-hb-seJ"/>
-                                    <constraint firstAttribute="height" constant="600" id="gch-0O-Fkh"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJj-Zh-Hzr">
                                 <rect key="frame" x="175" y="369" width="250" height="45"/>
                                 <color key="backgroundColor" red="0.21176470588235294" green="0.31372549019607843" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
@@ -95,18 +88,15 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.28668378969831965" green="0.94347522383493254" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Qbq-zu-URT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="0Dr-MD-w11"/>
                             <constraint firstAttribute="centerX" secondItem="OrC-uo-koc" secondAttribute="centerX" id="JRK-ao-aTT"/>
                             <constraint firstItem="tap-N0-Dn9" firstAttribute="top" secondItem="Qbq-zu-URT" secondAttribute="bottom" constant="8" id="P2i-GI-cBl"/>
                             <constraint firstAttribute="centerX" secondItem="tap-N0-Dn9" secondAttribute="centerX" id="RyJ-aI-s5Q"/>
                             <constraint firstAttribute="centerY" secondItem="OrC-uo-koc" secondAttribute="centerY" constant="-50" id="U2V-fD-KSC"/>
-                            <constraint firstAttribute="centerY" secondItem="5Xq-aH-d5K" secondAttribute="centerY" id="g0y-JQ-VQr"/>
                             <constraint firstAttribute="centerX" secondItem="Qbq-zu-URT" secondAttribute="centerX" id="gR2-PI-b2Q"/>
                             <constraint firstAttribute="centerX" secondItem="zJj-Zh-Hzr" secondAttribute="centerX" id="iYb-Rw-ZHu"/>
                             <constraint firstAttribute="centerX" secondItem="Qbq-zu-URT" secondAttribute="centerX" id="oJJ-Kk-sXy"/>
-                            <constraint firstAttribute="centerX" secondItem="5Xq-aH-d5K" secondAttribute="centerX" id="vTD-ck-hjE"/>
                             <constraint firstItem="zJj-Zh-Hzr" firstAttribute="top" secondItem="OrC-uo-koc" secondAttribute="bottom" constant="8" id="vmU-MF-hnO"/>
                         </constraints>
                     </view>
@@ -868,7 +858,6 @@
     </scenes>
     <resources>
         <image name="facebook" width="1282" height="218"/>
-        <image name="loginbackgroud" width="1805" height="3204"/>
         <image name="logo_sun" width="1076" height="1076"/>
     </resources>
     <inferredMetricsTieBreakers>
