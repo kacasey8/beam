@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [Global addAnimatingLoaderToView:self.view];
+    
     _globalKeyValueStore = [Global globalClass];
     
     self.isCalendarView = YES;
@@ -120,6 +122,7 @@
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", @"ERROR");
         NSLog(@"%@", error.userInfo);
+        [Global removeAnimatingLoaderFromView:self.view];
     }];
 }
 
@@ -159,11 +162,14 @@
         
         NSLog(@"Challenges completed = %d", (int)challengesCompelted);
         NSLog(@"Completed Challenges: %@", self.completedChallenges);
+        
+        [Global removeAnimatingLoaderFromView:self.view];
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", @"ERROR");
         NSLog(@"%@", error.userInfo);
+        [Global removeAnimatingLoaderFromView:self.view];
     }];
 }
 

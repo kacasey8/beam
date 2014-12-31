@@ -58,8 +58,10 @@
 		995BB6A71A4AC83200C32B27 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6A61A4AC83200C32B27 /* Twitter.framework */; };
 		995BB6A91A4AC83800C32B27 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6A81A4AC83800C32B27 /* Social.framework */; };
 		995BB6AB1A4AC83D00C32B27 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995BB6AA1A4AC83D00C32B27 /* Accounts.framework */; };
+		997999B31A53FDC600AD7B71 /* beam2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 997999B21A53FDC600AD7B71 /* beam2.gif */; };
 		99F2BEAA1A4B2D2400EA9592 /* BuiltIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F2BEA91A4B2D2400EA9592 /* BuiltIO.framework */; };
 		99F2BEAD1A4B6CCB00EA9592 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 99F2BEAC1A4B6CCB00EA9592 /* Global.m */; };
+		99F81B6E1A53EFA1004A75A3 /* beam1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 99F81B6C1A53EFA1004A75A3 /* beam1.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,9 +147,11 @@
 		995BB6A61A4AC83200C32B27 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		995BB6A81A4AC83800C32B27 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		995BB6AA1A4AC83D00C32B27 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		997999B21A53FDC600AD7B71 /* beam2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = beam2.gif; sourceTree = "<group>"; };
 		99F2BEA91A4B2D2400EA9592 /* BuiltIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuiltIO.framework; sourceTree = "<group>"; };
 		99F2BEAB1A4B6CCB00EA9592 /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		99F2BEAC1A4B6CCB00EA9592 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
+		99F81B6C1A53EFA1004A75A3 /* beam1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = beam1.gif; sourceTree = "<group>"; };
 		B4FE2D2640C6CA9AAF67947A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E946D728C64AE1B0F4173F49 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F4D29D854CD7DD50863B22BA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -258,6 +262,8 @@
 		991D95351A4AA625005FE2D1 = {
 			isa = PBXGroup;
 			children = (
+				99F81B6C1A53EFA1004A75A3 /* beam1.gif */,
+				997999B21A53FDC600AD7B71 /* beam2.gif */,
 				991D95401A4AA625005FE2D1 /* An Apple A Day */,
 				991D955A1A4AA625005FE2D1 /* An Apple A DayTests */,
 				991D953F1A4AA625005FE2D1 /* Products */,
@@ -465,11 +471,13 @@
 				84CED7221A51F5010011D326 /* Gotham-MediumItalic.ttf in Resources */,
 				84CED7251A51F5010011D326 /* Gotham-Ultra.ttf in Resources */,
 				84CED7231A51F5010011D326 /* Gotham-Thin.ttf in Resources */,
+				997999B31A53FDC600AD7B71 /* beam2.gif in Resources */,
 				84CED7241A51F5010011D326 /* Gotham-ThinItalic.ttf in Resources */,
 				84CED71F1A51F5010011D326 /* Gotham-Light.ttf in Resources */,
 				84CED7191A51F5010011D326 /* Gotham-Black.ttf in Resources */,
 				84CED71E1A51F5010011D326 /* Gotham-BookItalic.ttf in Resources */,
 				84CED71C1A51F5010011D326 /* Gotham-BoldItalic.ttf in Resources */,
+				99F81B6E1A53EFA1004A75A3 /* beam1.gif in Resources */,
 				84CED71D1A51F5010011D326 /* Gotham-Book.ttf in Resources */,
 				84CED7271A51F5010011D326 /* Gotham-XLight.ttf in Resources */,
 				84CED7201A51F5010011D326 /* Gotham-LightItalic.ttf in Resources */,

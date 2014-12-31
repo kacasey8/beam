@@ -133,6 +133,7 @@ Global *globalKeyValueStore;
     _player = [[MPMoviePlayerController alloc] initWithContentURL:_videoUrl];
     _player.view.frame = CGRectMake(0, _imageView.frame.origin.y, SCREEN_WIDTH, SCREEN_WIDTH);
     [_player prepareToPlay];
+    _player.shouldAutoplay = NO;
     [self.scrollView addSubview:_player.view];
     
     // Need to add in all the constraints. This is basically all constraints on the _imageView

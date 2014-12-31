@@ -35,6 +35,7 @@ Global *globalKeyValueStore;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [Global addAnimatingLoaderToView:self.view];
     //self.tableView.contentInset = UIEdgeInsetsMake(-64.0f, 0.0f, 0.0f, 0.0f); //hack to remove top space
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -113,6 +114,7 @@ Global *globalKeyValueStore;
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", @"ERROR");
         NSLog(@"%@", error.userInfo);
+        [Global removeAnimatingLoaderFromView:self.view];
     }];
 }
 
@@ -148,37 +150,52 @@ Global *globalKeyValueStore;
                 if (file) {
                     NSString *fileUrl = [file objectForKey:@"url"];
                     NSURL *url = [NSURL URLWithString:fileUrl];
-                    NSData *data = [NSData dataWithContentsOfURL:url];
-                    if ([[file objectForKey:@"filename"] isEqualToString:@"image"]) {
-                        UIImage *img = [[UIImage alloc] initWithData:data];
-                        if (img != nil) {
-                            self.challenge.image = img;
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        // Grabbing the data is expensive, and blocks UI
+                        // Using a thread to background it while animation is running
+                        NSData *data = [NSData dataWithContentsOfURL:url];
+                        if ([[file objectForKey:@"filename"] isEqualToString:@"image"]) {
+                            UIImage *img = [[UIImage alloc] initWithData:data];
+                            if (img != nil) {
+                                self.challenge.image = img;
+                            }
+                        } else { // must be MOV file
+                            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                            NSString *documentsDirectory = [paths objectAtIndex:0];
+                            NSString *filename = [NSString stringWithFormat:@"tmp - %@.mov", self.challenge.date];
+                            NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
+                        
+                            NSData *videoData = [NSData dataWithContentsOfURL:url];
+                        
+                            [[NSFileManager defaultManager] createFileAtPath:path contents:videoData attributes:nil];
+                            NSURL *moveUrl = [NSURL fileURLWithPath:path];
+                        
+                            self.challenge.videoUrl = moveUrl;
                         }
-                    } else { // must be MOV file
-                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                        NSString *documentsDirectory = [paths objectAtIndex:0];
-                        NSString *filename = [NSString stringWithFormat:@"tmp - %@.mov", self.challenge.date];
-                        NSString *path = [documentsDirectory stringByAppendingPathComponent:filename];
-                        
-                        NSData *videoData = [NSData dataWithContentsOfURL:url];
-                        
-                        [[NSFileManager defaultManager] createFileAtPath:path contents:videoData attributes:nil];
-                        NSURL *moveUrl = [NSURL fileURLWithPath:path];
-                        
-                        self.challenge.videoUrl = moveUrl;
-                    }
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            // Need to do UI updates on main thread
+                            [Global removeAnimatingLoaderFromViewWithExplosion:self.view];
+                            [self.tableView reloadData];
+                        });
+                    });
                 }
                 
                 self.challenge.usersChallengesUID = [builtResult objectForKey:@"uid"];
                 
                 NSLog(@"completed challenge: %@", [self.challenge toString]);
+                
+                if (file == NULL) {
+                    [self.tableView reloadData];
+                    [Global removeAnimatingLoaderFromView:self.view];
+                }
             }
-            [self.tableView reloadData];
+            
         } onError:^(NSError *error, ResponseType type) {
             // query execution failed.
             // error.userinfo contains more details regarding the same
             NSLog(@"%@", @"ERROR");
             NSLog(@"%@", error.userInfo);
+            [Global removeAnimatingLoaderFromView:self.view];
         }];
     }
 }
@@ -270,6 +287,7 @@ Global *globalKeyValueStore;
             cell.player = [[MPMoviePlayerController alloc] initWithContentURL:self.challenge.videoUrl];
             cell.player.view.frame = CGRectMake(10, 10, cell.frame.size.width - 20, cell.frame.size.width - 20);
             [cell.player prepareToPlay];
+            cell.player.shouldAutoplay = NO;
             [cell addSubview:cell.player.view];
             return cell;
         } else {

@@ -8,6 +8,7 @@
 
 #import "Global.h"
 #import <BuiltIO/BuiltIO.h> // TODO TAKE THIS OUT OF PRODUCTION
+#import "FLAnimatedImage.h"
 
 @implementation Global
 
@@ -71,6 +72,36 @@ NSString *kUsersChallengesUID = @"usersChallengesUID";
         NSLog(@"%@", error.userInfo);
     }];
     
+}
+
++ (void)addAnimatingLoaderToView:(UIView *)aView
+{
+    FLAnimatedImage *sun_gif = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"beam1" ofType:@"gif"]]];
+    FLAnimatedImageView *sun_image_view = [[FLAnimatedImageView alloc] init];
+    sun_image_view.animatedImage = sun_gif;
+    sun_image_view.frame = CGRectMake(0.0, 0.0, aView.frame.size.width, aView.frame.size.height);
+    sun_image_view.tag = 42;
+    [aView addSubview:sun_image_view];
+}
+
++ (void)removeAnimatingLoaderFromViewWithExplosion:(UIView *)aView
+{
+    FLAnimatedImage *sun_explode_gif = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"beam2" ofType:@"gif"]]];
+    
+    FLAnimatedImageView *animated = (FLAnimatedImageView *)[aView viewWithTag:42];
+    animated.animatedImage = sun_explode_gif;
+    
+    double delayInSeconds = .9; // number of seconds to wait
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [animated removeFromSuperview];
+    });
+}
+
++ (void)removeAnimatingLoaderFromView:(UIView *)aView
+{
+    FLAnimatedImageView *animated = (FLAnimatedImageView *)[aView viewWithTag:42];
+    [animated removeFromSuperview];
 }
 
 @end

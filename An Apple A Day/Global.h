@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Global : NSObject
 
@@ -23,5 +24,9 @@ extern NSString *kUsersChallengesUID;
 - (id)getValueforKey:(NSString *)key;
 
 -(void)deleteAllUsersChallenges; // TODO TAKE THIS OUT OF PRODUCTION
+
++ (void)addAnimatingLoaderToView:(UIView *)view;
++ (void)removeAnimatingLoaderFromView:(UIView *)aView;
++ (void)removeAnimatingLoaderFromViewWithExplosion:(UIView *)aView;
 
 @end

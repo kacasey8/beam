@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0610"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "304BA1BFB1B368B34D8C9073"
-               BuildableName = "libPods-JTCalendar.a"
-               BlueprintName = "Pods-JTCalendar"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "991D953D1A4AA625005FE2D1"
+               BuildableName = "Beam.app"
+               BlueprintName = "Beam"
+               ReferencedContainer = "container:Beam.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,6 +29,15 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "991D953D1A4AA625005FE2D1"
+            BuildableName = "Beam.app"
+            BlueprintName = "Beam"
+            ReferencedContainer = "container:Beam.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -39,6 +48,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "991D953D1A4AA625005FE2D1"
+            BuildableName = "Beam.app"
+            BlueprintName = "Beam"
+            ReferencedContainer = "container:Beam.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -48,6 +66,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "991D953D1A4AA625005FE2D1"
+            BuildableName = "Beam.app"
+            BlueprintName = "Beam"
+            ReferencedContainer = "container:Beam.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
