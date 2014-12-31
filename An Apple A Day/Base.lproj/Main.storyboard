@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Gotham-Bold.ttf">
@@ -13,6 +14,7 @@
             <string>Gotham-Bold</string>
         </mutableArray>
         <mutableArray key="Gotham-Book.ttf">
+            <string>Gotham-Book</string>
             <string>Gotham-Book</string>
             <string>Gotham-Book</string>
             <string>Gotham-Book</string>
@@ -720,33 +722,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0Z-wW-z0n">
-                                <rect key="frame" x="0.0" y="64" width="600" height="472"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7F-y6-P3c">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0Z-wW-z0n">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ea-ka-e12"/>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="How was your experience? What did you do?" translatesAutoresizingMaskIntoConstraints="NO" id="qQn-xf-7Um">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="117"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="How was your experience? What did you do?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gKw-BX-VK6">
+                                        <rect key="frame" x="15" y="0.0" width="570" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="116.5" placeholder="YES" id="5qI-b9-HmS"/>
+                                            <constraint firstAttribute="height" constant="60" id="a7p-h8-Qqa"/>
                                         </constraints>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HKM-cF-Cfn">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="128"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="hPH-Op-HnW"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Ea-ka-e12">
+                                        <rect key="frame" x="0.0" y="128" width="600" height="480"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="480" id="Zec-9N-3XF"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="qQn-xf-7Um" secondAttribute="centerX" id="2mk-BS-3UV"/>
-                                    <constraint firstItem="8Ea-ka-e12" firstAttribute="leading" secondItem="X0Z-wW-z0n" secondAttribute="leading" id="3kw-sz-gnp"/>
-                                    <constraint firstAttribute="trailing" secondItem="8Ea-ka-e12" secondAttribute="trailing" id="5LP-N7-dKc"/>
-                                    <constraint firstItem="8Ea-ka-e12" firstAttribute="leading" secondItem="X0Z-wW-z0n" secondAttribute="leading" id="Bf0-Bg-v0b"/>
-                                    <constraint firstAttribute="bottom" secondItem="8Ea-ka-e12" secondAttribute="bottom" id="K58-Ro-ZHa"/>
-                                    <constraint firstAttribute="trailing" secondItem="qQn-xf-7Um" secondAttribute="trailing" id="Vf3-g3-tQz"/>
-                                    <constraint firstItem="8Ea-ka-e12" firstAttribute="centerX" secondItem="X0Z-wW-z0n" secondAttribute="centerX" id="VwS-BY-0nU"/>
-                                    <constraint firstItem="qQn-xf-7Um" firstAttribute="top" secondItem="X0Z-wW-z0n" secondAttribute="top" id="Xt6-oC-7Zq"/>
-                                    <constraint firstItem="8Ea-ka-e12" firstAttribute="top" secondItem="qQn-xf-7Um" secondAttribute="bottom" id="c7j-XY-w9N"/>
-                                    <constraint firstItem="qQn-xf-7Um" firstAttribute="leading" secondItem="X0Z-wW-z0n" secondAttribute="leading" id="pTi-gs-9CH"/>
-                                    <constraint firstAttribute="trailing" secondItem="8Ea-ka-e12" secondAttribute="trailing" id="q3f-36-ofW"/>
+                                    <constraint firstAttribute="trailing" secondItem="HKM-cF-Cfn" secondAttribute="trailing" id="0KF-aW-fDl"/>
+                                    <constraint firstItem="HKM-cF-Cfn" firstAttribute="leading" secondItem="X0Z-wW-z0n" secondAttribute="leading" id="5ce-cG-8Uw"/>
+                                    <constraint firstItem="8Ea-ka-e12" firstAttribute="top" secondItem="HKM-cF-Cfn" secondAttribute="bottom" id="Nrw-Y8-NkN"/>
+                                    <constraint firstAttribute="centerX" secondItem="gKw-BX-VK6" secondAttribute="centerX" id="P5X-9a-wdE"/>
+                                    <constraint firstItem="gKw-BX-VK6" firstAttribute="top" secondItem="X0Z-wW-z0n" secondAttribute="top" id="TzC-ff-14g"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Ea-ka-e12" secondAttribute="trailing" id="ffr-S2-5H6"/>
+                                    <constraint firstItem="HKM-cF-Cfn" firstAttribute="top" secondItem="X0Z-wW-z0n" secondAttribute="top" id="hOK-1B-EEY"/>
+                                    <constraint firstItem="8Ea-ka-e12" firstAttribute="leading" secondItem="X0Z-wW-z0n" secondAttribute="leading" id="xZJ-pT-b3V"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Ea-ka-e12" secondAttribute="bottom" id="yLv-Bb-y4A"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -754,13 +770,22 @@
                         <constraints>
                             <constraint firstItem="0S0-QA-gXI" firstAttribute="top" secondItem="X0Z-wW-z0n" secondAttribute="bottom" id="49S-bx-fVe"/>
                             <constraint firstAttribute="trailing" secondItem="X0Z-wW-z0n" secondAttribute="trailing" id="5gI-PT-Tvr"/>
-                            <constraint firstItem="X0Z-wW-z0n" firstAttribute="top" secondItem="Tx6-tO-Iav" secondAttribute="bottom" constant="-64" id="TKh-Tk-i7n"/>
+                            <constraint firstItem="gKw-BX-VK6" firstAttribute="width" secondItem="Dl8-1Z-deQ" secondAttribute="width" id="5nU-kt-eQM"/>
+                            <constraint firstItem="f7F-y6-P3c" firstAttribute="top" secondItem="Tx6-tO-Iav" secondAttribute="bottom" id="CnL-kF-CRO"/>
+                            <constraint firstItem="HKM-cF-Cfn" firstAttribute="width" secondItem="f7F-y6-P3c" secondAttribute="width" id="E7m-S9-z5N"/>
+                            <constraint firstItem="8Ea-ka-e12" firstAttribute="width" secondItem="Dl8-1Z-deQ" secondAttribute="width" id="Icw-J6-UOJ"/>
+                            <constraint firstItem="X0Z-wW-z0n" firstAttribute="top" secondItem="Tx6-tO-Iav" secondAttribute="bottom" id="TKh-Tk-i7n"/>
                             <constraint firstItem="X0Z-wW-z0n" firstAttribute="top" secondItem="Tx6-tO-Iav" secondAttribute="bottom" constant="64" placeholder="YES" id="VFy-30-rSu"/>
+                            <constraint firstAttribute="trailing" secondItem="f7F-y6-P3c" secondAttribute="trailing" id="W5c-o9-fwQ"/>
                             <constraint firstItem="X0Z-wW-z0n" firstAttribute="leading" secondItem="Dl8-1Z-deQ" secondAttribute="leading" id="mRZ-tu-TAu"/>
+                            <constraint firstItem="0S0-QA-gXI" firstAttribute="top" secondItem="f7F-y6-P3c" secondAttribute="bottom" id="v4w-Mr-pbD"/>
+                            <constraint firstItem="f7F-y6-P3c" firstAttribute="leading" secondItem="Dl8-1Z-deQ" secondAttribute="leading" id="wRT-wn-Q4o"/>
+                            <constraint firstItem="gKw-BX-VK6" firstAttribute="width" secondItem="Dl8-1Z-deQ" secondAttribute="width" multiplier="0.95" id="yRB-3x-Tjx"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="VFy-30-rSu"/>
+                                <exclude reference="5nU-kt-eQM"/>
                             </mask>
                         </variation>
                     </view>
@@ -791,9 +816,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageHeightConstraint" destination="Zec-9N-3XF" id="AI7-nC-WSw"/>
                         <outlet property="imageView" destination="8Ea-ka-e12" id="R24-sI-bSb"/>
+                        <outlet property="placeholder" destination="gKw-BX-VK6" id="zsi-b7-9fA"/>
                         <outlet property="scrollView" destination="X0Z-wW-z0n" id="Chu-iD-MWw"/>
-                        <outlet property="textView" destination="qQn-xf-7Um" id="IYT-Ma-OUU"/>
+                        <outlet property="textView" destination="HKM-cF-Cfn" id="JFq-kk-CC9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EED-2C-Utx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -824,8 +851,8 @@
         <image name="logo_sun" width="1076" height="1076"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4O4-qb-sxK"/>
         <segue reference="19F-UH-GZC"/>
+        <segue reference="4O4-qb-sxK"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96470588235294119" green="0.72941176470588232" blue="0.32156862745098042" alpha="1" colorSpace="calibratedRGB"/>
 </document>

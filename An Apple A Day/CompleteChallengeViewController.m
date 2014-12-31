@@ -34,12 +34,17 @@ Global *globalKeyValueStore;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     SCREEN_WIDTH = screenRect.size.width;
     SCREEN_HEIGHT = screenRect.size.height;
-    // Do any additional setup after loading the view from its nib.
     
     _textView.textContainerInset = UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0);
     if (self.challenge.comment) {
         _textView.text = self.challenge.comment;
         _textView.textColor = [UIColor blackColor];
+    }
+    
+    if (self.textView.text.length == 0) {
+        self.placeholder.hidden = NO;
+    } else {
+        self.placeholder.hidden = YES;
     }
     
     _textView.delegate = self;
@@ -74,16 +79,11 @@ Global *globalKeyValueStore;
     return YES;
 }
 
--(void)textViewDidChange:(UITextView *)textView
-{
+-(void)textViewDidChange:(UITextView *)textView {
     if (textView.text.length == 0) {
-        textView.text = placeHolderText;
-        textView.textColor = [UIColor lightGrayColor];
-    } else if (textView.text.length > placeHolderText.length) {
-        if ([[textView.text substringToIndex:placeHolderText.length] isEqualToString:placeHolderText]) {
-            textView.text = [textView.text substringFromIndex:placeHolderText.length];
-            textView.textColor = [UIColor blackColor];
-        }
+        self.placeholder.hidden = NO;
+    } else {
+        self.placeholder.hidden = YES;
     }
 }
 
@@ -120,12 +120,9 @@ Global *globalKeyValueStore;
     if (!image) {
         return;
     }
-    
-    [_imageView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, image.size.height * SCREEN_WIDTH / image.size.width)];
-    _imageView.contentMode = UIViewContentModeScaleAspectFill;
-    _imageView.image = [self imageWithImage:image scaledToSize:CGSizeMake(SCREEN_WIDTH, image.size.height * SCREEN_WIDTH / image.size.width)];
+    self.imageView.image = image;
+    self.imageHeightConstraint.constant = image.size.height * SCREEN_WIDTH / image.size.width;
     _imageView.hidden = NO;
-    [self.view setNeedsDisplay];
 }
 
 - (void)insertAndSetUpVideoGivenVideoUrl
