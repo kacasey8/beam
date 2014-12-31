@@ -24,14 +24,6 @@ NSDateFormatter *dateFormatter;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    UIImage *logoutIcon = [self imageWithImage:[UIImage imageNamed:@"logout_icon"] scaledToSize:CGSizeMake(24.0f, 20.0f)];
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithImage:logoutIcon style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
-    UIImage *achievementIcon = [self imageWithImage:[UIImage imageNamed:@"achievement_icon"] scaledToSize:CGSizeMake(20.0f, 24.0f)];
-    UIBarButtonItem *achievementButton = [[UIBarButtonItem alloc] initWithImage:achievementIcon style:UIBarButtonItemStylePlain target:self action:@selector(openHistory)];
-    
-    _navBar.leftBarButtonItem = logoutButton;
-    _navBar.rightBarButtonItem = achievementButton;
 }
 
 - (void)activateView {
