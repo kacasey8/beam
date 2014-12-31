@@ -216,7 +216,6 @@ Global *globalKeyValueStore;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat screenHeight = self.view.frame.size.height;
-    CGFloat screenWidth = self.view.frame.size.width;
     //NSLog(@"table view height: %f", screenHeight);
     if (indexPath.row == 0) {
         if (self.challenge.completed) {

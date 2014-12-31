@@ -48,23 +48,33 @@ NSDateFormatter *dateFormatter;
 #pragma mark - Actions
 
 - (void)logout:(id)sender {
-    // Close the session and remove the access token from the cache
-    // The session state handler (in the app delegate) will be called automatically
-    [FBSession.activeSession closeAndClearTokenInformation];
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Logout"
+                          message: @"Are you sure you want to logout?"
+                          delegate: nil
+                          cancelButtonTitle:@"Cancel"
+                          otherButtonTitles:@"Confirm", nil];
+    alert.delegate = self;
+    [alert show];
 }
 
 - (void)openHistory {
     [self performSegueWithIdentifier:@"showHistory" sender:self];
 }
 
-- (UIImage*)imageWithImage:(UIImage*)image
-              scaledToSize:(CGSize)newSize;
-{
-    UIGraphicsBeginImageContext( newSize );
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
+#pragma mark - Alert view delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            break;
+        case 1:
+            // Close the session and remove the access token from the cache
+            // The session state handler (in the app delegate) will be called automatically
+            [FBSession.activeSession closeAndClearTokenInformation];
+            break;
+        default:
+            break;
+    }
+
 }
 @end
