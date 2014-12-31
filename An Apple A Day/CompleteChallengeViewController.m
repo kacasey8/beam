@@ -65,8 +65,8 @@ Global *globalKeyValueStore;
                                    action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
     
-    [self clearImageAndVideo];
     [self insertAndSetUpImage:self.challenge.image];
+    NSLog(@"%@ %@", [self.challenge toString], self.challenge.videoUrl);
     [self insertAndSetUpVideoGivenVideoUrl];
 }
 

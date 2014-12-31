@@ -174,6 +174,7 @@ Global *globalKeyValueStore;
                             NSURL *moveUrl = [NSURL fileURLWithPath:path];
                         
                             self.challenge.videoUrl = moveUrl;
+                            NSLog(@"true challenge: %@", [self.challenge toString]);
                         }
                         dispatch_async(dispatch_get_main_queue(), ^{
                             // Need to do UI updates on main thread
