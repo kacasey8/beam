@@ -13,5 +13,6 @@
 
 @property (strong, nonatomic) Challenge *challenge; //used to pass it down to ChallengeTableViewController
 @property (strong, nonatomic) ChallengeTableViewController *tableViewController;
+@property (strong, nonatomic) IBOutlet UIView *navBar;
 
 @end

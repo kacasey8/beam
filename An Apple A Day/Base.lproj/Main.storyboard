@@ -316,6 +316,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="navBar" destination="m53-TV-8L6" id="1tT-6g-GKr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V9w-O4-qjl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -865,7 +868,7 @@
         <image name="logo_sun" width="1076" height="1076"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4O4-qb-sxK"/>
+        <segue reference="i4k-pc-0YI"/>
         <segue reference="19F-UH-GZC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96470588235294119" green="0.72941176470588232" blue="0.32156862745098042" alpha="1" colorSpace="calibratedRGB"/>
