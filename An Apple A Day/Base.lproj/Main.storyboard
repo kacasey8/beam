@@ -131,32 +131,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b0J-sg-2oe">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0J-sg-2oe">
                                 <rect key="frame" x="16" y="116" width="568" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="noE-us-1eM"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fHf-eV-hfo" userLabel="ListContainerView">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHf-eV-hfo" userLabel="ListContainerView">
                                 <rect key="frame" x="0.0" y="122" width="600" height="479"/>
                                 <connections>
                                     <segue destination="cWX-WE-AAt" kind="embed" identifier="embedListView" id="9IW-KJ-AZ5"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XJc-wv-1Mv" userLabel="CalendarContainerView">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJc-wv-1Mv" userLabel="CalendarContainerView">
                                 <rect key="frame" x="0.0" y="122" width="600" height="478"/>
                                 <connections>
                                     <segue destination="UbC-g1-k7A" kind="embed" identifier="embedCalendarView" id="ksR-it-3Wc"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIw-Te-RCH" userLabel="TotalCompletedCount">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIw-Te-RCH" userLabel="TotalCompletedCount">
                                 <rect key="frame" x="101" y="74" width="13" height="17"/>
                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="17"/>
                                 <color key="textColor" red="0.30980392156862746" green="0.74117647058823533" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="say-3I-14I" userLabel="CurrentStreakCount">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="say-3I-14I" userLabel="CurrentStreakCount">
                                 <rect key="frame" x="294" y="74" width="13" height="17"/>
                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="17"/>
                                 <color key="textColor" red="0.30980392156862746" green="0.74117647058823533" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
@@ -252,7 +252,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="History" id="X3I-LH-Cas">
+                    <navigationItem key="navigationItem" title="Progress" id="X3I-LH-Cas">
                         <barButtonItem key="rightBarButtonItem" title="List" id="LaZ-XG-1Gr">
                             <connections>
                                 <action selector="toggleView:" destination="cc3-Y7-Hu6" id="OiT-qx-EKt"/>
@@ -289,7 +289,7 @@
                                 <rect key="frame" x="150" y="150" width="300" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7kO-8Z-v0u">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kO-8Z-v0u">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <connections>
                                     <segue destination="63t-gO-dmO" kind="embed" identifier="embedChallengeDetail" id="i4k-pc-0YI"/>
@@ -321,7 +321,7 @@
             </objects>
             <point key="canvasLocation" x="2814" y="-1805"/>
         </scene>
-        <!--Beam-->
+        <!--Challenge View Controller-->
         <scene sceneID="qHO-0Z-tPN">
             <objects>
                 <viewController id="2To-ua-96w" customClass="ChallengeViewController" sceneMemberID="viewController">
@@ -357,9 +357,9 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Beam" id="yCX-sD-bZV"/>
+                    <navigationItem key="navigationItem" id="yCX-sD-bZV"/>
                     <connections>
-                        <outlet property="navBar" destination="yCX-sD-bZV" id="avD-xn-eSE"/>
+                        <outlet property="navBar" destination="yCX-sD-bZV" id="6SM-gw-dB5"/>
                         <segue destination="cc3-Y7-Hu6" kind="show" identifier="showHistory" id="fr7-Wg-353"/>
                     </connections>
                 </viewController>
