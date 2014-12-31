@@ -138,6 +138,9 @@ Global *globalKeyValueStore;
             if ([builtResults count] == 0) {
                 NSLog(@"not completed");
                 self.challenge.completed = NO;
+
+                [self.tableView reloadData];
+                [Global removeAnimatingLoaderFromView:self.view];
             } else {
                 NSLog(@"completed");
                 self.challenge.completed = YES;
