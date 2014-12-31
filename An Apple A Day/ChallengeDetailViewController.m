@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@", self.challenge.date];
 }
 
 - (void)didReceiveMemoryWarning {
