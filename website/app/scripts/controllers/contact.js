@@ -2,12 +2,16 @@
 
 /**
  * @ngdoc function
- * @name websiteApp.controller:MainCtrl
+ * @name websiteApp.controller:ContactCtrl
  * @description
- * # MainCtrl
+ * # ContactCtrl
  * Controller of the websiteApp
  */
 angular.module('websiteApp')
   .controller('ContactCtrl', function ($scope) {
-    $scope.email = 'kacasey@berkeley.edu';
+    $scope.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
+    ];
   });
