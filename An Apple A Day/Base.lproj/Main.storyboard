@@ -639,14 +639,14 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openquote" translatesAutoresizingMaskIntoConstraints="NO" id="lp3-tx-gSH">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openquote" translatesAutoresizingMaskIntoConstraints="NO" id="lp3-tx-gSH">
                                             <rect key="frame" x="17" y="8" width="32" height="67"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="67" id="QZk-08-fbu"/>
                                                 <constraint firstAttribute="width" constant="32" id="cC1-86-52j"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closequote" translatesAutoresizingMaskIntoConstraints="NO" id="sQn-nR-LXr">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closequote" translatesAutoresizingMaskIntoConstraints="NO" id="sQn-nR-LXr">
                                             <rect key="frame" x="542" y="39" width="33" height="67"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="33" id="WFw-rq-PtK"/>
