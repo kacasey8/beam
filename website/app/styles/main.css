@@ -2,6 +2,11 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  font-family: "Gotham-Book";
+}
+
+h1, h3 {
+  font-family: "Gotham-Bold";
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -76,4 +81,17 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+/* Font */
+@font-face {
+  font-family: 'Gotham-Book';
+  src: url('../fonts/Gotham-Book.ttf')  format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Gotham-Bold';
+  src: url('../fonts/Gotham-Bold.ttf')  format('truetype');
+  font-weight: bold;
 }
