@@ -43,23 +43,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beam" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="tap-N0-Dn9">
-                                <rect key="frame" x="248" y="173" width="104" height="43"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="9QS-Zp-39E"/>
-                                    <constraint firstAttribute="width" constant="104" id="tUF-4A-bRI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="30"/>
-                                <color key="textColor" red="0.96470588239999999" green="0.72549019609999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="Qbq-zu-URT">
-                                <rect key="frame" x="250" y="65" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="crZ-qe-jyZ"/>
-                                    <constraint firstAttribute="height" constant="100" id="gbC-Wc-eiE"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJj-Zh-Hzr">
                                 <rect key="frame" x="175" y="381" width="250" height="45"/>
                                 <color key="backgroundColor" red="0.21176470588235294" green="0.31372549019607843" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,9 +69,26 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beam" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="tap-N0-Dn9">
+                                <rect key="frame" x="248" y="201" width="104" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="9QS-Zp-39E"/>
+                                    <constraint firstAttribute="width" constant="104" id="tUF-4A-bRI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="30"/>
+                                <color key="textColor" red="0.96470588239999999" green="0.72549019609999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_sun" translatesAutoresizingMaskIntoConstraints="NO" id="Qbq-zu-URT">
+                                <rect key="frame" x="250" y="93" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="crZ-qe-jyZ"/>
+                                    <constraint firstAttribute="height" constant="100" id="gbC-Wc-eiE"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Qbq-zu-URT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="0Dr-MD-w11"/>
+                            <constraint firstItem="Qbq-zu-URT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="73" id="0Dr-MD-w11"/>
                             <constraint firstAttribute="centerX" secondItem="OrC-uo-koc" secondAttribute="centerX" id="JRK-ao-aTT"/>
                             <constraint firstItem="tap-N0-Dn9" firstAttribute="top" secondItem="Qbq-zu-URT" secondAttribute="bottom" constant="8" id="P2i-GI-cBl"/>
                             <constraint firstAttribute="centerX" secondItem="tap-N0-Dn9" secondAttribute="centerX" id="RyJ-aI-s5Q"/>
