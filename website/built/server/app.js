@@ -147,8 +147,8 @@ function sendDailyNotification() {
   setInterval(sendNotification, 84000 * 1000);
 }
 
-// I'm uploading this code at 11:20 pm. I want this to trigger at 11:59 am
-var hours = 12;
-var minutes = 39;
+// I'm uploading this code at 12:28 am. I want this to trigger at 11:59 am
+var hours = 11;
+var minutes = 31;
 
 setTimeout(sendDailyNotification, 1000 * 3600 * hours + 1000 * 60 * minutes);
