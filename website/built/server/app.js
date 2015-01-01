@@ -100,8 +100,10 @@ var sendNotification = function() {
               console.log(data[i]);
               var last_date = new Date(data[i].get('last_date_completed'));
 
+              user_uids.push(data[i].get('uid'));
+
               if (today.getTime() != last_date.getTime()) {
-                user_uids.push(data[i].get('uid'));
+                //user_uids.push(data[i].get('uid'));
                 console.log('sending to: ' + data[i].get('first_name'));
               } else {
                 console.log('not sending to: ' + data[i].get('first_name'));
@@ -118,7 +120,7 @@ var sendNotification = function() {
             //notification.atTime(d).inLocalTime(true).setMessage("Remember to complete today's challenge");
 
             notification.setMessage("Remember to complete today's challenge!");
-
+            console.log('about to send');
             notification.send({
               onSuccess: function(data) {
                 console.log("Notification - Success");
@@ -141,13 +143,15 @@ var sendNotification = function() {
 }
 
 // 84000 seconds in a day, 1000 milliseconds in a second. Activated once a day
-function sendDailyNotification() {
-  // Send one now, set interval does not send immediately
-  sendNotification();
-  setInterval(sendNotification, 84000 * 1000);
-}
+// function sendDailyNotification() {
+//   // Send one now, set interval does not send immediately
+//   sendNotification();
+//   setInterval(sendNotification, 84000 * 1000);
+// }
 
-// I'm uploading this code at 11:22 pm. I want this to trigger at 9:22 am
-var hours = 10;
+sendNotification();
 
-setTimeout(sendDailyNotification, 1000 * 3600 * hours);
+// I'm uploading this code at 4:30 am. I want this to trigger at 11:30 am
+// var hours = 7;
+
+// setTimeout(sendDailyNotification, 1000 * 3600 * hours);
