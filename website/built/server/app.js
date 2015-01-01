@@ -147,8 +147,10 @@ function sendDailyNotification() {
   setInterval(sendNotification, 84000 * 1000);
 }
 
-// I'm uploading this code at 12:28 am. I want this to trigger at 11:59 am
-var hours = 11;
-var minutes = 31;
-
-setTimeout(sendDailyNotification, 1000 * 3600 * hours + 1000 * 60 * minutes);
+// Trigger at 12PM
+var now = new Date();
+var millisTill12 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0, 0) - now;
+if (millisTill12 < 0) {
+     millisTill12 += 86400000; // it's after 12am, try 12am tomorrow.
+}
+setTimeout(sendDailyNotification, millisTill12);
