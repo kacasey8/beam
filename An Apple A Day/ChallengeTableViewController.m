@@ -35,7 +35,7 @@ Global *globalKeyValueStore;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [Global addAnimatingLoaderToView:self.view];
+    [Global addAnimatingLoaderToView:[[[UIApplication sharedApplication] delegate] window]];
     //self.tableView.contentInset = UIEdgeInsetsMake(-64.0f, 0.0f, 0.0f, 0.0f); //hack to remove top space
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -115,7 +115,7 @@ Global *globalKeyValueStore;
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", @"ERROR");
         NSLog(@"%@", error.userInfo);
-        [Global removeAnimatingLoaderFromView:self.view];
+        [Global removeAnimatingLoaderFromView:[[[UIApplication sharedApplication] delegate] window]];
     }];
 }
 
@@ -141,7 +141,7 @@ Global *globalKeyValueStore;
                 self.challenge.completed = NO;
 
                 [self.tableView reloadData];
-                [Global removeAnimatingLoaderFromView:self.view];
+                [Global removeAnimatingLoaderFromView:[[[UIApplication sharedApplication] delegate] window]];
             } else {
                 NSLog(@"completed");
                 self.challenge.completed = YES;
@@ -179,7 +179,7 @@ Global *globalKeyValueStore;
                         }
                         dispatch_async(dispatch_get_main_queue(), ^{
                             // Need to do UI updates on main thread
-                            [Global removeAnimatingLoaderFromViewWithExplosion:self.view];
+                            [Global removeAnimatingLoaderFromViewWithExplosion:[[[UIApplication sharedApplication] delegate] window]];
                             [self.tableView reloadData];
                         });
                     });
@@ -191,7 +191,7 @@ Global *globalKeyValueStore;
                 
                 if (file == NULL) {
                     [self.tableView reloadData];
-                    [Global removeAnimatingLoaderFromView:self.view];
+                    [Global removeAnimatingLoaderFromView:[[[UIApplication sharedApplication] delegate] window]];
                 }
             }
             
@@ -200,7 +200,7 @@ Global *globalKeyValueStore;
             // error.userinfo contains more details regarding the same
             NSLog(@"%@", @"ERROR");
             NSLog(@"%@", error.userInfo);
-            [Global removeAnimatingLoaderFromView:self.view];
+            [Global removeAnimatingLoaderFromView:[[[UIApplication sharedApplication] delegate] window]];
         }];
     }
 }
@@ -239,13 +239,33 @@ Global *globalKeyValueStore;
                 return SCREEN_WIDTH*imageRatio;
             } else if (self.challenge.videoUrl) {
                 // This is the height of the video player.
-                return self.view.frame.size.width + 10;
+                return self.view.frame.size.width;
             }
         }
         return 0;
     } else if (indexPath.row == 3) {
         if (self.challenge.completed) {
-            return screenHeight*0.6 - 120;
+            
+            CGFloat minimumHeight = screenHeight*0.6 - 120;
+            
+            NSAttributedString *attributedText = [[NSAttributedString alloc]
+                                            initWithString:self.challenge.comment
+                                                attributes:@{NSFontAttributeName:
+                                                         [UIFont fontWithName:@"Gotham-Book" size:16.0]}];
+            
+            CGRect rect = [attributedText boundingRectWithSize:(CGSize){self.view.frame.size.width - 100, CGFLOAT_MAX}
+                                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                                       context:nil];
+            
+            CGFloat suggestedHeight = rect.size.height + 100;
+            
+            
+            if (suggestedHeight > minimumHeight) {
+                return suggestedHeight;
+            } else {
+                return minimumHeight;
+            }
+            
         } else {
             return 0;
         }
@@ -289,7 +309,7 @@ Global *globalKeyValueStore;
                 [cell.player.view removeFromSuperview];
             }
             cell.player = [[MPMoviePlayerController alloc] initWithContentURL:self.challenge.videoUrl];
-            cell.player.view.frame = CGRectMake(10, 10, cell.frame.size.width - 20, cell.frame.size.width - 20);
+            cell.player.view.frame = CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.width);
             [cell.player prepareToPlay];
             cell.player.shouldAutoplay = NO;
             [cell addSubview:cell.player.view];

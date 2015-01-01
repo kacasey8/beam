@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [Global addAnimatingLoaderToView:self.view];
+    [Global addAnimatingLoaderToView:[[[UIApplication sharedApplication] delegate] window]];
     
     _globalKeyValueStore = [Global globalClass];
     
@@ -122,7 +122,7 @@
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", @"ERROR");
         NSLog(@"%@", error.userInfo);
-        [Global removeAnimatingLoaderFromView:self.view];
+        [Global removeAnimatingLoaderFromViewWithExplosion:[[[UIApplication sharedApplication] delegate] window]];
     }];
 }
 
@@ -163,13 +163,13 @@
         NSLog(@"Challenges completed = %d", (int)challengesCompelted);
         NSLog(@"Completed Challenges: %@", self.completedChallenges);
         
-        [Global removeAnimatingLoaderFromView:self.view];
+        [Global removeAnimatingLoaderFromViewWithExplosion:[[[UIApplication sharedApplication] delegate] window]];
     } onError:^(NSError *error, ResponseType type) {
         // query execution failed.
         // error.userinfo contains more details regarding the same
         NSLog(@"%@", @"ERROR");
         NSLog(@"%@", error.userInfo);
-        [Global removeAnimatingLoaderFromView:self.view];
+        [Global removeAnimatingLoaderFromViewWithExplosion:[[[UIApplication sharedApplication] delegate] window]];
     }];
 }
 
