@@ -633,26 +633,26 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nf8-vf-igo" id="PrS-uR-0vy">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comments" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fn9-vP-cjP">
-                                            <rect key="frame" x="57" y="34" width="485" height="16"/>
-                                            <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openquote" translatesAutoresizingMaskIntoConstraints="NO" id="lp3-tx-gSH">
-                                            <rect key="frame" x="17" y="8" width="32" height="67"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="67" id="QZk-08-fbu"/>
-                                                <constraint firstAttribute="width" constant="32" id="cC1-86-52j"/>
-                                            </constraints>
-                                        </imageView>
-                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closequote" translatesAutoresizingMaskIntoConstraints="NO" id="sQn-nR-LXr">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closequote" translatesAutoresizingMaskIntoConstraints="NO" id="sQn-nR-LXr">
                                             <rect key="frame" x="542" y="39" width="33" height="67"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="33" id="WFw-rq-PtK"/>
                                                 <constraint firstAttribute="height" constant="67" id="oCT-Gk-9HI"/>
                                             </constraints>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openquote" translatesAutoresizingMaskIntoConstraints="NO" id="lp3-tx-gSH">
+                                            <rect key="frame" x="17" y="8" width="32" height="67"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="67" id="QZk-08-fbu"/>
+                                                <constraint firstAttribute="width" constant="32" id="cC1-86-52j"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comments" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fn9-vP-cjP">
+                                            <rect key="frame" x="57" y="34" width="485" height="16"/>
+                                            <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" red="0.30980392159999998" green="0.74117647060000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -667,7 +667,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="closeQuote" destination="sQn-nR-LXr" id="5hL-3s-pim"/>
                                     <outlet property="comment" destination="Fn9-vP-cjP" id="lN8-dZ-9r8"/>
+                                    <outlet property="openQuote" destination="lp3-tx-gSH" id="l2r-gf-Rmc"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeButtonCell" rowHeight="100" id="M2h-Hp-lEa" customClass="ChallengeButtonTableViewCell">
