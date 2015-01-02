@@ -34,8 +34,9 @@ Built.Extension.beforeSave('usersChallenges', function(request, response) {
             current_streak = 1;
           }
 
+          console.log("before" + highest_streak);
           highest_streak = Math.max(highest_streak, current_streak);
-
+          console.log("after" + highest_streak);
 
           user_object.set({
             current_streak: current_streak,
@@ -49,6 +50,7 @@ Built.Extension.beforeSave('usersChallenges', function(request, response) {
             onSuccess: function(data, res) {
               // object update is successful
               console.log("someone posted");
+              console.log(user_object);
             },
             onError: function(err) {
               // some error has occurred
