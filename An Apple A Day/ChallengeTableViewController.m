@@ -326,6 +326,7 @@ Global *globalKeyValueStore;
     } else if (indexPath.row == 3) {
         ChallengeCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"challengeCommentCell" forIndexPath:indexPath];
         if (self.challenge.comment) {
+            NSLog(@"@HI");
             cell.openQuote.hidden = NO;
             cell.closeQuote.hidden = NO;
         }
