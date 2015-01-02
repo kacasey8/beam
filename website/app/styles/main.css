@@ -16,14 +16,19 @@ div {
   margin: 0px;
 }
 
-h1, h3 {
+h1 {
+  font-family: "Gotham-Medium";
+}
+
+h3 {
   font-family: "Gotham-Bold";
 }
 
 h2 {
-  font-size: 250%;
+  font-size: 280%;
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  margin-top: 30%;
 }
 
 h3 {
@@ -35,13 +40,9 @@ p {
   font-size: 150%;
 }
 
-iframe {
-  margin: 2%;
-}
-
 #wrapper {
   height: 100vh;
-  background: url("../images/banner_login.png") left;
+  background: url("../images/Beamlanding.png") left;
   background-size: 100%;
   margin: 0px;
   padding: 0px;
@@ -72,15 +73,25 @@ iframe {
 }
 
 #iframe-wrapper {
-  padding: 5%;
+  padding: 5% 10%;
   height: 120vh;
   text-align: center;
-  background-color: #5DC8E5; 
+  background: url("../images/cloud_background.png") left;
+  background-size: 100%;
 }
 
 #iframe-wrapper h1 {
   font-size: 300%;
   color: white;
+  margin-bottom: 3%;
+}
+
+#perspective-wrapper img {
+  background-color: white;
+}
+
+.row {
+  /*background-color: #32CAE7;*/
 }
 
 .col-md-4 {
@@ -174,5 +185,11 @@ iframe {
 @font-face {
   font-family: 'Gotham-Bold';
   src: url('../fonts/Gotham-Bold.ttf')  format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Gotham-Medium';
+  src: url('../fonts/Gotham-Medium.ttf')  format('truetype');
   font-weight: bold;
 }
