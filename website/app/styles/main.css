@@ -3,7 +3,7 @@ body {
   font-family: "Gotham-Book";
   padding: 0px;
   margin: 0px;
-  background-color: #e5e5e5;
+  background-color: white;
 }
 
 html {
@@ -29,18 +29,6 @@ h3, p {
   font-size: 150%;
 }
 
-.carousel-inner {
-
-}
-
-.carousel-control {
-  opacity: 0;
-}
-
-.carousel-control:hover {
-  opacity: 0.1;
-}
-
 .col-md-4 {
   padding: 5%;
   text-align: center;
@@ -55,10 +43,6 @@ h3, p {
   padding: 30px;
 }
 
-#view-wrapper {
-  margin: 0px 50px;
-}
-
 #wrapper {
   height: 100vh;
   background: url("../images/banner_login.png") left;
@@ -70,6 +54,7 @@ h3, p {
 
 #iframe-wrapper {
   height: 100vh;
+  text-align: center;
 }
 
 #signup {
@@ -79,8 +64,11 @@ h3, p {
   margin: 5%;
 }
 
-#myCarousel {
-  height: 100vh;
+#end {
+  padding: 5%;
+  text-align: center;
+  height: 50vh;
+  background-color: #e5e5e5;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
