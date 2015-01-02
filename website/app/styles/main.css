@@ -3,6 +3,7 @@ body {
   font-family: "Gotham-Book";
   padding: 0px;
   margin: 0px;
+  background-color: #e5e5e5;
 }
 
 html {
@@ -28,12 +29,21 @@ h3, p {
   font-size: 150%;
 }
 
+.carousel-inner {
+
+}
+
 .carousel-control {
   opacity: 0;
 }
 
 .carousel-control:hover {
   opacity: 0.1;
+}
+
+.col-md-4 {
+  padding: 5%;
+  text-align: center;
 }
 
 .col-md-6 {
@@ -43,6 +53,10 @@ h3, p {
 
 .row {
   padding: 30px;
+}
+
+#view-wrapper {
+  margin: 0px 50px;
 }
 
 #wrapper {
@@ -62,7 +76,7 @@ h3, p {
   position: absolute; 
   height: 50vh;
   bottom: 0;
-  margin: 20px;
+  margin: 5%;
 }
 
 #myCarousel {
