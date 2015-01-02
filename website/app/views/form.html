@@ -1,0 +1,9 @@
+<form name="form" class="form-inline">
+  <div class="success-message" ng-show="form.$submitted">
+    Yay, {{email}} is ready for daily light!
+  </div>
+  <div ng-hide="form.$submitted">
+    <input type="email" name="input" ng-model="email" placeholder="Enter email" class="form-control" required>
+  <input type="submit" class="form-control btn-success" ng-click="submit(email)" value="Sign up for Beta!">
+  </div>
+</form>

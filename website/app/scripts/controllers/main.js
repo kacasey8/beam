@@ -14,4 +14,18 @@ angular.module('websiteApp')
       'AngularJS',
       'Karma'
     ];
+
+    $scope.submit = function(email) {
+      console.log(email);
+      // Built.Extension.execute('invite', {email: email}, {
+      //   onSuccess: function(data) {
+      //     // executed successfully
+      //     console.log(data);
+      //   },
+      //   onError: function() {
+      //     // error
+      //     console.log('fail');
+      //   }
+      // });
+    };
   });

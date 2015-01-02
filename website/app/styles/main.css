@@ -52,6 +52,11 @@ h3, p {
   position: relative;
 }
 
+.success-message {
+  font-size: 150%;
+  color: white;
+}
+
 #iframe-wrapper {
   height: 100vh;
   text-align: center;

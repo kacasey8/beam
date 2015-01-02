@@ -1,10 +1,7 @@
 <div id="wrapper">
   <div id="signup">
     <h2>Hello sunshine! :)</h2>
-    <form name="myForm" class="form-inline">
-      <input type="email" name="input" ng-model="email" placeholder="Enter email" class="form-control" required>
-      <input type="submit" class="form-control btn-success" value="Sign up for Beta!">
-    </form>
+    <div ng-include="'views/form.html'"></div>
   </div>
 </div>
 
@@ -37,8 +34,5 @@
 
 <div id="end">
   <h1>What are you waiting for? <br> Download Beam and receive your daily burst of light!</h1>
-  <form name="myForm" class="form-inline">
-      <input type="email" name="input" ng-model="email" placeholder="Enter email" class="form-control" required>
-      <input type="submit" class="form-control btn-success" value="Sign up for Beta!">
-  </form>
+  <div ng-include="'views/form.html'"></div>
 </div>
