@@ -1,5 +1,25 @@
 var config = require('./config.js');
 Built.initialize('blt2edd3e168f0a895a', 'anappleaday');
+
+Built.Extension.define('invite', function(request, response) {
+  var invitees = Built.Object.extend('invitees');
+  var invitee = new invitees();
+  invitee.set({
+    email: request.params.email
+  });
+  invitee.save({
+    onSuccess: function(data, res) {
+      // object creation is successful
+      return response.success(request.params.email);
+    },
+    onError: function(err) {
+      // some error has occurred
+      // refer to the "error" object for more details
+      console.log(err);
+    }
+  });
+});
+
 Built.Extension.beforeSave('usersChallenges', function(request, response) {
   var user = request.object.get('user');
   var challenge = request.object.get('challenge');

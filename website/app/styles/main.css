@@ -21,6 +21,7 @@ h1, h3 {
 }
 
 h2 {
+  font-size: 250%;
   color: white;
   margin-bottom: 20px;
 }
@@ -47,6 +48,11 @@ iframe {
   position: relative;
 }
 
+.success-message {
+  font-size: 150%;
+  color: white;
+}
+
 #signup {
   position: absolute; 
   height: 50vh;
@@ -54,12 +60,14 @@ iframe {
   margin: 5%;
 }
 
-#top-form input[type=email] {
+#signup .form-inline input[type=email] {
   margin-bottom: 20px;
+  width: 90%;
   height: 40px;
 }
 
-#top-form input[type=submit] {
+#signup .form-inline input[type=submit] {
+  width: 90%;
   height: 40px;
 }
 
@@ -91,41 +99,41 @@ iframe {
 
 }
 
-#bottom-form {
+#end .form-inline {
   margin: 40px;
 }
 
-#bottom-form input[type=email] {
+#end .form-inline input[type=email] {
   width: 350px;
   height: 40px;
   margin-right: 10px;
 }
 
-#bottom-form input[type=submit] {
+#end .form-inline input[type=submit] {
   width: 150px;
   height: 40px;
 }
 
 @media screen and (max-device-width: 480px) {
+  #wrapper, #iframe-wrapper, .row, #end {
+    width: 100vh;
+  }
   #wrapper {
     width: 100vh;
+    height: 80vh;
     background: url("../images/banner_login.png") left no-repeat;
     background-size: 100%;
     margin: 0px;
     padding: 0px;
     position: relative;
   }
-
-  #iframe-wrapper, .row, #end {
-    width: 100vh;
-  }
-
-  #bottom-form input[type=email] {
+  
+  #end .form-inline input[type=email] {
     width: 100%;
     margin-bottom: 10px;
   }
 
-  #bottom-form input[type=submit] {
+  #end .form-inline input[type=submit] {
     width: 100%;
   }
 }
