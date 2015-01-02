@@ -21,26 +21,21 @@ h1, h3 {
 }
 
 h2 {
-  font-size: 280%;
   color: white;
+  margin-bottom: 20px;
 }
 
-h3, p {
+h3 {
+  font-size: 200%;
+  margin-bottom: 30px;
+}
+
+p {
   font-size: 150%;
 }
 
-.col-md-4 {
-  padding: 5%;
-  text-align: center;
-}
-
-.col-md-6 {
-  background-color: rgba(255,255,255,0.5);
-  height: 50vh;
-}
-
-.row {
-  padding: 30px;
+iframe {
+  margin: 2%;
 }
 
 #wrapper {
@@ -52,16 +47,37 @@ h3, p {
   position: relative;
 }
 
-#iframe-wrapper {
-  height: 100vh;
-  text-align: center;
-}
-
 #signup {
   position: absolute; 
   height: 50vh;
   bottom: 0;
   margin: 5%;
+}
+
+#top-form input[type=email] {
+  margin-bottom: 20px;
+  height: 40px;
+}
+
+#top-form input[type=submit] {
+  height: 40px;
+}
+
+#iframe-wrapper {
+  padding: 5%;
+  height: 120vh;
+  text-align: center;
+  background-color: #5DC8E5; 
+}
+
+#iframe-wrapper h1 {
+  font-size: 300%;
+  color: white;
+}
+
+.col-md-4 {
+  text-align: center;
+  padding: 5%;
 }
 
 #end {
@@ -71,9 +87,51 @@ h3, p {
   background-color: #e5e5e5;
 }
 
+#end h1 {
+
+}
+
+#bottom-form {
+  margin: 40px;
+}
+
+#bottom-form input[type=email] {
+  width: 350px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+#bottom-form input[type=submit] {
+  width: 150px;
+  height: 40px;
+}
+
+@media screen and (max-device-width: 480px) {
+  #wrapper {
+    width: 100vh;
+    background: url("../images/banner_login.png") left no-repeat;
+    background-size: 100%;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+  }
+
+  #iframe-wrapper, .row, #end {
+    width: 100vh;
+  }
+
+  #bottom-form input[type=email] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #bottom-form input[type=submit] {
+    width: 100%;
+  }
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
-.marketing,
 .footer {
   padding-left: 15px;
   padding-right: 15px;
