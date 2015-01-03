@@ -32,15 +32,18 @@ angular.module('websiteApp')
 
     $scope.submit = function(email) {
       console.log(email);
-      // Built.Extension.execute('invite', {email: email}, {
-      //   onSuccess: function(data) {
-      //     // executed successfully
-      //     console.log(data);
-      //   },
-      //   onError: function() {
-      //     // error
-      //     console.log('fail');
-      //   }
-      // });
+      /*global Built */
+      
+      Built.init('blt2edd3e168f0a895a','anappleaday');
+      Built.Extension.execute('invite', {email: email}, {
+        onSuccess: function(data) {
+          // executed successfully
+          console.log(data.result);
+        },
+        onError: function() {
+          // error
+          console.log('fail');
+        }
+      });
     };
   });
