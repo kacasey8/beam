@@ -7,7 +7,7 @@
 
 <div id="iframe-wrapper">
   <h1> Introducing Beam! </h1>
-  <iframe width="100%" height="80%" src="//www.youtube.com/embed/y6Sxv-sUYtM" frameborder="0" allowfullscreen></iframe>
+  <iframe width="100%" height="80%" src="//www.youtube.com/embed/__NtXBMMRuE" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <div id="perspective-wrapper">
@@ -15,23 +15,9 @@
 </div>
 
 <div class="row">
-  <div class="col-md-4">
-    <h3>Daily Challenges</h3>
-      <p>
-        Receive daily challenges to remind you of what's important in your life, such as your health, relationships and leisure time - all integral to your happiness!
-      </p>
-  </div>
-  <div class="col-md-4">
-    <h3>Track progress</h3>
-      <p>
-        Record your experience in completing the challenge each day through text, photo/video so you can look back and see what you've accomplished!
-      </p>
-  </div>
-  <div class="col-md-4">
-    <h3>Get motivated</h3>
-      <p>
-        Get motivated to complete more challenges by seeing your current and streak highest as well as how many challenges you have completed!
-      </p>
+  <div class="col-md-4" ng-repeat="feature in features">
+    <h3> {{feature.title}} </h3>
+    <p> {{feature.description}} </p>
   </div>
 </div>
 

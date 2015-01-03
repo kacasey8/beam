@@ -42,20 +42,15 @@ p {
 
 #wrapper {
   height: 100vh;
-  background: url("../images/Beamlanding.png") left;
+  background: url("../images/Beamlanding.png") center no-repeat;
   background-size: 100%;
   margin: 0px;
   padding: 0px;
   position: relative;
 }
 
-.success-message {
-  font-size: 150%;
-  color: white;
-}
-
 #signup {
-  position: absolute; 
+  position: absolute;
   height: 50vh;
   bottom: 0;
   margin: 5%;
@@ -72,11 +67,16 @@ p {
   height: 40px;
 }
 
+#signup .success-message {
+  font-size: 150%;
+  color: white;
+}
+
 #iframe-wrapper {
   padding: 5% 10%;
   height: 120vh;
   text-align: center;
-  background: url("../images/cloud_background.png") left;
+  background: url("../images/cloud_background.png") right;
   background-size: 100%;
 }
 
@@ -84,10 +84,6 @@ p {
   font-size: 300%;
   color: white;
   margin-bottom: 3%;
-}
-
-#perspective-wrapper img {
-  background-color: white;
 }
 
 .row {
@@ -106,8 +102,9 @@ p {
   background-color: #e5e5e5;
 }
 
-#end h1 {
-
+#end .success-message {
+  font-size: 150%;
+  color: black;
 }
 
 #end .form-inline {
@@ -126,17 +123,13 @@ p {
 }
 
 @media screen and (max-device-width: 480px) {
-  #wrapper, #iframe-wrapper, .row, #end {
+  #wrapper, #iframe-wrapper, .row, #perspective-wrapper, #end {
     width: 100vh;
   }
+
   #wrapper {
     width: 100vh;
-    height: 80vh;
-    background: url("../images/banner_login.png") left no-repeat;
-    background-size: 100%;
-    margin: 0px;
-    padding: 0px;
-    position: relative;
+    height: 75vh;
   }
   
   #end .form-inline input[type=email] {
