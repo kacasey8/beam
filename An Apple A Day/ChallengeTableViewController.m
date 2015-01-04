@@ -151,6 +151,12 @@ Global *globalKeyValueStore;
                 self.challenge.comment = [builtResult objectForKey:@"comment"];
                 
                 NSDictionary *file = [builtResult objectForKey:@"file"];
+                
+                if (![file respondsToSelector:@selector(objectForKey:)]) {
+                    // Make sure we are getting back a dictionary.
+                    // Built sometimes returns an empty string.
+                    file = nil;
+                }
                 if (file) {
                     NSString *fileUrl = [file objectForKey:@"url"];
                     NSURL *url = [NSURL URLWithString:fileUrl];
@@ -340,9 +346,14 @@ Global *globalKeyValueStore;
         if (self.challenge.completed) {
             [cell.button setTitle:@"Edit" forState:UIControlStateNormal];
         }
-        [cell.button addTarget:self action:@selector(highlightButton:) forControlEvents:UIControlEventTouchDown];
-        [cell.button addTarget:self action:@selector(unhighlightButton:) forControlEvents:UIControlEventTouchUpOutside];
-        [cell.button addTarget:self action:@selector(updateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        if (self.isChallengeDetail) {
+            [cell.button setHidden:YES];
+        } else {
+            [cell.button setHidden:NO];
+            [cell.button addTarget:self action:@selector(highlightButton:) forControlEvents:UIControlEventTouchDown];
+            [cell.button addTarget:self action:@selector(unhighlightButton:) forControlEvents:UIControlEventTouchUpOutside];
+            [cell.button addTarget:self action:@selector(updateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        }
         return cell;
     }
     return nil;
