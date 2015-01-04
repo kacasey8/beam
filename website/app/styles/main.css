@@ -92,6 +92,10 @@ p {
   margin-bottom: 3%;
 }
 
+#perspective-wrapper {
+  padding-top: 3.5%;
+}
+
 .row {
   /*background-color: #32CAE7;*/
 }
