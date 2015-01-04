@@ -114,7 +114,9 @@
         
         NSNumber *highest_streak = [user objectForKey:@"highest_streak"];
         
-        if (highest_streak) {
+        if ([highest_streak isKindOfClass:[NSNull class]]) {
+            _highestStreakCountLabel.text = @"0";
+        } else {
             _highestStreakCountLabel.text = [NSString stringWithFormat:@"%@", [user objectForKey:@"highest_streak"]];
         }
     } onError:^(NSError *error, ResponseType type) {
