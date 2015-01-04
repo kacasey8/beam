@@ -31,7 +31,9 @@ angular.module('websiteApp')
     ];
 
     $scope.submit = function(email) {
-      console.log(email);
+      if (email === undefined) {
+        return;
+      }
       /*global Built */
       
       Built.init('blt2edd3e168f0a895a','anappleaday');

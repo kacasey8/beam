@@ -169,10 +169,11 @@ function sendDailyNotification() {
   setInterval(sendNotification, 84000 * 1000);
 }
 
-// Trigger at 12PM
 var now = new Date();
-var millisTill12 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0, 0) - now;
+// Trigger at 12PM PST time
+var hour = 20; // Server is running in UTC time
+var millisTill12 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, 0, 0, 0) - now;
 if (millisTill12 < 0) {
-     millisTill12 += 86400000; // it's after 12am, try 12am tomorrow.
+     millisTill12 += 86400000; // it's after 12pm, try 12pm tomorrow.
 }
 setTimeout(sendDailyNotification, millisTill12);
