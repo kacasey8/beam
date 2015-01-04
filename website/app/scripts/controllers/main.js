@@ -26,7 +26,7 @@ angular.module('websiteApp')
     	},
     	{
     		'title': 'Get motivated',
-    		'description': 'Get motivated to complete more challenges by seeing your current and streak highest as well as how many challenges you have completed!'
+    		'description': 'Get motivated to complete more challenges by seeing your current and highest streak as well as how many challenges you have completed!'
     	}
     ];
 
