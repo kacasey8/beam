@@ -166,7 +166,7 @@ var sendNotification = function() {
 function sendDailyNotification() {
   // Send one now, since set interval does not send immediately
   sendNotification();
-  setInterval(sendNotification, 84000 * 1000);
+  setInterval(sendNotification, 86400 * 1000);
 }
 
 var now = new Date();
